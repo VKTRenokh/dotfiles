@@ -1,0 +1,99 @@
+include-file = ~/.config/polybar/modules.ini
+include-file = ~/.config/polybar/colors.ini
+
+[bar/awesome]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 40
+fixed-center = true
+border-size= 0
+background = ${colors.bg}
+foreground = ${colors.fg}
+padding-left = 7
+padding-right = 5
+module-margin-left = 2
+module-margin-right = 2
+font-0 = Montserrat:weight=SemiBold:size=10;2
+font-1 = Hack Nerd Font:size=12;2
+font-2 = Montserrat:weight=Medium:size=10;2
+cursor-click = pointer
+cursor-scroll = ns-resize
+;;;;;; Module Positioning
+modules-left = term xwindow
+modules-center = workspaces
+modules-right = wallpaper shot color yt disk audio date battery powermenu
+
+[bar/big]
+monitor = ${env:MONITOR:DVI-D-0}
+width = 100%
+height = 80
+fixed-center = true
+border-size= 0
+background = ${colors.bg}
+foreground = ${colors.fg}
+padding-left = 7
+padding-right = 7
+module-margin-left = 2
+module-margin-right = 2
+font-0 = Montserrat:weight=SemiBold:size=20;4
+font-1 = Hack Nerd Font:size=24;4
+font-2 = Montserrat:weight=Medium:size=20;4
+cursor-click = pointer
+cursor-scroll = ns-resize
+;;;;;; Module Positioning
+modules-left = term hostname
+modules-center = bspwm
+modules-right = wallpaper shot color disk audio date battery powermenu
+
+[bar/dwm]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 40
+fixed-center = true
+border-size= 0
+background = ${colors.bg}
+foreground = ${colors.fg}
+padding-left = 7
+padding-right = 7
+module-margin-left = 2
+module-margin-right = 2
+font-0 = Montserrat:weight=SemiBold:size=10;2
+font-1 = FiraCode Nerd Font:size=12;1.5
+font-2 = Montserrat:weight=Medium:size=10;2
+cursor-click = pointer
+cursor-scroll = ns-resize
+;;;;;; Module Positioning
+modules-left = powermenu prev play next
+modules-center = 
+modules-right = wallpaper shot color yt audio date battery
+
+[bar/bspwm]
+wm-restack = bspwm
+monitor = ${env:MONITOR:}
+width = 100%
+height = 40
+fixed-center = true
+border-size= 0
+background = ${colors.bg}
+foreground = ${colors.fg}
+padding-left = 7
+padding-right = 7
+module-margin-left = 2
+module-margin-right = 2
+font-0 = Montserrat:weight=SemiBold:size=10;2
+font-1 = Hack Nerd Font:size=12;2
+font-2 = Montserrat:weight=Medium:size=10;2
+cursor-click = pointer
+cursor-scroll = ns-resize
+;;;;;; Module Positioning
+modules-left = term hostname
+modules-center = bspwm
+modules-right = wallpaper shot color disk audio date battery powermenu
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false [global/wm] margin-top = 5 margin-bottom = 5 vim:set ft=dosini:

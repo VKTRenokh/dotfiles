@@ -1,0 +1,59 @@
+# Autotiling
+# exec --no-startup-id  ~/bin/autotiling.py
+
+#:::::::::disable_window_borders::::::::
+default_border pixel 2
+default_floating_border pixel 0
+
+hide_edge_borders smart
+
+# class                 border  backgr. text    indicator child_border
+client.focused           #5f27cd #5f27cd #ffffff #5f27cd   #5f27cd
+#client.focused_inactive  #5c6370 #3b3228 #ffffff #5c6370   #5c6370
+#client.unfocused         #5c6370 #3b3228 #ffffff #5c6370   #5c6370
+
+
+#:::::i3_ gaps::::::::::::::C
+	set $default_gaps_inner 12
+	set $default_gaps_outer 12
+	gaps inner $default_gaps_inner
+	gaps outer $default_gaps_outer
+	gaps top 0
+	# gaps bottom 10
+	smart_gaps on
+
+bindsym $mod+Shift+s sticky toggle
+
+# Wayland default floats
+for_window [app_id="gnome-(power-statistics)"] floating enable
+for_window [app_id="org.gnome.(Calculator|Calendar|Settings|Nautilus|Weather)"] floating enable
+for_window [app_id="(pavucontrol|psensor)"] floating enable
+for_window [app_id="evolution-alarm-notify"] floating enable
+for_window [app_id="nemo"] floating enable
+for_window [app_id="solaar"] floating enable
+for_window [app_id="evolution" title="Compose Message"] floating enable
+for_window [app_id="evolution" title="Re(.*)"] floating enable
+for_window [app_id="evolution" title="Fwd(.*)"] floating enable
+for_window [app_id="mpv"] floating enable
+for_window [app_id="mpv"] resize set 960 540
+for_window [app_id="mpv"] border pixel 0
+for_window [app_id="firefox" title="Pushbullet"] floating enable
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable
+for_window [app_id="firefox" title="Pushbullet – Mozilla Firefox"] floating enable
+for_window [app_id="firefox" title="About Mozilla Firefox"] floating enable
+
+# Brave, chrome, chromium
+for_window [title="Picture-in-picture"] floating enable
+
+# Jetbrains popup float fixes
+for_window [class="jetbrains-(.*)" title="Go to Line/Column"] floating enable
+for_window [class="jetbrains-(.*)" title="Rename"] floating enable
+for_window [class="jetbrains-(.*)" title="Open Project"] floating enable
+for_window [class="jetbrains-(.*)" title="splash"] floating enable
+
+# Ensure authy has borders, otherwise it can be hard to see if the bottom app has a clear background
+for_window [title="Twilio Authy"] border pixel 2
+
+# XWayland default floats
+#for_window [class="[.]*"] floating enable

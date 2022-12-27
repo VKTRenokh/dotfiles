@@ -1,0 +1,53 @@
+# Background_Imgage
+background_image none
+background_image_layout scaled
+background_image_linear no
+background_opacity 0.9
+
+# no bells. Ever.
+enable_audio_bell no
+bell_on_tab no
+
+# Advanced settings
+shell                /usr/bin/fish
+editor               code
+close_on_child_death yes
+allow_remote_control yes
+listen_on            none
+clipboard_control    write-clipboard write-primary
+allow_hyperlinks     yes
+term		     				 xterm-256color
+
+# Other
+paste_actions quote-urls-at-prompt
+kistrip_trailing_spaces never
+select_by_word_characters @-./_~?&=%+#
+shell_integration enabled
+kitty_mod ctrl+shift
+# map f3 kitten hints --program '*'
+dynamic_background_opacity yes
+
+# default alphabet see https://github.com/kovidgoyal/kitty/blob/0c4b20aa4e6b29ccf7c389e15d7ff5189f8e98f5/kittens/hints/main.py#L125
+# qwerty alphabets borrow from https://github.com/fcsonline/tmux-thumbs#Alphabets
+map ctrl+a>space kitten hints --alphabet asdfqwerzxcvjklmiuopghtybn1234567890 --customize-processing custom-hints.py
+map ctrl+a>ctrl+a send_text all \x01
+
+
+# user config
+include font/font.conf
+include scroll/scrollback.conf
+include performance/performance.conf
+include mouse/mouse.conf
+include split/splits.conf
+include tabbar/tabbar.conf
+include window/layout.conf
+#include diff.conf
+#startup_session session/session.conf
+
+# BEGIN_KITTY_THEME
+# Dark Pastel
+include current-theme.conf
+# END_KITTY_THEME
+color1 #0C0C0C
+color2 #0768CF
+color3 #7B4EAB
