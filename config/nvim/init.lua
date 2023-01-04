@@ -1,0 +1,8 @@
+require('vktr.base')
+require('vktr.highlights')
+require('vktr.maps')
+require('vktr.plugins')
+require('vktr.presence')
+require("vktr.alpha")
+require("vktr.bufferline")
+require("vktr.nvimtree")
