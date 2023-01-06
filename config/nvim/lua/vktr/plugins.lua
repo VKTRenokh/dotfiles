@@ -45,7 +45,7 @@ packer.startup(function(use)
     }
   }
 
-  use "nvim-tree/nvim-tree.lua'"
+  use "nvim-tree/nvim-tree.lua"
 
 
   use 'norcalli/nvim-colorizer.lua'
@@ -64,4 +64,39 @@ packer.startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
+
+  use 'neovim/nvim-lspconfig'
+  use 'onsails/lspkind-nvim'
+  use 'glepnir/lspsaga.nvim' -- LSP UIs
+  use "jose-elias-alvarez/null-ls.nvim"
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+
+  -- CMP plugins
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/cmp-nvim-lsp'
+
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+
+  -- snippets
+  use 'L3MON4D3/LuaSnip'
+  use 'rafamadriz/friendly-snippets'
+
+  -- Telescope
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
+
+  -- Git
+  use "lewis6991/gitsigns.nvim"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-rhubarb"
 end)
