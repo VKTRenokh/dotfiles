@@ -11,20 +11,20 @@ end
 
 local icons = require "vktr.icons"
 
-dashboard.section.header.val = {
-  [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
-  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
-  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
-  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
-  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
-}
+-- dashboard.section.header.val = {
+--   [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+--   [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+--   [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+--   [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+--   [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
+-- }
 dashboard.section.buttons.val = {
   button("f", icons.documents.Files .. " Find file", ":Telescope find_files <CR>"),
   button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
   button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
   button("c", icons.ui.Gear .. " Config", ":cd ~/.config/nvim/ | :e ~/.config/nvim/init.lua <CR>"),
   button("u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
-  button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
+  button("q", icons.ui.close .. " Quit", ":qa<CR>"),
 }
 
 dashboard.section.footer.val = {

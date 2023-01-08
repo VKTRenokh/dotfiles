@@ -18,8 +18,8 @@ keymap.set('n', '<C-a>', 'gg<S-v>G')
 -- New tab
 keymap.set('n', 'te', '<Cmd>:tabedit<CR>')
 -- Split window
-keymap.set('n', 'ss', ':split<Return><C-w>w')
-keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
+keymap.set('n', 'z', ':split<Return><C-w>w')
+keymap.set('n', '<C-z>', ':vsplit<Return><C-w>w')
 -- Move window
 keymap.set('n', '<Space>', '<C-w>w')
 keymap.set('', 'sh', '<C-w>h')

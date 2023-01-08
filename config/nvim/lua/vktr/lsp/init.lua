@@ -26,4 +26,8 @@ end
 require("vktr.lsp.mason")
 require("vktr.lsp.handlers").setup()
 require "vktr.lsp.null-ls"
-require "lspconfig".tsserver.setup({})
+
+local lspconfig = require "lspconfig"
+
+lspconfig.tsserver.setup({})
+lspconfig.volar.setup({})

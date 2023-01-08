@@ -31,12 +31,14 @@ Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.undercurl,
 Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
 Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
 
-vim.cmd [[
-  try
-    colorscheme neosolarized 
-    hi Normal guibg=NONE
-    hi NormalNC guibg=NONE
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-  endtry
- ]]
+-- uncomment for neosolarized colorscheme
+
+--vim.cmd [[
+--  try
+--    colorscheme neosolarized
+--    hi Normal guibg=NONE
+--    hi NormalNC guibg=NONE
+--  catch /^Vim\%((\a\+)\)\=:E185/
+--    colorscheme default
+--  endtry
+-- ]]

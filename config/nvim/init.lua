@@ -11,3 +11,5 @@ require "vktr.lualine"
 require "options"
 require "vktr.tressiter"
 require "vktr.lsp"
+
+vim.cmd [[colorscheme tokyonight-night]]
