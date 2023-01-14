@@ -28,6 +28,16 @@ packer.startup(function(use)
   use 'sam4llis/nvim-tundra'
 
   use "doums/darcula"
+
+  use 'rockerBOO/boo-colorscheme-nvim'
+
+  use {
+    "jesseleite/nvim-noirbuddy",
+    requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
+  }
+
+  use { 'kartikp10/noctis.nvim', requires = { 'rktjmp/lush.nvim' }, as = "noctis" }
+
   use "ray-x/starry.nvim"
 
   use {

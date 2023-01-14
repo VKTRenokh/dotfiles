@@ -33,3 +33,6 @@ lspconfig.tsserver.setup({})
 lspconfig.volar.setup({})
 lspconfig.pyright.setup({})
 lspconfig.bashls.setup({})
+lspconfig.emmet_ls.setup({
+  filetypes = { "html", "vue", "typescriptreact", "css" }
+})
