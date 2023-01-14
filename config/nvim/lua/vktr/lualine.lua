@@ -39,7 +39,7 @@ local filetype = {
 local branch = {
   "branch",
   icons_enabled = true,
-  icon = "שׂ",
+  icon = "",
 }
 
 local location = {
@@ -63,10 +63,10 @@ end
 lualine.setup({
   options = {
     icons_enabled = true,
-    --    theme = "solarized_dark",
+    -- theme = "solarized_dark",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disable_filetypes = { "dashboard", "NvimTree", "Outline", "Alpha" },
+    disable_filetypes = { "dashboard", "NvimTree", "Outline" },
     always_divide_middle = true,
   },
   sections = {

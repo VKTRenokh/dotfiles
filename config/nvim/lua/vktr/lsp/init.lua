@@ -31,3 +31,5 @@ local lspconfig = require "lspconfig"
 
 lspconfig.tsserver.setup({})
 lspconfig.volar.setup({})
+lspconfig.pyright.setup({})
+lspconfig.bashls.setup({})

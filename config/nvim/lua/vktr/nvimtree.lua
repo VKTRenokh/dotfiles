@@ -1,4 +1,4 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
+local status_ok, nvimTree = pcall(require, "nvim-tree")
 if not status_ok then
   return
 end
@@ -10,7 +10,7 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup {
+nvimTree.setup {
   update_focused_file = {
     enable = true,
     update_cwd = true,
@@ -49,8 +49,8 @@ nvim_tree.setup {
     icons = {
       hint = " ",
       info = " ",
-      warning = " ",
-      error = " ",
+      warning = " ",
+      error = " ",
     },
   },
   view = {
@@ -65,4 +65,7 @@ nvim_tree.setup {
     },
   },
 }
+
+vim.cmd("set laststatus=3")
+
 vim.keymap.set('n', '<C-Space>', '<Cmd>:NvimTreeToggle<CR>')
