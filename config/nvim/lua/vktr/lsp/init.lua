@@ -29,7 +29,8 @@ require "vktr.lsp.null-ls"
 
 local lspconfig = require "lspconfig"
 
-lspconfig.tsserver.setup({})
+lspconfig.tsserver.setup({
+})
 lspconfig.volar.setup({})
 lspconfig.pyright.setup({})
 lspconfig.bashls.setup({})

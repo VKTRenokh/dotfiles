@@ -23,6 +23,12 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
 
+  use 'olivercederborg/poimandres.nvim'
+
+  use "savq/melange-nvim"
+
+  use 'Yagua/nebulous.nvim'
+
   use 'akinsho/bufferline.nvim'
 
   use 'sam4llis/nvim-tundra'

@@ -199,10 +199,20 @@ _G.packer_plugins = {
     path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["melange-nvim"] = {
+    loaded = true,
+    path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/melange-nvim",
+    url = "https://github.com/savq/melange-nvim"
+  },
   ["mellow.nvim"] = {
     loaded = true,
     path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/mellow.nvim",
     url = "https://github.com/kvrohit/mellow.nvim"
+  },
+  ["nebulous.nvim"] = {
+    loaded = true,
+    path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/nebulous.nvim",
+    url = "https://github.com/Yagua/nebulous.nvim"
   },
   ["neosolarized.nvim"] = {
     loaded = true,
@@ -293,6 +303,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["poimandres.nvim"] = {
+    loaded = true,
+    path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/poimandres.nvim",
+    url = "https://github.com/olivercederborg/poimandres.nvim"
   },
   ["presence.nvim"] = {
     loaded = true,
