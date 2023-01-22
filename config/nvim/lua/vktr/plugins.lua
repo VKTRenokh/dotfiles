@@ -12,6 +12,9 @@ packer.startup(function(use)
     'svrana/neosolarized.nvim',
     requires = { 'tjdevries/colorbuddy.nvim' }
   }
+
+  use 'uloco/bluloco.nvim'
+
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
@@ -36,6 +39,8 @@ packer.startup(function(use)
   use "doums/darcula"
 
   use 'rockerBOO/boo-colorscheme-nvim'
+
+  use 'mhartington/oceanic-next'
 
   use {
     "jesseleite/nvim-noirbuddy",

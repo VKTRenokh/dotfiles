@@ -42,15 +42,11 @@ require('poimandres').setup {
   disable_italics = true, -- disable italics
 }
 
-local a = [[
-  local function hello() print('goodbye') end
-]]
+require("bluloco").setup({
+  style = "auto", -- "auto" | "dark" | "light"
+  transparent = true,
+})
 
-local aFunc = loadstring(a)
-
-if not aFunc then return end
-
-aFunc()
 
 if vim.v.argv[3] then
   vim.cmd("colorscheme " .. vim.v.argv[3])
@@ -60,7 +56,7 @@ if vim.v.argv[3] then
   ]]
 else
   vim.cmd [[
-    colorscheme rose-pine 
+    colorscheme bluloco
     highlight Normal guibg=none
     highlight NonText guibg=none
   ]]

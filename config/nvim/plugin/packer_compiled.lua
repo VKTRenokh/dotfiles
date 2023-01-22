@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["bluloco.nvim"] = {
+    loaded = true,
+    path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/bluloco.nvim",
+    url = "https://github.com/uloco/bluloco.nvim"
+  },
   ["boo-colorscheme-nvim"] = {
     loaded = true,
     path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/boo-colorscheme-nvim",
@@ -293,6 +298,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["oceanic-next"] = {
+    loaded = true,
+    path = "/home/vktrenokh/.local/share/nvim/site/pack/packer/start/oceanic-next",
+    url = "https://github.com/mhartington/oceanic-next"
   },
   ["packer.nvim"] = {
     loaded = true,

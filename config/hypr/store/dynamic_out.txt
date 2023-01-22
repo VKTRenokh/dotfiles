@@ -1,1 +1,1 @@
-{"class": "none", "text": ""}
+{"class": "paused", "text": "\u25b6 DVRST - DVRST - Tell Me What (Alternative) ", "tooltip": "DVRST - Tell Me What (Alternative)\nby DVRST\n(firefox.instance690248)"}

@@ -4,6 +4,10 @@
 config=$HOME/.config/hypr
 scripts=$config/scripts
 
+#cursor-theme
+hyprctl setcursor Bibata-Modern-Classic 10
+gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Classic
+
 # notification daemon
 dunst &
 
@@ -12,7 +16,7 @@ $scripts/launch_waybar &
 $scripts/tools/dynamic &
 
 # wallpaper
-$scripts/wall $config/wallpapers/cloud.png &
+#$scripts/wall $config/wallpapers/japanese-art.jpg &
 
 # effects
 $scripts/rgb &
