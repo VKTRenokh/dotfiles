@@ -1,5 +1,5 @@
 # Use custom format:
-format="$directory$git_branch$nodejs$lua$memory_usage$character"
+format="$directory$git_branch$nodejs$lua$character"
 
 right_format="$time"
 
