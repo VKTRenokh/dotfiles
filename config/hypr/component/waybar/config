@@ -10,7 +10,7 @@
     "margin-bottom":-11,
     //"margin-top":5,
     "modules-left": ["wlr/workspaces"],
-    "modules-right": ["temperature","network","battery","custom/ss","custom/cycle_wall","custom/expand","cpu","clock"],
+    "modules-right": ["temperature","battery","memory","custom/ss","custom/cycle_wall","custom/expand","cpu","clock"],
     "modules-center": ["custom/dynamic_pill"],
     // Modules configuration
 
@@ -108,7 +108,7 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 60,
-        "format": "{:%I:%M}",
+        "format": "{:%H:%M}",
         "max-length": 25
     },
     "cpu": {

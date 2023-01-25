@@ -16,10 +16,14 @@ $scripts/launch_waybar &
 $scripts/tools/dynamic &
 
 # wallpaper
-#$scripts/wall $config/wallpapers/japanese-art.jpg &
+$scripts/wall $config/wallpapers/mono-mountain.jpg &
 
 # effects
 $scripts/rgb &
+
+
+#time
+kitty --title clock_is_kitty --hold peaclock &
 
 # other
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
