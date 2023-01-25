@@ -1,5 +1,7 @@
 # Use custom format:
-format="$directory$git_branch$character"
+format="$directory$git_branch$nodejs$lua$memory_usage$character"
+
+right_format="$time"
 
 # Prompt symbols 
 [character]
@@ -12,5 +14,18 @@ format = "[]($style)[(fg:#49628a) $path](bg:#89b4fa fg:#49628a)[ ]($sty
 style = "fg:#89b4fa"
 
 [git_branch]
-format = "[]($style)[[שׂ ](bg:#89b4fa fg:#49628a bold)$branch](bg:#89b4fa fg:#4c4f69)[ ]($style)"
+format = "[]($style)[[󰘬 ](bg:#89b4fa fg:#49628a bold)$branch](bg:#89b4fa fg:#4c4f69)[ ]($style)"
+style = "fg:#89b4fa"
+
+
+[nodejs]
+format = "[]($style)[[󰎙 ](bg:#89b4fa fg:#49628a bold)$version](bg:#89b4fa fg:#4c4f69)[ ]($style)"
+style = "fg:#89b4fa"
+
+[lua]
+format = "[]($style)[[󰢱 ](bg:#89b4fa fg:#49628a bold)$version](bg:#89b4fa fg:#4c4f69)[ ]($style)"
+style = "fg:#89b4fa"
+
+[time]
+format = "$time"
 style = "fg:#89b4fa"
