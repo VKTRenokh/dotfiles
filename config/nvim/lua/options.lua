@@ -6,8 +6,6 @@ local options = {
   completeopt = { "menuone", "noselect" },
   conceallevel = 0,
   fileencoding = "utf-8",
-  --  cc = "80",
-  cc = "0",
   hlsearch = true,
   ignorecase = true,
   mouse = "a",
@@ -31,7 +29,7 @@ local options = {
   number = true,
   relativenumber = true,
   numberwidth = 4,
-  signcolumn = "yes",
+  --[[ signcolumn = "yes", ]]
   wrap = false,
   scrolloff = 10,
   sidescrolloff = 10,
@@ -72,13 +70,4 @@ if &term =~ "screen"
   autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
 ]]
-
-
--- New tab
-vim.keymap.set('n', 'te', '<Cmd>:tabedit<CR>')
--- Split window
-vim.keymap.set('n', 'z', ':split<Return><C-w>w')
-vim.keymap.set('n', '<C-z>', ':vsplit<Return><C-w>w')
-vim.keymap.set("n", "<Space>f", "<Cmd>:Telescope live_grep<CR>")
-vim.keymap.set('n', '<Space>', '<C-w>w')
-vim.keymap.set('n', '<Tab>', '<C-w>w')
+vim.cmd [[autocmd FileType * set formatoptions-=ro]]
