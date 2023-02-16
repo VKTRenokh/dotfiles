@@ -15,6 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty 
+set $browser qutebrowser
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -24,7 +25,8 @@ set $menu wofi
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/.config/hypr/wallpapers/cloud.png fill
+set $wallpaper ./wallpapers/mono-mountain.jpg
+output * bg $wallpaper fill
 #
 # Example configuration:
 #
@@ -80,7 +82,7 @@ output * bg ~/.config/hypr/wallpapers/cloud.png fill
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -98,11 +100,17 @@ output * bg ~/.config/hypr/wallpapers/cloud.png fill
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
+ bindsym $mod+Shift+tab workspace prev_on_output
+ bindsym $mod+tab workspace next_on_output
+
+ bindsym $mod+Shift+j workspace prev_on_output
+ bindsym $mod+Shift+k workspace next_on_output
+
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    # bindsym $mod+Shift+$left move left
+    # bindsym $mod+Shift+$down move down
+# bindsym $mod+Shift+$right move right
+    # bindsym $mod+Shift+$up move up
     # Ditto, with arrow keys
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
@@ -196,18 +204,33 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-gaps inner 10
-gaps outer 10
+gaps inner 4
+gaps outer 4
 smart_gaps off
+
+for_window [shell="xwayland"] title_format "%title [XWayland]"
 
 default_border pixel
 default_floating_border pixel
 
+# client.focused #ff0000
+client.focused #e06b74 #e06b74 #000000 #e06b74
+
+mode "workspaces" { 
+ bindsym Shift+tab workspace prev_on_output
+ bindsym tab workspace next_on_output
+ 
+ bindsym t workspace back_and_forth 
+ bindsym f workspace 1
+ bindsym l workspace 10
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+t mode "workspaces"
 
 bindsym $mod+r mode "resize"
-
-bindsym Print exec sh ~/.config/sway/scripts/screenshot
-
 
 input type:keyboard {
     xkb_layout us,ru
@@ -218,15 +241,23 @@ input type:keyboard {
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-  swaybar_command sh ~/.config/hypr/scripts/launch_waybar 
-    position top
+
+bar { 
+     swaybar_command waybar
 }
 
-    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-exec waybar -s ~/.config/sway/waybar/style.css -c ~/.config/sway/waybar/config
+bindsym alt+Return exec kitty --title="flying-kitty"
+for_window [title="^flying-kitty"] floating enable
+for_window [title="^flying-kitty"] resize set width 40 ppt
+for_window [title="^flying-kitty"] resize set height 50 ppt
 
+bindsym Print exec bash ~/.config/sway/scripts/screenshot
+# exec ~/.config/sway/scripts/launchWaybar
 include /etc/sway/config.d/*
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s 5%+
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-

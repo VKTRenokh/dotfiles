@@ -228,7 +228,6 @@ window#waybar {
   background-size: 400% 400%;
   /* animation: gradient_f 9s cubic-bezier(0.72, 0.39, 0.21, 1) infinite; */
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.377);
-  font-weight: bolder;
   color: #b4befe;
 }
 

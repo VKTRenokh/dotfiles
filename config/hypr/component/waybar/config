@@ -11,7 +11,7 @@
     //"margin-top":5,
     "modules-left": ["wlr/workspaces"],
     "modules-right": ["temperature","battery","memory","custom/ss","custom/cycle_wall","custom/expand","cpu","clock"],
-    "modules-center": ["custom/dynamic_pill"],
+    "modules-center": ["custom/dynamic_pill", ],
     // Modules configuration
 
 
