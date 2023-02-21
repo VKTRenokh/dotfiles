@@ -22,7 +22,7 @@ framerate = 60
 # Bars' width and space between bars in number of characters.
 bars = 0
 bar_width = 2 
-bar_spacing = 1
+bar_spacing = 2
 
 # Lower and higher cutoff frequencies for lowest and highest bars
 # the bandwidth of the visualizer.
@@ -163,9 +163,13 @@ style = mono
 #
 gradient = 1
 gradient_count = 2
-gradient_color_1 = '#00C9FF'
-gradient_color_2 = "#00C9FF"
-#gradient_color_2 = '#92FE9D'
+# gradient_color_1 = '#E56D76'
+# gradient_color_2 = '#E56D76'
+gradient_color_1 = '#a4bcd4'
+gradient_color_2 = '#a4bcd4'
+# gradient_color_1 = '#00C9FF'
+#gradient_color_2 = "#00C9FF"
+# gradient_color_2 = '#92FE9D'
 
 
 # gradient_color_1 = '#0099ff'

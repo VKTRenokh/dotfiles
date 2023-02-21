@@ -91,7 +91,7 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format": "  {:%H:%M}",
-        "format-alt": "󰸗  {:%Y-%m-%d}"
+        "format-alt": " {:%Y-%m-%d}"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -111,7 +111,7 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{icon} {percent}%",
-        "format-icons": [""]
+        "format-icons": ["盛"]
     },
     "battery": {
         "states": {
@@ -132,7 +132,7 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": " {essid}",
+        "format-wifi": "直 {essid}",
         /* "format-ethernet": "{ipaddr}/{cidr} ", */
         /* "tooltip-format": "{ifname} via {gwaddr} ", */
         /* "format-linked": "{ifname} (No IP) ", */

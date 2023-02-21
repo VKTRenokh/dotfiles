@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, "JetBrains Mono";
+    font-family: FontAwesome, "JetBrainsMono NF";
     font-size: 14px;
   letter-spacing: 0.9px;
   font-weight: 400;
@@ -64,26 +64,61 @@ button:hover {
   border-radius: 10px;
     background-color: transparent;
     color: #ffffff;
-  transition: 0.4s ease;
+  /* transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68); */
+  transition: 0.4s ease-in;
 }
 
-@keyframes background {
-  from {
-    background-position: top;
-  }
-
-  to {
-    background-position: bottom left;
-  }
+#workspaces button:hover {
+  background: white;
+  color: black;
 }
 
 #workspaces button.focused {
   color: black;
-  animation: background 5s ease infinite;
-  background-size: 200%;
-    background: linear-gradient(90deg, #df6b77, #c778da);
+  background-size: 400% 400%;
+    /* background: linear-gradient(90deg, #df6b77, #c778da); */
+  background: linear-gradient(-140deg, #8ba5c8, #a4bcd4, #c778da);
+  /* background: radial-gradient( */
+  /*   circle, */
+  /*   rgba(203, 166, 247, 1) 0%, */
+  /*   rgba(193, 168, 247, 1) 12%, */
+  /*   rgba(249, 226, 175, 1) 19%, */
+  /*   rgba(189, 169, 247, 1) 20%, */
+  /*   rgba(182, 171, 247, 1) 24%, */
+  /*   rgba(198, 255, 194, 1) 36%, */
+  /*   rgba(177, 172, 247, 1) 37%, */
+  /*   rgba(170, 173, 248, 1) 48%, */
+  /*   rgba(255, 255, 255, 1) 52%, */
+  /*   rgba(166, 174, 248, 1) 52%, */
+  /*   rgba(160, 175, 248, 1) 59%, */
+  /*   rgba(148, 226, 213, 1) 66%, */
+  /*   rgba(155, 176, 248, 1) 67%, */
+  /*   rgba(152, 177, 248, 1) 68%, */
+  /*   rgba(205, 214, 244, 1) 77%, */
+  /*   rgba(148, 178, 249, 1) 78%, */
+  /*   rgba(144, 179, 250, 1) 82%, */
+  /*   rgba(180, 190, 254, 1) 83%, */
+  /*   rgba(141, 179, 250, 1) 90%, */
+  /*   rgba(137, 180, 250, 1) 100% */
+  /* ); */
+  /* background-size: 400% 400%; */
+  animation: gradient_f 20s ease-in-out infinite;
+  /* transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682); */
+  transition: 0.5s ease-out;
 }
 
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 #workspaces button.urgent {
     background-color: #eb4d4b;
 }
@@ -114,8 +149,8 @@ button:hover {
   margin: 7px 1px;
   /* margin-top: 7px; */
   /* margin-bottom: 10px; */
-    border-radius: 15px;
-    padding: 4px 13px;
+    border-radius: 13px;
+    padding: 4px 14px;
     color: black;
 }
 
