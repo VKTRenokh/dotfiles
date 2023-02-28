@@ -14,11 +14,11 @@ local servers = {
   "emmet_ls",
   "html",
   "jsonls",
-  "sumneko_lua",
+  "lua_ls",
   "tsserver",
   "bashls",
   "clangd",
-  "vuels"
+  "elmls",
 }
 
 local settings = {
@@ -57,6 +57,15 @@ for _, server in pairs(servers) do
   if server == "jsonls" then
     local jsonls_opts = require("koichi.lsp.settings.jsonls")
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+  end
+
+  if server == "elmls" then
+    local elmls_opts = {
+      root_dir = require 'lspconfig/util'.root_pattern('elm.json'),
+    }
+    opts = vim.tbl_deep_extend("force", elmls_opts, opts)
+    lspconfig.elmls.setup(opts)
+    goto continue
   end
 
   if server == "sumneko_lua" then

@@ -27,7 +27,7 @@ null_ls.setup({
     --[[   diagnostics_format = '[eslint] #{m}\n(#{c})' ]]
     --[[ }), ]]
     --[[ diagnostics.eslint, ]]
-    code_actions.eslint_d,
+    --[[ code_actions.eslint_d, ]]
     --[[ diagnostics.stylelint, ]]
   },
   on_attach = function(client, bufnr)

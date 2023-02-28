@@ -23,7 +23,8 @@ local enable_format_on_save = function(_, bufnr)
     group = augroup_format,
     buffer = bufnr,
     callback = function()
-      vim.lsp.buf.format({ bufnr = bufnr })
+      --[[ vim.lsp.buf.format({ bufnr = bufnr }) ]]
+      vim.lsp.buf.format()
     end,
   })
 end
@@ -74,13 +75,13 @@ M.on_attach = function(client, bufnr)
   end
 
   -- formatting
-  if client.server_capabilities.documentFormattingProvider then
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = vim.api.nvim_create_augroup("Format", { clear = true }),
-      buffer = bufnr,
-      callback = function() vim.lsp.buf.format({ async = false }) end
-    })
-  end
+  --[[ if client.server_capabilities.documentFormattingProvider then ]]
+  --[[   vim.api.nvim_create_autocmd("BufWritePre", { ]]
+  --[[     group = vim.api.nvim_create_augroup("Format", { clear = true }), ]]
+  --[[     buffer = bufnr, ]]
+  --[[     callback = function() vim.lsp.buf.format() end ]]
+  --[[   }) ]]
+  --[[ end ]]
 end
 
 vim.diagnostic.config({
@@ -94,7 +95,7 @@ vim.diagnostic.config({
   underline = true,
   float = {
     border = "rounded",
-    source = "always", -- Or "if_many"
+    source = "always",
   },
 })
 

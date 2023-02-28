@@ -29,11 +29,11 @@ local options = {
   number = true,
   relativenumber = true,
   numberwidth = 4,
-  --[[ signcolumn = "yes", ]]
+  signcolumn = "yes",
   wrap = false,
   scrolloff = 10,
   sidescrolloff = 10,
-  shell = "fish",
+  shell = "bash",
   exrc = true,
   title = true,
   winblend = 0,
@@ -70,4 +70,12 @@ if &term =~ "screen"
   autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
 endif
 ]]
-vim.cmd [[autocmd FileType * set formatoptions-=ro]]
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 300
+    })
+  end
+})
