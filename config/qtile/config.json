@@ -1,0 +1,10 @@
+{
+  "bar": "decorated",
+  "browser": "",
+  "colorscheme": "catppuccin",
+  "terminal": {
+    "main": "",
+    "floating": ""
+  },
+  "wallpaper": "~/wallpaper/wp.png"
+}
