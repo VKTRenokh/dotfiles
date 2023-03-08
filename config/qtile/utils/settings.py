@@ -10,7 +10,7 @@ settings = {
     'main': '',
     'floating': '',
   },
-  'wallpaper': '~/wallpaper/wp.png',
+  'wallpaper': '~/.config/qtile/wallpapers/1673854322068055.png',
 }
 
 try:

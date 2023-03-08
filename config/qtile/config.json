@@ -1,10 +1,13 @@
 {
   "bar": "decorated",
+  "textColor": "#b2b2b2",
   "browser": "",
   "colorscheme": "catppuccin",
   "terminal": {
     "main": "",
     "floating": ""
   },
-  "wallpaper": "~/wallpaper/wp.png"
+  "wallpaper": "~/.config/qtile/wallpapers/gayshitdotcom.jpg",
+  "wallpaperMode": "fill",
+  "terminal": "kitty"
 }

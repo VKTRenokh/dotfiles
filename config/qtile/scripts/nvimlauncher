@@ -1,4 +1,5 @@
-#!/usr/bin/bash
+
+#!/usr/bin/env bash
 
 DMEDITOR="nvim"
 
@@ -15,7 +16,7 @@ declare -a options=(
 "zsh - $HOME/.zshrc"
 )
 
-choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -theme ~/.config/bspwm/rices/z0mbi3/launcher.rasi)
+choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -theme ~/.config/bspwm/rices/pamela/launcher.rasi)
 
 if [ "$choice" ]; then
   cfg=$(printf '%s\n' "${choice}" | awk '{print $NF}')
