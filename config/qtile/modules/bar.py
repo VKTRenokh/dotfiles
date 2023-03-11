@@ -1,19 +1,38 @@
 from libqtile.lazy import lazy
-from libqtile import bar, widget
+from libqtile import bar
 from string import Template
+from qtile_extras import widget
+from qtile_extras.widget.decorations import PowerLineDecoration
+from qtile_extras.widget.decorations import RectDecoration
 import os
+from utils import color
 
-def createBar(textColor, terminal):
+def createBar(settings):
+    textColor = settings['textColor']
+    withColors = settings["decorated"]
+    decoratedTextColor = textColor if not withColors else settings["decorations"]["decoratedTextColor"]
+
+    def createDecorationGroup(color):
+        decorations = {}
+
+        if withColors:
+            decorations = {
+                "decorations": [
+                    RectDecoration(colour=color, radius=settings['decorations']["round"], filled=True, padding_y=3, group=True)
+                ],
+                "padding": settings["decorations"]["padding"],
+            }
+
+        return decorations
 
     @lazy.function
     def openCalendar(qtile):
-        cmd = Template("$terminal --hold cal").substitute({"terminal": terminal})
-        print(cmd)
-        qtile.cmd_spawn(cmd)
+        qtile.cmd_spawn("kitty --title cal_term --hold cal")
 
     return bar.Bar(
             [
-				widget.Spacer(length=20),
+				widget.Spacer(length=20,
+                  ),
 				
                 widget.GroupBox(
                     fontsize=16,
@@ -36,9 +55,8 @@ def createBar(textColor, terminal):
                 widget.Spacer(),
 
                 widget.Clock(
-                    format = '%A - %H:%M ',
+                format = '%A - %H:%M',
                     long_format = '%B %-d, %Y ',
-                    # format=' %H:%M',
                     foreground=textColor,
                     font="JetBrainsMono NF",
                     fontsize = 14,
@@ -47,72 +65,69 @@ def createBar(textColor, terminal):
 
                 widget.Spacer(),
 
-                widget.TextBox(
-                    foreground=textColor,
-                    font="JetBrainsMono NF",
-                    text="󰤨",
-                    fontsize=24,
-                ),
-
                 # sudo python3 -m pip install iwlib
 
                 widget.Wlan(
-                    foreground=textColor,
                     font="JetBrainsMono NF",
-                    format='{essid}',  # {quality}%
+                    format='󰤨 {essid}',  # {quality}%
                     fontsize=14,
-                    padding=2
+                    foreground=decoratedTextColor,
+                    **createDecorationGroup(color['magenta'])
                 ),
+
+                widget.Spacer(length=10),
                                 
-                widget.Battery(format=' {percent:2.0%}',
+                widget.Battery(
+                    format=' {percent:2.0%}',
                     font="JetBrainsMono NF",
                     fontsize=14,
-                    padding=10,
-                    foreground=textColor
+                    foreground=decoratedTextColor,
+                    **createDecorationGroup(color['blue'])
                 ),                     
                  
+                widget.Spacer(length=10),
                
                 widget.Memory(format='﬙{MemUsed: .0f}{mm}',
                     font="JetBrainsMono NF",
                     fontsize=14,
-                    padding=10,
-                    foreground=textColor
+                    foreground=decoratedTextColor,
+                    **createDecorationGroup(color["cyan"])
                 ),
 
-                widget.TextBox(
-                    text="",
-                    font="Font Awesome 6 Free Solid",
-                    fontsize=8,
-                    padding=0,
-                    foreground=textColor,
-                ),
+                widget.Spacer(length=10),
                 
-                widget.PulseVolume(font='JetBrains Mono Bold',
+                widget.PulseVolume(
+                    font='JetBrainsMono NF',
                     fontsize=14,
-                    padding=5,
-                    foreground=textColor
+                    foreground=decoratedTextColor,
+                    fmt=" {}",
+                    **createDecorationGroup(color["green"])
                 ),                
 
-                widget.CurrentLayoutIcon(
-                    font = "JetBrainsMono NF",
-                    foreground = textColor,
-                    padding = 0,
-                    scale = 0.5,
-                ),
+                widget.Spacer(length=10),
+
+              #  widget.CurrentLayoutIcon(
+              #      font = "JetBrainsMono NF",
+              #      scale = 0.5,
+              #      foreground = "#000000",
+              #  ),
 
                 widget.CurrentLayout(
                     fontsize=13.3,
-                    padding=0,
-                    foreground=textColor,
+                    foreground=decoratedTextColor,
                     font='JetBrainsMono NF',
+                    **createDecorationGroup(color["yellow"])
                 ),
 
+                widget.Spacer(length = 10),
+
                 widget.TextBox(
-                    foreground = textColor,
+                    foreground = decoratedTextColor,
                     font = "JetBrainsMono NF",
                     fontsize = 30,
                     text = "󰤆",
                     mouse_callbacks = {'Button1': lazy.spawn(["sh", os.path.expanduser("~/.config/qtile/rofi/bin/powermenu")])},
+                    **createDecorationGroup(color["red"]),
                 ),
 
                 widget.Spacer(

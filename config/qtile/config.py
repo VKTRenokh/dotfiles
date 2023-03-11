@@ -14,6 +14,7 @@ def autostart():
     home = os.path.expanduser('~/.config/qtile/scripts/autostart')
     subprocess.Popen([home])
 
+
 keys = binds.createBinds('mod4')
 
 groups = [Group(i, label="") for i in "123456789"]
@@ -33,29 +34,30 @@ for i in groups:
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
+                desc="Switch to & move focused window to group {}".format(
+                    i.name),
             ),
         ]
     )
 
 config = {
-  'border_focus': color['magenta'],
-  'border_normal': color['bg'],
-  'border_width': 0,
-  'margin': 10,
-  'single_border_width': 0,
-  'single_margin': 10,
+    'border_focus': color['magenta'],
+    'border_normal': color['bg'],
+    'border_width': 0,
+    'margin': 10,
+    'single_border_width': 0,
+    'single_margin': 10,
 }
 
 layouts = [
-  layout.MonadTall(
-    **config,
-    change_ratio = 0.02,
-    min_ratio = 0.30,
-    max_ratio = 0.70,
-  ),
+    layout.MonadTall(
+        **config,
+        change_ratio=0.02,
+        min_ratio=0.30,
+        max_ratio=0.70,
+    ),
 
-  layout.Max(**config),
+    layout.Max(**config),
 
     layout.Spiral(),
 
@@ -72,36 +74,39 @@ layouts = [
 ]
 
 floating_layout = layout.Floating(
-  border_focus = color['blue'],
-  border_normal = color['bg'],
-  border_width = 0,
-  fullscreen_border_width = 0,
+    border_focus=color['blue'],
+    border_normal=color['bg'],
+    border_width=0,
+    fullscreen_border_width=0,
 
-  float_rules = [
-    *layout.Floating.default_float_rules,
-    Match(wm_class = [
-      'confirmreset',
-      'gnome-screenshot',
-      'lxappearance',
-      'makebranch',
-      'maketag',
-      'psterm',
-      'ssh-askpass',
-      'thunar',
-      'Xephyr',
-      'xfce4-about',
-      'wm',
-    ]), # type: ignore
+    float_rules=[
+        *layout.Floating.default_float_rules,
+        Match(wm_class=[
+            'confirmreset',
+            'gnome-screenshot',
+            'lxappearance',
+            'makebranch',
+            'maketag',
+            'psterm',
+            'ssh-askpass',
+            'thunar',
+            'Xephyr',
+            'xfce4-about',
+            'wm',
+        ]),  # type: ignore
 
-    Match(title = [
-      'branchdialog',
-      'File Operation Progress',
-      'minecraft-launcher',
-      'Open File',
-      'pinentry',
-      'wm',
-    ]), # type: ignore
-  ],
+        Match(title=[
+            'branchdialog',
+            'File Operation Progress',
+            'minecraft-launcher',
+            'Open File',
+            'pinentry',
+            'wm',
+            "cal_term"
+        ]),  # type: ignore
+
+        # Match(title = "cal_term")
+    ],
 )
 
 widget_defaults = dict(
@@ -113,15 +118,17 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper = settings['wallpaper'],
-        wallpaper_mode = settings['wallpaperMode'],
-        top = bar.createBar(settings['textColor'], settings['terminal'])
+        wallpaper=settings['wallpaper'],
+        wallpaper_mode=settings['wallpaperMode'],
+        top=bar.createBar(settings['bar'])
     ),
 ]
 
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -137,4 +144,4 @@ reconfigure_screens = True
 auto_minimize = True
 wl_input_rules = None
 
-wmname = "???"
+wmname = "HelloWorld wm"

@@ -8,7 +8,7 @@
  */
 
 configuration {
-    font:			    "Sarasa Mono CL Nerd Font Semibold 12";
+    font:			    "JetBrainsMono NF SemiBold 12";
     show-icons:                     true;
     icon-theme: 		    "Papirus";
     display-drun: 		    "";
@@ -32,13 +32,13 @@ configuration {
 /* -- Mountain -- */ 
 
 * {
-    background:                     #0F0F0Fff;
+    background:                     #00000090;
     background-alt:                 #00000000;
     background-bar:                 #262626FF;
     foreground:                     #F0F0F0FF;
-    accent:			    #AC8AAC4d;
-    border:		            #AC8AACFF;
-    selected:               	    #AC8AAC4C;
+    accent:                         #AC8AAC4d;
+    border:                         #00000000;
+    selected:                       #AC8AAC4C;
 }
 
 window {
@@ -57,7 +57,7 @@ prompt {
     padding: 			    0.25% 0.75% 0% -0.25%;
     background-color: 		    @background-alt;
     text-color: 		    @foreground;
-    font:			    "Font Awesome 6 Pro Solid 14";
+    font:			    "JetBrainsMono NF";
 }
 
 entry {
@@ -67,7 +67,6 @@ entry {
     expand:                         true;
     horizontal-align:               0;
     placeholder:                    "Search";
-    padding:                        0.4% 0% 0% 0%;
     blink:                          true;
 }
 

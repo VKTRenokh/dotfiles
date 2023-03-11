@@ -1,12 +1,15 @@
 {
-  "bar": "decorated",
-  "textColor": "#b2b2b2",
-  "browser": "",
-  "colorscheme": "catppuccin",
-  "terminal": {
-    "main": "",
-    "floating": ""
+  "bar": {
+    "textColor": "#b4b4b4",
+    "decorated": true,
+    "decorations": {
+      "round": 7,
+      "padding": 10,
+      "decoratedTextColor": "#000000"
+    }
   },
+  "browser": "qutebrowser",
+  "colorscheme": "catppuccin",
   "wallpaper": "~/.config/qtile/wallpapers/gayshitdotcom.jpg",
   "wallpaperMode": "fill",
   "terminal": "kitty"

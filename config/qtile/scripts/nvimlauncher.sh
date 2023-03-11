@@ -5,7 +5,7 @@ DMEDITOR="nvim"
 
 declare -a options=(
 "awesome - $HOME/.config/awesome/rc.lua"
-"qtile - $HOME/.config/qtile/config.py"
+"qtile - $HOME/.config/qtile/config.json"
 "bspwm - $HOME/.config/bspwm/bspwmrc"
 "neovim - $HOME/.config/nvim/init.lua"
 "kitty - $HOME/.config/kitty/kitty.conf"
