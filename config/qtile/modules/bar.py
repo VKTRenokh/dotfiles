@@ -9,13 +9,13 @@ from utils import color
 
 def createBar(settings):
     textColor = settings['textColor']
-    withColors = settings["decorated"]
-    decoratedTextColor = textColor if not withColors else settings["decorations"]["decoratedTextColor"]
+    withDecorations = settings["decorated"]
+    decoratedTextColor = textColor if not withDecorations else settings["decorations"]["decoratedTextColor"]
 
     def createDecorationGroup(color):
         decorations = {}
 
-        if withColors:
+        if withDecorations:
             decorations = {
                 "decorations": [
                     RectDecoration(colour=color, radius=settings['decorations']["round"], filled=True, padding_y=3, group=True)
@@ -31,9 +31,7 @@ def createBar(settings):
 
     return bar.Bar(
             [
-				widget.Spacer(length=20,
-                  ),
-				
+				widget.Spacer(length=20),
                 widget.GroupBox(
                     fontsize=16,
                     borderwidth=3,
@@ -50,10 +48,7 @@ def createBar(settings):
                     rounded=True,
                     disable_drag=True,
                  ),
-
-
                 widget.Spacer(),
-
                 widget.Clock(
                 format = '%A - %H:%M',
                     long_format = '%B %-d, %Y ',
@@ -62,11 +57,8 @@ def createBar(settings):
                     fontsize = 14,
                     mouse_callbacks = {'Button1': openCalendar},
                 ),
-
                 widget.Spacer(),
-
                 # sudo python3 -m pip install iwlib
-
                 widget.Wlan(
                     font="JetBrainsMono NF",
                     format='󰤨 {essid}',  # {quality}%
@@ -74,9 +66,7 @@ def createBar(settings):
                     foreground=decoratedTextColor,
                     **createDecorationGroup(color['magenta'])
                 ),
-
                 widget.Spacer(length=10),
-                                
                 widget.Battery(
                     format=' {percent:2.0%}',
                     font="JetBrainsMono NF",
@@ -84,18 +74,14 @@ def createBar(settings):
                     foreground=decoratedTextColor,
                     **createDecorationGroup(color['blue'])
                 ),                     
-                 
                 widget.Spacer(length=10),
-               
                 widget.Memory(format='﬙{MemUsed: .0f}{mm}',
                     font="JetBrainsMono NF",
                     fontsize=14,
                     foreground=decoratedTextColor,
                     **createDecorationGroup(color["cyan"])
                 ),
-
                 widget.Spacer(length=10),
-                
                 widget.PulseVolume(
                     font='JetBrainsMono NF',
                     fontsize=14,
@@ -103,24 +89,14 @@ def createBar(settings):
                     fmt=" {}",
                     **createDecorationGroup(color["green"])
                 ),                
-
                 widget.Spacer(length=10),
-
-              #  widget.CurrentLayoutIcon(
-              #      font = "JetBrainsMono NF",
-              #      scale = 0.5,
-              #      foreground = "#000000",
-              #  ),
-
                 widget.CurrentLayout(
                     fontsize=13.3,
                     foreground=decoratedTextColor,
                     font='JetBrainsMono NF',
                     **createDecorationGroup(color["yellow"])
                 ),
-
                 widget.Spacer(length = 10),
-
                 widget.TextBox(
                     foreground = decoratedTextColor,
                     font = "JetBrainsMono NF",
@@ -129,12 +105,11 @@ def createBar(settings):
                     mouse_callbacks = {'Button1': lazy.spawn(["sh", os.path.expanduser("~/.config/qtile/rofi/bin/powermenu")])},
                     **createDecorationGroup(color["red"]),
                 ),
-
                 widget.Spacer(
                     length=20,
                 ),
             ],
-            30,
+            settings['height'] or 30,
 
             margin=[6, 15, 6, 15],
         )

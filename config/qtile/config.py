@@ -41,7 +41,7 @@ for i in groups:
     )
 
 config = {
-    'border_focus': color['magenta'],
+    'border_focus': color['blue'],
     'border_normal': color['bg'],
     'border_width': 0,
     'margin': 10,
@@ -57,20 +57,23 @@ layouts = [
         max_ratio=0.70,
     ),
 
+    layout.Floating(**config),
+
+    layout.Tile(**config),
+
     layout.Max(**config),
 
-    layout.Spiral(),
+    layout.Spiral(**config),
 
+    layout.Matrix(**config),
 
-    layout.Matrix(),
+    layout.MonadWide(**config),
 
-    layout.MonadWide(),
+    layout.Zoomy(**config),
 
-    layout.Zoomy(),
+    layout.Columns(**config),
 
-    layout.Columns(margin=8, border_focus=""),
-
-    layout.RatioTile(),
+    layout.RatioTile(**config),
 ]
 
 floating_layout = layout.Floating(
@@ -118,8 +121,6 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        wallpaper=settings['wallpaper'],
-        wallpaper_mode=settings['wallpaperMode'],
         top=bar.createBar(settings['bar'])
     ),
 ]

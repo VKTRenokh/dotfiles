@@ -41,7 +41,7 @@ def createBinds(mod):
         Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
         Key([mod, "shift"], "w", lazy.spawn("qutebrowser")),
         Key([mod, "shift"], "d", lazy.spawn("discord")),
-        Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+        Key([mod], "escape", lazy.layout.normalize(), desc="Reset all window sizes"),
         Key(
             [mod, "shift"],
             "Return",
@@ -55,6 +55,7 @@ def createBinds(mod):
         Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
         Key([mod], "Tab", lazy.screen.next_group(skip_empty=True), desc="Toggle between layouts"),
         Key([mod, "shift"], "Tab", lazy.screen.prev_group(skip_empty=True), desc="Toggle between layouts"),
+        Key([mod], "n", lazy.screen.next_group(), desc="Toggle between layouts"),
         Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
         Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),

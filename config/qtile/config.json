@@ -1,6 +1,7 @@
 {
   "bar": {
-    "textColor": "#b4b4b4",
+    "textColor": "#bebebe",
+    "height": 29,
     "decorated": true,
     "decorations": {
       "round": 7,
