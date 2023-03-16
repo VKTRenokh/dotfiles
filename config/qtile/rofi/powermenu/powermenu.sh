@@ -6,7 +6,7 @@ dir="$HOME/.config/qtile/rofi/powermenu"
 # random colors
 color="mountain.rasi"
 
-uptime=$(uptime -p | sed -e 's/up //g')
+# uptime=$(uptime -p | sed -e 's/up //g')
 
 rofi_command="rofi -theme $dir/$theme"
 
@@ -23,16 +23,16 @@ options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 chosen="$(echo -e "$options" | $rofi_command -p "Uptime: $uptime" -dmenu -selected-row 2)"
 case $chosen in
     $shutdown)
-  systemctl poweroff
+      poweroff
     ;;
   $reboot)
-    systemctl reboot
+      reboot
     ;;
   $lock)
-    lock
+      lock
     ;;
   $suspend)
-    systemctl suspend
+      suspend
     ;;
   $logout)
 

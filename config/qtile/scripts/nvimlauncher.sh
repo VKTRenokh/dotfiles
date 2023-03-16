@@ -14,6 +14,7 @@ declare -a options=(
 "xmobar - $HOME/.config/xmobar/doom-one-xmobarrc"
 "xmonad - $HOME/.config/xmonad/xmonad.hs"
 "zsh - $HOME/.zshrc"
+"tmux - $HOME/.config/tmux/tmux.conf"
 )
 
 choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -theme ~/.config/qtile/rofi/launchers/misc/screen.rasi)

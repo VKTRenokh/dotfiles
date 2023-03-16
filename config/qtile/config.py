@@ -8,6 +8,9 @@ from modules import bar, binds
 import os
 import subprocess
 from libqtile import hook
+x11_drag_polling_rate = 60
+follow_mouse_focus = True
+
 
 @hook.subscribe.startup_once
 def autostart():
@@ -22,6 +25,8 @@ groups = [Group(i, label="") for i in "123456789"]
 mod = 'mod4'
 
 for i in groups:
+    next = int(i.name) + 1
+    print(next)
     keys.extend(
         [
             Key(
@@ -34,8 +39,17 @@ for i in groups:
                 [mod, "shift"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(
-                    i.name),
+                desc="Switch to & move focused window to group {}".format(i.name),
+            ),
+            Key(
+                [mod],
+                "y",
+                lazy.window.togroup(str(next))
+            ),
+            Key(
+                [mod, "shift"],
+                "y",
+                lazy.window.togroup(str(next), switch_group = True)
             ),
         ]
     )

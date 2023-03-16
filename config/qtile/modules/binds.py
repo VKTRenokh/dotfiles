@@ -2,10 +2,9 @@ from libqtile.config import Key
 from libqtile.lazy import lazy
 import subprocess
 import os
-from libqtile.lazy import lazy
-import os
 import random
 from libqtile.log_utils import logger
+from utils.settings import settings
 
 @lazy.function
 def randomWall(qtile):

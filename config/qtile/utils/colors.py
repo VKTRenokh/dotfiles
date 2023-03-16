@@ -7,6 +7,7 @@ colorschemes = [
   'catppuccin',
   'gruvbox_material',
   'material_ocean',
+    'tokyonight'
 ]
 
 if config['colorscheme'] in colorschemes:

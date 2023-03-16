@@ -2,6 +2,7 @@ from libqtile.lazy import lazy
 from libqtile import bar
 from string import Template
 from qtile_extras import widget
+from qtile_extras.widget import Clock
 from qtile_extras.widget.decorations import PowerLineDecoration
 from qtile_extras.widget.decorations import RectDecoration
 import os
@@ -47,10 +48,10 @@ def createBar(settings):
                     urgent_border='#ffffff',
                     rounded=True,
                     disable_drag=True,
-                 ),
+                ),
                 widget.Spacer(),
-                widget.Clock(
-                format = '%A - %H:%M',
+                Clock(
+                    format = '%A %d - %H:%M',
                     long_format = '%B %-d, %Y ',
                     foreground=textColor,
                     font="JetBrainsMono NF",
