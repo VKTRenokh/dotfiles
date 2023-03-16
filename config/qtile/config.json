@@ -2,7 +2,7 @@
   "bar": {
     "textColor": "#bebebe",
     "height": 29,
-    "decorated": true,
+    "decorated": false,
     "decorations": {
       "round": 7,
       "padding": 10,

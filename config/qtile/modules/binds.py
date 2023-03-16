@@ -20,7 +20,7 @@ def createBinds(mod):
         Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
         Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
         Key([mod, "shift"], "v", lazy.spawn("pavucontrol")),
-        Key([mod], "space", lazy.spawn("rofi -show drun -theme ~/.config/bspwm/rices/z0mbi3/launcher.rasi")),
+        Key([mod], "space", lazy.spawn(["sh", os.path.expanduser("~/.config/qtile/rofi/bin/launcher")])),
         Key([mod], "e", lazy.spawn(["sh", os.path.expanduser('~/.config/qtile/scripts/nvimlauncher.sh')])),
         Key([mod], "p", lazy.spawn(["sh", os.path.expanduser('~/.config/qtile/rofi/bin/powermenu')])),
         Key([mod], "u", lazy.hide_show_bar("top")),
