@@ -213,15 +213,15 @@ c.colors.statusbar.command.private.fg = nord['nord5']
 
 ## Background color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.bg = "#1C1C1C"
+c.colors.statusbar.insert.bg = nord['nord14']
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.fg = "#4c4c4c"
+c.colors.statusbar.insert.fg = nord['nord1']
 
 ## Background color of the statusbar.
 ## Type: QssColor
-c.colors.statusbar.normal.bg =  "#1C1C1C"
+c.colors.statusbar.normal.bg = nord['nord0']
 
 ## Foreground color of the statusbar.
 ## Type: QssColor
@@ -275,7 +275,7 @@ c.colors.statusbar.url.warn.fg = nord['nord12']
 
 ## Background color of the tab bar.
 ## Type: QtColor
-c.colors.tabs.bar.bg = "#1C1C1C"
+c.colors.tabs.bar.bg = nord['nord3']
 
 ## Background color of unselected even tabs.
 ## Type: QtColor

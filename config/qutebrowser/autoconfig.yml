@@ -6,8 +6,17 @@
 
 config_version: 2
 settings:
+  bindings.commands:
+    global:
+      normal:
+        <Shift+Tab>: :tab-prev
+        <Tab>: :tab-next
   colors.webpage.preferred_color_scheme:
     global: dark
+  content.autoplay:
+    global: false
+  qt.workarounds.remove_service_workers:
+    global: true
   url.default_page:
     global: https://traichu.netlify.app/
   url.start_pages:
