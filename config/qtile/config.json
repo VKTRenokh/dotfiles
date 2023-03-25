@@ -2,7 +2,7 @@
   "bar": {
     "textColor": "#bebebe",
     "height": 29,
-    "decorated": false,
+    "decorated": true,
     "decorations": {
       "round": 7,
       "padding": 10,
@@ -11,7 +11,8 @@
   },
   "browser": "qutebrowser",
   "colorscheme": "catppuccin",
-  "wallpaper": "~/.config/qtile/wallpapers/gayshitdotcom.jpg",
+  "wallpaper": "~/.config/qtile/wallpapers/clouds_realism.jpg",
+  "randomWallpaper": true,
   "wallpaperMode": "fill",
   "terminal": "kitty"
 }

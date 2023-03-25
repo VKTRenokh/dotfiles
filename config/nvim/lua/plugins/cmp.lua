@@ -10,6 +10,7 @@ return {
     'L3MON4D3/LuaSnip',
     'rafamadriz/friendly-snippets',
   },
+  event = "InsertEnter",
   config = function()
     local cmp = require "cmp"
     local luasnip = require "luasnip"

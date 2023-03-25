@@ -8,14 +8,13 @@ from modules import bar, binds
 import os
 import subprocess
 from libqtile import hook
-x11_drag_polling_rate = 60
-follow_mouse_focus = True
-
+from modules.randomWall import randomWall
 
 @hook.subscribe.startup_once
-def autostart():
-    home = os.path.expanduser('~/.config/qtile/scripts/autostart')
-    subprocess.Popen([home])
+def autostart(qtile):
+    home = os.path.expanduser('~/.config/qtile/scripts/autostart.sh')
+    subprocess.Popen(["bash", home])
+    qtile.spawn("kitty")
 
 
 keys = binds.createBinds('mod4')
@@ -135,7 +134,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.createBar(settings['bar'])
+        top = bar.createBar(settings['bar']),
     ),
 ]
 
@@ -159,4 +158,4 @@ reconfigure_screens = True
 auto_minimize = True
 wl_input_rules = None
 
-wmname = "HelloWorld wm"
+wmname = "pivozavr"

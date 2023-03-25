@@ -19,6 +19,9 @@ local servers = {
   "bashls",
   "clangd",
   "elmls",
+  "vuels",
+  "angularls",
+  "pylsp",
 }
 
 local settings = {
@@ -78,6 +81,26 @@ for _, server in pairs(servers) do
     neo_dev.setup({})
     lspconfig.sumneko_lua.setup(opts)
     goto continue
+  end
+
+  if server == "pylsp" then
+    opts = {
+      on_attach = on_attach,
+      flags = {
+        -- This will be the default in neovim 0.7+
+        debounce_text_changes = 150,
+      },
+      settings = {
+        -- configure plugins in pylsp
+        pylsp = {
+          plugins = {
+            pyflakes = {enabled = false},
+            pylint = {enabled = false},
+            pycodestyle = {enabled = false}
+          },
+        },
+      },
+    }
   end
 
   lspconfig[server].setup(opts)

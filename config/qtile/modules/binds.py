@@ -6,12 +6,14 @@ import random
 from libqtile.log_utils import logger
 from utils.settings import settings
 
+
 @lazy.function
 def randomWall(qtile):
     path = os.path.expanduser("~/.config/qtile/wallpapers/")
     ls = os.listdir(path)
     wall = ls[random.randint(0, len(ls) - 1)]
     qtile.cmd_spawn(f'feh --bg-fill {path + wall}')
+
 
 def createBinds(mod): 
     return [
@@ -22,11 +24,9 @@ def createBinds(mod):
         Key([mod, "shift"], "v", lazy.spawn("pavucontrol")),
         Key([mod], "space", lazy.spawn(["sh", os.path.expanduser("~/.config/qtile/rofi/bin/launcher")])),
         Key([mod], "e", lazy.spawn(["sh", os.path.expanduser('~/.config/qtile/scripts/nvimlauncher.sh')])),
-        Key([mod], "p", lazy.spawn(["sh", os.path.expanduser('~/.config/qtile/rofi/bin/powermenu')])),
+        Key([mod, "shift"], "p", lazy.spawn(["sh", os.path.expanduser('~/.config/qtile/rofi/bin/powermenu')])),
         Key([mod], "u", lazy.hide_show_bar("top")),
-        Key([], "print", lazy.spawn("spectacle -r -b -c")),
-        Key([mod], "print", lazy.spawn("spectacle -r -c")),
-        # Key([], "print", lazy.spawn("scrot -e 'xclip -selection clipboard -t image/png -i $f' -s")),
+        Key([], "print", lazy.spawn("flameshot gui")),
         Key([mod], "w", randomWall()),
         Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
         Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
@@ -55,6 +55,7 @@ def createBinds(mod):
         Key([mod], "Tab", lazy.screen.next_group(skip_empty=True), desc="Toggle between layouts"),
         Key([mod, "shift"], "Tab", lazy.screen.prev_group(skip_empty=True), desc="Toggle between layouts"),
         Key([mod], "n", lazy.screen.next_group(), desc="Toggle between layouts"),
+        Key([mod], "p", lazy.screen.prev_group(), desc="Toggle between layouts"),
         Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
         Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),

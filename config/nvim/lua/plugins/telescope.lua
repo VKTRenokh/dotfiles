@@ -14,10 +14,12 @@ return {
       return vim.fn.expand('%:p:h')
     end
 
-    local fb_actions = require "telescope".extensions.file_browser.actions
+    local fb_actions = telescope.extensions.file_browser.actions
 
     telescope.setup {
       defaults = {
+        theme = "ivy",
+        prompt_prefix = "   ",
         mappings = {
           n = {
             ["q"] = actions.close
@@ -26,9 +28,36 @@ return {
       },
       extensions = {
         file_browser = {
-          theme = "dropdown",
-          -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
+          theme = "ivy",
+          hijack_netrw = false,
+          hidden = true,
+          grouped = true,
+          quiet = true,
+          respect_gitignore = false,
+          -- auto_depth = 2,
+          git_status = false,
+          layout_strategy = "horizontal",
+          layout_config = {
+              horizontal = {
+                prompt_position = "bottom",
+                preview_width = 0.55,
+                results_width = 0.8,
+              },
+              vertical = {
+                mirror = false,
+              },
+              width = function(_, cols, _)
+                if cols > 200 then
+                  return 170
+                else
+                  return math.floor(cols * 0.87)
+                end
+              end,
+              height = 0.80,
+              preview_cutoff = 120,
+            },
+            border = {},
+            borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
           mappings = {
             -- your custom insert mode mappings
             ["i"] = {
@@ -75,11 +104,11 @@ return {
         path = "%:p:h",
         cwd = telescope_buffer_dir(),
         respect_gitignore = false,
-        hidden = true,
-        grouped = true,
-        previewer = false,
+        --[[ hidden = true, ]]
+        --[[ grouped = true, ]]
+        --[[ previewer = false, ]]
         initial_mode = "normal",
-        layout_config = { height = 40 }
+        --[[ layout_config = { height = 40 } ]]
       })
     end)
   end

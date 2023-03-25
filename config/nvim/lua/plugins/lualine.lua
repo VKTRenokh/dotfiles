@@ -41,12 +41,18 @@ return {
     local branch = {
       "branch",
       icons_enabled = true,
-      icon = "󰘬",
+      icon = "שׂ",
     }
 
     local location = {
       "location",
       padding = 0,
+    }
+
+    local filename = {
+      'filename',
+      file_status = true,
+      path = 0
     }
 
     local progress = function()
@@ -65,22 +71,20 @@ return {
     lualine.setup({
       options = {
         icons_enabled = true,
-        theme = "solarized_dark",
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
-        disable_filetypes = { "dashboard", "NvimTree", "Outline" },
+        --[[ component_separators = { left = "", right = "" }, ]]
+        --[[ component_separators = { left = "", right = "" }, ]]
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        -- theme = "solarized_dark",
+        disable_filetypes = { },
         always_divide_middle = true,
       },
       sections = {
         lualine_a = { mode },
         -- lualine_a = { branch, diagnostics},
-        lualine_b = { branch },
+        lualine_b = { filename },
         -- lualine_b = { mode },
-        lualine_c = { {
-          'filename',
-          file_status = true,
-          path = 0
-        } },
+        lualine_c = { branch },
         lualine_x = { diagnostics, diff, spaces, "encoding", filetype },
         lualine_y = { progress },
         lualine_z = { location },

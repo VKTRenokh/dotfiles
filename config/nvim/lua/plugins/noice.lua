@@ -18,7 +18,7 @@ return {
     notify.setup({
       backround_colour = "#000001",
       render = 'compact',
-      timeout = 1500,
+      timeout = 2500,
       stages = "static"
     })
   end

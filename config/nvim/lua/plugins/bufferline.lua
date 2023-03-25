@@ -1,6 +1,9 @@
 return {
   'akinsho/nvim-bufferline.lua',
-  config = function()
+  keys = {
+    {"te", mode = {"n"}}
+  },
+  config = function(_, opts)
     local bufferline = require "bufferline"
 
     bufferline.setup({
@@ -35,6 +38,8 @@ return {
 
     vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
     vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})
+
+    vim.keymap.set("n", "te", ":tabedit<CR>", opts)
 
   end
 }

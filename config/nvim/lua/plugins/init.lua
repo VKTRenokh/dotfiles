@@ -6,7 +6,9 @@ return {
   "tpope/vim-surround",
 
   -- LSP
-  { 'neovim/nvim-lspconfig',
+  {
+   'neovim/nvim-lspconfig',
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       'onsails/lspkind-nvim',
       "jose-elias-alvarez/null-ls.nvim",
