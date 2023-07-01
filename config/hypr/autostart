@@ -4,10 +4,6 @@
 config=$HOME/.config/hypr
 scripts=$config/scripts
 
-#cursor-theme
-hyprctl setcursor Bibata-Modern-Classic 10
-gsettings set org.gnome.desktop.interface cursor-theme Bibata-Modern-Classic
-
 # notification daemon
 dunst &
 
@@ -16,15 +12,12 @@ $scripts/launch_waybar &
 $scripts/tools/dynamic &
 
 # wallpaper
-$scripts/wall $config/wallpapers/mono-mountain.jpg &
+$scripts/wall $config/wallpapers/4.jpg &
 
 # effects
 $scripts/rgb &
 
-
-#time
-kitty --title clock_is_kitty --hold peaclock &
-
 # other
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
+notify-send -a aurora "hello $(whoami)" &

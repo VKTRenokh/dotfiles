@@ -10,8 +10,8 @@
     "margin-bottom":-11,
     //"margin-top":5,
     "modules-left": ["wlr/workspaces"],
-    "modules-right": ["temperature","battery","memory","custom/ss","custom/cycle_wall","custom/expand","cpu","clock"],
-    "modules-center": ["custom/dynamic_pill", ],
+    "modules-right": ["temperature","network","battery","custom/ss","custom/cycle_wall","custom/expand","cpu","clock"],
+    "modules-center": ["custom/dynamic_pill"],
     // Modules configuration
 
 
@@ -20,6 +20,11 @@
         "return-type": "json",
         "exec": "~/.config/hypr/scripts/tools/start_dyn",
         "escape":true
+    },
+    "custom/ss":{
+        "format":"{}",
+        "exec":"~/.config/hypr/scripts/tools/expand ss-icon",
+        "on-click": "~/.config/hypr/scripts/screenshot_full"
     },
     "custom/cycle_wall":{
         "format":"{}",
@@ -108,7 +113,7 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "interval": 60,
-        "format": "{:%H:%M}",
+        "format": "{:%I:%M}",
         "max-length": 25
     },
     "cpu": {
