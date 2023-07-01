@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+TEMP=/tmp/current_wall
+
+files=(~/.config/hypr/wallpapers/*)
+
+index=$(cat $TEMP)
+index=$((index+1))
+if [ $index -ge ${#files[@]} ]; then
+  index=0
+fi
+echo $index > $TEMP
+swww img "${files[$index]}" --transition-duration 2
+exit 0

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+getHumanReadableVolume() {
+  echo "$(wpctl get-volume @DEFAULT_SINK@ | sed --regexp-extended 's/((0)\.)|(\.)//')%"
+}
+
+notify() {
+  dunstify -u low -h string:x-dunst-stack-tag:obvolume "$(getHumanReadableVolume)"
+}
+
+increase() {
+  wpctl set-volume @DEFAULT_SINK@ 5%+
+  notify
+}
+
+decrease() {
+  wpctl set-volume @DEFAULT_SINK@ 5%-
+  notify
+}
+
+if [ $1 = 'incr' ]; then
+  increase
+elif [ $1 = 'decr' ]; then
+  decrease
+fi
