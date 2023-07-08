@@ -1,8 +1,8 @@
 * {
   border: none;
   border-radius: 0px;
-  font-family: VictorMono, Iosevka Nerd Font, Noto Sans CJK;
-  /* font-family: Iosevka, FontAwesome, Noto Sans CJK; */
+  /* font-family: VictorMono, Iosevka Nerd Font, Noto Sans CJK; */
+  font-family: Iosevka, FontAwesome, Noto Sans CJK;
   font-size: 14px;
   font-style: normal;
   font-weight: bold;
@@ -27,6 +27,7 @@ window#waybar {
   padding: 0px 5px;
   border-radius: 16px;
   color: #928374;
+  transition: all 0.4s ease;
 }
 
 #workspaces button.active {
@@ -49,7 +50,7 @@ window#waybar {
   background: transparent;
   padding: 5px 5px 5px 5px;
   margin: 5px 5px 5px 5px;
-  /* border-radius: 8px; */
+  border-radius: 8px;
   border: solid 0px #f4d9e1;
 }
 
@@ -106,13 +107,9 @@ window#waybar {
 }
 
 #backlight {
-  background-color: #24283b;
-  color: #db4b4b;
-  border-radius: 0px 0px 0px 0px;
-  margin: 5px;
+  color: #f4d9e1;
+  border-radius: 8px;
   margin-left: 0px;
-  margin-right: 0px;
-  padding: 0px 0px;
 }
 
 #network {

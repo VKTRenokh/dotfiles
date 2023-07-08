@@ -27,7 +27,7 @@ return {
 				dashboard.button(
 					"c",
 					Icons.ui.Gear .. " Config",
-					":cd ~/.config/nvim/ | :e ~/.config/nvim/init.lua <CR>"
+					":cd ~/.config/nvim | :e ~/.config/nvim/init.lua <CR>"
 				),
 				dashboard.button("u", Icons.ui.CloudDownload .. " Update", ":Lazy<CR>"),
 				dashboard.button("q", Icons.ui.SignOut .. " Quit", ":qa<CR>"),
@@ -60,24 +60,32 @@ return {
 			vim.api.nvim_create_autocmd("User", {
 				pattern = "LazyVimStarted",
 				callback = function()
-          local footerLogoTable = {
-            [[⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷]],
-            [[⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇]],
-            [[⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕⢽]],
-            [[⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕]],
-            [[⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕]],
-            [[⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕]],
-            [[⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄]],
-            [[⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕]],
-            [[⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿]],
-            [[⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]],
-            [[⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟]],
-            [[⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠]],
-            [[⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙]],
-            [[⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣]],
-          }
+					local footerLogo = [[
+       ⣇⣿⠘⣿⣿⣿⡿⡿⣟⣟⢟⢟⢝⠵⡝⣿⡿⢂⣼⣿⣷⣌⠩⡫⡻⣝⠹⢿⣿⣷
+       ⡆⣿⣆⠱⣝⡵⣝⢅⠙⣿⢕⢕⢕⢕⢝⣥⢒⠅⣿⣿⣿⡿⣳⣌⠪⡪⣡⢑⢝⣇
+       ⡆⣿⣿⣦⠹⣳⣳⣕⢅⠈⢗⢕⢕⢕⢕⢕⢈⢆⠟⠋⠉⠁⠉⠉⠁⠈⠼⢐⢕⢽
+       ⡗⢰⣶⣶⣦⣝⢝⢕⢕⠅⡆⢕⢕⢕⢕⢕⣴⠏⣠⡶⠛⡉⡉⡛⢶⣦⡀⠐⣕⢕
+       ⡝⡄⢻⢟⣿⣿⣷⣕⣕⣅⣿⣔⣕⣵⣵⣿⣿⢠⣿⢠⣮⡈⣌⠨⠅⠹⣷⡀⢱⢕
+       ⡝⡵⠟⠈⢀⣀⣀⡀⠉⢿⣿⣿⣿⣿⣿⣿⣿⣼⣿⢈⡋⠴⢿⡟⣡⡇⣿⡇⡀⢕
+       ⡝⠁⣠⣾⠟⡉⡉⡉⠻⣦⣻⣿⣿⣿⣿⣿⣿⣿⣿⣧⠸⣿⣦⣥⣿⡇⡿⣰⢗⢄
+       ⠁⢰⣿⡏⣴⣌⠈⣌⠡⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣬⣉⣉⣁⣄⢖⢕⢕⢕
+       ⡀⢻⣿⡇⢙⠁⠴⢿⡟⣡⡆⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣵⣵⣿
+       ⡻⣄⣻⣿⣌⠘⢿⣷⣥⣿⠇⣿⣿⣿⣿⣿⣿⠛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
+       ⣷⢄⠻⣿⣟⠿⠦⠍⠉⣡⣾⣿⣿⣿⣿⣿⣿⢸⣿⣦⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟
+       ⡕⡑⣑⣈⣻⢗⢟⢞⢝⣻⣿⣿⣿⣿⣿⣿⣿⠸⣿⠿⠃⣿⣿⣿⣿⣿⣿⡿⠁⣠
+       ⡝⡵⡈⢟⢕⢕⢕⢕⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⣀⣈⠙
+       ⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣
+          ]]
 
-          dashboard.section.footer.val = footerLogoTable
+					local stats = require("lazy").stats()
+					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+					dashboard.section.footer.val = "Neovim loaded "
+						.. stats.count
+						.. " plugins in "
+						.. ms
+						.. "ms"
+						.. "\n"
+						.. footerLogo
 					pcall(vim.cmd.AlphaRedraw)
 				end,
 			})
@@ -98,7 +106,7 @@ return {
 				separator_style = "thin",
 				show_buffer_close_icons = false,
 				show_close_icon = false,
-				color_icons = false,
+				color_icons = true,
 				diagnostics = "nvim_lsp",
 				always_show_bufferline = false,
 				diagnostics_indicator = function(_, _, diag)
@@ -109,6 +117,7 @@ return {
 				end,
 				offsets = {
 					{
+						highlight = "Directory",
 						text_align = "left",
 					},
 				},
@@ -120,7 +129,7 @@ return {
 				buffer_selected = {
 					fg = "#f1f1f1",
 					bold = false,
-					italic = true,
+					italic = false,
 				},
 			},
 		},
@@ -153,31 +162,12 @@ return {
 		enabled = Is_Enabled("gitsigns.nvim"),
 		opts = {
 			signs = {
-				add = { hl = "GitSignsAdd", text = "▎", numhl = "GitSignsAddNr", linehl = "GitSignsAddLn" },
-				change = {
-					hl = "GitSignsChange",
-					text = "▎",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
-				delete = {
-					hl = "GitSignsDelete",
-					text = "契",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				topdelete = {
-					hl = "GitSignsDelete",
-					text = "契",
-					numhl = "GitSignsDeleteNr",
-					linehl = "GitSignsDeleteLn",
-				},
-				changedelete = {
-					hl = "GitSignsChange",
-					text = "▎",
-					numhl = "GitSignsChangeNr",
-					linehl = "GitSignsChangeLn",
-				},
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "契" },
+				topdelete = { text = "契" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
 			},
 			on_attach = function(buffer)
 				local gs = package.loaded.gitsigns
@@ -262,11 +252,24 @@ return {
 				return vim.fn.winwidth(0) > 80
 			end
 
+			local function fg(name)
+				return function()
+					---@type {foreground?:number}?
+					local hl = vim.api.nvim_get_hl_by_name(name, true)
+					return hl and hl.foreground and { fg = string.format("#%06x", hl.foreground) }
+				end
+			end
+
 			local diagnostics = {
 				"diagnostics",
 				sources = { "nvim_diagnostic" },
 				sections = { "error", "warn" },
-				symbols = { error = " ", warn = " " },
+				symbols = {
+					error = Icons.diagnostics.Error,
+					warn = Icons.diagnostics.Warning,
+					info = Icons.diagnostics.Information,
+					hint = Icons.diagnostics.Hint,
+				},
 				colored = true,
 				update_in_insert = false,
 				always_visible = true,
@@ -275,7 +278,7 @@ return {
 			local diff = {
 				"diff",
 				colored = false,
-				symbols = { added = " ", modified = " ", removed = " " },
+				symbols = { added = Icons.git.Add, modified = Icons.git.Mod, removed = Icons.git.Remove },
 				cond = hide_in_width,
 			}
 
@@ -296,7 +299,7 @@ return {
 			local branch = {
 				"branch",
 				icons_enabled = true,
-				icon = "שׂ",
+				icon = Icons.git.Branch,
 			}
 
 			local location = {
@@ -319,17 +322,16 @@ return {
 
 			opts.options = {
 				icons_enabled = true,
-				-- theme = "solarized_dark",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-				disable_filetypes = { "dashboard", "NvimTree", "Outline" },
-				--  disabled_filetypes = {
-				--    statusline = {},
-				--    winbar = {},
-				--  },
+				theme = "auto",
+				component_separators = { left = Icons.ui.SlashLeft, right = Icons.ui.SlashRight },
+				section_separators = {
+					left = Icons.ui.BigCircleSeparatorLeft,
+					right = Icons.ui.BigCircleSeparatorRight,
+				},
+				disable_filetypes = { "dashboard", "lazy", "NvimTree", "Outline", "alpha" },
 				ignore_focus = {},
 				always_divide_middle = true,
-				globalstatus = false,
+				globalstatus = true,
 				refresh = {
 					statusline = 1000,
 					tabline = 1000,
@@ -340,12 +342,38 @@ return {
 			opts.sections = {
 				lualine_a = { mode },
 				lualine_b = { branch },
-				lualine_c = { {
-					"filename",
-					file_status = true,
-					path = 0,
-				} },
-				lualine_x = { diagnostics, diff, spaces, "encoding", filetype },
+				lualine_c = {
+					{
+						"filename",
+						file_status = true,
+						path = 0,
+					},
+				},
+				lualine_x = {
+					{
+						function()
+							return require("noice").api.status.command.get()
+						end,
+						cond = function()
+							return package.loaded["noice"] and require("noice").api.status.command.has()
+						end,
+						color = fg("Statement"),
+					},
+					{
+						function()
+							return require("noice").api.status.mode.get()
+						end,
+						cond = function()
+							return package.loaded["noice"] and require("noice").api.status.mode.has()
+						end,
+						color = fg("Constant"),
+					},
+					diagnostics,
+					diff,
+					spaces,
+					"encoding",
+					filetype,
+				},
 				lualine_y = { progress },
 				lualine_z = { location },
 			}
@@ -368,10 +396,6 @@ return {
 			opts.inactive_winbar = {}
 			opts.extensions = { "fugitive" }
 		end,
-		config = function(_, opts)
-			require("lualine").setup(opts)
-			vim.cmd([[ set laststatus=3 ]])
-		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ mini.indentscope
@@ -382,7 +406,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			draw = {
-				delay = 0,
+				delay = 50,
 				animation = nil,
 			},
 			symbol = "│",
@@ -408,18 +432,35 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		enabled = Is_Enabled("noice.nvim"),
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
 		opts = {
 			lsp = {
+				progress = {
+					view = "notify",
+				},
 				override = {
 					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 					["vim.lsp.util.stylize_markdown"] = false,
 					["cmp.entry.get_documentation"] = false,
 				},
 			},
+			routes = {
+				{
+					filter = {
+						event = "msg_show",
+						kind = "",
+					},
+					opts = { skip = true },
+				},
+				{
+					filter = {
+						event = "msg_show",
+						kind = "wmsg",
+					},
+					opts = { skip = true },
+				},
+			},
 			presets = {
+				bottom_search = false,
 				long_message_to_split = true,
 				inc_rename = false,
 				lsp_doc_border = true,
@@ -434,26 +475,50 @@ return {
 				},
 			},
 		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
 	},
 	-- --------------------------------------------------- }}}
 	-- {{{ nui.nvim
-
 	{
 		"MunifTanjim/nui.nvim",
 		enabled = Is_Enabled("nui.nvim"),
 		lazy = true,
 	},
-
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-colorizer
-
 	{
 		"NvChad/nvim-colorizer.lua",
 		enabled = Is_Enabled("nvim-colorizer.lua"),
 		event = "VeryLazy",
 		config = true,
 	},
-
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-navic
+	{
+		"SmiteshP/nvim-navic",
+		lazy = true,
+		event = { "BufReadPost", "BufNewFile" },
+		enabled = Is_Enabled("nvim-navic"),
+		init = function()
+			vim.g.navic_silence = true
+			require("config.functions").on_attach(function(client, buffer)
+				if client.server_capabilities.documentSymbolProvider then
+					require("nvim-navic").attach(client, buffer)
+				end
+			end)
+			vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+		end,
+		opts = function()
+			return {
+				separator = " ",
+				highlight = true,
+				depth_limit = 5,
+				icons = Icons.kind,
+			}
+		end,
+	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-notify
 	{
@@ -495,4 +560,32 @@ return {
 	},
 
 	-------------------------------------------------------------------------- }}}}
+	-- {{{ popup.nvim
+
+	{
+		"nvim-lua/popup.nvim",
+		event = "VimEnter",
+		enabled = Is_Enabled("popup.nvim"),
+	},
+
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ trouble.nvim
+
+	{
+		"folke/trouble.nvim",
+		event = "VimEnter",
+		enabled = Is_Enabled("trouble.nvim"),
+		opts = { use_diagnostic_signs = true },
+	},
+
+	-- ----------------------------------------------------------------------- }}}
+	-- {{{ virtcolumn.nvim
+
+	{
+		"xiyaowong/virtcolumn.nvim",
+		event = { "BufReadPost", "BufNewFile" },
+		enabled = Is_Enabled("virtcolumn.nvim"),
+	},
+
+	-- ----------------------------------------------------------------------- }}}
 }

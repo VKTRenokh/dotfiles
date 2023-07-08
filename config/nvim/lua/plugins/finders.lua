@@ -36,16 +36,7 @@ return {
     config = function()
       local telescope = require'telescope'
       local fb_actions = require'telescope'.extensions.file_browser.actions
-      local actions = require "telescope.actions"
-
-      telescope.setup {
-        defaults = {
-          mappings = {
-            n = {
-              ["q"] = actions.close
-            }
-          },
-        },
+      telescope.setup{
       extensions = {
         file_browser = {
           theme = "dropdown",
