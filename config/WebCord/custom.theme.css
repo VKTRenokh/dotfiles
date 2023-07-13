@@ -25,6 +25,7 @@
 /* @import url(https://raw.githack.com/schnensch0/zelk/main/colors/discord.css); */
 /*-------------VARIABLES-------------*/
 :root {
+  --font-used: "VictorMono NFM";
   /* set to 'unset' to show */
   --scrollbars: unset;
   /* user notes */
@@ -34,11 +35,9 @@
   /* set to '4px solid' to show */
   --embed-color: none;
   /* set to 'Inter', sans-serif !important to use Inter font*/
-  /* font-family: 'JetBrainsMono NF', Inter, -apple-system, BlinkMacSystemFont, */
-  /*   'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', */
-  /*   'Helvetica Neue', sans-serif; */
-  font-family: 'JetBrainsMono' !important;
-  --border-radius-1: 10px;
+  font-family: "VictorMono NFM" !important;
+  font-weight: bold !important;
+  --bfont-familyorder-radius-1: 10px;
   --border-radius-2: 8px;
 }
 /*-----------CUSTOM COLORS-----------*/
@@ -167,17 +166,21 @@
   --outdated-122: none !important;
 }
 /*  usrbg | snippet by _david_#0218  */
-.userPopout-2j1gM4[style*='--user-background'] .banner-1YaD3N,
-.root-8LYsGj[style*='--user-background'] .banner-1YaD3N {
+.userPopout-2j1gM4[style*="--user-background"] .banner-1YaD3N,
+.root-8LYsGj[style*="--user-background"] .banner-1YaD3N {
   height: 120px;
   background: var(--background-tertiary) var(--user-background)
     var(--user-popout-position, center) center / cover !important;
 }
-.root-8LYsGj[style*='--user-background'] .banner-1YaD3N {
+.root-8LYsGj[style*="--user-background"] .banner-1YaD3N {
   height: 240px;
 }
 
 .childWrapper-1j_1ub {
   background: linear-gradient(-140deg, #8ba5c8, #a4bcd4, #c778da);
   color: black !important;
+}
+
+*:not([class*="hljs"]):not(code) {
+  font-family: var(--font-used) !important;
 }
