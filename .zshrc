@@ -58,6 +58,8 @@ expand-or-complete-with-dots() {
 zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
+bindkey -s '^F' 'tmux-sessionizer\n'
+
 # Plugins
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -116,15 +118,19 @@ alias v=nvim
 alias vi=nvim
 alias g=git
 alias gp="git push"
+alias gs="git status"
 alias lg=lazygit
 alias fucking='sudo'
 alias parsyu='paru -Syu --noconfirm'
-alias workspace="cd /mnt/sda2/aENOKH/WorkSpace"
+alias pacsyu='sudo pacman -Syu --noconfirm'
+alias workspace="cd /mnt/sda1/enokh/workspace"
 alias ns="npm start"
-alias cat="bat --theme base16-256"
 alias c=clear
 alias tks="tmux kill-session"
+alias пше='git'
+alias glg='git log -n 1'
+alias :q='exit'
+alias "g s"='git status'
+
 
 eval "$(starship init zsh)"
-
-~/.config/zsh/fetch.sh
