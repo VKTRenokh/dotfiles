@@ -20,7 +20,7 @@ _AUTHOR_NAME_=" $USER"
 _AUTHOR_COLOR_='#1e1e2e'
 # Get Lists Font With "convert -list font | grep -iE 'font:.*' | nl"
 _FONT_SIZE_=12
-_FONT_='JetBrainsMonoNL-NFM-Bold'
+_FONT_='VictorMono NFM'
 
 function check() {
     if [[ $? -eq 1 && ${PIPESTATUS[0]} -eq 1 ]]; then
@@ -39,7 +39,7 @@ function check_dir() {
 	fi
 }
 
-function get_latest_img() { 
+function get_latest_img() {
     _LATEST_IMAGE_=$(/bin/ls -th $_SCREENSHOT_DIR_ | grep -vE '.screensht.png$' | grep -E '.png$' | head -n 1)
 
     if [[ $( echo "$_LATEST_IMAGE_" | wc -w ) -eq 0 ]]; then
@@ -125,7 +125,7 @@ function main() {
     convert
 
 	mv $_LATEST_IMAGE_ $_ORIGINAL_DIR_
-    
+
     _end_job_=$(date +%s)
     summary $_start_job_ $_end_job_
 }

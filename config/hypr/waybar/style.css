@@ -1,11 +1,17 @@
 * {
   border: none;
   border-radius: 0px;
-  /* font-family: VictorMono, Iosevka Nerd Font, Noto Sans CJK; */
-  font-family: Iosevka, FontAwesome, Noto Sans CJK;
+  font-family: VictorMono NF;
+  /* Iosevka Nerd Font, */
+  /* Noto Sans CJK; */
+  /* font-family: */
+  /*   Iosevka NF, */
+  /*   FontAwesome, */
+  /*   Noto Sans CJK; */
   font-size: 14px;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 800;
+  letter-spacing: 0.9px;
   min-height: 0;
 }
 
@@ -180,7 +186,8 @@ window#waybar {
   margin-top: 5px;
   margin-bottom: 5px;
   font-weight: normal;
-  font-style: normal;
+  font-style: italic;
+  letter-spacing: 0.8px;
 }
 
 #window {
