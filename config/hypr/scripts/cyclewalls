@@ -9,5 +9,6 @@ if [ $index -ge ${#files[@]} ]; then
   index=0
 fi
 echo $index > $TEMP
-swww img "${files[$index]}" --transition-duration 2
+swww img "${files[$index]}" --transition-type grow --transition-pos 1920,1080 --transition-duration 3 --transition-fps 60
+
 exit 0

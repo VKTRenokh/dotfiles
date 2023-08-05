@@ -17,6 +17,7 @@
 
 window#waybar {
   background: rgba(30, 30, 46, 0.5);
+  /* background: rgba(30, 30, 46, 0.85); */
   color: #f4d9e1;
 }
 
@@ -98,6 +99,10 @@ window#waybar {
   /*border-left: solid 1px #282738;*/
 }
 
+#EBN {
+  color: red;
+}
+
 #battery {
   color: #9ece6a;
 }
@@ -143,6 +148,20 @@ window#waybar {
   margin-right: 0px;
 }
 
+@keyframes launcher {
+  0% {
+    color: #cba6f7;
+  }
+
+  50% {
+    color: #89b4fa;
+  }
+
+  100% {
+    color: #94e2d5;
+  }
+}
+
 #custom-launcher {
   color: #e5809e;
   background-color: #282828;
@@ -151,6 +170,7 @@ window#waybar {
   padding: 0 20px 0 13px;
   /*border-right: solid 1px #282738;*/
   font-size: 20px;
+  animation: launcher 6s ease infinite alternate;
 }
 
 #custom-launcher button:hover {
