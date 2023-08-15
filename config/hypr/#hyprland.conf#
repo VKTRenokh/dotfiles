@@ -1,0 +1,109 @@
+source = ~/.config/hypr/startup.conf
+source = ~/.config/hypr/env.conf
+source = ~/.config/hypr/windowrule.conf
+source = ~/.config/hypr/keybinds.conf
+
+monitor = ,preferred,auto,1
+
+input {
+  kb_layout=us,ru
+  kb_options=grp:caps_toggle
+  kb_variant=ffffff
+  kb_model=
+  kb_rules=
+
+  follow_mouse=1
+
+  touchpad {
+    natural_scroll=no
+  }
+}
+
+gestures {
+    workspace_swipe=yes
+    workspace_swipe_fingers=3
+}
+
+general {
+  gaps_in = 5
+  gaps_out = 5
+  border_size = 2
+  #col.active_border = rgba(e5b9c6ff) rgba(c293a3ff) 45deg
+col.active_border=rgba(cba6f7ff) rgba(89b4faff) rgba(94e2d5ff) 10deg
+  col.inactive_border =`zZZ 0xff382D2E
+  no_border_on_floating = false
+  layout = dwindle
+  no_cursor_warps = true
+}
+
+
+
+misc {
+  disable_hyprland_logo = true
+  disable_splash_rendering = true
+  mouse_move_enables_dpms = true
+  vfr = true
+  vrr = 0
+  animate_manual_resizes = true
+  mouse_move_focuses_monitor = true
+  enable_swallow = true
+  swallow_regex = ^(wezterm)$
+}
+
+
+
+decoration {
+
+  blur {
+    enabled = false
+      size = 6
+      passes = 3
+      new_optimizations = true
+      xray = true
+      ignore_opacity = true
+  }
+
+  rounding = 0
+  # multisample_edges = true
+
+  active_opacity = 1.0
+  inactive_opacity = 1.0
+
+  drop_shadow = false
+  shadow_ignore_window = true
+  shadow_offset = 1 2
+  shadow_range = 10
+  shadow_render_power = 5
+  col.shadow = 0x66404040
+
+  #blurls = gtk-layer-shell
+  blurls = *
+  #blurls = waybar
+  blurls = lockscreen
+}
+
+animations {
+  enabled = true
+  bezier = wind, 0.05, 0.9, 0.1, 1.05
+  bezier = winin, 0.1, 1.1, 0.1, 1.1
+  bezier = winout, 0.3, -0.3, 0, 1
+  bezier = liner, 1, 1, 1, 1
+
+  animation = windows, 1, 6, wind, slide
+  animation = border, 1, 1, liner
+  animation = borderangle, 1, 30, liner, loop
+  animation = fade, 1, 10, default
+  animation = workspaces, 1, 5, wind # horizontal animation
+  bezier=overshot,0.13,0.99,0.29,1.1
+  # animation=workspaces,1,6,overshot,slidevert
+}
+
+dwindle {
+  no_gaps_when_only = false
+  pseudotile = true
+  preserve_split = true
+}
+
+master {
+    new_is_master = true
+}

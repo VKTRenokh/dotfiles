@@ -99,6 +99,7 @@ window#waybar {
   /*border-left: solid 1px #282738;*/
 }
 
+#clock
 #EBN {
   color: red;
 }
@@ -191,7 +192,7 @@ window#waybar {
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 0px;
-  font-weight: normal;
+  font-weight: bold;
   font-style: normal;
   font-size: 16px;
 }
