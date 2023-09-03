@@ -499,7 +499,7 @@ return {
 	{
 		"SmiteshP/nvim-navic",
 		lazy = true,
-		event = { "BufReadPost", "BufNewFile" },
+		event = "LspAttach",
 		enabled = Is_Enabled("nvim-navic"),
 		init = function()
 			vim.g.navic_silence = true
