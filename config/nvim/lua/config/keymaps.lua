@@ -4,6 +4,7 @@ Customize = require("config.customize")
 Functions = require("config.functions")
 Keymap = Functions.keymap
 Is_Enabled = Functions.is_enabled
+Keymap("n", "<C-/>", "V gc")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings
@@ -40,7 +41,7 @@ Keymap("n", "<C-Right>", ":vertical resize +2<CR>")
 Keymap("n", "<S-l>", ":bnext<CR>")
 Keymap("n", "<S-h>", ":bprevious<CR>")
 
--- Inc and Dec numbers
+-- Inc and Dec numbars
 Keymap("n", "+", "<C-a>")
 Keymap("n", "-", "<C-x>")
 
@@ -66,7 +67,7 @@ Keymap("n", "<F2>", "<cmd>wall<cr>")
 
 -- Delete current buffer.
 if Is_Enabled("vim-bbye") then
-  Keymap("n", "Q", "<cmd>Bdelete!<cr>")
+	Keymap("n", "Q", "<cmd>Bdelete!<cr>")
 end
 
 -- Toggle [in]visible characters.
@@ -145,29 +146,29 @@ Keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
 -- {{{ A - Alpha
 
 if Is_Enabled("alpha.nvim") then
-  Keymap("n", "<leader>aa", "<cmd>Alpha<cr>")
+	Keymap("n", "<leader>aa", "<cmd>Alpha<cr>")
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ B - BufferLine
 
 if Is_Enabled("bufferline.nvim") then
-  Keymap("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>")
-  Keymap("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>")
+	Keymap("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>")
+	Keymap("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>")
 end
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ S - Gitsigns
 
 if Is_Enabled("gitsigns.nvim") then
-  Keymap("n", "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>')
-  Keymap("n", "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>')
-  Keymap("n", "<leader>Sd", "<cmd>Gitsigns diffthis HEAD<cr>")
-  Keymap("n", "<leader>Sh", '<cmd>lua require "gitsigns".undo_stage_hunk()<cr>')
-  Keymap("n", "<leader>Sj", '<cmd>lua require "gitsigns".next_hunk()<cr>')
-  Keymap("n", "<leader>Sk", '<cmd>lua require "gitsigns".prev_hunk()<cr>')
-  Keymap("n", "<leader>Sp", '<cmd>lua require "gitsigns".preview_hunk()<cr>')
-  Keymap("n", "<leader>Sr", '<cmd>lua require "gitsigns".reset_buffer()<cr>')
+	Keymap("n", "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>')
+	Keymap("n", "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>')
+	Keymap("n", "<leader>Sd", "<cmd>Gitsigns diffthis HEAD<cr>")
+	Keymap("n", "<leader>Sh", '<cmd>lua require "gitsigns".undo_stage_hunk()<cr>')
+	Keymap("n", "<leader>Sj", '<cmd>lua require "gitsigns".next_hunk()<cr>')
+	Keymap("n", "<leader>Sk", '<cmd>lua require "gitsigns".prev_hunk()<cr>')
+	Keymap("n", "<leader>Sp", '<cmd>lua require "gitsigns".preview_hunk()<cr>')
+	Keymap("n", "<leader>Sr", '<cmd>lua require "gitsigns".reset_buffer()<cr>')
 end
 
 -- ------------------------------------------------------------------------- }}}
@@ -177,76 +178,86 @@ end
 
 -- LSP
 if Is_Enabled("lsp-config") then
-  Keymap("n", "<leader>LF", "<cmd>LspToggleAutoFormat<cr>")
-  Keymap("n", "<leader>Li", "<cmd>LspInfo<cr>")
+	Keymap("n", "<leader>LF", "<cmd>LspToggleAutoFormat<cr>")
+	Keymap("n", "<leader>Li", "<cmd>LspInfo<cr>")
 
-  -- vim.lsp
-  Keymap("n", "<leader>Ll", "<cmd>lua vim.lsp.codelens.run()<cr>")
-  Keymap("n", "<leader>Lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>")
+	-- vim.lsp
+	Keymap("n", "<leader>Ll", "<cmd>lua vim.lsp.codelens.run()<cr>")
+	Keymap("n", "<leader>Lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>")
 
-  -- vim.lsp.buf
-  Keymap("n", "<leader>La", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-  Keymap("n", "<leader>Lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
-  Keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<cr>")
+	-- vim.lsp.buf
+	Keymap("n", "<leader>La", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+	Keymap("n", "<leader>Lf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>")
+	Keymap("n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<cr>")
 end
 
 -- SymoblsOutline
 if Is_Enabled("symbols-outline") then
-  Keymap("n", "<leader>o", "<cmd>SymbolsOutline<cr>")
+	Keymap("n", "<leader>o", "<cmd>SymbolsOutline<cr>")
 end
 
 --Telescope
 if Is_Enabled("telescope.nvim") then
-  Keymap("n", "<leader>LS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
-  Keymap("n", "<leader>Ls", "<cmd>Telescope lsp_document_symbols<cr>")
+	Keymap("n", "<leader>LS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>")
+	Keymap("n", "<leader>Ls", "<cmd>Telescope lsp_document_symbols<cr>")
 end
 
 -- Trouble
 if Is_Enabled("trouble.nvim") then
-  Keymap("n", "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>")
-  Keymap("n", "<leader>Ld", "<cmd>TroubleToggle<cr>")
-  Keymap("n", "<leader>t", "<cmd>TroubleToggle<cr>")
+	Keymap("n", "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>")
+	Keymap("n", "<leader>Ld", "<cmd>TroubleToggle<cr>")
 end
 
 -- vim.diagnostic
-Keymap("n", "<leader>Lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
-Keymap("n", "<leader>Lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
+Keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
+Keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ T - Telescope
 
 if Is_Enabled("telescope.nvim") then
-  vim.keymap.set("n", ";f", function()
-    require("telescope.builtin").find_files({ hidden = true })
-  end)
-  vim.keymap.set("n", ";r", function()
-    require("telescope.builtin").live_grep()
-  end)
-  vim.keymap.set("n", "\\\\", function()
-    require("telescope.builtin").buffers()
-  end)
-  vim.keymap.set("n", ";t", function()
-    require("telescope.builtin").help_tags()
-  end)
-  vim.keymap.set("n", ";;", function()
-    require("telescope.builtin").resume()
-  end)
-  vim.keymap.set("n", ";e", function()
-    require("telescope.builtin").diagnostics()
-  end)
-  vim.keymap.set("n", "sf", function()
-    require("telescope").extensions.file_browser.file_browser({
-      path = "%:p:h",
-      cwd = vim.fn.expand("%:p:h"),
-      respect_gitignore = false,
-      hidden = true,
-      grouped = true,
-      previewer = false,
-      initial_mode = "normal",
-      layout_config = { prompt_position = "top", height = 60 },
-      layout_strategy = "horizontal",
-    })
-  end)
+	vim.keymap.set("n", ";f", function()
+		require("telescope.builtin").find_files({ hidden = true })
+	end)
+	vim.keymap.set("n", ";g", function()
+		require("telescope.builtin").git_commits()
+	end)
+	vim.keymap.set("n", ";gb", function()
+		require("telescope.builtin").git_commits()
+	end)
+	vim.keymap.set("n", ";r", function()
+		require("telescope.builtin").live_grep()
+	end)
+	vim.keymap.set("n", "\\\\", function()
+		require("telescope.builtin").buffers()
+	end)
+	vim.keymap.set("n", ";t", function()
+		require("telescope.builtin").help_tags()
+	end)
+	vim.keymap.set("n", ";;", function()
+		require("telescope.builtin").resume()
+	end)
+	vim.keymap.set("n", ";e", function()
+		require("telescope.builtin").diagnostics()
+	end)
+	vim.keymap.set("n", ";b", function()
+		require("telescope.builtin").current_buffer_fuzzy_find(
+			require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
+		)
+	end, { desc = "Fuzzy search in current buffer" })
+	vim.keymap.set("n", "sf", function()
+		require("telescope").extensions.file_browser.file_browser({
+			path = "%:p:h",
+			cwd = vim.fn.expand("%:p:h"),
+			respect_gitignore = false,
+			hidden = true,
+			grouped = true,
+			previewer = false,
+			initial_mode = "normal",
+			layout_config = { prompt_position = "top", height = 60 },
+			layout_strategy = "horizontal",
+		})
+	end)
 end
 
 -- ------------------------------------------------------------------------- }}}

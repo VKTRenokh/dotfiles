@@ -24,11 +24,7 @@ return {
 				dashboard.button("f", Icons.documents.Files .. " Find file", ":Telescope find_files <CR>"),
 				dashboard.button("r", Icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
 				dashboard.button("t", Icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
-				dashboard.button(
-					"c",
-					Icons.ui.Gear .. " Config",
-					":cd ~/.config/nvim | :e ~/.config/nvim/init.lua <CR>"
-				),
+				dashboard.button("c", Icons.ui.Gear .. " Config", ":e ~/.config/nvim/init.lua | cd ~/.config/nvim<CR>"),
 				dashboard.button("u", Icons.ui.CloudDownload .. " Update", ":Lazy<CR>"),
 				dashboard.button("q", Icons.ui.SignOut .. " Quit", ":qa<CR>"),
 			}
@@ -79,7 +75,7 @@ return {
 
 					local stats = require("lazy").stats()
 					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-					dashboard.section.footer.val = "Neovim loaded "
+					dashboard.section.footer.val = "⚡ Neovim loaded "
 						.. stats.count
 						.. " plugins in "
 						.. ms
@@ -398,6 +394,16 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ markdown-perview.nvim
+	{
+		"iamcco/markdown-preview.nvim",
+		ft = "markdown",
+		enabled = Is_Enabled("markdown-preview.nvim"),
+		config = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+	-- ----------------------------------------------------------------------- }}}
 	-- {{{ mini.indentscope
 	{
 		"echasnovski/mini.indentscope",
@@ -406,7 +412,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			draw = {
-				delay = 50,
+				delay = 0,
 				animation = nil,
 			},
 			symbol = "│",
@@ -499,8 +505,16 @@ return {
 	{
 		"SmiteshP/nvim-navic",
 		lazy = true,
-		event = "LspAttach",
+		event = { "BufReadPre", "BufNewFile" },
 		enabled = Is_Enabled("nvim-navic"),
+		opts = function()
+			return {
+				separator = Icons.ui.Circle,
+				highlight = true,
+				depth_limit = 5,
+				icons = Icons.kind,
+			}
+		end,
 		init = function()
 			vim.g.navic_silence = true
 			require("config.functions").on_attach(function(client, buffer)
@@ -509,14 +523,6 @@ return {
 				end
 			end)
 			vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-		end,
-		opts = function()
-			return {
-				separator = " ",
-				highlight = true,
-				depth_limit = 5,
-				icons = Icons.kind,
-			}
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
@@ -573,7 +579,11 @@ return {
 
 	{
 		"folke/trouble.nvim",
-		event = "VimEnter",
+		keys = {
+			{ "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>", desc = "open trouble with lsp references" },
+			{ "<leader>Ld", "<cmd>TroubleTOggle lsp_document_symbols<cr>", desc = "open trouble with lsp symbols" },
+		},
+		-- event = "VimEnter",
 		enabled = Is_Enabled("trouble.nvim"),
 		opts = { use_diagnostic_signs = true },
 	},
@@ -588,4 +598,21 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ todo-comments.nvim
+	{
+		"folke/todo-comments.nvim",
+		cmd = { "TodoTrouble", "TodoTelescope" },
+		event = { "BufReadPost", "BufNewFile" },
+		config = true,
+    -- stylua: ignore
+    keys = {
+      { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
+      { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
+      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+    },
+	},
+	-- }}}
 }

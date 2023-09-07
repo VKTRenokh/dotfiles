@@ -14,7 +14,17 @@ require("lazy").setup({
 
 	checker = { enabled = true },
 
+	ui = {
+		border = "rounded",
+		title = "Test",
+		title_pos = "center",
+		pills = true,
+	},
+
 	perfomance = {
+		cache = {
+			enabled = true,
+		},
 		rtp = {
 			disabled_plugins = {
 				"gzip",
@@ -27,5 +37,4 @@ require("lazy").setup({
 		},
 	},
 })
-
 -- }}}

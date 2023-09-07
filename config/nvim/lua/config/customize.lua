@@ -1,5 +1,4 @@
 local Customize = {}
-
 -- {{{ Customize documentation.
 -- Customize table is a plugin name and true or false.  Using nvim_tree as the
 -- example:
@@ -23,7 +22,7 @@ Customize = {
 		["comment.nvim"] = { enabled = true },
 		["dressing"] = { enabled = true },
 		["gitsigns.nvim"] = { enabled = true },
-		["gruvbox.nvim"] = { enabled = true },
+		["gruvbox.nvim"] = { enabled = false },
 		["indent-blankline"] = { enabled = true },
 		["lsp-config"] = { enabled = true },
 		["lualine.nvim"] = { enabled = true },
@@ -36,7 +35,7 @@ Customize = {
 		["mini-surround"] = { enabled = false },
 		["neoconf.nvim"] = { enabled = false },
 		["neodev.nvim"] = { enabled = false },
-		["neosolarized.nvim"] = { enabled = true },
+		["neosolarized.nvim"] = { enabled = false },
 		["noice.nvim"] = { enabled = true },
 		["nui.nvim"] = { enabled = true },
 		["null-ls.nvim"] = { enabled = true },
@@ -51,7 +50,7 @@ Customize = {
 		["nvim-ts-rainbow"] = { enabled = true },
 		["nvim-web-devicons"] = { enabled = true },
 		["popup.nvim"] = { enabled = true },
-		["presence.nvim"] = { enabled = true },
+		["nekovim.nvim"] = { enabled = true },
 		["symbols-outline"] = { enabled = true },
 		["sxhkd-vim"] = { enabled = true },
 		["telescope.nvim"] = { enabled = true },
@@ -67,27 +66,28 @@ Customize = {
 		["vim-visual-multi"] = { enabled = true },
 		["virtcolumn.nvim"] = { enabled = true },
 		["zen-mode.nvim"] = { enabled = true },
-		["codeium.nvim"] = { enabled = false },
-		["git-conflict.nvim"] = { enabled = false },
-		["fluoromachine.nvim"] = { enabled = false },
-		["cobalt2.nvim"] = { enabled = true },
-		["vim-colors-paramount"] = { enabled = false },
-		["peek.nvim"] = { enabled = true },
-		["rose-pine.nvim"] = { enabled = false },
+		["github-nvim-theme"] = { enabled = false },
+		["presence"] = { enabled = false },
+		["miasma.nvim"] = { enabled = false },
+		["oil.nvim"] = { enabled = true },
+		["neoscroll.nvim"] = { enabled = true },
 	},
 }
 
 Customize.toggleterm = {
+
 	float = function()
 		local Terminal = require("toggleterm.terminal").Terminal
 		local t = Terminal:new({ direction = "float" })
 		return t:toggle()
 	end,
+
 	lazygit = function()
 		local Terminal = require("toggleterm.terminal").Terminal
 		local t = Terminal:new({ cmd = "lazygit", direction = "float" })
 		return t:toggle()
 	end,
+
 	lf = function()
 		local Terminal = require("toggleterm.terminal").Terminal
 		local t = Terminal:new({ cmd = "lf", direction = "float" })

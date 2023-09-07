@@ -39,6 +39,12 @@ return {
 			pre_hook = nil,
 			post_hook = nil,
 		},
+
+		config = function(_, opts)
+			require("Comment").setup(opts)
+
+			Keymap("n", "<C-/>", "Vgc")
+		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-autopairs

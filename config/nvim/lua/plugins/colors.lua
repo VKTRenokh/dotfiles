@@ -7,8 +7,13 @@ return {
 	{
 		"catppuccin/nvim",
 		enabled = Is_Enabled("catppuccin"),
-		lazy = true,
+		lazy = false,
 		name = "catppuccin",
+		config = function(_, opts)
+			require("catppuccin").setup(opts)
+
+			vim.cmd.colorscheme("catppuccin")
+		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ colorbuddy
@@ -23,7 +28,7 @@ return {
 			local ok, n = pcall(require, "neosolarized")
 			local neo = Is_Enabled("neosolarized.nvim")
 			if not neo then
-				vim.cmd([[colorscheme tokyonight-moon]])
+				vim.cmd([[colorscheme tokyonight]])
 				return
 			end
 
@@ -87,12 +92,14 @@ return {
 	-- {{{ nvim-base16
 
 	{
-		"RRethy/nvim-base16",
+		"VKTRenokh/nvim-base16",
 		enabled = Is_Enabled("nvim-base16"),
 		lazy = false,
 		priority = 1000,
+
 		config = function()
 			vim.cmd([[colorscheme base16-tokyo-night-terminal-storm]])
+			vim.cmd([[hi CmpItemAbr guibg=NONE]])
 		end,
 	},
 
@@ -104,7 +111,6 @@ return {
 		enabled = Is_Enabled("nvim-transparent"),
 		event = "VimEnter",
 		opts = {
-			enable = true,
 			"Comment",
 			extra_gropus = {
 				"CursorLine",
@@ -114,19 +120,15 @@ return {
 				"LineNr",
 				"Normal",
 				"SignColumn",
-				"GitSignsAdd",
-				"GitSignsChange",
-				"GitSignsDelete",
 			},
-			exclude = {
+			exclude_groups = {
 				"ColorColumn",
 				"EndOfBuffer",
 				"NonText",
+				"LazyNormal",
 			},
 		},
-		config = function()
-			vim.cmd([[TransparentEnable]])
-		end,
+		config = true,
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -170,41 +172,21 @@ return {
 				},
 			},
 		},
+
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
+
 		dependencies = {
 			"windwp/nvim-ts-autotag",
 			"mrjones2014/nvim-ts-rainbow",
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			"nvim-treesitter/playground",
 			{
 				"nvim-treesitter/nvim-treesitter-textobjects",
 				init = function()
 					-- PERF: no need to load the plugin, if we only need its queries for mini.ai
 					local plugin = require("lazy.core.config").spec.plugins["nvim-treesitter"]
 					local opts = require("lazy.core.plugin").values(plugin, "opts", false)
-
-					require("nvim-treesitter.configs").setup({
-						playground = {
-							enable = true,
-							disable = {},
-							updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-							persist_queries = false, -- Whether the query persists across vim sessions
-							keybindings = {
-								toggle_query_editor = "o",
-								toggle_hl_groups = "i",
-								toggle_injected_languages = "t",
-								toggle_anonymous_nodes = "a",
-								toggle_language_display = "I",
-								focus_language = "f",
-								unfocus_language = "F",
-								update = "R",
-								goto_node = "<cr>",
-								show_help = "?",
-							},
-						},
-					})
 					local enabled = false
 					if opts.textobjects then
 						for _, mod in ipairs({ "move", "select", "swap", "lsp_interop" }) do
@@ -246,7 +228,9 @@ return {
 		config = function(_, opts)
 			require("tokyonight").setup(opts)
 
-			vim.cmd([[colorscheme tokyonight]])
+			vim.cmd.colorscheme("tokyonight")
+
+			-- vim.cmd.highlight("LazyNormal guibg=#1E2030")
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
@@ -259,65 +243,33 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ fluoromachine.nvim
+	-- {{{ github-nvim-theme
 	{
-		"maxmx03/fluoromachine.nvim",
-		opts = {
-			theme = "retrowave",
-			glow = false,
-			brightness = 1,
-		},
-		lazy = false,
-		config = function(_, opts)
-			local fluoro = require("fluoromachine")
-
-			fluoro.setup(opts)
-
-			vim.cmd("colorscheme fluoromachine")
-		end,
-		enabled = Is_Enabled("fluoromachine.nvim"),
-	},
-	-- }}}
-	-- {{{ nvim-colors-paramount
-	{
-		"VKTRenokh/nvim-colors-paramount",
-		lazy = false,
+		"projekt0n/github-nvim-theme",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
-			require("paramount").setup({
-				transparent = true,
-				italics = false,
-			})
-
-			vim.cmd("colorscheme paramount")
-		end,
-
-		enabled = Is_Enabled("vim-colors-paramount"),
-	},
-	-- }}}
-	-- {{{ rose-pine.nvim
-	{
-		"rose-pine/neovim",
-		lazy = false,
-		enabled = Is_Enabled("rose-pine.nvim"),
-		opts = {
-			disable_background = true,
-			group = {
-				background = "none",
-			},
-		},
-		config = function()
-			local lp = require("rose-pine").setup({
-				disable_background = true,
-				disable_float_background = true,
-				group = {
-					background = "none",
+			require("github-theme").setup({
+				options = {
+					transparent = true,
 				},
 			})
 
-			print("config call")
-
-			vim.cmd("colorscheme rose-pine")
+			vim.cmd.colorscheme("github_dark_dimmed")
+			-- vim.cmd("colorscheme github_dark_dimmed")
 		end,
+		enabled = Is_Enabled("github-nvim-theme"),
 	},
 	-- }}}
+	-- {{{miasma.nvim
+	{
+		"xero/miasma.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd("colorscheme miasma")
+		end,
+		enabled = Is_Enabled("miasma.nvim"),
+	},
+	---}}}
 }
