@@ -8,22 +8,12 @@
   "margin-right": 0,
   "modules-left": [
     "custom/launcher",
-    "wlr/workspaces",
+    "hyprland/workspaces",
     "custom/playerctl",
     "custom/playerlabel"
   ],
-  "modules-center": [
-    "cpu",
-    "memory",
-    "disk",
-    "custom/clock"
-  ],
-  "modules-right": [
-    "network",
-    "pulseaudio",
-    "backlight",
-    "clock"
-  ],
+  "modules-center": ["cpu", "memory", "disk", "custom/clock"],
+  "modules-right": ["network", "pulseaudio", "backlight", "clock"],
   // Modules configuration
   "clock": {
     "format": " {:%H <span foreground='#89b4fa'>󰇙</span> %M}",
@@ -31,7 +21,7 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": " {:%d/%m}"
   },
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "active-only": false,
     "all-outputs": true,
     "disable-scroll": false,
@@ -94,13 +84,7 @@
     "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", ""]
   },
   "memory": {
     "format": "󰍛 {}%",
@@ -134,17 +118,7 @@
   "backlight": {
     // "device": "acpi_video1",
     "format": "{icon} {percent}%",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
     //	"on-scroll-up":,
     //	"on-scroll-down":,
   },
@@ -152,11 +126,7 @@
     "format": "{icon} {volume}%",
     "format-muted": "󰝟",
     "format-icons": {
-      "default": [
-        "󰕿",
-        "󰖀",
-        "󰕾"
-      ]
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "on-click": "bash ~/.scripts/volume mute",
     "on-scroll-up": "bash ~/.scripts/volume up",
