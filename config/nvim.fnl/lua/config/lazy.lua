@@ -1,8 +1,7 @@
 -- {{{ My personal Lazy setup.
-
 require("lazy").setup({
 	spec = {
-		{ import = "vktrenokh/plugin" },
+		{ import = "plugins" },
 	},
 
 	defaults = {

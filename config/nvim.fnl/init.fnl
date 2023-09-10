@@ -1,8 +1,6 @@
-(local uu (require :vktrenokh.util))
-
-(uu.g :mapleader " ")
-(uu.g :maplocalleader " ")
+(tset vim.g :mapleader " ")
+(tset vim.g :maplocalleader " ")
 
 (require :config.bootstrap)
 (require :config.lazy)
-(require :vktrenokh.options)
+(require :config.options)
