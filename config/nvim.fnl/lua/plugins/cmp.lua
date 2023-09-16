@@ -70,4 +70,4 @@ end
 local function _11_()
   return (require("luasnip.loaders.from_vscode")).lazy_load()
 end
-return {uu.tx("hrsh7th/nvim-cmp", {event = "InsertEnter", dependencies = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-calc", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-nvim-lsp-document-symbol", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip"}, opts = _3_, version = false}), uu.tx("L3MON4D3/LuaSnip", {dependencies = {"rafamadriz/friendly-snippets", config = _11_}, opts = {history = true, delete_check_events = "TextChanged"}})}
+return {uu.tx("hrsh7th/nvim-cmp", {event = "InsertEnter", dependencies = {"hrsh7th/cmp-buffer", "hrsh7th/cmp-calc", "hrsh7th/cmp-cmdline", "hrsh7th/cmp-nvim-lua", "hrsh7th/cmp-nvim-lsp-document-symbol", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-path", "saadparwaiz1/cmp_luasnip"}, opts = _3_, version = false}), uu.tx("L3MON4D3/LuaSnip", {dependencies = {"rafamadriz/friendly-snippets", config = _11_}, opts = {history = true, delete_check_events = "TextChanged"}}), uu.tx("PaterJason/cmp-conjure", {ft = {"clojure", "scheme", "lisp", "cl", "timl", "fennel", "janet"}})}

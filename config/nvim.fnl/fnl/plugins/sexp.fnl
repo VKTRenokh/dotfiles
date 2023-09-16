@@ -1,25 +1,25 @@
 (local {: autoload} (require :nfnl.module))
 (local {: some} (autoload :nfnl.core))
 (local nvim (autoload :nvim))
-(local {: autocmd : g : tx : keymap} (autoload :config.util))
+(local {: autocmd : g : tx : augroup} (autoload :config.util))
 
 (local lisps [:clojure :scheme :lisp :cl :timl :fennel :janet])
 
 (autocmd
   "Filetype"
   {:pattern :*
-   :group (vim.api.nvim_create_augroup :SexpInsert {:clear true})
-   :callback 
-   #(g :sexp_enable_insert_mode_mappings  
-         (if (some #(= vim.bo.filetype $1) lisps)
+   :group (augroup :SexpInsert {:clear true})
+   :callback
+   #(g :sexp_enable_insert_mode_mappings
+       (if (some #(= vim.bo.filetype $1) lisps)
            1
-            0))})
+           0))})
 
 (tx :guns/vim-sexp
   {:dependencies [:tpope/vim-sexp-mappings-for-regular-people
                  :tpope/vim-repeat
                  :tpope/vim-surround]
-  :event :VeryLazy
+  :ft lisps
   :init (fn []
           (set nvim.g.sexp_filetypes "*")
           (set nvim.g.sexp_insert_after_wrap 0) ;do not insert spaces
@@ -30,8 +30,8 @@
                 :sexp_emit_tail_element         :<space>kb
                 :sexp_emit_head_element         :<space>kB
 
-                :sexp_round_head_wrap_element   :<leader>a 
-                :sexp_round_tail_wrap_element   :<leader>f 
+                :sexp_round_head_wrap_element   :<leader>a
+                :sexp_round_tail_wrap_element   :<leader>f
                 :sexp_square_head_wrap_element  "<leader>["
                 :sexp_square_tail_wrap_element  "<leader>]"
                 :sexp_curly_head_wrap_element   "<leader>{"

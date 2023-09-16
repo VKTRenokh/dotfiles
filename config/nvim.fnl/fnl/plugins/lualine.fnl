@@ -1,7 +1,6 @@
 (local {: autoload} (require :nfnl.module))
 (local uu (autoload :config.util))
 (local {: icons} (autoload :config.constants))
-(local {: concat} (autoload :nfnl.string))
 
 (fn hide_in_width []
   (> (vim.fn.winwidth 0) 80))
@@ -11,8 +10,8 @@
     (let [hl (vim.api.nvim_get_hl_by_name name true)]
       (and (and hl hl.foreground) {:fg (string.format "#%06x" hl.foreground)}))))
 
-(fn spaces [] 
-  (concat "spaces " (vim.api.nvim_buf_get_option 0 :shiftwidth)))
+(fn spaces []
+  (.. "spaces " (vim.api.nvim_buf_get_option 0 :shiftwidth)))
 
 (fn progress []
   (let [current_line (vim.fn.line :.)
@@ -29,8 +28,8 @@
 
 (uu.tx
   :nvim-lualine/lualine.nvim
-  {:event "VeryLazy"
-  :opts {:options {:section_separators {:left "" :right ""}
+  {:event :VeryLazy
+   :opts {:options {:section_separators {:left "" :right ""}
          :icons_enabled true
          :component_separators { :left : :right :}}
          :disable_filetypes disabled
@@ -39,19 +38,19 @@
          :globalstatus true
          :refresh {:statusline 1000 :tabline 1000 :winbar 1000}
   :sections {
-  :lualine_a [{1 :mode :fmt (fn [str] 
+  :lualine_a [{1 :mode :fmt (fn [str]
                               (string.lower str))}]
   :lualine_b [{1 :branch :icons_enabled true :icon :}]
   :lualine_c [{1 :filename :file_status true :path 1}]
-  :lualine_x [{1 (fn [] 
+  :lualine_x [{1 (fn []
                    ((. (. (. (. (autoload :noice) :api) :status) :command) :get)))
-                 :cond (fn [] 
+                 :cond (fn []
                          (and (. package.loaded :noice) ((. (. (. (. (autoload :noice) :api) :status)
                                       :command) :has))))
                  :color (fg :Statement)}
-                 {1 (fn [] 
+                 {1 (fn []
                    ((. (. (. (. (autoload :noice) :api) :status) :mode) :get)))
-                 :cond (fn [] 
+                 :cond (fn []
                          (and (. package.loaded :noice) ((. (. (. (. (autoload :noice) :api) :status)
                                       :mode) :has))))
                  :color (fg :Constant)}

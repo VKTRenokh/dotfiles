@@ -8,7 +8,7 @@
 :breakindent true
 :cmdheight 1
 :clipboard "unnamedplus"
-:colorcolumn "+1"
+:colorcolumn nil
 :complete ["." "w" "u" "b" "t" "i" "kspell"]
 :completeopt [ "menuone" "noinsert" "noselect" ]
 :conceallevel 0
@@ -59,6 +59,7 @@
 :writebackup  false
 :pumheight  10
 :pumblend  5
+:laststatus 3
 })
 
 (each [key value (pairs options)]

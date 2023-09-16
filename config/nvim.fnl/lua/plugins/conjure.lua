@@ -12,4 +12,4 @@ end
 local function _3_()
   return uu.g("conjure#debug", true)
 end
-return uu.tx("Olical/conjure", {ft = {"clojure", "fennel", "python"}, config = _2_, init = _3_})
+return uu.tx("Olical/conjure", {ft = {"clojure", "scheme", "lisp", "cl", "timl", "fennel", "janet"}, config = _2_, init = _3_})

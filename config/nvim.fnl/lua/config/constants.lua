@@ -1,23 +1,23 @@
 local constants = {
-  lua_ls = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      completion = {
-        callSnippet = "Replace",
-      },                                                                                                                      
-      workspace = {                                                                                                           
-        library = {                                                                                                           
-          -- [vim.fn.expand("$VIMRUNTIME/lua")] = true,                                     
-          -- [vim.fn.stdpath("config") .. "/lua"] = true,                                   
-          -- library = vim.api.nvim_get_runtime_file("", true),                             
-          checkThirdParty = false,                                                          
-        },                                                                                  
-      },                                                                                    
-    },                                                                                      
-  },
-  icons = {
+	lua_ls = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" },
+			},
+			completion = {
+				callSnippet = "Replace",
+			},
+			workspace = {
+				library = {
+					-- [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+					-- [vim.fn.stdpath("config") .. "/lua"] = true,
+					-- library = vim.api.nvim_get_runtime_file("", true),
+					checkThirdParty = false,
+				},
+			},
+		},
+	},
+	icons = {
 		dap = {
 			expanded = "",
 			collapsed = "",
@@ -154,7 +154,7 @@ local constants = {
 			yaml = { icon = "", color = "#EBCB8B", name = "xz" },
 			zip = { icon = "", color = "#EBCB8B", name = "zip" },
 		},
-	}, 
+	},
 	completion = {
 		source_mapping = {
 			nvim_lsp = "[LSP]",
@@ -162,9 +162,11 @@ local constants = {
 			buffer = "[Buffer]",
 			path = "[Path]",
 			nvim_lua = "[Lua]",
+			conjure = "[Conj]",
 		},
 		sources = {
 			{ name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
+			{ name = "conjure", keyword_length = 2, max_item_count = 30 },
 			{ name = "luasnip", keyword_length = 1, max_item_count = 30 },
 			{ name = "buffer", keyword_length = 2, max_item_count = 30 },
 			{ name = "path", keyword_length = 3, max_item_count = 30 },

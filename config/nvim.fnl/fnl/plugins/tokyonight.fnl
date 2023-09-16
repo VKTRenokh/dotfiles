@@ -3,14 +3,14 @@
 
 [(uu.tx
    :folke/tokyonight.nvim
-   {:lazy false
-   :opts {
+   {:lazy true
+    :opts {
         :transparent true
         :style :moon
         :styles {
                 :sidebars :transparent
                 :floats :transparent}}
-   :config (fn [_ opts] 
+    :config (fn [_ opts]
              (let [tokyonight (autoload :tokyonight)]
              (tokyonight.setup opts)
              (uu.colorscheme :tokyonight)))})]

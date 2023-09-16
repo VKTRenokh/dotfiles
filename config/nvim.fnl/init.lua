@@ -3,4 +3,6 @@ vim.g["mapleader"] = " "
 vim.g["maplocalleader"] = " "
 require("config.bootstrap")
 require("config.lazy")
-return require("config.options")
+require("config.autocmds")
+require("config.options")
+return require("config.keymaps")

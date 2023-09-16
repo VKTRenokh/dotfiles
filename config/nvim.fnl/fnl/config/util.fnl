@@ -1,9 +1,16 @@
 (local {: autoload} (require :nfnl.module))
 (local fun (autoload :config.fun))
-(local {: update} (autoload :nfnl.core))
+(local {: update } (autoload :nfnl.core))
 
 (fn +docs [opts to]
   (update opts :desc (fn [desc] (or desc to))))
+
+(fn keymap [modes from to opts]
+  (var options {:silent true :noremap true})
+  (let [opts  (if
+                (= (type opts) "table")  (vim.tbl_deep_extend :force options opts)
+                (= (type opts) "string") {:desc opts})]
+    (vim.keymap.set modes from to (+docs opts to))))
 
 (fn vis-op+ [op args]
   #(op
@@ -15,7 +22,7 @@
   (update opts :buffer (fn [b] (or b buffer))))
 
 (fn bkset [modes from to opts]
-  (let [opts  (if 
+  (let [opts  (if
                 (= (type opts) "table")  (+buffer opts 0)
                 (= (type opts) "number") {:buffer opts}
                 (= (type opts) "string") {:desc opts}
@@ -36,7 +43,7 @@
 (fn colorscheme [name]
   "Set the current colorscheme"
   (vim.cmd (.. "colorscheme " name)))
-  
+
 (fn tx [...]
   (let [args [...]
         len (fun.length args)]
@@ -48,9 +55,6 @@
         (last args)
         (fun.zip (fun.range 1 len) (fun.take (- len 1) args)))
       args)))
-
-(fn keymap [mode key command]
- (vim.api.nvim_set_keymap mode key command {:silent true :noremap true}))
 
 (fn autocmd [cmd table]
   (vim.api.nvim_create_autocmd cmd table))
@@ -66,10 +70,20 @@
                                     (let [buffer args.buf
                                           client (vim.lsp.get_client_by_id args.data.client_id)]
                                       (on_attach client buffer)))}))
+(fn augroup [name]
+  (vim.api.nvim_create_augroup (.. :vktr name) {:clear true}))
+
+(fn opts [name]
+  (let [plugin (. (. (require :lazy.core.config) :plugins) name)]
+    (when (not plugin)
+      (let [___antifnl_rtn_1___ {}] (lua "return ___antifnl_rtn_1___")))
+    (local Plugin (require :lazy.core.plugin))
+    (Plugin.values plugin :opts false)))
 
 {: opt
  : colorscheme
  : g
+ : opts
  : keymap
  : autocmd
  : has
@@ -77,4 +91,5 @@
  : bkset
  : on-very-lazy
  : on-attach
+ : augroup
  : tx }

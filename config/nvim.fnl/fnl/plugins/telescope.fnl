@@ -26,7 +26,7 @@
                ((. (require :telescope) :setup) opts))})
  (tx :nvim-telescope/telescope-file-browser.nvim
      {:dependencies [:nvim-telescope/telescope.nvim]
-      :config (fn [] 
+      :config (fn []
                 (let [telescope (autoload :telescope)
                       fb_actions (. (. (. telescope :extensions) :file_browser) :actions)]
                 (telescope.setup {:extensions {:file_browser {:theme :dropdown}

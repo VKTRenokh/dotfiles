@@ -3,7 +3,7 @@
 
 (uu.tx
   :Olical/conjure
-  {:ft ["clojure" "fennel" "python"]
+  {:ft [:clojure :scheme :lisp :cl :timl :fennel :janet]
   :config (fn [_ opts]
             (let [cjmain (autoload :conjure.main)
                    cjmap (autoload :conjure.mapping)]

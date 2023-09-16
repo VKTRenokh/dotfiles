@@ -17,7 +17,7 @@
                             :win_options {:winhighlight "NormalFloat:NormalFloat, FloatBorder:FloatBorder"}}
      :dependencies [:MunifTanjim/nui.nvim]})
  (tx :MunifTanjim/nui.nvim)
- (tx :rcarriga/nvim-notify 
+ (tx :rcarriga/nvim-notify
      {:opts {:background_colour :#1a1b26
              :level 3
              :render :compact

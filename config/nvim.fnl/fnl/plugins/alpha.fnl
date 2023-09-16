@@ -33,7 +33,7 @@
         :config (fn [_ dashboard]
                   (when (= vim.o.filetype :lazy)
                     (vim.cmd.close)
-                    (autocmd :User {:pattern :AlphaReady :callback (fn [] 
+                    (autocmd :User {:pattern :AlphaReady :callback (fn []
                                                                         ((. (require :lazy) :show)))}))
                   ((. (require :alpha) :setup) dashboard.opts)
                   (autocmd :User {:pattern :LazyVimStarted :callback (fn []

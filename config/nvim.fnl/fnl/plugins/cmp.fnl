@@ -51,7 +51,7 @@
                                           [:i :s])}
                       window {:completion (cmp.config.window.bordered) :documentation (cmp.config.window.bordered)}
                       experimental {:ghost_text true}
-                      ] 
+                      ]
                   (cmp.setup.filetype :gitcommit {:sources (cmp.config.sources [{:name :cmp_git}] [{:name :buffer}])})
                   (cmp.setup.cmdline :: {:mapping (cmp.mapping.preset.cmdline) :sources (cmp.config.sources [{:name :path}] [{:name :cmdline}])})
                   (cmp.setup.cmdline [:/ :?] {:mapping (cmp.mapping.preset.cmdline) :sources (cmp.config.sources [{:name :buffer}])})
@@ -67,4 +67,6 @@
  (uu.tx :L3MON4D3/LuaSnip
         {:dependencies {1 :rafamadriz/friendly-snippets
                         :config (fn [] ((. (require :luasnip.loaders.from_vscode) :lazy_load)))}
-         :opts {:history true :delete_check_events :TextChanged}})]
+         :opts {:history true :delete_check_events :TextChanged}})
+ (uu.tx :PaterJason/cmp-conjure
+        {:ft [:clojure :scheme :lisp :cl :timl :fennel :janet]})]

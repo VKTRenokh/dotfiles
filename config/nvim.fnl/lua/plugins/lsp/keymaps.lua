@@ -40,7 +40,7 @@ function M.get()
 				has = "codeAction",
 			},
 		}
-		if require("config.functions").has("inc-rename.nvim") then
+		if require("config.util").has("inc-rename.nvim") then
 			M._keys[#M._keys + 1] = {
 				"<leader>cr",
 				function()
