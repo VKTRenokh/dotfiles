@@ -1,4 +1,7 @@
 from qutebrowser.api import interceptor
+from theme import setup
+
+setup(c, "", True)
 
 
 def filter_yt(info: interceptor.Request):
@@ -18,8 +21,6 @@ config.load_autoconfig()
 
 c.auto_save.session = False
 
-config.source('nord-qutebrowser.py')
-
 c.fonts.tabs.selected = '10pt JetBrainsMono NF'
 c.fonts.tabs.unselected = '10pt JetBrainsMono NF'
 c.fonts.hints = '10pt JetBrainsMono NF'
@@ -35,6 +36,6 @@ c.fonts.completion.category = '10pt JetBrainsMono NF'
 
 config.bind("<Tab>", ":tab-next")
 config.bind("<Shift-Tab>", ":tab-prev")
-config.bind('M', 'hint links spawn nohup mpv --cache=yes --demuxer-max-bytes=300M --demuxer-max-back-bytes=100M -ytdl-format="bv[ext=mp4]+ba/b" {hint-url}')
+config.bind('M', 'hint links spawn mpv --cache=no -ytdl-format="bv[ext=mp4]+ba/b" {hint-url}')
 
 
