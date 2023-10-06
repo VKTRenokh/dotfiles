@@ -1,9 +1,9 @@
 # Use custom format:
-format="$directory$git_branch$nodejs$lua$character"
+format="$directory$time$git_branch$nodejs$lua$character"
 
-right_format="$time"
+right_format="$memory_usage"
 
-# Prompt symbols 
+# Prompt symbols
 [character]
 success_symbol = "[🞈](#a6e3a1 bold)"
 error_symbol = "[🞈](#f38ba8)"
@@ -14,7 +14,7 @@ format = "[]($style)[(fg:#49628a) $path](bg:#89b4fa fg:#49628a)[ ]($sty
 style = "fg:#89b4fa"
 
 [git_branch]
-format = "[]($style)[[שׂ ](bg:#89b4fa fg:#49628a bold)$branch](bg:#89b4fa fg:#4c4f69)[ ]($style)"
+format = "[]($style)[[ ](bg:#89b4fa fg:#49628a bold)$branch](bg:#89b4fa fg:#4c4f69)[ ]($style)"
 style = "fg:#89b4fa"
 
 
@@ -26,6 +26,7 @@ style = "fg:#89b4fa"
 format = "[]($style)[[󰢱 ](bg:#89b4fa fg:#49628a bold)$version](bg:#89b4fa fg:#4c4f69)[ ]($style)"
 style = "fg:#89b4fa"
 
-[time]
-format = "$time"
+[memory_usage]
+format = "[]($style)[[󰢱 ](bg:#89b4fa fg:#49628a bold)$ram](bg:#89b4fa fg:#4c4f69)[ ]($style)"
 style = "fg:#89b4fa"
+
