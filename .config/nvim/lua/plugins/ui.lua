@@ -223,13 +223,16 @@ return {
 		enabled = Is_Enabled("indent-blankline"),
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
-			char = "│",
-			filetype_exclude = { "help", "alpha", "dashboard", "Trouble", "lazy" },
-			show_trailing_blankline_indent = false,
-			show_current_context = false,
+			indent = { char = "│" },
+			-- filetype_exclude = { "help", "alpha", "dashboard", "Trouble", "lazy" },
+			-- show_trailing_blankline_indent = false,
 			--	show_current_context_start = true,
 			--  use_treesitter = true,
 		},
+
+		config = function(_, opts)
+			require("ibl").setup(opts)
+		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ lualine.nvim
