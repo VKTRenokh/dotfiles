@@ -1,5 +1,5 @@
 ########## Prompt ##########
-
+#
 # git_prompt() {
 #     local branch="$(git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3-)"
 #     local branch_truncated="${branch:0:30}"
@@ -9,7 +9,7 @@
 #
 #     [ -n "${branch}" ] && echo "  ${branch}"
 # }
-
+#
 # setopt PROMPT_SUBST
 # PROMPT='%B%F{blue}󰣇%f%b  %B%F{magenta}%n%f%b %B%F{red}%~%f%b%B%F{yellow}$(git_prompt)%f%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
 
@@ -60,11 +60,20 @@ bindkey "^I" expand-or-complete-with-dots
 
 bindkey -s '^F' 'tmux-sessionizer\n'
 
+
+
 # Plugins
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/web-search.plugin.zsh
+
+# bindkey -M menuselect 'h' vi-backward-char
+# bindkey -M menuselect 'k' vi-up-line-or-history
+# bindkey -M menuselect 'l' vi-forward-char
+# bindkey -M menuselect 'j' vi-down-line-or-history
+
+bindkey -v '^?' backward-delete-char
 
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -113,6 +122,7 @@ ex ()
 
 alias ls='exa --icons -l'
 alias ll='ls -a'
+alias sl='ls'
 alias df='df -h'
 alias v=nvim
 alias vi=nvim
@@ -129,8 +139,13 @@ alias c=clear
 alias tks="tmux kill-session"
 alias пше='git'
 alias glg='git log -n 1'
+alias glg-='git log -n -1'
 alias :q='exit'
 alias "g s"='git status'
 
-
 eval "$(starship init zsh)"
+
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
