@@ -1,0 +1,10 @@
+[safe]
+  directory = *
+[credential]
+  helper = store
+[push]
+  autoSetupRemote = true
+[core]
+  excludesFile = ~/.gitignore
+[alias]
+  diff-words = diff --color-words='[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+'
