@@ -74,7 +74,7 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ gruvbox.nvim
+	-- {{{ fruvbox.nvim
 	{
 		"ellisonleao/gruvbox.nvim",
 		enabled = Is_Enabled("gruvbox.nvim"),
@@ -152,6 +152,20 @@ return {
 				enable = true,
 				disable = Constants.disabled.treesitter,
 				additional_vim_regex_highlighting = true,
+			},
+			textobjects = {
+				select = {
+					enable = true,
+					lookahead = true,
+					keymaps = {
+						["af"] = "@function.outer",
+						["if"] = "@function.inner",
+						["ac"] = "@class.outer",
+						["ic"] = "@class.inner",
+					},
+					selection_modes = {},
+					include_surrounding_whitespace = true,
+				},
 			},
 			indent = { enable = true, disable = { "yml", "yaml" } },
 			rainbow = {
@@ -243,33 +257,4 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ github-nvim-theme
-	{
-		"projekt0n/github-nvim-theme",
-		lazy = false, -- make sure we load this during startup if it is your main colorscheme
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require("github-theme").setup({
-				options = {
-					transparent = true,
-				},
-			})
-
-			vim.cmd.colorscheme("github_dark_dimmed")
-			-- vim.cmd("colorscheme github_dark_dimmed")
-		end,
-		enabled = Is_Enabled("github-nvim-theme"),
-	},
-	-- }}}
-	-- {{{miasma.nvim
-	{
-		"xero/miasma.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd("colorscheme miasma")
-		end,
-		enabled = Is_Enabled("miasma.nvim"),
-	},
-	---}}}
 }

@@ -6,6 +6,81 @@ return {
 	-- {{{ Telescope
 	{
 		"nvim-telescope/telescope.nvim",
+		keys = {
+			{
+				";f",
+				function()
+					require("telescope.builtin").find_files({ hidden = true })
+				end,
+			},
+			{
+				";g",
+				function()
+					require("telescope.builtin").git_commits()
+				end,
+			},
+			{
+				";r",
+				function()
+					require("telescope.builtin").live_grep()
+				end,
+			},
+			{
+				"\\\\",
+				function()
+					require("telescope.builtin").buffers()
+				end,
+			},
+			{
+				";t",
+				function()
+					require("telescope.builtin").help_tags()
+				end,
+			},
+			{
+				";;",
+				function()
+					require("telescope.builtin").resume()
+				end,
+			},
+			{
+				";e",
+				function()
+					require("telescope.builtin").diagnostics()
+				end,
+			},
+			{
+				";b",
+				function()
+					require("telescope.builtin").current_buffer_fuzzy_find(
+						require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
+					)
+				end,
+			},
+			{
+				"sf",
+				function()
+					require("telescope").extensions.file_browser.file_browser({
+						path = "%:p:h",
+						cwd = vim.fn.expand("%:p:h"),
+						respect_gitignore = false,
+						hidden = true,
+						grouped = true,
+						previewer = false,
+						initial_mode = "normal",
+						layout_config = { prompt_position = "top", height = 60 },
+					})
+				end,
+			},
+			{
+				"<leader>LS",
+				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+			},
+			{
+				"<leader>Ls",
+				"<cmd>Telescope lsp_document_symbols<cr>",
+			},
+		},
 		enabled = Is_Enabled("telescope.nvim"),
 		cmd = "Telescope",
 		version = false,

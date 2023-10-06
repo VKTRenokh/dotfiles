@@ -7,6 +7,9 @@ return {
 	{
 		"goolord/alpha-nvim",
 		enabled = Is_Enabled("alpha.nvim"),
+		keys = {
+			{ "<leader>aa", "<cmd>Alpha<cr>" },
+		},
 		event = { "VimEnter", "BufReadPost", "BufNewFile" },
 		opts = function()
 			local dashboard = require("alpha.themes.dashboard")
@@ -90,11 +93,13 @@ return {
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ bufferline.nvim
 	{
-		"akinsho/nvim-bufferline.lua",
+		"akinsho/bufferline.nvim",
 		-- event = "VeryLazy",
 		enabled = Is_Enabled("bufferline.nvim"),
 		keys = {
 			{ "te", "<cmd>:tabedit<cr>", desc = "Tabs" },
+			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>" },
+			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>" },
 		},
 		opts = {
 			options = {
@@ -155,6 +160,16 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufReadPre",
+		keys = {
+			{ "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>' },
+			{ "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>' },
+			{ "<leader>Sd", "<cmd>Gitsigns diffthis HEAD<cr>" },
+			{ "<leader>Sh", '<cmd>lua require "gitsigns".undo_stage_hunk()<cr>' },
+			{ "<leader>Sj", '<cmd>lua require "gitsigns".next_hunk()<cr>' },
+			{ "<leader>Sk", '<cmd>lua require "gitsigns".prev_hunk()<cr>' },
+			{ "<leader>Sp", '<cmd>lua require "gitsigns".preview_hunk()<cr>' },
+			{ "<leader>Sr", '<cmd>lua require "gitsigns".reset_buffer()<cr>' },
+		},
 		enabled = Is_Enabled("gitsigns.nvim"),
 		opts = {
 			signs = {
@@ -165,27 +180,6 @@ return {
 				changedelete = { text = "▎" },
 				untracked = { text = "▎" },
 			},
-			on_attach = function(buffer)
-				local gs = package.loaded.gitsigns
-
-				local function map(mode, l, r, desc)
-					vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
-				end
-
-        -- stylua: ignore start
-        map('n', ']h', gs.next_hunk, 'Next Hunk')
-        map('n', '[h', gs.prev_hunk, 'Prev Hunk')
-        map({ 'n', 'v' }, '<leader>ghs', ':Gitsigns stage_hunk<CR>', 'Stage Hunk')
-        map({ 'n', 'v' }, '<leader>ghr', ':Gitsigns reset_hunk<CR>', 'Reset Hunk')
-        map('n', '<leader>ghS', gs.stage_buffer, 'Stage Buffer')
-        map('n', '<leader>ghu', gs.undo_stage_hunk, 'Undo Stage Hunk')
-        map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
-        map('n', '<leader>ghp', gs.preview_hunk, 'Preview Hunk')
-        map('n', '<leader>ghb', function() gs.blame_line({ full = true }) end, 'Blame Line')
-        map('n', '<leader>ghd', gs.diffthis, 'Diff This')
-        map('n', '<leader>ghD', function() gs.diffthis('~') end, 'Diff This ~')
-        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', 'GitSigns Select Hunk')
-			end,
 			signcolumn = true,
 			numhl = true,
 			linehl = false,
@@ -505,24 +499,24 @@ return {
 	{
 		"SmiteshP/nvim-navic",
 		lazy = true,
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		enabled = Is_Enabled("nvim-navic"),
-		opts = function()
-			return {
-				separator = Icons.ui.Circle,
-				highlight = true,
-				depth_limit = 5,
-				icons = Icons.kind,
-			}
-		end,
 		init = function()
 			vim.g.navic_silence = true
 			require("config.functions").on_attach(function(client, buffer)
 				if client.server_capabilities.documentSymbolProvider then
 					require("nvim-navic").attach(client, buffer)
+					vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
 				end
 			end)
-			vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+		end,
+		opts = function()
+			return {
+				separator = " ",
+				highlight = true,
+				depth_limit = 5,
+				icons = Icons.kind,
+			}
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
@@ -531,7 +525,7 @@ return {
 		"rcarriga/nvim-notify",
 		enabled = Is_Enabled("nvim-notify"),
 		opts = {
-			background_colour = "#1a1b26",
+			background_colour = "NONE",
 			level = 3,
 			render = "compact",
 			stages = "static",
@@ -582,6 +576,8 @@ return {
 		keys = {
 			{ "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>", desc = "open trouble with lsp references" },
 			{ "<leader>Ld", "<cmd>TroubleTOggle lsp_document_symbols<cr>", desc = "open trouble with lsp symbols" },
+			{ "<leader>T", "<cmd>TroubleToggle lsp_references<cr>" },
+			{ "<leader>Td", "<cmd>TroubleToggle<cr>" },
 		},
 		-- event = "VimEnter",
 		enabled = Is_Enabled("trouble.nvim"),
@@ -608,10 +604,10 @@ return {
     keys = {
       { "]t", function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
       { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous todo comment" },
-      { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+      { ";tb", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+      { ";TB", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+      { ";dt", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+      { ";dt", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
     },
 	},
 	-- }}}

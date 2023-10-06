@@ -42,8 +42,6 @@ return {
 
 		config = function(_, opts)
 			require("Comment").setup(opts)
-
-			Keymap("n", "<C-/>", "Vgc")
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
@@ -62,4 +60,40 @@ return {
 		enabled = Is_Enabled("vim-visual-multi"),
 	},
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ flash.nvim
+	{
+		"folke/flash.nvim",
+		keys = {
+			{
+				"<leader>/",
+				function()
+					(require("flash")).jump()
+				end,
+				mode = { "n", "x", "o" },
+			},
+		},
+		opts = {
+			lables = "asdfghjklqwertyuiopzxcvbnm",
+			modes = {
+				char = { enabled = false },
+				search = {
+					enabled = true,
+					search = {
+						enabled = true,
+						incremental = true,
+					},
+				},
+				treesitter = { enabled = false },
+			},
+			label = {
+				uppercase = false,
+				rainbow = { enalbed = false, shade = 5 },
+				after = false,
+				before = true,
+				style = "inline",
+			},
+		},
+		config = true,
+	},
+	-- }}}
 }

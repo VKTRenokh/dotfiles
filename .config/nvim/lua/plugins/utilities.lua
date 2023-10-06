@@ -1,4 +1,5 @@
 Is_Enabled = require("config.functions").is_enabled
+Customize = require("config.customize")
 
 return {
 	-- {{{ plenary
@@ -11,6 +12,15 @@ return {
 	{
 		"akinsho/toggleterm.nvim",
 		enabled = Is_Enabled("toggleterm.nvim"),
+		keys = {
+			{
+				"n",
+				"<leader>Tg",
+				function()
+					Customize.toggleterm.lazygit()
+				end,
+			},
+		},
 		cmd = "ToggleTerm",
 		version = "*",
 		opts = {
@@ -56,6 +66,15 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		enabled = Is_Enabled("zen-mode.nvim"),
+		keys = {
+			{
+				"n",
+				"<leader>zm",
+				function()
+					require("zen-mode").toggle()
+				end,
+			},
+		},
 		opts = {
 			window = {
 				width = 0.7,
@@ -119,6 +138,7 @@ return {
 		enabled = Is_Enabled("presence"),
 	},
 	-- }}}
+	-- {{{ neoscroll.nvim
 	{
 		keys = { "zt", "zz", "zb", "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>" },
 		"karb94/neoscroll.nvim",
@@ -130,4 +150,5 @@ return {
 		end,
 		enabled = Is_Enabled("neoscroll.nvim"),
 	},
+	-- }}}
 }

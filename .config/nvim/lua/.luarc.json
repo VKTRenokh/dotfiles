@@ -1,9 +1,4 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "asdsad"
-    ],
-    "diagnostics.disable": [
-        "undefined-global"
-    ]
+  "diagnostics.globals": ["vim"],
+  "diagnostics.disable": ["undefined-global"]
 }

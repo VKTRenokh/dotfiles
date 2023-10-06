@@ -36,6 +36,46 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
+		keys = {
+			{
+				"<leader>LF",
+				"<cmd>LspToggleAutoFormat<cr>",
+			},
+			{
+				"<leader>Li",
+				"<cmd>LspInfo<cr>",
+			},
+			{
+				"<leader>Ll",
+				function()
+					vim.lsp.codelens.run()
+				end,
+			},
+			{
+				"<leader>Lq",
+				function()
+					vim.lsp.diagnostic.set_loclist()
+				end,
+			},
+			{
+				"<leader>La",
+				function()
+					vim.lsp.buf.code_action()
+				end,
+			},
+			{
+				"<leader>Lf",
+				function()
+					vim.lsp.buf.format({ async = true })
+				end,
+			},
+			{
+				"<leader>r",
+				function()
+					vim.lsp.buf.rename()
+				end,
+			},
+		},
 		enabled = Is_Enabled("lsp-config"),
 		dependencies = {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
@@ -150,7 +190,7 @@ return {
 				sources = {
 					nls.builtins.formatting.stylua,
 					nls.builtins.formatting.prettierd,
-					-- nls.builtins.diagnostics.eslint_d,
+					nls.builtins.diagnostics.eslint_d,
 				},
 			}
 		end,
@@ -160,6 +200,9 @@ return {
 	{
 		"simrat39/symbols-outline.nvim",
 		enabled = Is_Enabled("symbols-outline"),
+		keys = {
+			{ "n", "<leader>o", "<cmd>SymbolsOutline<cr>" },
+		},
 		cmd = "SymbolsOutline",
 		lazy = true,
 		opts = {
@@ -178,7 +221,7 @@ return {
 			auto_unfold_hover = true,
 			fold_markers = { "", "" },
 			wrap = false,
-			keymaps = { -- These keymaps can be a string or a table for multiple keys
+			keymaps = {
 				close = { "<Esc>", "q" },
 				goto_location = "<Cr>",
 				focus_location = "o",
