@@ -2,12 +2,6 @@
   border: none;
   border-radius: 0px;
   font-family: VictorMono NF;
-  /* Iosevka Nerd Font, */
-  /* Noto Sans CJK; */
-  /* font-family: */
-  /*   Iosevka NF, */
-  /*   FontAwesome, */
-  /*   Noto Sans CJK; */
   font-size: 14px;
   font-style: normal;
   font-weight: 800;
@@ -99,13 +93,19 @@ window#waybar {
   /*border-left: solid 1px #282738;*/
 }
 
-#clock
-#EBN {
+#clock #EBN {
   color: red;
 }
 
 #battery {
   color: #9ece6a;
+  background-color: #282828;
+  /*color: #83A598;*/
+  border-radius: 16px;
+  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px 13px 0px 13px;
 }
 
 #battery.charging {
@@ -113,9 +113,7 @@ window#waybar {
 }
 
 #battery.warning:not(.charging) {
-  background-color: #f7768e;
-  color: #24283b;
-  border-radius: 5px 5px 5px 5px;
+  color: #f7768e;
 }
 
 #backlight {

@@ -9,7 +9,7 @@
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces",
-    "custom/playerctl",
+    "battery",
     "custom/playerlabel"
   ],
   "modules-center": ["cpu", "memory", "disk", "custom/clock"],
@@ -78,8 +78,8 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
-    "format-charging": "{capacity}% ",
+    "format": "{capacity}% {icon} ",
+    "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module

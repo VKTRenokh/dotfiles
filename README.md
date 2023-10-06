@@ -1,3 +1,7 @@
+## Hyprland
+
+![Screenshot of my desktop](./assets/screenshot-hyprland-1.png)
+
 ## Sway
 
 ![Screenshot of my desktop](./assets/screenshot-1.png)
