@@ -189,6 +189,9 @@ return {
 
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
+
+			vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 		end,
 
 		dependencies = {

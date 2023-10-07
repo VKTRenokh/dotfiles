@@ -94,6 +94,7 @@ return {
 			},
 		},
 		config = true,
+		enabled = Is_Enabled("flash.nvim"),
 	},
 	-- }}}
 }

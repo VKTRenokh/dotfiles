@@ -121,12 +121,6 @@ return {
 			},
 		},
 		config = function(_, opts)
-			require("plugins.lsp.format").autoformat = opts.autoformat
-			require("config.functions").on_attach(function(client, buffer)
-				require("plugins.lsp.format").on_attach(client, buffer)
-				require("plugins.lsp.keymaps").on_attach(client, buffer)
-			end)
-
 			for name, icon in pairs(Constants.icons.diagnostics) do
 				name = "DiagnosticSign" .. name
 				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
@@ -177,6 +171,25 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ conform.nvim
+	{
+		"stevearc/conform.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			formatters_by_ft = {
+				lua = { "stylua" },
+				python = { "isort", "black" },
+				javascript = { { "prettierd", "eslint_d" } },
+				typescript = { { "prettierd", "eslint_d" } },
+			},
+			format_on_save = {
+				-- These options will be passed to conform.format()
+				-- timeout_ms = 500,
+				lsp_fallback = true,
+			},
+		},
+	},
+	-- }}}
 	-- {{{ null-ls.nvim
 	{
 		"jose-elias-alvarez/null-ls.nvim",
