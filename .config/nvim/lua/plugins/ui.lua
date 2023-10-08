@@ -409,8 +409,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			draw = {
-				delay = 0,
-				animation = nil,
+				delay = 100,
 			},
 			symbol = "│",
 			options = { try_as_border = true },
@@ -425,7 +424,7 @@ return {
 		end,
 		config = function(_, opts)
 			local mis = require("mini.indentscope")
-			opts.draw.animation = mis.gen_animation.none()
+			-- opts.draw.animation = mis.gen_animation.none()
 			mis.setup(opts)
 		end,
 	},

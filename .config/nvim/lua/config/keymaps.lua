@@ -147,6 +147,7 @@ Keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
 
 Keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
 Keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
+Keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.

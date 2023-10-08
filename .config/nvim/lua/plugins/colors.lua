@@ -137,8 +137,8 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = Is_Enabled("nvim-treesitter"),
-		version = false,
 		build = ":TSUpdate",
+		version = "v0.9.1",
 		keys = {
 			{ "<c-space>", desc = "Increment selection" },
 			{ "<bs>", desc = "Decrement selection", mode = "x" },
@@ -189,9 +189,7 @@ return {
 
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
-
-			vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-			vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+			print("colors.lua call treesitter")
 		end,
 
 		dependencies = {

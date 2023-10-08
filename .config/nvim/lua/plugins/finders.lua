@@ -80,6 +80,38 @@ return {
 				"<leader>Ls",
 				"<cmd>Telescope lsp_document_symbols<cr>",
 			},
+			{
+				"gD",
+				function()
+					vim.lsp.buf.declaration()
+				end,
+				desc = "Goto Definition",
+			},
+			{
+				"gd",
+				"<Cmd>Telescope lsp_definitions<cr>",
+				desc = "Goto Definition",
+			},
+			{
+				"gr",
+				"<Cmd>Telescope lsp_references<cr>",
+				desc = "Goto Definition",
+			},
+			{
+				"gI",
+				"<Cmd>Telescope lsp_implementations<cr>",
+				desc = "Goto Definition",
+			},
+			{
+				"gK",
+				"<Cmd>Telescope lsp_implementations<cr>",
+				desc = "Goto Definition",
+			},
+			{
+				"gt",
+				"<Cmd>Telescope lsp_type_definitions<cr>",
+				desc = "Goto Definition",
+			},
 		},
 		enabled = Is_Enabled("telescope.nvim"),
 		cmd = "Telescope",

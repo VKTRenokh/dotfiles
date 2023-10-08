@@ -7,13 +7,6 @@ function M.get()
 	if not M._keys then
 		M._keys = {
 			{ "<leader>cd", vim.diagnostic.open_float, desc = "Line Diagnostics" },
-			{ "gd", "<cmd>Telescope lsp_definitions<cr>", desc = "Goto Definition", has = "definition" },
-			{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
-			{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-			{ "gI", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto Implementation" },
-			{ "gt", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Goto Type Definition" },
-			{ "K", vim.lsp.buf.hover, desc = "Hover" },
-			{ "gK", vim.lsp.buf.signature_help, desc = "Signature Help", has = "signatureHelp" },
 			{ "]d", vim.lsp.buf.signature_help, mode = "i", desc = "Signature Help", has = "signatureHelp" },
 			{ "<c-j>", M.diagnostic_goto(true), desc = "Next Diagnostic" },
 			{ "<c-k>", M.diagnostic_goto(false), desc = "Prev Diagnostic" },

@@ -1,4 +1,4 @@
--- {{{ Mapleader set
+-- {{{ Map leader set
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[,]]
 -- }}}

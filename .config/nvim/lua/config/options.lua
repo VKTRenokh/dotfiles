@@ -61,8 +61,6 @@ local options = {
 	writebackup = false,
 	pumheight = 10,
 	pumblend = 5,
-	foldexpr = "v:lua.vim.treesitter.foldexpr()",
-	foldtext = "v:lua.vim.treesitter.foldtext()",
 }
 
 vim.scriptencoding = "utf-8"

@@ -214,7 +214,7 @@ return {
 		"simrat39/symbols-outline.nvim",
 		enabled = Is_Enabled("symbols-outline"),
 		keys = {
-			{ "n", "<leader>o", "<cmd>SymbolsOutline<cr>" },
+			{ "<leader>o", "<cmd>SymbolsOutline<cr>" },
 		},
 		cmd = "SymbolsOutline",
 		lazy = true,
