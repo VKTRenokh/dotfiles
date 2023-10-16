@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>~/.config/nvim/snippets/vue.snippets.html</title>
+<meta name="Generator" content="Vim/8.1">
+<meta name="plugin-version" content="vim9.0_v1">
+<meta name="syntax" content="none">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=,use_input_for_pc=fallback">
+<meta name="colorscheme" content="tokyonight">
+<style>
+<!--
+pre { font-family: monospace; color: #c8d3f5; background-color: #000000; }
+body { font-family: monospace; color: #c8d3f5; background-color: #000000; }
+* { font-size: 1em; }
+.LineNr { color: #e0af68; }
+.String { color: #c3e88d; }
+.Special { color: #65bcff; }
+.Identifier { color: #c099ff; }
+-->
+</style>
+
+<script>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  var lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+<body onload='JumpToLine();'>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr">1 </span><span class="Identifier">snippet </span><span class="String">vue basic vue template</span>
+<span id="L2" class="LineNr">2 </span>  &lt;script setup lang=&quot;<span class="Special">${1}</span>&quot;&gt;<span class="Special">${2}</span>&lt;/script&gt;
+<span id="L3" class="LineNr">3 </span>
+<span id="L4" class="LineNr">4 </span>   &lt;template&gt;<span class="Special">${3}</span>&lt;/template&gt;
+<span id="L5" class="LineNr">5 </span>
+<span id="L6" class="LineNr">6 </span>   &lt;style scoped&gt;<span class="Special">${4}</span>&lt;/style&gt;
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->

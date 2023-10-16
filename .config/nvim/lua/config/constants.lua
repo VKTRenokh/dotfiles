@@ -296,7 +296,7 @@ Constants = {
 			buffer = "[Buffer]",
 			path = "[Path]",
 			nvim_lua = "[Lua]",
-			spell = "[Spell]",
+			-- spell = "[Spell]",
 		},
 
 		sources = {

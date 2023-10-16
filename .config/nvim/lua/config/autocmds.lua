@@ -5,6 +5,8 @@ Keymap = vim.keymap
 
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
+		vim.cmd([[highlight Normal guibg=NONE]])
+
 		vim.cmd([[ highlight Folded guibg=NONE]])
 
 		if Customize.virtcolumn_nvim then

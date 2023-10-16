@@ -74,13 +74,6 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ fruvbox.nvim
-	{
-		"ellisonleao/gruvbox.nvim",
-		enabled = Is_Enabled("gruvbox.nvim"),
-		lazy = true,
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ neosolarized.nvim
 	{
 		"Tsuzat/NeoSolarized.nvim",
@@ -120,6 +113,7 @@ return {
 				"LineNr",
 				"Normal",
 				"SignColumn",
+				"NotifyBackground",
 			},
 			exclude_groups = {
 				"ColorColumn",
@@ -234,6 +228,7 @@ return {
 		enabled = Is_Enabled("tokyonight.nvim"),
 		lazy = false,
 		opts = {
+			transparent = true,
 			style = "moon",
 			styles = {
 				sidebars = "transparent",

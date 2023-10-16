@@ -174,13 +174,17 @@ return {
 	-- {{{ conform.nvim
 	{
 		"stevearc/conform.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
 				javascript = { { "prettierd", "eslint_d" } },
 				typescript = { { "prettierd", "eslint_d" } },
+			},
+			diagnostics = {
+				javascript = { { "eslint_d" } },
+				typescript = { { "eslint_d" } },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
@@ -190,25 +194,6 @@ return {
 		},
 	},
 	-- }}}
-	-- {{{ null-ls.nvim
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		enabled = Is_Enabled("null-ls.nvim"),
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "mason.nvim" },
-		opts = function()
-			local nls = require("null-ls")
-			return {
-				root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-				sources = {
-					nls.builtins.formatting.stylua,
-					nls.builtins.formatting.prettierd,
-					nls.builtins.diagnostics.eslint_d,
-				},
-			}
-		end,
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ symbols-outline.nvim
 	{
 		"simrat39/symbols-outline.nvim",

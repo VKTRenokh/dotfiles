@@ -61,6 +61,7 @@ local options = {
 	writebackup = false,
 	pumheight = 10,
 	pumblend = 5,
+	laststatus = 3,
 }
 
 vim.scriptencoding = "utf-8"

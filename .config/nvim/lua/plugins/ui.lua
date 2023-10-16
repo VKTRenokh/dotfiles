@@ -238,6 +238,7 @@ return {
 	-- {{{ lualine.nvim
 	{
 		"nvim-lualine/lualine.nvim",
+		-- event = { "BufReadPost", "BufNewFile" },
 		event = "VeryLazy",
 		enabled = Is_Enabled("lualine.nvim"),
 		opts = function(_, opts)
@@ -409,7 +410,8 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			draw = {
-				delay = 100,
+				delay = 0,
+				animation = nil,
 			},
 			symbol = "│",
 			options = { try_as_border = true },
@@ -424,7 +426,7 @@ return {
 		end,
 		config = function(_, opts)
 			local mis = require("mini.indentscope")
-			-- opts.draw.animation = mis.gen_animation.none()
+			opts.draw.animation = mis.gen_animation.none()
 			mis.setup(opts)
 		end,
 	},
@@ -493,7 +495,12 @@ return {
 	{
 		"NvChad/nvim-colorizer.lua",
 		enabled = Is_Enabled("nvim-colorizer.lua"),
-		event = "VeryLazy",
+		event = { "BufReadPost", "BufNewFile" },
+		opts = {
+			user_default_options = {
+				tailwind = true,
+			},
+		},
 		config = true,
 	},
 	-- ----------------------------------------------------------------------- }}}
@@ -527,9 +534,8 @@ return {
 		"rcarriga/nvim-notify",
 		enabled = Is_Enabled("nvim-notify"),
 		opts = {
-			background_colour = "NONE",
 			level = 3,
-			render = "compact",
+			render = "wrapped-compact",
 			stages = "static",
 			timeout = 3000,
 			max_height = function()
@@ -538,12 +544,19 @@ return {
 			max_width = function()
 				return math.floor(vim.o.columns * 0.75)
 			end,
+			background_colour = "#121212",
 		},
 		init = function()
 			-- when noice is not enabled, install notify on VeryLazy
 			local Util = require("config.functions")
 			if not Util.has("noice.nvim") then
 				Util.on_very_lazy(function()
+					-- vim.cmd([[highlight NotifyERRORBody guibg=NONE]])
+					-- vim.cmd([[highlight NotifyWARNBody guibg=NONE]])
+					-- vim.cmd([[highlight NotifyINFOBody guibg=NONE]])
+					-- vim.cmd([[highlight NotifyDEBUGBody guibg=NONE]])
+					-- vim.cmd([[highlight NotifyTRACEBody guibg=NONE]])
+
 					vim.notify = require("notify")
 				end)
 			end
@@ -555,9 +568,10 @@ return {
 	{
 		"nvim-tree/nvim-web-devicons",
 		enabled = Is_Enabled("nvim-web-devicons"),
+		event = "VeryLazy",
 		lazy = true,
 		opts = {
-			override = Constants.icons.web_devicons,
+			-- override = Constants.icons.web_devicons,
 		},
 	},
 

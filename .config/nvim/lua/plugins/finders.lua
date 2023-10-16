@@ -112,6 +112,12 @@ return {
 				"<Cmd>Telescope lsp_type_definitions<cr>",
 				desc = "Goto Definition",
 			},
+			{
+				";i",
+				function()
+					require("telescope").extensions.monorepo.monorepo()
+				end,
+			},
 		},
 		enabled = Is_Enabled("telescope.nvim"),
 		cmd = "Telescope",
@@ -119,6 +125,7 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
+			"imNel/monorepo.nvim",
 		},
 		opts = {
 			defaults = {
@@ -172,6 +179,18 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ monorepo.nvim
+	{
+		"imNel/monorepo.nvim",
+		opts = {
+			silent = false,
+			data_path = vim.fn.stdpath("data"),
+		},
+		config = function(_, opts)
+			require("monorepo").setup(opts)
+		end,
+	},
+	-- }}}
 	-- {{{ oil.nvim
 	{
 		"stevearc/oil.nvim",
