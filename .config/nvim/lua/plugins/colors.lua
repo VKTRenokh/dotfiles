@@ -20,19 +20,15 @@ return {
 	{
 		"tjdevries/colorbuddy.nvim",
 		enabled = Is_Enabled("colorbuddy.nvim"),
-		lazy = true,
-		dependecies = {
+		lazy = false,
+		dependencies = {
 			"svrana/neosolarized.nvim",
 		},
 		config = function()
-			local ok, n = pcall(require, "neosolarized")
-			local neo = Is_Enabled("neosolarized.nvim")
+			local n = require("neosolarized")
+			local neo = Is_Enabled("svrana/neosolarized.nvim")
 			if not neo then
 				vim.cmd([[colorscheme tokyonight]])
-				return
-			end
-
-			if not ok then
 				return
 			end
 
@@ -50,19 +46,19 @@ return {
 			Group.new("CursorLineNr", colors.yellow, colors.none, styles.NONE, colors.base1)
 			Group.new("Visual", colors.none, colors.base03, styles.reverse)
 
-			-- local cError = groups.Error.fg
-			-- local cInfo = groups.Information.fg
-			-- local cWarn = groups.Warning.fg
-			-- local cHint = groups.Hint.fg
+			local cError = groups.Error.fg
+			local cInfo = groups.Information.fg
+			local cWarn = groups.Warning.fg
+			local cHint = groups.Hint.fg
 
-			-- Group.new("DiagnosticVirtualTextError", cError, cError:dark():dark():dark():dark(), styles.NONE)
-			-- Group.new("DiagnosticVirtualTextInfo", cInfo, cInfo:dark():dark():dark(), styles.NONE)
-			-- Group.new("DiagnosticVirtualTextWarn", cWarn, cWarn:dark():dark():dark(), styles.NONE)
-			-- Group.new("DiagnosticVirtualTextHint", cHint, cHint:dark():dark():dark(), styles.NONE)
-			-- Group.new("DiagnosticUnderlineError", colors.none, colors.none, styles.undercurl, cError)
-			-- Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.undercurl, cWarn)
-			-- Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
-			-- Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
+			Group.new("DiagnosticVirtualTextError", cError, cError:dark():dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticVirtualTextInfo", cInfo, cInfo:dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticVirtualTextWarn", cWarn, cWarn:dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticVirtualTextHint", cHint, cHint:dark():dark():dark(), styles.NONE)
+			Group.new("DiagnosticUnderlineError", colors.none, colors.none, styles.undercurl, cError)
+			Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.undercurl, cWarn)
+			Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
+			Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
 
 			vim.cmd([[
       try
@@ -229,18 +225,40 @@ return {
 		lazy = false,
 		opts = {
 			transparent = true,
-			style = "moon",
+			style = "night",
 			styles = {
 				sidebars = "transparent",
 				floats = "transparent",
 			},
+			-- on_colors = function(colors)
+			-- 	local bg_dark = "#011423"
+			-- 	local bg_highlight = "#143652"
+			-- 	local bg_search = "#0A64AC"
+			-- 	local bg_visual = "#275378"
+			-- 	local fg = "#CBE0F0"
+			-- 	local fg_dark = "#B4D0E9"
+			-- 	local fg_gutter = "#627E97"
+			-- 	local border = "#547998"
+			--
+			-- 	colors.bg_dark = bg_dark
+			-- 	colors.bg_highlight = bg_highlight
+			-- 	colors.bg_popup = bg_dark
+			-- 	colors.bg_search = bg_search
+			-- 	colors.bg_sidebar = bg_dark
+			-- 	colors.bg_statusline = bg_dark
+			-- 	colors.bg_visual = bg_visual
+			-- 	colors.border = border
+			-- 	colors.fg = fg
+			-- 	colors.fg_dark = fg_dark
+			-- 	colors.fg_float = fg
+			-- 	colors.fg_gutter = fg_gutter
+			-- 	colors.fg_sidebar = fg_dark
+			-- end,
 		},
 		config = function(_, opts)
 			require("tokyonight").setup(opts)
 
 			vim.cmd.colorscheme("tokyonight")
-
-			-- vim.cmd.highlight("LazyNormal guibg=#1E2030")
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}

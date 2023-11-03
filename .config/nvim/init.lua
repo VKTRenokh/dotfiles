@@ -1,8 +1,8 @@
 -- {{{ Core config
+vim.loader.enable()
+
 vim.g.mapleader = [[ ]]
 vim.g.maplocalleader = [[,]]
-
-vim.loader.enable()
 -- }}}
 require("config.bootstrap")
 require("config.options")

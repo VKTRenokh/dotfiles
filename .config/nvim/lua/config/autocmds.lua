@@ -108,7 +108,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 -- {{{ Set spelling for some file types.
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "gitcommit", "markdown", "wiki" },
+	pattern = { "gitcommit", "wiki" },
 	callback = function()
 		vim.opt_local.spell = true
 	end,

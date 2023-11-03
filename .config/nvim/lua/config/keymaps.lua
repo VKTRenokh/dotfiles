@@ -24,16 +24,13 @@ Keymap("n", "sh", "<C-w>h")
 Keymap("n", "sj", "<C-w>j")
 Keymap("n", "sk", "<C-w>k")
 Keymap("n", "sl", "<C-w>l")
-Keymap("n", "s<left>", "<C-w>h")
-Keymap("n", "s<right>", "<C-w>l")
-Keymap("n", "s<down>", "<C-w>j")
-Keymap("n", "s<up>", "<C-w>k")
 
 -- Resize with arrows
-Keymap("n", "<C-Up>", ":resize -2<CR>")
-Keymap("n", "<C-Down>", ":resize +2<CR>")
-Keymap("n", "<C-Left>", ":vertical resize -2<CR>")
-Keymap("n", "<C-Right>", ":vertical resize +2<CR>")
+Keymap("n", "<C-S-Up>", "<Cmd>:resize -2<CR>")
+Keymap("n", "<C-S-Down>", "<Cmd>:resize +2<CR>")
+
+Keymap("n", "<C-S-Left>", "<Cmd>:vertical resize -2<CR>")
+Keymap("n", "<C-S-Right>", "<Cmd>:vertical resize +2<CR>")
 
 -- Navigate buffers
 Keymap("n", "<S-l>", ":bnext<CR>")
@@ -42,11 +39,6 @@ Keymap("n", "<S-h>", ":bprevious<CR>")
 -- Inc and Dec numbars
 Keymap("n", "+", "<C-a>")
 Keymap("n", "-", "<C-x>")
-
--- Tabs
-Keymap("n", "te", ":tabedit<cr>")
-Keymap("n", "<S-Tab>", ":tabprev<cr>")
-Keymap("n", "<Tab>", ":tabnext<cr>")
 
 -- Splits
 Keymap("n", "<leader>s", ":split<cr><C-w>w")
@@ -155,3 +147,6 @@ Keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>")
 Keymap("n", "<leader>VV", "V`]")
 
 -- ------------------------------------------------------------------------- }}}
+vim.keymap.set("n", "gp", function()
+	return "`[" .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. "`]"
+end, { expr = true })

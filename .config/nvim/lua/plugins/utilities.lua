@@ -19,6 +19,10 @@ return {
 					Customize.toggleterm.lazygit()
 				end,
 			},
+			{
+				"<leader>TT",
+				"<Cmd>:ToggleTerm<cr>",
+			},
 		},
 		cmd = "ToggleTerm",
 		version = "*",
@@ -30,7 +34,7 @@ return {
 			shading_factor = "1",
 			start_in_insert = true,
 			persist_size = true,
-			direction = "horizontal",
+			direction = "float",
 		},
 	},
 	-- ----------------------------------------------------------------------- }}}

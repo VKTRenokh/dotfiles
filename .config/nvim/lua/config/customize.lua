@@ -36,6 +36,7 @@ Customize = {
 		["neoconf.nvim"] = { enabled = false },
 		["neodev.nvim"] = { enabled = false },
 		["neosolarized.nvim"] = { enabled = false },
+		["svrana/neosolarized.nvim"] = { enabled = false },
 		["noice.nvim"] = { enabled = true },
 		["nui.nvim"] = { enabled = true },
 		["null-ls.nvim"] = { enabled = true },
@@ -69,6 +70,7 @@ Customize = {
 		["oil.nvim"] = { enabled = true },
 		["flash.nvim"] = { enabled = true },
 		["neoscroll.nvim"] = { enabled = false },
+		["moonfly"] = { enabled = false },
 	},
 }
 

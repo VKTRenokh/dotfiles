@@ -571,7 +571,7 @@ return {
 		event = "VeryLazy",
 		lazy = true,
 		opts = {
-			-- override = Constants.icons.web_devicons,
+			override = Constants.icons.web_devicons,
 		},
 	},
 
@@ -593,6 +593,7 @@ return {
 			{ "<leader>LR", "<cmd>TroubleToggle lsp_references<cr>", desc = "open trouble with lsp references" },
 			{ "<leader>Ld", "<cmd>TroubleTOggle lsp_document_symbols<cr>", desc = "open trouble with lsp symbols" },
 			{ "<leader>T", "<cmd>TroubleToggle lsp_references<cr>" },
+			{ "<leader>t", "<cmd>TroubleToggle workspace_diagnostics<cr>" },
 			{ "<leader>Td", "<cmd>TroubleToggle<cr>" },
 		},
 		-- event = "VimEnter",
