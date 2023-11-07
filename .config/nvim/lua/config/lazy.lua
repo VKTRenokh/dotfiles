@@ -12,11 +12,10 @@ require("lazy").setup({
 
 	install = { colorscheme = { "tokyonight" } },
 
-	checker = { enabled = true },
+	checker = { enabled = true, notfiy = false },
 
 	ui = {
 		border = "rounded",
-		title = "Test",
 		title_pos = "center",
 		pills = true,
 	},

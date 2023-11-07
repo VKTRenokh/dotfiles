@@ -178,13 +178,8 @@ return {
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "isort", "black" },
-				javascript = { { "prettierd", "eslint_d" } },
-				typescript = { { "prettierd", "eslint_d" } },
-			},
-			diagnostics = {
-				javascript = { { "eslint_d" } },
-				typescript = { { "eslint_d" } },
+				javascript = { { "prettierd" } },
+				typescript = { { "prettierd" } },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
@@ -192,6 +187,7 @@ return {
 				lsp_fallback = true,
 			},
 		},
+		enabled = Is_Enabled("conform.nvim"),
 	},
 	-- }}}
 	-- {{{ nvim-lint
@@ -218,6 +214,7 @@ return {
 				end,
 			})
 		end,
+		enabled = Is_Enabled("nvim-lint"),
 	},
 	-- }}}
 	-- {{{ symbols-outline.nvim

@@ -75,7 +75,6 @@ Constants = {
 			"css",
 			"dockerfile",
 			"html",
-			"javascript",
 			"json",
 			"lua",
 			"markdown",
@@ -101,9 +100,7 @@ Constants = {
 		lsp_config = {},
 		mason = {},
 		treesitter = {
-			"html",
 			"latex",
-			"markdown",
 		},
 	},
 

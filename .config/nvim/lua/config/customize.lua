@@ -39,7 +39,6 @@ Customize = {
 		["svrana/neosolarized.nvim"] = { enabled = false },
 		["noice.nvim"] = { enabled = true },
 		["nui.nvim"] = { enabled = true },
-		["null-ls.nvim"] = { enabled = true },
 		["nvim-autopairs"] = { enabled = true },
 		["nvim-base16"] = { enabled = false },
 		["nvim-cmp"] = { enabled = true },
@@ -58,6 +57,7 @@ Customize = {
 		["telescope-file-browser.nvim"] = { enabled = true },
 		["toggleterm.nvim"] = { enabled = true },
 		["tokyonight.nvim"] = { enabled = true },
+		["everforest.nvim"] = { enabled = true },
 		["trouble.nvim"] = { enabled = true },
 		["vim-bbye"] = { enabled = false },
 		["vim-fugitive"] = { enabled = true },
@@ -71,6 +71,8 @@ Customize = {
 		["flash.nvim"] = { enabled = true },
 		["neoscroll.nvim"] = { enabled = false },
 		["moonfly"] = { enabled = false },
+		["conform.nvim"] = { enabled = true },
+		["nvim-lint"] = { enabled = true },
 	},
 }
 

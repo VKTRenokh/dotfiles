@@ -17,6 +17,7 @@ settings:
     global: false
   content.notifications.enabled:
     https://web.telegram.org: false
+    https://www.youtube.com: false
   qt.workarounds.remove_service_workers:
     global: true
   url.default_page:

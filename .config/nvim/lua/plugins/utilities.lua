@@ -21,10 +21,10 @@ return {
 			},
 			{
 				"<leader>TT",
-				"<Cmd>:ToggleTerm<cr>",
+				"<Cmd>ToggleTerm<cr>",
 			},
 		},
-		cmd = "ToggleTerm",
+		-- cmd = "ToggleTerm",
 		version = "*",
 		opts = {
 			size = 13,

@@ -105,7 +105,7 @@ ex ()
       *.tar.bz2)   tar xjf $1   ;;
       *.tar.gz)    tar xzf $1   ;;
       *.bz2)       bunzip2 $1   ;;
-      *.rar)       unrar x $1     ;;
+      *.rar)       unrar x $1   ;;
       *.gz)        gunzip $1    ;;
       *.tar)       tar xf $1    ;;
       *.tbz2)      tar xjf $1   ;;
@@ -142,6 +142,7 @@ alias glg='git log -n 1'
 alias glg-='git log -n -1'
 alias :q='exit'
 alias "g s"='git status'
+alias vhypr="prime-run Hyprland"
 
 eval "$(starship init zsh)"
 
@@ -149,3 +150,10 @@ eval "$(starship init zsh)"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# bun completions
+[ -s "/home/vktrenokh/.bun/_bun" ] && source "/home/vktrenokh/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

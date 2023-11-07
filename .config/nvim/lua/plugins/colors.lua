@@ -128,7 +128,7 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = Is_Enabled("nvim-treesitter"),
 		build = ":TSUpdate",
-		version = "v0.9.1",
+		-- version = "v0.9.1",
 		keys = {
 			{ "<c-space>", desc = "Increment selection" },
 			{ "<bs>", desc = "Decrement selection", mode = "x" },
@@ -166,6 +166,9 @@ return {
 			},
 			disable = { "latex" },
 			ensure_installed = Constants.ensure_installed.treesitter,
+			context_commentstring = {
+				enable = true,
+			},
 			incremental_selection = {
 				enable = true,
 				keymaps = {
@@ -179,7 +182,6 @@ return {
 
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
-			print("colors.lua call treesitter")
 		end,
 
 		dependencies = {
@@ -271,4 +273,20 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
+	-- {{{ everforest.nvim
+	{
+		"neanias/everforest-nvim",
+		priority = 1000,
+		opts = {
+			transparent = true,
+		},
+		lazy = false,
+		config = function(_, opts)
+			require("everforest").setup(opts)
+
+			vim.cmd.colorscheme([[everforest]])
+		end,
+		enabled = Is_Enabled("everforest.nvim"),
+	},
+	-- }}}
 }
