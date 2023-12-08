@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if pidof waybar; then
+  killall waybar
+else
+  waybar --config ~/.config/hypr/waybar/config.jsonc --style ~/.config/hypr/waybar/style.css &
+fi
