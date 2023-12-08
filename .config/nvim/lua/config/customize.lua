@@ -14,6 +14,7 @@ Customize = {
 	-- {{{ Enable or disable plugins.
 
 	plugins = {
+		["aerial.nvim"] = { enabled = false },
 		["alpha.nvim"] = { enabled = true },
 		["bufferline.nvim"] = { enabled = true },
 		["bullets.vim"] = { enabled = true },
@@ -57,7 +58,7 @@ Customize = {
 		["telescope-file-browser.nvim"] = { enabled = true },
 		["toggleterm.nvim"] = { enabled = true },
 		["tokyonight.nvim"] = { enabled = true },
-		["everforest.nvim"] = { enabled = true },
+		["everforest.nvim"] = { enabled = false },
 		["trouble.nvim"] = { enabled = true },
 		["vim-bbye"] = { enabled = false },
 		["vim-fugitive"] = { enabled = true },
@@ -72,7 +73,9 @@ Customize = {
 		["neoscroll.nvim"] = { enabled = false },
 		["moonfly"] = { enabled = false },
 		["conform.nvim"] = { enabled = true },
-		["nvim-lint"] = { enabled = true },
+		["nvim-lint"] = { enabled = false },
+		["incline.nvim"] = { enabled = false },
+		["solarized-osaka.nvim"] = { enabled = false },
 	},
 }
 

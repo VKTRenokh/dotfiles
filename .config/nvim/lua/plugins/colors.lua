@@ -160,15 +160,12 @@ return {
 			indent = { enable = true, disable = { "yml", "yaml" } },
 			rainbow = {
 				enable = true,
-				extended_mode = true,
+				extended_mode = false,
 				max_file_lines = nil,
 				colors = Constants.colors.rainbow,
 			},
 			disable = { "latex" },
 			ensure_installed = Constants.ensure_installed.treesitter,
-			context_commentstring = {
-				enable = true,
-			},
 			incremental_selection = {
 				enable = true,
 				keymaps = {
@@ -187,7 +184,14 @@ return {
 		dependencies = {
 			"windwp/nvim-ts-autotag",
 			"mrjones2014/nvim-ts-rainbow",
-			"JoosepAlviste/nvim-ts-context-commentstring",
+			{
+				"JoosepAlviste/nvim-ts-context-commentstring",
+				config = function(_, opts)
+					require("ts_context_commentstring").setup(opts)
+
+					vim.g.skip_ts_context_commentstring_module = true
+				end,
+			},
 			{
 				"nvim-treesitter/nvim-treesitter-textobjects",
 				init = function()
@@ -287,6 +291,57 @@ return {
 			vim.cmd.colorscheme([[everforest]])
 		end,
 		enabled = Is_Enabled("everforest.nvim"),
+	},
+	-- }}}
+	-- {{{ solarized-osaka.nvim
+	{
+		"craftzdog/solarized-osaka.nvim",
+		priority = 1000,
+		opts = {
+			transparent = true,
+			styles = {
+				sidebars = "transparent",
+				floats = "transparent",
+			},
+			-- on_highlights = function(c)
+			-- 	c.NavicIconsFile = { fg = c.fg, bg = "NONE" }
+			-- 	c.NavicIconsModule = { fg = c.yellow, bg = "NONE" }
+			-- 	c.NavicIconsNamespace = { fg = c.fg, bg = "NONE" }
+			-- 	c.NavicIconsPackage = { fg = c.fg, bg = "NONE" }
+			-- 	c.NavicIconsClass = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsMethod = { fg = c.blue, bg = "NONE" }
+			-- 	c.NavicIconsProperty = { fg = c.cyan, bg = "NONE" }
+			-- 	c.NavicIconsField = { fg = c.cyan, bg = "NONE" }
+			-- 	c.NavicIconsConstructor = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsEnum = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsInterface = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsFunction = { fg = c.blue, bg = "NONE" }
+			-- 	c.NavicIconsVariable = { fg = c.magenta, bg = "NONE" }
+			-- 	c.NavicIconsConstant = { fg = c.magenta, bg = "NONE" }
+			-- 	c.NavicIconsString = { fg = c.green, bg = "NONE" }
+			-- 	c.NavicIconsNumber = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsBoolean = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsArray = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsObject = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsKey = { fg = c.violet500, bg = "NONE" }
+			-- 	c.NavicIconsKeyword = { fg = c.violet500, bg = "NONE" }
+			-- 	c.NavicIconsNull = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsEnumMember = { fg = c.cyan, bg = "NONE" }
+			-- 	c.NavicIconsStruct = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsEvent = { fg = c.orange, bg = "NONE" }
+			-- 	c.NavicIconsOperator = { fg = c.fg, bg = "NONE" }
+			-- 	c.NavicIconsTypeParameter = { fg = c.cyan, bg = "NONE" }
+			-- 	c.NavicText = { fg = c.fg, bg = "NONE" }
+			-- 	c.NavicSeparator = { fg = c.fg, bg = "NONE" }
+			-- end,
+		},
+		lazy = false,
+		config = function(_, opts)
+			require("solarized-osaka").setup(opts)
+
+			vim.cmd.colorscheme("solarized-osaka")
+		end,
+		enabled = Is_Enabled("solarized-osaka.nvim"),
 	},
 	-- }}}
 }

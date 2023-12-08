@@ -101,11 +101,11 @@ return {
 	{
 		"VKTRenokh/mini.surround",
 		keys = {
-			"sa", -- Add surrounding in Normal and Visual modes
-			"sd", -- Delete surrounding
-			"sh", -- Highlight surrounding
-			"sr", -- Replace surrounding
-			"sn", -- Update `n_lines`
+			{ "sa", mode = { "n", "x", "v" } }, -- Add surrounding in Normal and Visual modes
+			{ "sd", mode = { "n", "x", "v" } }, -- Delete surrounding
+			{ "sh", mode = { "n", "x", "v" } }, -- Highlight surrounding
+			{ "sr", mode = { "n", "x", "v" } }, -- Replace surrounding
+			{ "sn", mode = { "n", "x", "v" } }, -- Update `n_lines`
 		},
 		opts = {
 			{
@@ -152,4 +152,16 @@ return {
 		enabled = Is_Enabled("mini-surround"),
 	},
 	-- }}}
+	{
+		"ThePrimeagen/harpoon",
+		keys = {},
+		opts = {
+			menu = {
+				width = vim.api.nvim_win_get_width(0) - 4,
+			},
+		},
+		config = function(_, opts)
+			require("harpoon").setup(opts)
+		end,
+	},
 }

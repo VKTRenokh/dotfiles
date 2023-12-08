@@ -150,3 +150,5 @@ Keymap("n", "<leader>VV", "V`]")
 vim.keymap.set("n", "gp", function()
 	return "`[" .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. "`]"
 end, { expr = true })
+
+vim.keymap.set("i", "<C-Backspace>", "<esc>ciw")
