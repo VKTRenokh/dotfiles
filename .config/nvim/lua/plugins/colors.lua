@@ -231,7 +231,7 @@ return {
 		lazy = false,
 		opts = {
 			transparent = true,
-			style = "night",
+			style = "moon",
 			styles = {
 				sidebars = "transparent",
 				floats = "transparent",
