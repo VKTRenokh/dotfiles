@@ -8,6 +8,10 @@ return {
 		"nvim-telescope/telescope.nvim",
 		keys = {
 			{
+				";l",
+				"<cmd>Telescope neoclip<cr>",
+			},
+			{
 				";f",
 				function()
 					require("telescope.builtin").find_files({ hidden = true })
@@ -126,6 +130,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 			"imNel/monorepo.nvim",
+			"AcksLd/nvim-neoclip.lua",
 		},
 		opts = {
 			defaults = {
@@ -242,6 +247,17 @@ return {
 			require("oil").setup(opts)
 		end,
 		enabled = Is_Enabled("oil.nvim"),
+	},
+	-- }}}
+	-- {{{ neoclip.lua
+	{
+		"AcksLd/nvim-neoclip.lua",
+		opts = {
+			preview = true,
+		},
+		config = function(_, opts)
+			require("neoclip").setup(opts)
+		end,
 	},
 	-- }}}
 }
