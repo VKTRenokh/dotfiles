@@ -7,4 +7,4 @@ local function _2_(_, opts)
   tokyonight.setup(opts)
   return uu.colorscheme("tokyonight")
 end
-return {uu.tx("folke/tokyonight.nvim", {lazy = true, opts = {transparent = true, style = "moon", styles = {sidebars = "transparent", floats = "transparent"}}, config = _2_})}
+return {uu.tx("folke/tokyonight.nvim", {lazy = true, opts = {transparent = true, style = "moon", styles = {sidebars = "transparent", floats = "transparent"}}, config = _2_, enabled = false})}

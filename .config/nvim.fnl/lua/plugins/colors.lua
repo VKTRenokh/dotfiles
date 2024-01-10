@@ -11,4 +11,4 @@ end
 local function _4_()
   return colorscheme("base16-tokyo-night-terminal-storm")
 end
-return {tx("mcchrish/zenbones.nvim", {lazy = true, priority = 1000, dependencies = "rktjmp/lush.nvim", config = _3_, enabled = false}), tx("VKTRenokh/nvim-base16", {priority = 1000, config = _4_, lazy = false}), tx("kovetskiy/sxhkd-vim", {ft = "sxhkd"})}
+return {tx("mcchrish/zenbones.nvim", {lazy = true, enabled = true, priority = 1000, dependencies = "rktjmp/lush.nvim", config = _3_}), tx("VKTRenokh/nvim-base16", {priority = 1000, config = _4_, enabled = false, lazy = false}), tx("kovetskiy/sxhkd-vim", {ft = "sxhkd"})}

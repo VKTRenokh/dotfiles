@@ -4,8 +4,8 @@
 
 ;{{{ Splits
 (keymap :n :<leader> :<C-w>w)
-(keymap :n :sv :vsplit)
-(keymap :n :<leader>s :split<>)
+(keymap :n :sv "<Cmd>vsplit<cr>")
+(keymap :n :<leader>s "<Cmd>:split<cr>")
 ;}}}
 ; {{{ Better window navigation
 (keymap :n :<C-h> :<C-w>h)

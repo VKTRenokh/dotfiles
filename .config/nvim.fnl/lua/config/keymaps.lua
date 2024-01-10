@@ -4,8 +4,8 @@ local autoload = _local_1_["autoload"]
 local _local_2_ = autoload("config.util")
 local keymap = _local_2_["keymap"]
 keymap("n", "<leader>", "<C-w>w")
-keymap("n", "sv", "vsplit")
-keymap("n", "<leader>s", "split<>")
+keymap("n", "sv", "<Cmd>vsplit<cr>")
+keymap("n", "<leader>s", "<Cmd>:split<cr>")
 keymap("n", "<C-h>", "<C-w>h")
 keymap("n", "<C-j>", "<C-w>j")
 keymap("n", "<C-k>", "<C-w>k")

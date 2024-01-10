@@ -3,13 +3,14 @@
 
 [(tx :mcchrish/zenbones.nvim
     {:lazy true
-     :enabled false
+     :enabled true
      :priority 1000
      :dependencies :rktjmp/lush.nvim
      :config (fn [] (colorscheme :zenbones))})
  (tx :VKTRenokh/nvim-base16
      {:lazy false
       :priority 1000
+      :enabled false
       :config (fn [] (colorscheme :base16-tokyo-night-terminal-storm))})
  (tx :kovetskiy/sxhkd-vim
      {:ft :sxhkd})]
