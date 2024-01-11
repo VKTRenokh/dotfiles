@@ -46,7 +46,7 @@ Customize = {
 		["nvim-colorizer.lua"] = { enabled = true },
 		["nvim-navic"] = { enabled = true },
 		["nvim-notify"] = { enabled = true },
-		["nvim-transparent"] = { enabled = true },
+		["nvim-transparent"] = { enabled = false },
 		["nvim-treesitter"] = { enabled = true },
 		["nvim-ts-rainbow"] = { enabled = true },
 		["nvim-web-devicons"] = { enabled = true },
@@ -76,6 +76,7 @@ Customize = {
 		["nvim-lint"] = { enabled = false },
 		["incline.nvim"] = { enabled = false },
 		["solarized-osaka.nvim"] = { enabled = false },
+		["zenbones.nvim"] = { enabled = false },
 	},
 }
 

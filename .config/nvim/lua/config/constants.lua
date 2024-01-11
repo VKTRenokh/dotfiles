@@ -72,6 +72,7 @@ Constants = {
 			"bash",
 			"gitignore",
 			"c",
+			"http",
 			"cpp",
 			"css",
 			"dockerfile",

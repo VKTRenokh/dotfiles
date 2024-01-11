@@ -344,4 +344,17 @@ return {
 		enabled = Is_Enabled("solarized-osaka.nvim"),
 	},
 	-- }}}
+	-- {{{ zenbones.nvim
+	{
+		"mcchrish/zenbones.nvim",
+		event = "VeryLazy",
+		enabled = Is_Enabled("zenbones.nvim"),
+		dependencies = { "rktjmp/lush.nvim" },
+		config = function()
+			vim.opt.background = "light"
+
+			vim.cmd.colorscheme("zenbones")
+		end,
+	},
+	-- }}}
 }

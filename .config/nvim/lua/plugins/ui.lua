@@ -579,7 +579,7 @@ return {
 		event = "VeryLazy",
 		lazy = true,
 		opts = {
-			override = Constants.icons.web_devicons,
+			-- override = Constants.icons.web_devicons,
 		},
 	},
 
