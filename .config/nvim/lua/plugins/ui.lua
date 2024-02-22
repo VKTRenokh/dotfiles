@@ -238,7 +238,6 @@ return {
 	-- {{{ lualine.nvim
 	{
 		"nvim-lualine/lualine.nvim",
-		-- event = { "BufReadPost", "BufNewFile" },
 		event = "VeryLazy",
 		enabled = Is_Enabled("lualine.nvim"),
 		dependencies = {

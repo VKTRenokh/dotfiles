@@ -58,7 +58,7 @@ return {
 				end,
 			},
 			{
-				"<leader>La",
+				"gi",
 				function()
 					vim.lsp.buf.code_action()
 				end,

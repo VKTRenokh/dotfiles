@@ -1,4 +1,5 @@
 local Constants = {}
+Is_Enabled = require("config.functions").is_enabled
 
 -- {{{ Begin Constants table.  These are items used through out Neovim.
 
@@ -50,11 +51,9 @@ Constants = {
 			"volar",
 		},
 		mason = {
-			"bash-language-server",
-			"clangd",
 			"css-lsp",
 			"emmet-ls",
-			-- "eslint-lsp",
+			"eslint-lsp",
 			"flake8",
 			"html-lsp",
 			"json-lsp",
@@ -86,6 +85,7 @@ Constants = {
 			"query",
 			"regex",
 			"rust",
+			"jsdoc",
 			"javascript",
 			"typescript",
 			"vim",
@@ -267,14 +267,14 @@ Constants = {
 	-- {{{ Rainbow colors
 
 	colors = {
-		rainbow = {
+		rainbow = not Is_Enabled("zenbones.nvim") and {
 			"Gold",
 			"Orchid",
 			"DodgerBlue",
 			"Cornsilk",
 			"Salmon",
 			"LawnGreen",
-		},
+		} or {},
 	},
 
 	-- ----------------------------------------------------------------------- }}}

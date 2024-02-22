@@ -231,7 +231,7 @@ return {
 		lazy = false,
 		opts = {
 			transparent = true,
-			style = "moon",
+			style = "storm",
 			styles = {
 				sidebars = "transparent",
 				floats = "transparent",
@@ -351,7 +351,7 @@ return {
 		enabled = Is_Enabled("zenbones.nvim"),
 		dependencies = { "rktjmp/lush.nvim" },
 		config = function()
-			vim.opt.background = "light"
+			-- vim.opt.background = "light"
 
 			vim.cmd.colorscheme("zenbones")
 		end,
