@@ -1,18 +1,3 @@
-########## Prompt ##########
-#
-# git_prompt() {
-#     local branch="$(git symbolic-ref HEAD 2> /dev/null | cut -d'/' -f3-)"
-#     local branch_truncated="${branch:0:30}"
-#     if (( ${#branch} > ${#branch_truncated} )); then
-#         branch="${branch_truncated}..."
-#     fi
-#
-#     [ -n "${branch}" ] && echo "  ${branch}"
-# }
-#
-# setopt PROMPT_SUBST
-# PROMPT='%B%F{blue}󰣇%f%b  %B%F{magenta}%n%f%b %B%F{red}%~%f%b%B%F{yellow}$(git_prompt)%f%b %(?.%B%F{green}✓.%F{red}✕)%f%b %B%F{green}%f%b '
-
 export EDITOR=nvim;
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 
@@ -60,13 +45,10 @@ bindkey "^I" expand-or-complete-with-dots
 
 bindkey -s '^F' 'tmux-sessionizer\n'
 
-
-
 # Plugins
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.config/zsh/web-search.plugin.zsh
 
 # bindkey -M menuselect 'h' vi-backward-char
 # bindkey -M menuselect 'k' vi-up-line-or-history
@@ -133,27 +115,9 @@ alias lg=lazygit
 alias fucking='sudo'
 alias parsyu='paru -Syu --noconfirm'
 alias pacsyu='sudo pacman -Syu --noconfirm'
-alias workspace="cd /mnt/sda1/enokh/workspace"
-alias ns="npm start"
-alias c=clear
+alias workspace="cd /mnt/sda1/workspace"
 alias tks="tmux kill-session"
-alias пше='git'
 alias glg='git log -n 1'
-alias glg-='git log -n -1'
 alias :q='exit'
-alias "g s"='git status'
-alias vhypr="prime-run Hyprland"
 
 eval "$(starship init zsh)"
-
-
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
-# bun completions
-[ -s "/home/vktrenokh/.bun/_bun" ] && source "/home/vktrenokh/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
