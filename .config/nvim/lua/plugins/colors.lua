@@ -162,6 +162,7 @@ return {
 				enable = true,
 				extended_mode = false,
 				max_file_lines = nil,
+				query = "rainbow-parens",
 				colors = Constants.colors.rainbow,
 			},
 			disable = { "latex" },
@@ -183,7 +184,7 @@ return {
 
 		dependencies = {
 			"windwp/nvim-ts-autotag",
-			"mrjones2014/nvim-ts-rainbow",
+			"HiPhish/nvim-ts-rainbow2",
 			{
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				config = function(_, opts)
@@ -218,7 +219,7 @@ return {
 	-- {{{ nvim-ts-rainbow
 
 	{
-		"mrjones2014/nvim-ts-rainbow",
+		"HiPhish/nvim-ts-rainbow2",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = Is_Enabled("nvim-ts-rainbow"),
 	},

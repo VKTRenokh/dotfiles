@@ -44,6 +44,7 @@ return {
 		dependencies = { "tpope/vim-rhubarb" },
 		keys = {
 			{ "<leader>g", "<cmd>G<cr>", desc = "open fugitive" },
+			{ "<leader>G", "<cmd>Gvdiffsplit<cr>", desc = "git diff vertical split" },
 		},
 		enabled = Is_Enabled("vim-fugitive"),
 	},

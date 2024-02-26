@@ -180,6 +180,7 @@ return {
 				lua = { "stylua" },
 				javascript = { { "prettierd" } },
 				typescript = { { "prettierd" } },
+				vue = { { "prettierd" } },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()
@@ -297,13 +298,4 @@ return {
 	-- {{{ neoconf.nvim
 	{ "folke/neoconf.nvim", enabled = Is_Enabled("neoconf.nvim"), cmd = "Neoconf", config = true },
 	-- ----------------------------------------------------------------------- }}}
-	-- {
-	-- 	{
-	-- 		"sourcegraph/sg.nvim",
-	-- 		dependencies = {
-	-- 			"nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]]
-	-- 		},
-	-- 		lazy = false,
-	-- 	},
-	-- },
 }
