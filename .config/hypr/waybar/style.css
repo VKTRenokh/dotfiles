@@ -40,6 +40,8 @@ window#waybar {
 
 #workspaces button:hover {
   color: black;
+  background: none;
+  box-shadow: none;
 }
 
 #custom-date,
@@ -71,13 +73,6 @@ window#waybar {
   padding: 5px 10px;
 }
 
-#tray {
-  background: #282828;
-  margin: 5px 5px 5px 5px;
-  border-radius: 16px;
-  padding: 0px 5px;
-  /*border-right: solid 1px #282738;*/
-}
 
 #clock {
   /* color: #e6b9c6; */
@@ -142,11 +137,6 @@ window#waybar {
   margin-left: 0px;
 }
 
-#custom-randwall {
-  color: #f4d9e1;
-  border-radius: 8px;
-  margin-right: 0px;
-}
 
 @keyframes launcher {
   0% {
@@ -163,7 +153,7 @@ window#waybar {
 }
 
 #custom-launcher {
-  color: #e5809e;
+  color: #89b4fa;
   background-color: #282828;
   border-radius: 0px 0px 24px 0px;
   margin: 0px 0px 0px 0px;
@@ -221,12 +211,6 @@ window#waybar {
   margin-bottom: 5px;
   font-weight: normal;
   font-style: normal;
-}
-
-#custom-wf-recorder {
-  padding: 0 20px;
-  color: #e5809e;
-  background-color: #1e1e2e;
 }
 
 #cpu {
