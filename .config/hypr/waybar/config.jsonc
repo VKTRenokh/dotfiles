@@ -12,9 +12,18 @@
     "battery",
     "custom/playerlabel"
   ],
-  "modules-center": ["cpu", "memory", "disk", "custom/clock"],
-  "modules-right": ["network", "pulseaudio", "backlight", "clock"],
-  // Modules configuration
+  "modules-center": [
+    "cpu",
+    "memory",
+    "disk",
+    "custom/updates"
+  ],
+  "modules-right": [
+    "network",
+    "pulseaudio",
+    "backlight",
+    "clock"
+  ],
   "clock": {
     "format": " {:%H <span foreground='#89b4fa'>󰇙</span> %M}",
     "tooltip": "true",
@@ -30,19 +39,19 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "1": "一",
-      "2": "二",
-      "3": "三",
-      "4": "四",
-      "5": "五",
-      "6": "六",
-      "7": "七",
-      "8": "八",
-      "9": "九",
-      "10": "十",
-      // "urgent": "",
-      // "active": "",
-      // "default": "󰧞",
+      // "1": "一",
+      // "2": "二",
+      // "3": "三",
+      // "4": "四",
+      // "5": "五",
+      // "6": "六",
+      // "7": "七",
+      // "8": "八",
+      // "9": "九",
+      // "10": "十", // broken japanese numbers
+      "urgent": "",
+      "active": "",
+      "default": "󰧞",
       "sort-by-number": true
     }
   },
@@ -84,7 +93,13 @@
     "format-alt": "{time} {icon} ",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "memory": {
     "format": "󰍛 {}%",
@@ -118,7 +133,17 @@
   "backlight": {
     // "device": "acpi_video1",
     "format": "{icon} {percent}%",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
     //	"on-scroll-up":,
     //	"on-scroll-down":,
   },
@@ -126,7 +151,11 @@
     "format": "{icon} {volume}%",
     "format-muted": "󰝟",
     "format-icons": {
-      "default": ["󰕿", "󰖀", "󰕾"]
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
     },
     "on-click": "bash ~/.scripts/volume mute",
     "on-scroll-up": "bash ~/.scripts/volume up",
@@ -139,24 +168,14 @@
     "on-click": "~/.config/hypr/scripts/cyclewalls"
   },
   "custom/launcher": {
-    "format": "󰈸",
+    "format": "󰘧",
     "on-click": "wofi -show drun",
     //    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
     "on-click-right": "wofi --show drun"
     //    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"
   },
-  "custom/wf-recorder": {
+  "custom/updates": {
     "format": "{}",
-    "interval": "once",
-    "exec": "echo ''",
-    "tooltip": "false",
-    "exec-if": "pgrep 'wf-recorder'",
-    "on-click": "exec ./scripts/wlrecord.sh",
-    "signal": 8
-  },
-  "custom/hyprpicker": {
-    "format": "󰈋",
-    "on-click": "hyprpicker -a -f hex",
-    "on-click-right": "hyprpicker -a -f rgb"
+    "exec": "~/.config/hypr/scripts/systemupdate.sh"
   }
 }

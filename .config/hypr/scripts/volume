@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
 getHumanReadableVolume() {
-  echo "$(wpctl get-volume @DEFAULT_SINK@ | sed --regexp-extended 's/((0)\.)|(\.)//')%"
+  echo "$(wpctl get-volume @DEFAULT_SINK@ | sed --regexp-extended 's/((0)\.)|(\.)//' | sed 's/Volume: //')"
 }
 
 notify() {
-  dunstify -u low -h string:x-dunst-stack-tag:obvolume "$(getHumanReadableVolume)"
+  local readable="$(getHumanReadableVolume)"
+  echo "$readable"
+  dunstify -u low -h string:x-dunst-stack-tag:obvolume -h int:value:$readable "Volume: $readable%"
 }
 
 increase() {
