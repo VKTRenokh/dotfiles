@@ -1,6 +1,7 @@
 ## Hyprland
 
 ![Screenshot of my desktop](./assets/screenshot-hyprland-1.png)
+![Screenshot of my desktop](./assets/screenshot-hyprland-2.png)
 
 ## Sway (old)
 
