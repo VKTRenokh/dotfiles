@@ -160,7 +160,8 @@ window#waybar {
   padding: 0 20px 0 13px;
   /*border-right: solid 1px #282738;*/
   font-size: 20px;
-  animation: launcher 6s ease infinite alternate;
+  font-weight: bold;
+  /* animation: launcher 6s ease infinite alternate; */
 }
 
 #custom-launcher button:hover {

@@ -28,7 +28,7 @@
     "format": " {:%H <span foreground='#89b4fa'>󰇙</span> %M}",
     "tooltip": "true",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": " {:%d/%m}"
+    "format-alt": " {:%d<span foreground='#89b4fa'> / </span>%m}"
   },
   "hyprland/workspaces": {
     "active-only": false,
@@ -131,7 +131,7 @@
     "spacing": 5
   },
   "backlight": {
-    "format": "{icon} {percent}%",
+    "format": " {percent}%", // replace  icon with {} for dynamic icon changes
     "format-icons": [
       "",
       "",
@@ -154,11 +154,10 @@
         "󰕾"
       ]
     },
-    "on-click": "bash ~/.scripts/volume mute",
-    "on-scroll-up": "bash ~/.scripts/volume up",
-    "on-scroll-down": "bash ~/.scripts/volume down",
+    "on-scroll-up": "bash ~/.config/hypr/scripts/volume incr",
+    "on-scroll-down": "bash ~/.config/hypr/scripts/volume decr",
     "scroll-step": 5,
-    "on-click-right": "pavucontrol"
+    "on-click": "pavucontrol"
   },
   "custom/launcher": {
     "format": "󰘧"
