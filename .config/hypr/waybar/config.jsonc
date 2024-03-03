@@ -9,7 +9,8 @@
   "modules-left": [
     "custom/launcher",
     "hyprland/workspaces",
-    "battery"
+    "battery",
+    "custom/caway"
   ],
   "modules-center": [
     "cpu",
@@ -165,5 +166,21 @@
   "custom/updates": {
     "format": "{}",
     "exec": "~/.config/hypr/scripts/systemupdate.sh"
+  },
+  "custom/caway": {
+    "format": "{icon}{}",
+    "format-alt": "",
+    "format-icons": {
+      "Paused": " ",
+      "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
+    },
+    "escape": true,
+    "tooltip": true,
+    "exec": "~/.config/hypr/scripts/caway",
+    "return-type": "json",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "on-click-right": "g4music",
+    "max-length": 35
   }
 }
