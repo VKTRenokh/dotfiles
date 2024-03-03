@@ -152,16 +152,29 @@ return {
 		enabled = Is_Enabled("mini-surround"),
 	},
 	-- }}}
-	{
-		"ThePrimeagen/harpoon",
-		keys = {},
-		opts = {
-			menu = {
-				width = vim.api.nvim_win_get_width(0) - 4,
+	{ -- {{{ refactoring.nvim
+		"ThePrimeagen/refactoring.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		keys = {
+			{
+				"<leader>rn",
+				function()
+					require("refactoring").select_refactor({
+						show_success_message = true,
+					})
+				end,
+				mode = "v",
+				noremap = true,
+				silent = true,
+				expr = false,
 			},
 		},
+		opts = {},
 		config = function(_, opts)
-			require("harpoon").setup(opts)
+			require("refactoring").setup(opts)
 		end,
-	},
+	}, -- }}}
 }

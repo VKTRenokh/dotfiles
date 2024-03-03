@@ -14,7 +14,6 @@ Customize = {
 	-- {{{ Enable or disable plugins.
 
 	plugins = {
-		["aerial.nvim"] = { enabled = false },
 		["alpha.nvim"] = { enabled = true },
 		["bufferline.nvim"] = { enabled = true },
 		["bullets.vim"] = { enabled = true },
@@ -44,7 +43,7 @@ Customize = {
 		["nvim-base16"] = { enabled = false },
 		["nvim-cmp"] = { enabled = true },
 		["nvim-colorizer.lua"] = { enabled = true },
-		["nvim-navic"] = { enabled = true },
+		["nvim-navic"] = { enabled = false },
 		["nvim-notify"] = { enabled = true },
 		["nvim-transparent"] = { enabled = false },
 		["nvim-treesitter"] = { enabled = true },
@@ -74,7 +73,7 @@ Customize = {
 		["moonfly"] = { enabled = false },
 		["conform.nvim"] = { enabled = true },
 		["nvim-lint"] = { enabled = false },
-		["incline.nvim"] = { enabled = false },
+		["incline.nvim"] = { enabled = true },
 		["solarized-osaka.nvim"] = { enabled = false },
 		["zenbones.nvim"] = { enabled = false },
 	},
