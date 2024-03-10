@@ -1,4 +1,0 @@
-#! /bin/sh
-
-wallimage=$(shuf -en1 ~/.config/bspwm/rices/$RICETHEME/*.webp)
-feh --no-fehbg --bg-fill $wallimage
