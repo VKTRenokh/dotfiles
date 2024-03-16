@@ -1,4 +1,0 @@
-exec_always bash -c "pkill waybar; waybar"
-
-exec blueman-applet
-exec nm-applet

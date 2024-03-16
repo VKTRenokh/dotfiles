@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec waybar -c ~/.config/sway/waybar/config
