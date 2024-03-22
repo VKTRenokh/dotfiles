@@ -24,7 +24,7 @@ sudo pacman -S --needed hyprland waybar dunst neovim lua lxappearance artix-dark
 
 Aur
 ```bash
-paru -S wofi gitmux bibata-cursor-theme swww playerctl brave exa lazygit
+paru -S wofi gitmux bibata-cursor-theme swww playerctl brave exa lazygit hyprshade
 ```
 
 Starship
