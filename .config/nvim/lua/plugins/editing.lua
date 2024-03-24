@@ -12,52 +12,64 @@ return {
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ Comment.nvim
 	{
-		"numToStr/Comment.nvim",
+		"echasnovski/mini.comment",
 		event = { "BufReadPost", "BufNewFile" },
 		enabled = Is_Enabled("comment.nvim"),
 		opts = {
-			padding = true,
-			sticky = true,
-			ignore = nil,
-			toggler = {
-				line = "gcc",
-				block = "gbc",
-			},
-			opleader = {
-				line = "gc",
-				block = "gb",
-			},
-			extra = {
-				above = "gc0",
-				below = "gco",
-				eol = "gcA",
-			},
-			mappings = {
-				basic = true,
-				extra = true,
-			},
-			pre_hook = nil,
-			post_hook = nil,
-		},
+			options = {
+				-- Function to compute custom 'commentstring' (optional)
+				custom_commentstring = nil,
 
-		config = function(_, opts)
-			require("Comment").setup(opts)
-		end,
+				-- Whether to ignore blank lines
+				ignore_blank_line = false,
+
+				-- Whether to recognize as comment only lines without indent
+				start_of_line = false,
+
+				-- Whether to ensure single space pad for comment parts
+				pad_comment_parts = true,
+			},
+
+			-- Module mappings. Use `''` (empty string) to disable one.
+			mappings = {
+				-- Toggle comment (like `gcip` - comment inner paragraph) for both
+				-- Normal and Visual modes
+				comment = "gc",
+
+				-- Toggle comment on current line
+				comment_line = "gcc",
+
+				-- Toggle comment on visual selection
+				comment_visual = "gc",
+
+				-- Define 'comment' textobject (like `dgc` - delete whole comment block)
+				-- Works also in Visual mode if mapping differs from `comment_visual`
+				textobject = "gc",
+			},
+		},
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-autopairs
 	{
-		"windwp/nvim-autopairs",
+		"echasnovski/mini.pairs",
 		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("nvim-autopairs"),
-		config = true,
-	},
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ vim-visual-multi
-	{
-		"mg979/vim-visual-multi",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("vim-visual-multi"),
+		enabled = Is_Enabled("mini.pairs"),
+		opts = {},
+		keys = {
+			{
+				"<leader>up",
+				function()
+					local Util = require("lazy.core.util")
+					vim.g.minipairs_disable = not vim.g.minipairs_disable
+					if vim.g.minipairs_disable then
+						Util.warn("Disabled auto pairs", { title = "Option" })
+					else
+						Util.info("Enabled auto pairs", { title = "Option" })
+					end
+				end,
+				desc = "Toggle auto pairs",
+			},
+		},
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ flash.nvim
@@ -99,7 +111,7 @@ return {
 	-- }}}
 	-- {{{ mini.surround
 	{
-		"VKTRenokh/mini.surround",
+		"echasnovski/mini.surround",
 		keys = {
 			{ "sa", mode = { "n", "x", "v" } }, -- Add surrounding in Normal and Visual modes
 			{ "sd", mode = { "n", "x", "v" } }, -- Delete surrounding
@@ -177,4 +189,54 @@ return {
 			require("refactoring").setup(opts)
 		end,
 	}, -- }}}
+	-- {{{ vim-illuminate
+	{
+		"RRethy/vim-illuminate",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			delay = 200,
+			large_file_cutoff = 2000,
+			large_file_overrides = {
+				providers = { "lsp" },
+			},
+		},
+		config = function(_, opts)
+			require("illuminate").configure(opts)
+
+			local function map(key, dir, buffer)
+				vim.keymap.set("n", key, function()
+					require("illuminate")["goto_" .. dir .. "_reference"](false)
+				end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
+			end
+
+			map("]]", "next")
+			map("[[", "prev")
+
+			-- also set it after loading ftplugins, since a lot overwrite [[ and ]]
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					local buffer = vim.api.nvim_get_current_buf()
+					map("]]", "next", buffer)
+					map("[[", "prev", buffer)
+				end,
+			})
+		end,
+		keys = {
+			{ "]]", desc = "Next Reference" },
+			{ "[[", desc = "Prev Reference" },
+		},
+	},
+	-- }}}
+	{
+		"Exafunction/codeium.nvim",
+		lazy = false,
+		enabled = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+		config = function()
+			require("codeium").setup({})
+		end,
+	},
 }

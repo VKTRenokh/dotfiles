@@ -54,7 +54,7 @@ return {
 				end,
 			},
 			{
-				";b",
+				";w",
 				function()
 					require("telescope.builtin").current_buffer_fuzzy_find(
 						require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
@@ -181,71 +181,6 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ monorepo.nvim
-	{
-		"imNel/monorepo.nvim",
-		opts = {
-			silent = false,
-			data_path = vim.fn.stdpath("data"),
-		},
-		config = function(_, opts)
-			require("monorepo").setup(opts)
-		end,
-	},
-	-- }}}
-	-- {{{ oil.nvim
-	{
-		"stevearc/oil.nvim",
-		keys = {
-			{ "SF", "<cmd>lua require('oil').open_float()<cr>", desc = "Open floating oil" },
-			{ "Sf", "<cmd>Oil<cr>", desc = "Open oil" },
-		},
-		opts = {
-			columns = {
-				"icon",
-				"permissions",
-			},
-			buf_options = {
-				buflisted = false,
-				bufhidden = "hide",
-			},
-			keymaps = {
-				["g?"] = "actions.show_help",
-				["<CR>"] = "actions.select",
-				["<C-s>"] = "actions.select_vsplit",
-				["<C-t>"] = "actions.select_tab",
-				["<C-p>"] = "actions.preview",
-				["q"] = "actions.close",
-				["<Esc>"] = "actions.close",
-				["<C-h>"] = "actions.parent",
-				["<C-l>"] = "actions.select",
-				["_"] = "actions.open_cwd",
-				["`"] = "actions.cd",
-				["~"] = "actions.tcd",
-				["g."] = "actions.toggle_hidden",
-			},
-			win_options = {
-				signcolumn = "yes",
-			},
-			float = {
-				padding = 5,
-				max_width = 0,
-				max_height = 0,
-				border = "rounded",
-				win_options = {
-					winblend = 10,
-				},
-				override = function(conf)
-					return conf
-				end,
-			},
-		},
-		config = function(_, opts)
-			require("oil").setup(opts)
-		end,
-		enabled = Is_Enabled("oil.nvim"),
-	},
-	-- }}}
 	-- {{{ neoclip.lua
 	{
 		"AcksLd/nvim-neoclip.lua",

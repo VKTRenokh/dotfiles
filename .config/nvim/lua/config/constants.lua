@@ -267,14 +267,14 @@ Constants = {
 	-- {{{ Rainbow colors
 
 	colors = {
-		rainbow = not Is_Enabled("zenbones.nvim") and {
+		rainbow = {
 			"Gold",
 			"Orchid",
 			"DodgerBlue",
 			"Cornsilk",
 			"Salmon",
 			"LawnGreen",
-		} or {},
+		},
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -304,6 +304,7 @@ Constants = {
 			{ name = "path", keyword_length = 3, max_item_count = 30 },
 			{ name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
 			{ name = "calc", keyword_length = 2, max_item_count = 30 },
+			{ name = "codeium" },
 			--  { name = "spell", keyword_length = 2, max_item_count = 30 },
 		},
 	},

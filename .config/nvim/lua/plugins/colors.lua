@@ -16,112 +16,6 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ colorbuddy
-	{
-		"tjdevries/colorbuddy.nvim",
-		enabled = Is_Enabled("colorbuddy.nvim"),
-		lazy = false,
-		dependencies = {
-			"svrana/neosolarized.nvim",
-		},
-		config = function()
-			local n = require("neosolarized")
-			local neo = Is_Enabled("svrana/neosolarized.nvim")
-			if not neo then
-				vim.cmd([[colorscheme tokyonight]])
-				return
-			end
-
-			n.setup({
-				comment_italics = true,
-			})
-
-			local cb = require("colorbuddy.init")
-			local colors = cb.colors
-			local Group = cb.Group
-			-- local groups = cb.groups
-			local styles = cb.styles
-
-			Group.new("CursorLine", colors.none, colors.base03, styles.NONE, colors.base1)
-			Group.new("CursorLineNr", colors.yellow, colors.none, styles.NONE, colors.base1)
-			Group.new("Visual", colors.none, colors.base03, styles.reverse)
-
-			local cError = groups.Error.fg
-			local cInfo = groups.Information.fg
-			local cWarn = groups.Warning.fg
-			local cHint = groups.Hint.fg
-
-			Group.new("DiagnosticVirtualTextError", cError, cError:dark():dark():dark():dark(), styles.NONE)
-			Group.new("DiagnosticVirtualTextInfo", cInfo, cInfo:dark():dark():dark(), styles.NONE)
-			Group.new("DiagnosticVirtualTextWarn", cWarn, cWarn:dark():dark():dark(), styles.NONE)
-			Group.new("DiagnosticVirtualTextHint", cHint, cHint:dark():dark():dark(), styles.NONE)
-			Group.new("DiagnosticUnderlineError", colors.none, colors.none, styles.undercurl, cError)
-			Group.new("DiagnosticUnderlineWarn", colors.none, colors.none, styles.undercurl, cWarn)
-			Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
-			Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
-
-			vim.cmd([[
-      try
-      colorscheme neosolarized
-      catch /^Vim\%((\a\+)\)\=:E185/
-      colorscheme tokyonight
-      endtry
-      ]])
-		end,
-	},
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ neosolarized.nvim
-	{
-		"Tsuzat/NeoSolarized.nvim",
-		enabled = Is_Enabled("neosolarized.nvim"),
-		lazy = true,
-		priority = 1000,
-	},
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ nvim-base16
-
-	{
-		"VKTRenokh/nvim-base16",
-		enabled = Is_Enabled("nvim-base16"),
-		lazy = false,
-		priority = 1000,
-
-		config = function()
-			vim.cmd([[colorscheme base16-tokyo-night-terminal-storm]])
-			vim.cmd([[hi CmpItemAbr guibg=NONE]])
-		end,
-	},
-
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ nvim-transpartent
-
-	{
-		"xiyaowong/nvim-transparent",
-		enabled = Is_Enabled("nvim-transparent"),
-		event = "VimEnter",
-		opts = {
-			"Comment",
-			extra_gropus = {
-				"CursorLine",
-				"CursorLineNr",
-				"CursorLineSign",
-				"Folded",
-				"LineNr",
-				"Normal",
-				"SignColumn",
-				"NotifyBackground",
-			},
-			exclude_groups = {
-				"ColorColumn",
-				"EndOfBuffer",
-				"NonText",
-				"LazyNormal",
-			},
-		},
-		config = true,
-	},
-
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -159,7 +53,7 @@ return {
 			},
 			indent = { enable = true, disable = { "yml", "yaml" } },
 			rainbow = {
-				enable = true,
+				enable = Is_Enabled("nvim-ts-rainbow2"),
 				extended_mode = false,
 				max_file_lines = nil,
 				query = "rainbow-parens",
@@ -184,7 +78,7 @@ return {
 
 		dependencies = {
 			"windwp/nvim-ts-autotag",
-			"HiPhish/nvim-ts-rainbow2",
+			{ "HiPhish/nvim-ts-rainbow2", enabled = Is_Enabled("nvim-ts-rainbow2") },
 			{
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				config = function(_, opts)
@@ -232,35 +126,11 @@ return {
 		lazy = false,
 		opts = {
 			transparent = true,
-			style = "storm",
+			style = "moon",
 			styles = {
 				sidebars = "transparent",
 				floats = "transparent",
 			},
-			-- on_colors = function(colors)
-			-- 	local bg_dark = "#011423"
-			-- 	local bg_highlight = "#143652"
-			-- 	local bg_search = "#0A64AC"
-			-- 	local bg_visual = "#275378"
-			-- 	local fg = "#CBE0F0"
-			-- 	local fg_dark = "#B4D0E9"
-			-- 	local fg_gutter = "#627E97"
-			-- 	local border = "#547998"
-			--
-			-- 	colors.bg_dark = bg_dark
-			-- 	colors.bg_highlight = bg_highlight
-			-- 	colors.bg_popup = bg_dark
-			-- 	colors.bg_search = bg_search
-			-- 	colors.bg_sidebar = bg_dark
-			-- 	colors.bg_statusline = bg_dark
-			-- 	colors.bg_visual = bg_visual
-			-- 	colors.border = border
-			-- 	colors.fg = fg
-			-- 	colors.fg_dark = fg_dark
-			-- 	colors.fg_float = fg
-			-- 	colors.fg_gutter = fg_gutter
-			-- 	colors.fg_sidebar = fg_dark
-			-- end,
 		},
 		config = function(_, opts)
 			require("tokyonight").setup(opts)
@@ -269,31 +139,6 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ sxhkd-vim
-
-	{
-		"kovetskiy/sxhkd-vim",
-		ft = "sxhkd",
-		enabled = Is_Enabled("sxhkd-vim"),
-	},
-
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ everforest.nvim
-	{
-		"neanias/everforest-nvim",
-		priority = 1000,
-		opts = {
-			transparent = true,
-		},
-		lazy = false,
-		config = function(_, opts)
-			require("everforest").setup(opts)
-
-			vim.cmd.colorscheme([[everforest]])
-		end,
-		enabled = Is_Enabled("everforest.nvim"),
-	},
-	-- }}}
 	-- {{{ solarized-osaka.nvim
 	{
 		"craftzdog/solarized-osaka.nvim",
@@ -345,16 +190,17 @@ return {
 		enabled = Is_Enabled("solarized-osaka.nvim"),
 	},
 	-- }}}
-	-- {{{ zenbones.nvim
+	-- {{{ sainhe/sonokai
 	{
-		"mcchrish/zenbones.nvim",
-		event = "VeryLazy",
-		enabled = Is_Enabled("zenbones.nvim"),
-		dependencies = { "rktjmp/lush.nvim" },
+		"sainnhe/sonokai",
+		lazy = false,
+		enabled = false,
+		init = function()
+			vim.g.sonokai_style = "andromeda"
+			vim.g.sonokai_transparent_background = 1
+		end,
 		config = function()
-			-- vim.opt.background = "light"
-
-			vim.cmd.colorscheme("zenbones")
+			vim.cmd.colorscheme("sonokai")
 		end,
 	},
 	-- }}}

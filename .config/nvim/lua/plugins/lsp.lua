@@ -88,7 +88,6 @@ return {
 					return Is_Enabled("nvim-cmp")
 				end,
 			},
-			"SmiteshP/nvim-navic",
 		},
 		opts = {
 			diagnostics = {

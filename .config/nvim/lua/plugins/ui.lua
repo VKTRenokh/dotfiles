@@ -116,21 +116,11 @@ return {
 						.. (diag.warning and icons.Warning .. diag.warning or "")
 					return vim.trim(ret)
 				end,
-				offsets = {
-					{
-						highlight = "Directory",
-						text_align = "left",
-					},
-				},
 			},
 			highlights = {
-				background = {
-					fg = "#616161",
-				},
 				buffer_selected = {
-					fg = "#f1f1f1",
+					italic = true,
 					bold = false,
-					italic = false,
 				},
 			},
 		},
@@ -224,10 +214,6 @@ return {
 		event = { "BufReadPost", "BufNewFile" },
 		opts = {
 			indent = { char = "│" },
-			-- filetype_exclude = { "help", "alpha", "dashboard", "Trouble", "lazy" },
-			-- show_trailing_blankline_indent = false,
-			--	show_current_context_start = true,
-			--  use_treesitter = true,
 		},
 
 		config = function(_, opts)
@@ -507,32 +493,6 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ nvim-navic
-	{
-		"SmiteshP/nvim-navic",
-		lazy = true,
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("nvim-navic"),
-		init = function()
-			vim.g.navic_silence = true
-			require("config.functions").on_attach(function(client, buffer)
-				if client.server_capabilities.documentSymbolProvider then
-					require("nvim-navic").attach(client, buffer)
-					vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-				end
-			end)
-		end,
-		opts = function()
-			return {
-				separator = " ",
-				highlight = true,
-				lazy_update_content = true,
-				depth_limit = 5,
-				icons = Icons.kind,
-			}
-		end,
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-notify
 	{
 		"rcarriga/nvim-notify",
@@ -609,7 +569,7 @@ return {
 	},
 
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ incline.nvimm
+	-- {{{ incline.nvim
 	{
 		"b0o/incline.nvim",
 		dependencies = {},
@@ -640,10 +600,12 @@ return {
 		end,
 	},
 	-- }}}
+	-- {{{ lazygit.nvim
 	{
 		"kdheepak/lazygit.nvim",
 		keys = {
 			{ ";c", ":LazyGit<Cr>" },
 		},
 	},
+	-- }}}
 }

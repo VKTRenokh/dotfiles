@@ -6,7 +6,7 @@ return {
 	-- {{{ nvim-cmp
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		enabled = Is_Enabled("nvim-cmp"),
 		version = false,
 		dependencies = {
