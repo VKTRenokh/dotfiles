@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+workspace="/mnt/sda1/workspace"
+
+Green='\033[0;32m'
+White='\033[0;37m'
+
+projectName=$1
+visibility=$2
+
+if [[ -z $projectName ]] then
+  printf "${Green}? ${White}Project Name: "
+  read projectName
+fi
+
+if [[ -z $isPrivate ]] then
+  printf "${Green}? ${White}Is Public Repo (y/n): "
+  read -n 1 visibility
+  printf "\n"
+  [[ $visibility = "y" ]] && visibility="public" || visibility="private"
+fi
+
+cd $workspace
+gh repo create $projectName "--$visibility" || exit 1
+gh repo clone $projectName
+tmux new-session -c "$workspace/$projectName"
