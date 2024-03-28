@@ -28,7 +28,7 @@ return {
 			{ "<bs>", desc = "Decrement selection", mode = "x" },
 		},
 		opts = {
-			autopairs = { enable = true },
+			-- autopairs = { enable = true },
 			autotag = { enable = true, disable = { "xml" } },
 			autoinstall = true,
 			context_commenting = { enable = true, enable_autocmd = false },

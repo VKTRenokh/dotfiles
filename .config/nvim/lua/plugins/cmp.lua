@@ -6,7 +6,7 @@ return {
 	-- {{{ nvim-cmp
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = { "InsertEnter" },
 		enabled = Is_Enabled("nvim-cmp"),
 		version = false,
 		dependencies = {
@@ -39,12 +39,30 @@ return {
 				end,
 			}
 
+			local field_arrangement = {
+				atom = { "kind", "abbr", "menu" },
+				atom_colored = { "kind", "abbr", "menu" },
+			}
+
+			local cmp_style = "atom_colored" -- or "atom"
+
 			local formatting = {
-				fields = { "kind", "abbr", "menu" },
-				format = function(entry, vim_item)
-					vim_item.kind = string.format("%s", Constants.icons.kind[vim_item.kind])
-					vim_item.menu = (Constants.completion.source_mapping)[entry.source.name]
-					return vim_item
+				-- default fields order i.e completion word + item.kind + item.kind icons fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
+				fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
+
+				format = function(_, item)
+					local icon = (Constants.icons.kind and Constants.icons.kind[item.kind]) or ""
+
+					if cmp_style == "atom" or cmp_style == "atom_colored" then
+						icon = icon
+						item.menu = "[" .. item.kind .. "]"
+						item.kind = icon
+					else
+						icon = (" " .. icon .. " ")
+						item.kind = string.format("%s %s", icon)
+					end
+
+					return item
 				end,
 			}
 

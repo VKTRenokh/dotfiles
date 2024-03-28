@@ -78,7 +78,7 @@ return {
 
 					local stats = require("lazy").stats()
 					local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-					dashboard.section.footer.val = "⚡ Neovim loaded "
+					dashboard.section.footer.val = " Neovim loaded "
 						.. stats.count
 						.. " plugins in "
 						.. ms
@@ -149,7 +149,7 @@ return {
 	-- {{{ gitsigns.nvim
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "BufReadPre",
+		event = "User FilePost",
 		keys = {
 			{ "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>' },
 			{ "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>' },
@@ -211,7 +211,7 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		enabled = Is_Enabled("indent-blankline"),
-		event = { "BufReadPost", "BufNewFile" },
+		event = "User FilePost",
 		opts = {
 			indent = { char = "│" },
 		},
@@ -481,7 +481,7 @@ return {
 	{
 		"NvChad/nvim-colorizer.lua",
 		enabled = Is_Enabled("nvim-colorizer.lua"),
-		event = { "BufReadPost", "BufNewFile" },
+		event = "User FilePost",
 		opts = {
 			"javascript",
 			"typescript",

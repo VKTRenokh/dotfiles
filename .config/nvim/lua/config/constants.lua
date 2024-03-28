@@ -294,7 +294,6 @@ Constants = {
 			buffer = "[Buffer]",
 			path = "[Path]",
 			nvim_lua = "[Lua]",
-			-- spell = "[Spell]",
 		},
 
 		sources = {
@@ -304,7 +303,6 @@ Constants = {
 			{ name = "path", keyword_length = 3, max_item_count = 30 },
 			{ name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
 			{ name = "calc", keyword_length = 2, max_item_count = 30 },
-			{ name = "codeium" },
 			--  { name = "spell", keyword_length = 2, max_item_count = 30 },
 		},
 	},

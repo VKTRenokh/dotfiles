@@ -109,58 +109,25 @@ return {
 		enabled = Is_Enabled("flash.nvim"),
 	},
 	-- }}}
-	-- {{{ mini.surround
+	-- {{{ nvim-surround
 	{
-		"echasnovski/mini.surround",
+		"kylechui/nvim-surround",
 		keys = {
-			{ "sa", mode = { "n", "x", "v" } }, -- Add surrounding in Normal and Visual modes
-			{ "sd", mode = { "n", "x", "v" } }, -- Delete surrounding
-			{ "sh", mode = { "n", "x", "v" } }, -- Highlight surrounding
-			{ "sr", mode = { "n", "x", "v" } }, -- Replace surrounding
-			{ "sn", mode = { "n", "x", "v" } }, -- Update `n_lines`
+			"<C-g>s",
+			"<C-g>S",
+			"ys",
+			"yss",
+			"yS",
+			"ySS",
+			"S",
+			"gS",
+			"ds",
+			"cs",
+			"cS",
 		},
-		opts = {
-			{
-				-- Add custom surroundings to be used on top of builtin ones. For more
-				-- information with examples, see `:h MiniSurround.config`.
-				custom_surroundings = nil,
-
-				-- Duration (in ms) of highlight when calling `MiniSurround.highlight()`
-				highlight_duration = 500,
-
-				-- Module mappings. Use `''` (empty string) to disable one.
-				mappings = {
-					add = "sa", -- Add surrounding in Normal and Visual modes
-					delete = "sd", -- Delete surrounding
-					highlight = "sh", -- Highlight surrounding
-					replace = "sr", -- Replace surrounding
-					update_n_lines = "sn", -- Update `n_lines`
-					find = "su", -- Find surrounding (to the right)
-					find_left = "sU", -- Find surrounding (to the left)
-
-					suffix_last = "l", -- Suffix to search with "prev" method
-					suffix_next = "n", -- Suffix to search with "next" method
-				},
-
-				-- Number of lines within which surrounding is searched
-				n_lines = 20,
-
-				-- Whether to respect selection type:
-				-- - Place surroundings on separate lines in linewise mode.
-				-- - Place surroundings on each line in blockwise mode.
-				respect_selection_type = false,
-
-				-- How to search for surrounding (first inside current line, then inside
-				-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
-				-- 'cover_or_nearest', 'next', 'prev', 'nearest'. For more details,
-				-- see `:h MiniSurround.config`.
-				search_method = "cover",
-
-				-- Whether to disable showing non-error feedback
-				silent = false,
-			},
-		},
-		config = true,
+		config = function(_, opts)
+			require("nvim-surround").setup(opts)
+		end,
 		enabled = Is_Enabled("mini-surround"),
 	},
 	-- }}}

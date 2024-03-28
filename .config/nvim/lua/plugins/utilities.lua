@@ -55,16 +55,6 @@ return {
 		enabled = Is_Enabled("vim-rhubarb"),
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ vim-startuptime
-	{
-		"dstein64/vim-startuptime",
-		cmd = "StartupTime",
-		enabled = Is_Enabled("vim-startuptime"),
-		init = function()
-			vim.g.startuptime_tries = 10
-		end,
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ zen-mode.nvim
 
 	{
