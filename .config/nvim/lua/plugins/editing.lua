@@ -49,7 +49,7 @@ return {
 		},
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ nvim-autopairs
+	-- {{{ mini.pairs
 	{
 		"echasnovski/mini.pairs",
 		event = { "BufReadPost", "BufNewFile" },
@@ -117,9 +117,9 @@ return {
 			"<C-g>S",
 			"ys",
 			"yss",
-			"yS",
+			{ "yS", mode = { "n", "v" } },
 			"ySS",
-			"S",
+			{ "S", mode = { "n", "v" } },
 			"gS",
 			"ds",
 			"cs",
@@ -131,7 +131,8 @@ return {
 		enabled = Is_Enabled("mini-surround"),
 	},
 	-- }}}
-	{ -- {{{ refactoring.nvim
+	-- {{{ refactoring.nvim
+	{
 		"ThePrimeagen/refactoring.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -194,6 +195,7 @@ return {
 		},
 	},
 	-- }}}
+	-- {{{ copium.nvim
 	{
 		"Exafunction/codeium.nvim",
 		lazy = false,
@@ -206,4 +208,5 @@ return {
 			require("codeium").setup({})
 		end,
 	},
+	-- }}}
 }

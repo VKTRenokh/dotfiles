@@ -49,55 +49,6 @@ return {
 		enabled = Is_Enabled("vim-fugitive"),
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ vim-rhubarb
-	{
-		"tpope/vim-rhubarb",
-		enabled = Is_Enabled("vim-rhubarb"),
-	},
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ zen-mode.nvim
-
-	{
-		"folke/zen-mode.nvim",
-		enabled = Is_Enabled("zen-mode.nvim"),
-		keys = {
-			{
-				"<leader>zm",
-				function()
-					require("zen-mode").toggle()
-				end,
-			},
-		},
-		opts = {
-			window = {
-				width = 0.7,
-				height = 0.85,
-				options = {
-					colorcolumn = "",
-					cursorcolumn = false,
-					cursorline = false,
-					number = true,
-					relativenumber = true,
-				},
-			},
-			plugins = {
-				enabled = true,
-				options = {
-					ruler = false,
-					showmd = true,
-				},
-				twilight = { enabled = false },
-				gitsigns = { enabled = false },
-				tmux = { enabled = false },
-				alacritty = {
-					enabled = true,
-					font = "15",
-				},
-			},
-		},
-	},
-
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ gist.nvim
 	{
 		"Rawnly/gist.nvim",
@@ -110,6 +61,20 @@ return {
 		init = function()
 			vim.g.unception_block_while_host_edits = true
 		end,
+	},
+	-- }}}
+	-- {{{
+	{
+		"vuki656/package-info.nvim",
+		dependencies = {
+			"nui.nvim",
+		},
+		keys = {
+			{
+				"<leader>ns",
+				"<cmd>lua require('package-info').show()<cr>",
+			},
+		},
 	},
 	-- }}}
 }
