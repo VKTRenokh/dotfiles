@@ -52,7 +52,7 @@ return {
 	-- {{{ mini.pairs
 	{
 		"echasnovski/mini.pairs",
-		event = { "BufReadPost", "BufNewFile" },
+		event = "InsertEnter",
 		enabled = Is_Enabled("mini.pairs"),
 		opts = {},
 		keys = {
@@ -207,6 +207,19 @@ return {
 		config = function()
 			require("codeium").setup({})
 		end,
+	},
+	-- }}}
+	-- {{{ nvim-spectre
+	{
+		"nvim-pack/nvim-spectre",
+		enabled = Is_Enabled("nvim-spectre"),
+		build = false,
+		cmd = "Spectre",
+		opts = { open_cmd = "noswapfile vnew" },
+    -- stylua: ignore
+    keys = {
+      { "<leader>sr", function() require("spectre").open() end, desc = "Replace in Files (Spectre)" },
+    },
 	},
 	-- }}}
 }

@@ -57,23 +57,25 @@ return {
 	},
 	{
 		"samjwill/nvim-unception",
-		lazy = false,
+		enabled = true,
 		init = function()
 			vim.g.unception_block_while_host_edits = true
 		end,
 	},
 	-- }}}
-	-- {{{
+	-- {{{ mini.bufremove
 	{
-		"vuki656/package-info.nvim",
-		dependencies = {
-			"nui.nvim",
-		},
+		"echasnovski/mini.bufremove",
 		keys = {
 			{
-				"<leader>ns",
-				"<cmd>lua require('package-info').show()<cr>",
+				"<leader>bd",
+				function()
+					require("mini.bufremove").delete(0)
+				end,
+				desc = "Delete Buffer",
 			},
+    -- stylua: ignore
+    { "<leader>bD", function() require("mini.bufremove").delete(0, true) end, desc = "Delete Buffer (Force)" },
 		},
 	},
 	-- }}}

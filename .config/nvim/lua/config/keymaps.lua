@@ -55,11 +55,6 @@ Keymap("n", "<leader>V", "V`]")
 -- Save all files.
 Keymap("n", "<F2>", "<cmd>wall<cr>")
 
--- Delete current buffer.
-if Is_Enabled("vim-bbye") then
-	Keymap("n", "Q", "<cmd>Bdelete!<cr>")
-end
-
 -- Toggle [in]visible characters.
 Keymap("n", "<leader>i", "<cmd>set list!<cr>")
 

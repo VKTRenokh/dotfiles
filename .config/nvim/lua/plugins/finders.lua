@@ -54,7 +54,7 @@ return {
 				end,
 			},
 			{
-				";w",
+				";F",
 				function()
 					require("telescope.builtin").current_buffer_fuzzy_find(
 						require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
@@ -125,15 +125,23 @@ return {
 			"nvim-telescope/telescope-file-browser.nvim",
 			"AcksLd/nvim-neoclip.lua",
 		},
-		opts = {
-			defaults = {
-				layout_config = { prompt_position = "top" },
-				layout_strategy = "horizontal",
-				prompt_prefix = Constants.icons.ui.Telescope,
-				sorting_strategy = "ascending",
-				winblend = 0,
-			},
-		},
+		opts = function()
+			return {
+				defaults = {
+					layout_config = { prompt_position = "top" },
+					layout_strategy = "horizontal",
+					prompt_prefix = Constants.icons.ui.Telescope,
+					sorting_strategy = "ascending",
+					winblend = 0,
+
+					keymaps = {
+						["n"] = {
+							["<esc>"] = require("telescope.actions").close,
+						},
+					},
+				},
+			}
+		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ Telescope file browser

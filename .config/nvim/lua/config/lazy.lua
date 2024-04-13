@@ -1,7 +1,6 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
-	-- bootstrap lazy.nvim
 	vim.fn.system({
 		"git",
 		"clone",
@@ -21,13 +20,11 @@ require("lazy").setup({
 	},
 	defaults = {
 		lazy = true,
-		-- It's recommended to leave version=false for now, since a lot the plugin that support versioning,
-		-- have outdated releases, which may break your Neovim install.
 		version = false, -- always use the latest git commit
 		-- version = "*", -- try installing the latest stable version for plugins that support semver
 	},
 	install = { colorscheme = { "tokyonight" } },
-	checker = { enabled = true }, -- automatically check for plugin updates
+	checker = { enabled = false },
 	ui = {
 		border = "rounded",
 		title_pos = "center",
@@ -35,7 +32,6 @@ require("lazy").setup({
 	},
 	performance = {
 		rtp = {
-			-- disable some rtp plugins
 			disabled_plugins = {
 				"zipPl",
 				"2html_plugin",

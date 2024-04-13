@@ -253,7 +253,7 @@ return {
 
 			local diff = {
 				"diff",
-				colored = false,
+				colored = true,
 				symbols = { added = Icons.git.Add, modified = Icons.git.Mod, removed = Icons.git.Remove },
 				cond = hide_in_width,
 			}

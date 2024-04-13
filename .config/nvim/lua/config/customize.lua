@@ -32,7 +32,6 @@ Customize = {
 		["neodev.nvim"] = { enabled = false },
 		["noice.nvim"] = { enabled = true },
 		["nui.nvim"] = { enabled = true },
-		["nvim-autopairs"] = { enabled = true },
 		["nvim-cmp"] = { enabled = true },
 		["nvim-colorizer.lua"] = { enabled = true },
 		["nvim-notify"] = { enabled = true },
@@ -48,7 +47,6 @@ Customize = {
 		["tokyonight.nvim"] = { enabled = true },
 		["mini.pairs"] = { enabled = true },
 		["trouble.nvim"] = { enabled = true },
-		["vim-bbye"] = { enabled = false },
 		["vim-fugitive"] = { enabled = true },
 		["vim-illuminate"] = { enabled = false },
 		["vim-rhubarb"] = { enabled = true },
@@ -58,6 +56,8 @@ Customize = {
 		["nvim-lint"] = { enabled = false },
 		["incline.nvim"] = { enabled = true },
 		["solarized-osaka.nvim"] = { enabled = false },
+		["nvim-spectre"] = { enabled = true },
+		["mini.bufremove"] = { enabled = true },
 	},
 }
 -- }}}
