@@ -64,12 +64,6 @@ return {
 				end,
 			},
 			{
-				"<leader>Lf",
-				function()
-					vim.lsp.buf.format({ async = true })
-				end,
-			},
-			{
 				"<leader>r",
 				function()
 					vim.lsp.buf.rename()
@@ -93,7 +87,7 @@ return {
 			diagnostics = {
 				underline = true,
 				update_in_insert = false,
-				virtual_text = { spacing = 4, prefix = "●" },
+				virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
 				severity_sort = true,
 			},
 			autoformat = true,
@@ -102,7 +96,7 @@ return {
 				timeout_ms = nil,
 			},
 			servers = {
-				-- jsonls = require("plugins.lsp.jsonls"),
+				jsonls = require("plugins.lsp.jsonls"),
 				lua_ls = {
 					settings = {
 						Lua = Constants.lua_ls.Lua,
@@ -174,6 +168,14 @@ return {
 	{
 		"stevearc/conform.nvim",
 		event = { "BufWritePre" },
+		keys = {
+			{
+				"<leader>fr",
+				function()
+					require("conform").format()
+				end,
+			},
+		},
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -190,80 +192,6 @@ return {
 		enabled = Is_Enabled("conform.nvim"),
 	},
 	-- }}}
-	-- {{{ symbols-outline.nvim
-	{
-		"simrat39/symbols-outline.nvim",
-		enabled = Is_Enabled("symbols-outline"),
-		keys = {
-			{ "<leader>o", "<cmd>SymbolsOutline<cr>" },
-		},
-		cmd = "SymbolsOutline",
-		lazy = true,
-		opts = {
-			highlight_hovered_item = true,
-			show_guides = true,
-			auto_preview = false,
-			position = "right",
-			relative_width = true,
-			width = 45,
-			auto_close = false,
-			show_numbers = false,
-			show_relative_numbers = false,
-			show_symbol_details = true,
-			preview_bg_highlight = "Pmenu",
-			autofold_depth = nil,
-			auto_unfold_hover = true,
-			fold_markers = { "", "" },
-			wrap = false,
-			keymaps = {
-				close = { "<Esc>", "q" },
-				goto_location = "<Cr>",
-				focus_location = "o",
-				hover_symbol = "<C-space>",
-				toggle_preview = "K",
-				rename_symbol = "r",
-				code_actions = "a",
-				fold = "h",
-				unfold = "l",
-				fold_all = "W",
-				unfold_all = "E",
-				fold_reset = "R",
-			},
-			lsp_blacklist = {},
-			symbol_blacklist = {},
-			symbols = {
-				File = { icon = Constants.icons.kind.File, hl = "@text.uri" },
-				Module = { icon = Constants.icons.kind.Module, hl = "@namespace" },
-				Namespace = { icon = Constants.icons.type.Array, hl = "@namespace" },
-				Package = { icon = Constants.icons.misc.Package, hl = "@namespace" },
-				Class = { icon = Constants.icons.kind.Class, hl = "@type" },
-				Method = { icon = Constants.icons.kind.Method, hl = "@method" },
-				Property = { icon = Constants.icons.kind.Property, hl = "@method" },
-				Field = { icon = Constants.icons.kind.Field, hl = "@field" },
-				Constructor = { icon = Constants.icons.kind.Constructor, hl = "@constructor" },
-				Enum = { icon = Constants.icons.kind.Enum, hl = "@type" },
-				Interface = { icon = Constants.icons.kind.Interface, hl = "@type" },
-				Function = { icon = Constants.icons.kind.Function, hl = "@function" },
-				Variable = { icon = Constants.icons.kind.Variable, hl = "@constant" },
-				Constant = { icon = Constants.icons.kind.Constant, hl = "@constant" },
-				String = { icon = Constants.icons.kind.Struct, hl = "@string" },
-				Number = { icon = Constants.icons.kind.Number, hl = "@number" },
-				Boolean = { icon = Constants.icons.kind.Boolean, hl = "@boolean" },
-				Array = { icon = Constants.icons.type.Array, hl = "@constant" },
-				Object = { icon = Constants.icons.type.Object, hl = "@type" },
-				Key = { icon = "🔐", hl = "@type" },
-				Null = { icon = "NULL", hl = "@type" },
-				EnumMember = { icon = Constants.icons.kind.EnumMember, hl = "@field" },
-				Struct = { icon = Constants.icons.kind.Struct, hl = "@type" },
-				Event = { icon = Constants.icons.kind.Event, hl = "@type" },
-				Operator = { icon = Constants.icons.kind.Operator, hl = "@operator" },
-				TypeParameter = { icon = Constants.icons.kind.TypeParameter, hl = "@parameter" },
-				Component = { icon = Constants.icons.type.Array, hl = "@function" },
-				Fragment = { icon = Constants.icons.type.Array, hl = "@constant" },
-			},
-		},
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ neodev.nvim
 	{ "folke/neodev.nvim", enabled = Is_Enabled("neodev.nvim") },
 	-- ----------------------------------------------------------------------- }}}
