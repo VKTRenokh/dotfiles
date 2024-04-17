@@ -3,6 +3,22 @@ Icons = require("config.constants").icons
 Is_Enabled = require("config.functions").is_enabled
 
 return {
+	-- {{{ borrowed.nvim
+	{
+		"myypo/borrowed.nvim",
+		lazy = false,
+		priority = 1000,
+
+		version = "^0", -- Optional: avoid upgrading to breaking versions
+
+		config = function()
+			-- require("borrowed").setup({ ... }) -- Optional: only has to be called to change settings
+
+			-- If you are changing the config, colorscheme command has to be called after setup()
+			vim.cmd("colorscheme mayu") -- OR vim.cmd("colorscheme shin")
+		end,
+	},
+	-- }}}
 	-- {{{ catppuccin/nvim
 	{
 		"catppuccin/nvim",

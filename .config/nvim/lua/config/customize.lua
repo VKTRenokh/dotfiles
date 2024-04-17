@@ -56,6 +56,7 @@ Customize = {
 		["solarized-osaka.nvim"] = { enabled = false },
 		["nvim-spectre"] = { enabled = true },
 		["mini.bufremove"] = { enabled = true },
+		["borrowed.nvim"] = { enabled = false },
 	},
 }
 -- }}}
