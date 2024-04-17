@@ -18,7 +18,7 @@ window#waybar {
   background: #282828;
   margin: 5px 5px 5px 5px;
   padding: 0px 5px 0px 5px;
-  border-radius: 16px;
+  border-radius: 10px;
   border: solid 0px #f4d9e1;
   font-weight: normal;
   font-style: normal;
@@ -202,8 +202,8 @@ window#waybar {
   padding-left: 15px;
   padding-right: 15px;
   border-radius: 16px;
-  /*border-left: solid 1px #282738;*/
-  /*border-right: solid 1px #282738;*/
+  /* border-left: solid 1px #282738; */
+  border-right: solid 1px #282738;
   margin-top: 5px;
   margin-bottom: 5px;
   font-weight: normal;
@@ -212,8 +212,7 @@ window#waybar {
 
 #cpu {
   background-color: #282828;
-  /*color: #FABD2D;*/
-  border-radius: 16px;
+  border-radius: 10px;
   margin: 5px;
   margin-left: 5px;
   margin-right: 5px;
@@ -223,7 +222,7 @@ window#waybar {
 
 #temperature {
   background-color: #282828;
-  border-radius: 16px;
+  border-radius: 10px;
   margin: 5px;
   margin-left: 5px;
   margin-right: 5px;
@@ -237,8 +236,7 @@ window#waybar {
 
 #memory {
   background-color: #282828;
-  /*color: #83A598;*/
-  border-radius: 16px;
+  border-radius: 10px;
   margin: 5px;
   margin-left: 5px;
   margin-right: 5px;
@@ -248,8 +246,7 @@ window#waybar {
 
 #disk {
   background-color: #282828;
-  /*color: #8EC07C;*/
-  border-radius: 16px;
+  border-radius: 10px;
   margin: 5px;
   margin-left: 5px;
   margin-right: 5px;
