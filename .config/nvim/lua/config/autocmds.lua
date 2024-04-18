@@ -1,7 +1,10 @@
 Keymap = vim.keymap
--- ------------------------------------------------------------------------- }}}
 
--- {{{ Close some filetypes with <q>.
+local function augroup(name)
+	return vim.api.nvim_create_augroup("vvim" .. name, { clear = true })
+end
+
+-- {{{ Q to exit some filetypes
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"PlenaryTestPopup",
@@ -23,7 +26,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
 	end,
 })
--- {{{ Hightlight on yank
+-- }}}
+-- {{{ Yank on highlight
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -32,20 +36,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
--- ------------------------------------------------------------------------- }}}
--- {{{ Reload file when necessay.
-
-vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Resize splits when window is resized.
-
+-- }}}
+-- {{{ Automaticly resize splits
 vim.api.nvim_create_autocmd({ "VimResized" }, {
+	group = augroup("resize_splits"),
 	callback = function()
 		local currentTab = vim.fn.tabpagenr()
-		vim.cmd("tabdo wincmd")
+		vim.cmd("tabdo wincmd =")
 		vim.cmd("tabnext " .. currentTab)
 	end,
 })
-
--- ------------------------------------------------------------------------- }}}
+-- }}}
