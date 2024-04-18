@@ -37,6 +37,7 @@ return {
 			},
 			indent = { enable = true, disable = { "yml", "yaml" } },
 			rainbow = {
+				enable = true,
 				extended_mode = false,
 				max_file_lines = nil,
 				query = "rainbow-parens",
@@ -61,7 +62,6 @@ return {
 
 		dependencies = {
 			"windwp/nvim-ts-autotag",
-			{ "HiPhish/nvim-ts-rainbow2" },
 			{
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				config = function(_, opts)
@@ -93,14 +93,9 @@ return {
 		},
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ nvim-ts-rainbow
-
-	{
-		"HiPhish/nvim-ts-rainbow2",
-		event = "LazyFile",
-	},
-
-	-- ----------------------------------------------------------------------- }}}
+	-- {{{ nvim-ts-rainbow2
+	{ "HiPhish/nvim-ts-rainbow2", event = "LazyFile" },
+	-- }}}
 	-- {{{ tokyonight.nvim
 	{
 		"folke/tokyonight.nvim",

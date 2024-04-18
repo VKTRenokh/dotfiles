@@ -7,7 +7,7 @@ return {
 		keys = {
 			{ "<leader>aa", "<cmd>Alpha<cr>" },
 		},
-		event = { "VimEnter", "BufReadPost", "BufNewFile" },
+		event = "VimEnter",
 		opts = function()
 			local dashboard = require("alpha.themes.dashboard")
 			local logo = [[
@@ -471,15 +471,17 @@ return {
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-colorizer
 	{
-		"NvChad/nvim-colorizer.lua",
-		event = "User FilePost",
+		"JosefLitos/colorizer.nvim",
+		ft = { "css", "html", "js", "ts" },
 		opts = {
-			"javascript",
-			"typescript",
-			"css",
-			"html",
+			filetypes = {
+				"css",
+				"html",
+				"js",
+				"ts",
+			},
 		},
-		config = function()
+		config = function(_, opts)
 			require("colorizer").setup(opts)
 		end,
 	},
@@ -487,6 +489,15 @@ return {
 	-- {{{ nvim-notify
 	{
 		"rcarriga/nvim-notify",
+		keys = {
+			{
+				"<leader>un",
+
+				function()
+					require("notify").dismiss({ silent = true, pending = true })
+				end,
+			},
+		},
 		opts = {
 			level = 3,
 			render = "wrapped-compact",
@@ -498,7 +509,6 @@ return {
 			max_width = function()
 				return math.floor(vim.o.columns * 0.75)
 			end,
-			background_colour = "#121212",
 		},
 		init = function()
 			-- when noice is not enabled, install notify on VeryLazy
@@ -518,7 +528,7 @@ return {
 		event = "VeryLazy",
 		lazy = true,
 		opts = {
-			-- override = Constants.icons.web_devicons,
+			override = Constants.icons.web_devicons,
 		},
 	},
 
