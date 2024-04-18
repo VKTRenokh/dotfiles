@@ -1,6 +1,3 @@
-Is_Enabled = require("config.functions").is_enabled
-Customize = require("config.customize")
-
 return {
 	-- {{{ plenary
 	{
@@ -11,14 +8,7 @@ return {
 	-- {{{ toggleterm.nvim
 	{
 		"akinsho/toggleterm.nvim",
-		enabled = Is_Enabled("toggleterm.nvim"),
 		keys = {
-			{
-				"<leader>Tg",
-				function()
-					Customize.toggleterm.lazygit()
-				end,
-			},
 			{
 				"<leader>TT",
 				"<Cmd>ToggleTerm<cr>",
@@ -46,7 +36,6 @@ return {
 			{ "<leader>g", "<cmd>G<cr>", desc = "open fugitive" },
 			{ "<leader>G", "<cmd>Gvdiffsplit<cr>", desc = "git diff vertical split" },
 		},
-		enabled = Is_Enabled("vim-fugitive"),
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ gist.nvim

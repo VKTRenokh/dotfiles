@@ -1,6 +1,4 @@
 Constants = require("config.constants")
-Customize = require("config.customize")
-Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ Telescope
@@ -117,7 +115,6 @@ return {
 				desc = "Goto Definition",
 			},
 		},
-		enabled = Is_Enabled("telescope.nvim"),
 		cmd = "Telescope",
 		version = false,
 		dependencies = {
@@ -147,7 +144,6 @@ return {
 	-- {{{ Telescope file browser
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
-		enabled = Is_Enabled("telescope-file-browser.nvim"),
 		dependencies = { "nvim-telescope/telescope.nvim" },
 		--  cmd = "Telescope",
 		config = function()

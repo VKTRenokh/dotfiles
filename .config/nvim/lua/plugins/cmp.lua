@@ -1,13 +1,10 @@
 Constants = require("config.constants")
-Customize = require("config.customize")
-Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ nvim-cmp
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter" },
-		enabled = Is_Enabled("nvim-cmp"),
+		event = "InsertEnter",
 		version = false,
 		dependencies = {
 			"hrsh7th/cmp-buffer",
@@ -29,8 +26,8 @@ return {
 			end
 
 			local completion = {
-				completeopt = "menu,menuone,noselect",
-				keyword_length = 1,
+				completeopt = "menu,menuone,noinsert",
+				-- keyword_length = 1,
 			}
 
 			local snippet = {
@@ -39,28 +36,12 @@ return {
 				end,
 			}
 
-			local field_arrangement = {
-				atom = { "kind", "abbr", "menu" },
-				atom_colored = { "kind", "abbr", "menu" },
-			}
-
-			local cmp_style = "atom_colored" -- or "atom"
-
 			local formatting = {
 				-- default fields order i.e completion word + item.kind + item.kind icons fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
-				fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
-
 				format = function(_, item)
 					local icon = (Constants.icons.kind and Constants.icons.kind[item.kind]) or ""
 
-					if cmp_style == "atom" or cmp_style == "atom_colored" then
-						icon = icon
-						item.menu = "[" .. item.kind .. "]"
-						item.kind = icon
-					else
-						icon = (" " .. icon .. " ")
-						item.kind = string.format("%s %s", icon)
-					end
+					item.kind = icon .. item.kind
 
 					return item
 				end,

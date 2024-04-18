@@ -1,9 +1,7 @@
 -- {{{ Global definitions
 
-Customize = require("config.customize")
 Functions = require("config.functions")
 Keymap = Functions.keymap
-Is_Enabled = Functions.is_enabled
 -- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings
 
@@ -142,8 +140,5 @@ Keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>")
 Keymap("n", "<leader>VV", "V`]")
 
 -- ------------------------------------------------------------------------- }}}
-vim.keymap.set("n", "gp", function()
-	return "`[" .. vim.fn.strpart(vim.fn.getregtype(), 0, 1) .. "`]"
-end, { expr = true })
-
+Keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
 vim.keymap.set("i", "<C-Backspace>", "<esc>ciw")

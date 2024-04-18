@@ -1,12 +1,10 @@
 Constants = require("config.constants")
-Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ mason.nvim
 	{
 		"williamboman/mason.nvim",
 		cmd = "Mason",
-		enabled = Is_Enabled("mason.nvim"),
 		opts = {
 			ui = {
 				border = "rounded",
@@ -23,11 +21,27 @@ return {
 		config = function(_, opts)
 			require("mason").setup(opts)
 			local mr = require("mason-registry")
-			for _, tool in ipairs(opts.ensure_installed) do
-				local p = mr.get_package(tool)
-				if not p:is_installed() then
-					p:install()
+			mr:on("package:install:success", function()
+				vim.defer_fn(function()
+					-- trigger FileType event to possibly load this newly installed LSP server
+					require("lazy.core.handler.event").trigger({
+						event = "FileType",
+						buf = vim.api.nvim_get_current_buf(),
+					})
+				end, 100)
+			end)
+			local function ensure_installed()
+				for _, tool in ipairs(opts.ensure_installed) do
+					local p = mr.get_package(tool)
+					if not p:is_installed() then
+						p:install()
+					end
 				end
+			end
+			if mr.refresh then
+				mr.refresh(ensure_installed)
+			else
+				ensure_installed()
 			end
 		end,
 	},
@@ -35,42 +49,19 @@ return {
 	-- {{{ nvim-lspconfig
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "LazyFile",
 		keys = {
-			{
-				"<leader>LF",
-				"<cmd>LspToggleAutoFormat<cr>",
-			},
-			{
-				"<leader>Li",
-				"<cmd>LspInfo<cr>",
-			},
-			{
-				"<leader>Ll",
-				function()
-					vim.lsp.codelens.run()
-				end,
-			},
-			{
-				"<leader>Lq",
-				function()
-					vim.lsp.diagnostic.set_loclist()
-				end,
-			},
-			{
-				"gi",
-				function()
-					vim.lsp.buf.code_action()
-				end,
-			},
-			{
-				"<leader>r",
-				function()
-					vim.lsp.buf.rename()
-				end,
-			},
+			{ "<leader>LF", "<cmd>LspToggleAutoFormat<cr>" },
+			{ "<leader>Li", "<cmd>LspInfo<cr>" },
+      -- stylua: ignore
+			{ "<leader>Ll", function() vim.lsp.codelens.run() end, },
+      -- stylua: ignore
+			{ "<leader>Lq", function() vim.lsp.diagnostic.set_loclist() end, },
+      -- stylua: ignore
+			{ "gi", function() vim.lsp.buf.code_action() end, },
+      -- stylua: ignore
+			{ "<leader>r", function() vim.lsp.buf.rename() end, },
 		},
-		enabled = Is_Enabled("lsp-config"),
 		dependencies = {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
 			{ "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
@@ -78,9 +69,6 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			{
 				"hrsh7th/cmp-nvim-lsp",
-				cond = function()
-					return Is_Enabled("nvim-cmp")
-				end,
 			},
 		},
 		opts = {
@@ -89,12 +77,21 @@ return {
 				update_in_insert = false,
 				virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
 				severity_sort = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = Icons.diagnostics.Error,
+						[vim.diagnostic.severity.WARN] = Icons.diagnostics.Warning,
+						[vim.diagnostic.severity.HINT] = Icons.diagnostics.Hint,
+						[vim.diagnostic.severity.INFO] = Icons.diagnostics.Information,
+					},
+				},
 			},
 			autoformat = true,
 			format = {
 				formatting_options = nil,
 				timeout_ms = nil,
 			},
+			capabilities = {},
 			servers = {
 				jsonls = require("plugins.lsp.jsonls"),
 				lua_ls = {
@@ -114,52 +111,60 @@ return {
 			},
 		},
 		config = function(_, opts)
-			for name, icon in pairs(Constants.icons.diagnostics) do
-				name = "DiagnosticSign" .. name
-				vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-			end
-			vim.diagnostic.config(opts.diagnostics)
+			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
 			local servers = opts.servers
-			local capabilities =
-				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+			local hasCmp, cmpNvimLsp = pcall(require, "cmp_nvim_lsp")
+			local capabilities = vim.tbl_deep_extend(
+				"force",
+				{},
+				vim.lsp.protocol.make_client_capabilities(),
+				hasCmp and cmpNvimLsp.default_capabilities() or {},
+				opts.capabilities or {}
+			)
 
 			local function setup(server)
-				local server_opts = vim.tbl_deep_extend("force", {
+				local serverOpts = vim.tbl_deep_extend("force", {
 					capabilities = vim.deepcopy(capabilities),
 				}, servers[server] or {})
 
 				if opts.setup[server] then
-					if opts.setup[server](server, server_opts) then
+					if opts.setup[server](server, serverOpts) then
 						return
 					end
 				elseif opts.setup["*"] then
-					if opts.setup["*"](server, server_opts) then
+					if opts.setup["*"](server, serverOpts) then
 						return
 					end
 				end
-				require("lspconfig")[server].setup(server_opts)
+
+				require("lspconfig")[server].setup(serverOpts)
 			end
 
-			local have_mason, mlsp = pcall(require, "mason-lspconfig")
-			local available = have_mason and mlsp.get_available_servers() or {}
+			local hasMason, mlsp = pcall(require, "mason-lspconfig")
+			local allMslpServers = {}
 
-			local ensure_installed = {} ---@type string[]
-			for server, server_opts in pairs(servers) do
-				if server_opts then
-					server_opts = server_opts == true and {} or server_opts
-					-- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-					if server_opts.mason == false or not vim.tbl_contains(available, server) then
+			if hasMason then
+				allMslpServers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+			end
+
+			local ensureInstalled = {} ---@type string[]
+			for server, serverOpts in pairs(servers) do
+				if serverOpts then
+					serverOpts = serverOpts == true and {} or serverOpts
+
+					if serverOpts.mason == false or not vim.tbl_contains(allMslpServers, server) then
+						vim.notify(server)
 						setup(server)
-					else
-						ensure_installed[#ensure_installed + 1] = server
+					elseif serverOpts.enabled ~= false then
+						ensureInstalled[#ensureInstalled + 1] = server
 					end
 				end
 			end
 
-			if have_mason then
-				mlsp.setup({ ensure_installed = ensure_installed })
-				mlsp.setup_handlers({ setup })
+			if hasMason then
+				mlsp.setup({ ensure_installed = ensureInstalled, handlers = { setup } })
 			end
 		end,
 	},
@@ -189,13 +194,12 @@ return {
 				lsp_fallback = true,
 			},
 		},
-		enabled = Is_Enabled("conform.nvim"),
 	},
 	-- }}}
 	-- {{{ neodev.nvim
-	{ "folke/neodev.nvim", enabled = Is_Enabled("neodev.nvim") },
+	{ "folke/neodev.nvim", enabled = false },
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ neoconf.nvim
-	{ "folke/neoconf.nvim", enabled = Is_Enabled("neoconf.nvim"), cmd = "Neoconf", config = true },
+	{ "folke/neoconf.nvim", enabled = false, cmd = "Neoconf", config = true },
 	-- ----------------------------------------------------------------------- }}}
 }

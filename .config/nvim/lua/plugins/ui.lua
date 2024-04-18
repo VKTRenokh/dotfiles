@@ -1,12 +1,9 @@
-Customize = require("config.customize")
 Icons = require("config.constants").icons
-Is_Enabled = require("config.functions").is_enabled
 
 return {
 	-- {{{ alpha.nvim
 	{
 		"goolord/alpha-nvim",
-		enabled = Is_Enabled("alpha.nvim"),
 		keys = {
 			{ "<leader>aa", "<cmd>Alpha<cr>" },
 		},
@@ -94,8 +91,6 @@ return {
 	-- {{{ bufferline.nvim
 	{
 		"akinsho/bufferline.nvim",
-		-- event = "VeryLazy",
-		enabled = Is_Enabled("bufferline.nvim"),
 		keys = {
 			{ "te", "<cmd>:tabedit<cr>", desc = "Tabs" },
 			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>" },
@@ -129,7 +124,6 @@ return {
 	-- {{{ dressing
 	{
 		"stevearc/dressing.nvim",
-		enabled = Is_Enabled("dressing"),
 		lazy = true,
 		init = function()
 			---@diagnostic disable-next-line: duplicate-set-field
@@ -149,7 +143,7 @@ return {
 	-- {{{ gitsigns.nvim
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "User FilePost",
+		event = "LazyFile",
 		keys = {
 			{ "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>' },
 			{ "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>' },
@@ -160,7 +154,6 @@ return {
 			{ "<leader>Sp", '<cmd>lua require "gitsigns".preview_hunk()<cr>' },
 			{ "<leader>Sr", '<cmd>lua require "gitsigns".reset_buffer()<cr>' },
 		},
-		enabled = Is_Enabled("gitsigns.nvim"),
 		opts = {
 			signs = {
 				add = { text = "▎" },
@@ -207,12 +200,10 @@ return {
 	-- {{{ indent-blankline.nvim
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		enabled = Is_Enabled("indent-blankline"),
-		event = "User FilePost",
+		event = "LazyFile",
 		opts = {
 			indent = { char = "│" },
 		},
-
 		config = function(_, opts)
 			require("ibl").setup(opts)
 		end,
@@ -221,8 +212,15 @@ return {
 	-- {{{ lualine.nvim
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
-		enabled = Is_Enabled("lualine.nvim"),
+		event = "LazyFile",
+		init = function()
+			vim.g.lualine_laststatus = vim.o.laststatus
+			if vim.fn.argc(-1) > 0 then
+				vim.o.statusline = " "
+			else
+				vim.o.laststatus = 0
+			end
+		end,
 		opts = function(_, opts)
 			local hide_in_width = function()
 				return vim.fn.winwidth(0) > 80
@@ -379,7 +377,6 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
-		enabled = Is_Enabled("markdown-preview.nvim"),
 		config = function()
 			vim.fn["mkdp#util#install"]()
 		end,
@@ -388,7 +385,7 @@ return {
 	-- {{{ mini.indentscope
 	{
 		"echasnovski/mini.indentscope",
-		enabled = Is_Enabled("mini-indentscope"),
+		enabled = false,
 		version = false, -- wait till new 0.7.0 release to put it back on semver
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
@@ -418,7 +415,6 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		enabled = Is_Enabled("noice.nvim"),
 		opts = {
 			lsp = {
 				progress = {
@@ -470,14 +466,12 @@ return {
 	-- {{{ nui.nvim
 	{
 		"MunifTanjim/nui.nvim",
-		enabled = Is_Enabled("nui.nvim"),
 		lazy = true,
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-colorizer
 	{
 		"NvChad/nvim-colorizer.lua",
-		enabled = Is_Enabled("nvim-colorizer.lua"),
 		event = "User FilePost",
 		opts = {
 			"javascript",
@@ -493,7 +487,6 @@ return {
 	-- {{{ nvim-notify
 	{
 		"rcarriga/nvim-notify",
-		enabled = Is_Enabled("nvim-notify"),
 		opts = {
 			level = 3,
 			render = "wrapped-compact",
@@ -522,7 +515,6 @@ return {
 
 	{
 		"nvim-tree/nvim-web-devicons",
-		enabled = Is_Enabled("nvim-web-devicons"),
 		event = "VeryLazy",
 		lazy = true,
 		opts = {
@@ -536,7 +528,6 @@ return {
 	{
 		"nvim-lua/popup.nvim",
 		event = "VimEnter",
-		enabled = Is_Enabled("popup.nvim"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
@@ -552,7 +543,6 @@ return {
 			{ "<leader>Td", "<cmd>TroubleToggle<cr>" },
 		},
 		-- event = "VimEnter",
-		enabled = Is_Enabled("trouble.nvim"),
 		opts = { use_diagnostic_signs = true },
 	},
 
@@ -561,42 +551,10 @@ return {
 
 	{
 		"xiyaowong/virtcolumn.nvim",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("virtcolumn.nvim"),
+		event = "LazyFile",
 	},
 
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ incline.nvim
-	{
-		"b0o/incline.nvim",
-		dependencies = {},
-		event = "BufReadPre",
-		priority = 1200,
-		config = function()
-			local helpers = require("incline.helpers")
-			require("incline").setup({
-				window = {
-					padding = 0,
-					margin = { horizontal = 0 },
-				},
-				render = function(props)
-					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-					local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
-					local modified = vim.bo[props.buf].modified
-					local buffer = {
-						ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
-							or "",
-						" ",
-						{ filename, gui = modified and "bold,italic" or "bold" },
-						" ",
-						guibg = "#363944",
-					}
-					return buffer
-				end,
-			})
-		end,
-	},
-	-- }}}
 	-- {{{ lazygit.nvim
 	{
 		"kdheepak/lazygit.nvim",

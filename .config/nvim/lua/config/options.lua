@@ -8,7 +8,6 @@ local options = {
 	breakindent = true,
 	cmdheight = 1,
 	clipboard = "unnamedplus",
-	colorcolumn = "+1",
 	complete = { ".", "w", "b", "u", "t", "i", "kspell" },
 	completeopt = { "menuone", "noinsert", "noselect" },
 	conceallevel = 0,

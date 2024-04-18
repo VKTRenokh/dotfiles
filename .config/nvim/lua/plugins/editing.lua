@@ -1,20 +1,16 @@
-Is_Enabled = require("config.functions").is_enabled
-
 return {
 	-- {{{ bullets.nvim
 
 	{
 		"dkarter/bullets.vim",
 		ft = "markdown",
-		enabled = Is_Enabled("bullets.vim"),
 	},
 
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ Comment.nvim
 	{
 		"echasnovski/mini.comment",
-		event = { "BufReadPost", "BufNewFile" },
-		enabled = Is_Enabled("comment.nvim"),
+		event = "LazyFile",
 		opts = {
 			options = {
 				-- Function to compute custom 'commentstring' (optional)
@@ -53,7 +49,6 @@ return {
 	{
 		"echasnovski/mini.pairs",
 		event = "InsertEnter",
-		enabled = Is_Enabled("mini.pairs"),
 		opts = {},
 		keys = {
 			{
@@ -106,7 +101,6 @@ return {
 			},
 		},
 		config = true,
-		enabled = Is_Enabled("flash.nvim"),
 	},
 	-- }}}
 	-- {{{ nvim-surround
@@ -128,7 +122,6 @@ return {
 		config = function(_, opts)
 			require("nvim-surround").setup(opts)
 		end,
-		enabled = Is_Enabled("mini-surround"),
 	},
 	-- }}}
 	-- {{{ refactoring.nvim
@@ -157,44 +150,6 @@ return {
 			require("refactoring").setup(opts)
 		end,
 	}, -- }}}
-	-- {{{ vim-illuminate
-	{
-		"RRethy/vim-illuminate",
-		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			delay = 200,
-			large_file_cutoff = 2000,
-			large_file_overrides = {
-				providers = { "lsp" },
-			},
-		},
-		config = function(_, opts)
-			require("illuminate").configure(opts)
-
-			local function map(key, dir, buffer)
-				vim.keymap.set("n", key, function()
-					require("illuminate")["goto_" .. dir .. "_reference"](false)
-				end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
-			end
-
-			map("]]", "next")
-			map("[[", "prev")
-
-			-- also set it after loading ftplugins, since a lot overwrite [[ and ]]
-			vim.api.nvim_create_autocmd("FileType", {
-				callback = function()
-					local buffer = vim.api.nvim_get_current_buf()
-					map("]]", "next", buffer)
-					map("[[", "prev", buffer)
-				end,
-			})
-		end,
-		keys = {
-			{ "]]", desc = "Next Reference" },
-			{ "[[", desc = "Prev Reference" },
-		},
-	},
-	-- }}}
 	-- {{{ copium.nvim
 	{
 		"Exafunction/codeium.nvim",
@@ -212,7 +167,6 @@ return {
 	-- {{{ nvim-spectre
 	{
 		"nvim-pack/nvim-spectre",
-		enabled = Is_Enabled("nvim-spectre"),
 		build = false,
 		cmd = "Spectre",
 		opts = { open_cmd = "noswapfile vnew" },
@@ -220,6 +174,15 @@ return {
     keys = {
       { "<leader>sr", function() require("spectre").open() end, desc = "Replace in Files (Spectre)" },
     },
+	},
+	-- }}}
+	-- {{{ vim-illuminate
+	{
+		"RRethy/vim-illuminate",
+		event = "LazyFile",
+		config = function(_, opts)
+			require("illuminate").configure(opts)
+		end,
 	},
 	-- }}}
 }
