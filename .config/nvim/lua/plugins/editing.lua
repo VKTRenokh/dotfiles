@@ -1,9 +1,18 @@
 return {
 	-- {{{ bullets.nvim
-
 	{
 		"dkarter/bullets.vim",
 		ft = "markdown",
+		event = "LazyFile",
+		init = function()
+			vim.g.bullets_enabled_file_types = {
+				"gitcommit",
+				"markdown",
+				"scratch",
+				"text",
+				"wiki",
+			}
+		end,
 	},
 
 	-- ----------------------------------------------------------------------- }}}

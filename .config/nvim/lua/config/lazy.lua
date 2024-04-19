@@ -22,7 +22,7 @@ require("lazy").setup({
 		version = false,
 	},
 	install = { colorscheme = { "tokyonight" } },
-	checker = { enabled = true },
+	checker = { enabled = true, notify = false },
 	ui = {
 		border = "rounded",
 		title_pos = "center",

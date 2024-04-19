@@ -5,52 +5,21 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		keys = {
-			{
-				";l",
-				"<cmd>Telescope neoclip<cr>",
-			},
-			{
-				";f",
-				function()
-					require("telescope.builtin").find_files({ hidden = true })
-				end,
-			},
-			{
-				";g",
-				function()
-					require("telescope.builtin").git_commits()
-				end,
-			},
-			{
-				";r",
-				function()
-					require("telescope.builtin").live_grep()
-				end,
-			},
-			{
-				"\\\\",
-				function()
-					require("telescope.builtin").buffers()
-				end,
-			},
-			{
-				";t",
-				function()
-					require("telescope.builtin").help_tags()
-				end,
-			},
-			{
-				";;",
-				function()
-					require("telescope.builtin").resume()
-				end,
-			},
-			{
-				";e",
-				function()
-					require("telescope.builtin").diagnostics()
-				end,
-			},
+			{ ";l", "<cmd>Telescope neoclip<cr>" },
+      -- stylua: ignore
+			{ ";f", function() require("telescope.builtin").find_files({ hidden = true }) end, },
+      -- stylua: ignore
+			{ ";g", function() require("telescope.builtin").git_commits() end, },
+      -- stylua: ignore
+			{ ";r", function() require("telescope.builtin").live_grep() end, },
+      -- stylua: ignore
+			{ "\\\\", function() require("telescope.builtin").buffers() end, },
+      -- stylua: ignore
+			{ ";t", function() require("telescope.builtin").help_tags() end, },
+      -- stylua: ignore
+			{ ";;", function() require("telescope.builtin").resume() end, },
+      -- stylua: ignore
+			{ ";e", function() require("telescope.builtin").diagnostics() end, },
 			{
 				";F",
 				function()
@@ -74,46 +43,15 @@ return {
 					})
 				end,
 			},
-			{
-				"<leader>LS",
-				"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-			},
-			{
-				"<leader>Ls",
-				"<cmd>Telescope lsp_document_symbols<cr>",
-			},
-			{
-				"gD",
-				function()
-					vim.lsp.buf.declaration()
-				end,
-				desc = "Goto Definition",
-			},
-			{
-				"gd",
-				"<Cmd>Telescope lsp_definitions<cr>",
-				desc = "Goto Definition",
-			},
-			{
-				"gr",
-				"<Cmd>Telescope lsp_references<cr>",
-				desc = "Goto Definition",
-			},
-			{
-				"gI",
-				"<Cmd>Telescope lsp_implementations<cr>",
-				desc = "Goto Definition",
-			},
-			{
-				"gK",
-				"<Cmd>Telescope lsp_implementations<cr>",
-				desc = "Goto Definition",
-			},
-			{
-				"gt",
-				"<Cmd>Telescope lsp_type_definitions<cr>",
-				desc = "Goto Definition",
-			},
+			{ "<leader>LS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>" },
+			{ "<leader>Ls", "<cmd>Telescope lsp_document_symbols<cr>" },
+      -- stylua: ignore
+			{ "gD", function() vim.lsp.buf.declaration() end, desc = "Goto Definition", },
+			{ "gd", "<Cmd>Telescope lsp_definitions<cr>", desc = "References" },
+			{ "gr", "<Cmd>Telescope lsp_references<cr>", desc = "references" },
+			{ "gK", "<Cmd>Telescope lsp_implementations<cr>", desc = "lsp implementations" },
+			{ "gt", "<Cmd>Telescope lsp_type_definitions<cr>", desc = "Lsp type defenetions" },
+			{ ";n", "<Cmd>Telescope notify<cr>", desc = "notifications" },
 		},
 		cmd = "Telescope",
 		version = false,
@@ -129,7 +67,7 @@ return {
 					layout_strategy = "horizontal",
 					prompt_prefix = Constants.icons.ui.Telescope,
 					sorting_strategy = "ascending",
-					winblend = 0,
+					winblend = 10,
 
 					keymaps = {
 						["n"] = {
