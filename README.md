@@ -19,7 +19,7 @@ Install all needed packages
 ```bash
 sudo pacman -S --needed hyprland waybar dunst neovim lua lxappearance artix-dark-theme tmux kitty qutebrowser \
                         pipewire pipewire-pulse wireplumber xdg-desktop-portal-hyprland brightnessctl wpa_supplicant \
-                        noto-fonts-cjk noto-fonts-emoji noto-fonts
+                        noto-fonts-cjk noto-fonts-emoji noto-fonts ripgrep fzy fzf zsh
 ```
 
 Aur
