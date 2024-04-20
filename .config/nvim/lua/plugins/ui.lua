@@ -213,14 +213,6 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "LazyFile",
-		init = function()
-			vim.g.lualine_laststatus = vim.o.laststatus
-			if vim.fn.argc(-1) > 0 then
-				vim.o.statusline = " "
-			else
-				vim.o.laststatus = 0
-			end
-		end,
 		opts = function(_, opts)
 			local hide_in_width = function()
 				return vim.fn.winwidth(0) > 80
@@ -387,7 +379,7 @@ return {
 		"echasnovski/mini.indentscope",
 		enabled = false,
 		version = false, -- wait till new 0.7.0 release to put it back on semver
-		event = { "BufReadPre", "BufNewFile" },
+		event = "LazyFile",
 		opts = {
 			draw = {
 				delay = 0,

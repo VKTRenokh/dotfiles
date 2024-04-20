@@ -38,20 +38,6 @@ return {
 		},
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ gist.nvim
-	{
-		"Rawnly/gist.nvim",
-		dependencies = { "samjwill/nvim-unception" },
-		cmd = { "GistCreate", "GistCreateFromFile", "GistsList" },
-	},
-	{
-		"samjwill/nvim-unception",
-		enabled = true,
-		init = function()
-			vim.g.unception_block_while_host_edits = true
-		end,
-	},
-	-- }}}
 	-- {{{ mini.bufremove
 	{
 		"echasnovski/mini.bufremove",

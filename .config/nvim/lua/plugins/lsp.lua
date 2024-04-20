@@ -58,7 +58,7 @@ return {
       -- stylua: ignore
 			{ "<leader>Lq", function() vim.lsp.diagnostic.set_loclist() end, },
       -- stylua: ignore
-			{ "gi", function() vim.lsp.buf.code_action() end, },
+			{ "gI", function() vim.lsp.buf.code_action() end, },
       -- stylua: ignore
 			{ "<leader>r", function() vim.lsp.buf.rename() end, },
 		},

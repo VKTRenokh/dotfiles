@@ -22,7 +22,6 @@ require("lazy").setup({
 		version = false,
 	},
 	install = { colorscheme = { "tokyonight" } },
-	checker = { enabled = true, notify = false },
 	ui = {
 		border = "rounded",
 		title_pos = "center",
@@ -59,6 +58,7 @@ require("lazy").setup({
 				"compiler",
 				"bugreport",
 				"ftplugin",
+				"matchparen",
 			},
 		},
 	},
