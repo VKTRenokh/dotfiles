@@ -140,5 +140,6 @@ Keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>")
 Keymap("n", "<leader>VV", "V`]")
 
 -- ------------------------------------------------------------------------- }}}
+-- {{{ Lazy
 Keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
-vim.keymap.set("i", "<C-Backspace>", "<esc>ciw")
+-- }}}

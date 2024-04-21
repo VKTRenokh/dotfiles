@@ -30,6 +30,7 @@ return {
 						["if"] = "@function.inner",
 						["ac"] = "@class.outer",
 						["ic"] = "@class.inner",
+						["isi"] = "@string.inner",
 					},
 					selection_modes = {},
 					include_surrounding_whitespace = true,
@@ -94,12 +95,13 @@ return {
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-ts-rainbow2
-	{ "HiPhish/nvim-ts-rainbow2", event = "LazyFile" },
+	{ "HiPhish/nvim-ts-rainbow2", event = "LazyFile", enabled = true },
 	-- }}}
 	-- {{{ tokyonight.nvim
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
+		enabled = true,
 		opts = {
 			transparent = true,
 			style = "moon",
