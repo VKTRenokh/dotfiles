@@ -32,6 +32,7 @@ return {
 	{
 		"tpope/vim-fugitive",
 		dependencies = { "tpope/vim-rhubarb" },
+		cmd = { "Gvdiffsplit", "G" },
 		keys = {
 			{ "<leader>g", "<cmd>G<cr>", desc = "open fugitive" },
 			{ "<leader>G", "<cmd>Gvdiffsplit<cr>", desc = "git diff vertical split" },
