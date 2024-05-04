@@ -464,14 +464,10 @@ return {
 	-- {{{ nvim-colorizer
 	{
 		"JosefLitos/colorizer.nvim",
-		ft = { "css", "html", "js", "ts" },
+		event = "LazyFile",
 		opts = {
-			filetypes = {
-				"css",
-				"html",
-				"js",
-				"ts",
-			},
+			filetypes = { "*" },
+			mode = "background",
 		},
 		config = function(_, opts)
 			require("colorizer").setup(opts)
@@ -520,7 +516,7 @@ return {
 		event = "VeryLazy",
 		lazy = true,
 		opts = {
-			override = Constants.icons.web_devicons,
+			-- override = Constants.icons.web_devicons, -- Slows down vim startup time
 		},
 	},
 

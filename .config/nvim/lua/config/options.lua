@@ -76,14 +76,3 @@ vim.cmd([[language en_US.UTF-8]])
 vim.cmd([[set iskeyword+=-]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Bullets
-
-vim.g.bullets_enabled_file_types = {
-	"gitcommit",
-	"markdown",
-	"scratch",
-	"text",
-	"wiki",
-}
-
--- ------------------------------------------------------------------------- }}}

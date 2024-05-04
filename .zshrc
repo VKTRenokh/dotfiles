@@ -5,11 +5,6 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 if [ -d "$HOME/.local/bin" ] ;
   then PATH="$HOME/.local/bin:$PATH"
 fi
-
-if [ -d "$HOME/.cargo/bin:" ] ;
-  then PATH="$HOME/.cargo/bin:$PATH"
-fi
-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/zsh/zhistory
 HISTSIZE=5000
@@ -44,6 +39,8 @@ zle -N expand-or-complete-with-dots
 bindkey "^I" expand-or-complete-with-dots
 
 bindkey -s '^F' 'tmux-sessionizer\n'
+
+
 
 # Plugins
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -102,7 +99,7 @@ ex ()
   fi
 }
 
-alias ls='exa --icons -l'
+alias ls='eza --icons -l --git'
 alias ll='ls -a'
 alias sl='ls'
 alias df='df -h'
@@ -116,8 +113,21 @@ alias fucking='sudo'
 alias parsyu='paru -Syu --noconfirm'
 alias pacsyu='sudo pacman -Syu --noconfirm'
 alias workspace="cd /mnt/sda1/workspace"
+alias ns="npm start"
+alias c=clear
 alias tks="tmux kill-session"
+alias пше='git'
 alias glg='git log -n 1'
+alias glg-='git log -n -1'
 alias :q='exit'
+alias docker="sudo docker"
 
 eval "$(starship init zsh)"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$HOME/.cargo/bin:$PATH"
+
+# bun completions
+[ -s "/home/vktrenokh/.bun/_bun" ] && source "/home/vktrenokh/.bun/_bun"
+
+eval "$(fzf --zsh)"
