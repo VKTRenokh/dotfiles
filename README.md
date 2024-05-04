@@ -32,6 +32,13 @@ Starship
 curl -sS https://starship.rs/install.sh | sh
 ```
 
+Eza
+```bash
+git clone https://github.com/eza-community/eza.git
+cd eza
+cargo install --path .
+```
+
 ## Fonts
 - Victor Mono NFM
 - Iosevka Mono NFM
