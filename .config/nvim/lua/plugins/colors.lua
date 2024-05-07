@@ -35,7 +35,7 @@ return {
 					include_surrounding_whitespace = true,
 				},
 			},
-			indent = { enable = true, disable = { "yml", "yaml" } },
+			indent = { enable = false, disable = { "yml", "yaml" } },
 			rainbow = {
 				enable = true,
 				extended_mode = false,

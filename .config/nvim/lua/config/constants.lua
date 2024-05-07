@@ -1,11 +1,6 @@
-local Constants = {}
 Is_Enabled = require("config.functions").is_enabled
 
--- {{{ Begin Constants table.  These are items used through out Neovim.
-
 Constants = {
-
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ lua_ls settings
 
 	lua_ls = {
@@ -307,7 +302,6 @@ Constants = {
 		},
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ End Constants table.
 }
--- ----------------------------------------------------------------------- }}}
+
 return Constants

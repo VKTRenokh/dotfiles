@@ -51,7 +51,6 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "LazyFile",
 		keys = {
-			{ "<leader>LF", "<cmd>LspToggleAutoFormat<cr>" },
 			{ "<leader>Li", "<cmd>LspInfo<cr>" },
       -- stylua: ignore
 			{ "<leader>Ll", function() vim.lsp.codelens.run() end, },
@@ -86,7 +85,6 @@ return {
 					},
 				},
 			},
-			autoformat = true,
 			format = {
 				formatting_options = nil,
 				timeout_ms = nil,
@@ -111,7 +109,7 @@ return {
 			},
 		},
 		config = function(_, opts)
-			vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+			vim.diagnostic.config(opts.diagnostics)
 
 			local servers = opts.servers
 

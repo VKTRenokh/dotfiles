@@ -203,6 +203,9 @@ return {
 		event = "LazyFile",
 		opts = {
 			indent = { char = "│" },
+			scope = {
+				show_start = false,
+			},
 		},
 		config = function(_, opts)
 			require("ibl").setup(opts)
@@ -374,35 +377,6 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ mini.indentscope
-	{
-		"echasnovski/mini.indentscope",
-		enabled = false,
-		version = false, -- wait till new 0.7.0 release to put it back on semver
-		event = "LazyFile",
-		opts = {
-			draw = {
-				delay = 0,
-				animation = nil,
-			},
-			symbol = "│",
-			options = { try_as_border = true },
-		},
-		init = function()
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = { "help", "alpha", "dashboard", "Trouble", "lazy", "mason" },
-				callback = function()
-					vim.b.miniindentscope_disable = true
-				end,
-			})
-		end,
-		config = function(_, opts)
-			local mis = require("mini.indentscope")
-			opts.draw.animation = mis.gen_animation.none()
-			mis.setup(opts)
-		end,
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ noice.nvim
 	{
 		"folke/noice.nvim",
@@ -455,12 +429,6 @@ return {
 		},
 	},
 	-- --------------------------------------------------- }}}
-	-- {{{ nui.nvim
-	{
-		"MunifTanjim/nui.nvim",
-		lazy = true,
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-colorizer
 	{
 		"JosefLitos/colorizer.nvim",
@@ -513,7 +481,6 @@ return {
 
 	{
 		"nvim-tree/nvim-web-devicons",
-		event = "VeryLazy",
 		lazy = true,
 		opts = {
 			-- override = Constants.icons.web_devicons, -- Slows down vim startup time
@@ -540,25 +507,8 @@ return {
 			{ "<leader>t", "<cmd>TroubleToggle workspace_diagnostics<cr>" },
 			{ "<leader>Td", "<cmd>TroubleToggle<cr>" },
 		},
-		-- event = "VimEnter",
 		opts = { use_diagnostic_signs = true },
 	},
 
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ virtcolumn.nvim
-
-	{
-		"xiyaowong/virtcolumn.nvim",
-		event = "LazyFile",
-	},
-
-	-- ----------------------------------------------------------------------- }}}
-	-- {{{ lazygit.nvim
-	{
-		"kdheepak/lazygit.nvim",
-		keys = {
-			{ ";c", ":LazyGit<Cr>" },
-		},
-	},
-	-- }}}
 }

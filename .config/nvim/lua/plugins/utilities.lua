@@ -12,9 +12,10 @@ return {
 			{
 				"<leader>TT",
 				"<Cmd>ToggleTerm<cr>",
+				desc = "Open floating terminal",
 			},
 		},
-		-- cmd = "ToggleTerm",
+		cmd = "ToggleTerm",
 		version = "*",
 		opts = {
 			size = 13,
@@ -42,6 +43,9 @@ return {
 	-- {{{ mini.bufremove
 	{
 		"echasnovski/mini.bufremove",
+		opts = {
+			silent = true,
+		},
 		keys = {
 			{
 				"<leader>bd",
