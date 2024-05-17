@@ -58,7 +58,6 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
-			"AcksLd/nvim-neoclip.lua",
 		},
 		opts = function()
 			return {
@@ -69,9 +68,11 @@ return {
 					sorting_strategy = "ascending",
 					winblend = 10,
 
-					keymaps = {
+					mappings = {
 						["n"] = {
-							["<esc>"] = require("telescope.actions").close,
+							["<C-e>"] = require("telescope.actions").select_vertical,
+							["<C-v>"] = require("telescope.actions").select_horizontal,
+							["<C-t>"] = require("telescope.actions").select_tab,
 						},
 					},
 				},
@@ -116,15 +117,4 @@ return {
 		end,
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ neoclip.lua
-	{
-		"AcksLd/nvim-neoclip.lua",
-		opts = {
-			preview = true,
-		},
-		config = function(_, opts)
-			require("neoclip").setup(opts)
-		end,
-	},
-	-- }}}
 }

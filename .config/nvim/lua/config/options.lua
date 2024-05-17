@@ -2,6 +2,7 @@
 
 local options = {
 	autoindent = true,
+	inccommand = "split",
 	background = "dark",
 	backup = false,
 	backspace = { "start", "eol", "indent" },
@@ -32,7 +33,6 @@ local options = {
 	shell = "zsh",
 	shiftround = true,
 	shiftwidth = 2,
-	--  shortmess = "aToOS",
 	showbreak = "↪",
 	showtabline = 0,
 	showmatch = false,

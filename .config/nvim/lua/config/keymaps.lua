@@ -23,12 +23,11 @@ Keymap("n", "sj", "<C-w>j")
 Keymap("n", "sk", "<C-w>k")
 Keymap("n", "sl", "<C-w>l")
 
--- Resize with arrows
-Keymap("n", "<C-S-Up>", "<Cmd>:resize -2<CR>")
-Keymap("n", "<C-S-Down>", "<Cmd>:resize +2<CR>")
-
-Keymap("n", "<C-S-Left>", "<Cmd>:vertical resize -2<CR>")
-Keymap("n", "<C-S-Right>", "<Cmd>:vertical resize +2<CR>")
+-- Resize splits
+Keymap("n", "<M-,>", "<c-w>5>")
+Keymap("n", "<M-.>", "<c-w>5<")
+Keymap("n", "<M-t>", "<C-W>+")
+Keymap("n", "<M-s>", "<C-W>-")
 
 -- Navigate buffers
 Keymap("n", "<S-l>", ":bnext<CR>")

@@ -201,21 +201,21 @@ return {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "LazyFile",
+		enabled = false, -- enable when plugin author fixes it
 		opts = {
 			indent = { char = "│" },
 			scope = {
 				show_start = false,
 			},
 		},
-		config = function(_, opts)
-			require("ibl").setup(opts)
-		end,
+		main = "ibl",
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ lualine.nvim
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "LazyFile",
+		enabled = false,
 		opts = function(_, opts)
 			local hide_in_width = function()
 				return vim.fn.winwidth(0) > 80

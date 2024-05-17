@@ -1,5 +1,5 @@
 return {
-	-- {{{ Comment.nvim
+	-- {{{ mini.comment
 	{
 		"echasnovski/mini.comment",
 		event = "LazyFile",
@@ -19,7 +19,7 @@ return {
 		},
 	},
 	-- ----------------------------------------------------------------------- }}}
-	-- {{{ mini.pairs
+	-- {{{ nvim-autopairs
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -34,9 +34,9 @@ return {
 			"<C-g>S",
 			"ys",
 			"yss",
-			{ "yS", mode = { "n", "v" } },
+			{ "yS", mode = { "n", "v", "x" } },
 			"ySS",
-			{ "S", mode = { "n", "v" } },
+			{ "S", mode = { "n", "v", "x" } },
 			"gS",
 			"ds",
 			"cs",
@@ -44,15 +44,6 @@ return {
 		},
 		config = function(_, opts)
 			require("nvim-surround").setup(opts)
-		end,
-	},
-	-- }}}
-	-- {{{ vim-illuminate
-	{
-		"RRethy/vim-illuminate",
-		event = "LazyFile",
-		config = function(_, opts)
-			require("illuminate").configure(opts)
 		end,
 	},
 	-- }}}

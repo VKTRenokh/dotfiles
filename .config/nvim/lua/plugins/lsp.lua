@@ -186,6 +186,7 @@ return {
 				typescript = { { "prettierd" } },
 				vue = { { "prettierd" } },
 			},
+			log_level = vim.log.levels.DEBUG,
 			format_on_save = {
 				-- These options will be passed to conform.format()
 				-- timeout_ms = 500,
