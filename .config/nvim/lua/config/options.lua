@@ -34,7 +34,7 @@ local options = {
 	shiftround = true,
 	shiftwidth = 2,
 	showbreak = "↪",
-	showtabline = 0,
+	showtabline = 1,
 	showmatch = false,
 	showmode = false,
 	signcolumn = "yes",
@@ -74,5 +74,4 @@ end
 vim.cmd([[filetype plugin indent on]])
 vim.cmd([[language en_US.UTF-8]])
 vim.cmd([[set iskeyword+=-]])
-
 -- ------------------------------------------------------------------------- }}}

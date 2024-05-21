@@ -94,7 +94,12 @@ return {
 	},
 	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-ts-rainbow2
-	{ "HiPhish/nvim-ts-rainbow2", event = "LazyFile", enabled = true },
+	{
+		url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+		opts = {},
+		event = "LazyFile",
+		main = "rainbow-delimiters.setup",
+	},
 	-- }}}
 	-- {{{ tokyonight.nvim
 	{
@@ -137,4 +142,17 @@ return {
 		enabled = false,
 	},
 	-- }}}
+	-- {{{ nvim-colorizer
+	{
+		"JosefLitos/colorizer.nvim",
+		event = "LazyFile",
+		opts = {
+			filetypes = { "*" },
+			mode = "background",
+		},
+		config = function(_, opts)
+			require("colorizer").setup(opts)
+		end,
+	},
+	-- ----------------------------------------------------------------------- }}}
 }

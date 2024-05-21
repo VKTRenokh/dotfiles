@@ -1,24 +1,4 @@
 return {
-	-- {{{ mini.comment
-	{
-		"echasnovski/mini.comment",
-		event = "LazyFile",
-		opts = {
-			options = {
-				custom_commentstring = nil,
-				ignore_blank_line = false,
-				start_of_line = false,
-				pad_comment_parts = true,
-			},
-			mappings = {
-				comment = "gc",
-				comment_line = "gcc",
-				comment_visual = "gc",
-				textobject = "gc",
-			},
-		},
-	},
-	-- ----------------------------------------------------------------------- }}}
 	-- {{{ nvim-autopairs
 	{
 		"windwp/nvim-autopairs",

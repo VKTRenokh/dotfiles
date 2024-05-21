@@ -51,7 +51,6 @@ return {
 		"neovim/nvim-lspconfig",
 		event = "LazyFile",
 		keys = {
-			{ "<leader>Li", "<cmd>LspInfo<cr>" },
       -- stylua: ignore
 			{ "<leader>Ll", function() vim.lsp.codelens.run() end, },
       -- stylua: ignore
@@ -59,7 +58,7 @@ return {
       -- stylua: ignore
 			{ "gI", function() vim.lsp.buf.code_action() end, },
       -- stylua: ignore
-			{ "<leader>r", function() vim.lsp.buf.rename() end, },
+			{ "<leader>r", function() vim.lsp.buf.rename() end, desc = "Rename variable" },
 		},
 		dependencies = {
 			{ "folke/neoconf.nvim", cmd = "Neoconf", config = true },
@@ -177,6 +176,8 @@ return {
 				function()
 					require("conform").format()
 				end,
+				mode = { "x", "n", "v" },
+				desc = "Format file or selection",
 			},
 		},
 		opts = {
@@ -188,8 +189,6 @@ return {
 			},
 			log_level = vim.log.levels.DEBUG,
 			format_on_save = {
-				-- These options will be passed to conform.format()
-				-- timeout_ms = 500,
 				lsp_fallback = true,
 			},
 		},
