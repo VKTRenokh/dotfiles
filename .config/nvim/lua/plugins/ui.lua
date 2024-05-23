@@ -9,7 +9,7 @@ return {
     },
     event = "VimEnter",
     opts = function()
-      local dashboard = require "alpha.themes.dashboard"
+      local dashboard = require("alpha.themes.dashboard")
       local logo = [[
        _______             ____   ____.__
        \      \   ____  ___\   \ /   /|__| _____
@@ -29,7 +29,7 @@ return {
           Icons.ui.Gear .. " Config",
           ":e ~/.config/nvim/init.lua | cd ~/.config/nvim<CR>"
         ),
-        dashboard.button("u", Icons.ui.CloudDownload .. " Update", ":Lazy<CR>"),
+        dashboard.button("u", Icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
         dashboard.button("q", Icons.ui.SignOut .. " Quit", ":qa<CR>"),
       }
 
@@ -101,7 +101,7 @@ return {
       { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Cycle tabs forwards" },
       { "gt", "<cmd>BufferLinePick<cr>", desc = "Pick tab" },
       { "gT", "<cmd>BufferLinePickClose<cr>", desc = "Pick tab to close" },
-      { "gtd", "<cmd>BufferLineClose<cr>", desc = "Pick tab to close" },
+      { "gtd", "<cmd>BufferLineClose<cr>", desc = "Close all tabs" },
       { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Cycle tabs backwards" },
       { "<C-Tab>", "<cmd>tablast<cr>", desc = "Jump to the last tab" },
       { "<C-S-Tab>", "<cmd>tabfirst<cr>", desc = "Jump to the first tab" },
@@ -139,12 +139,12 @@ return {
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
-        require("lazy").load { plugins = { "dressing.nvim" } }
+        require("lazy").load({ plugins = { "dressing.nvim" } })
         return vim.ui.select(...)
       end
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.input = function(...)
-        require("lazy").load { plugins = { "dressing.nvim" } }
+        require("lazy").load({ plugins = { "dressing.nvim" } })
         return vim.ui.input(...)
       end
     end,
@@ -183,7 +183,7 @@ return {
         follow_files = true,
       },
       attach_to_untracked = true,
-      current_line_blame = true,
+      current_line_blame = false,
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol",
@@ -288,8 +288,8 @@ return {
       }
 
       local progress = function()
-        local current_line = vim.fn.line "."
-        local total_lines = vim.fn.line "$"
+        local current_line = vim.fn.line(".")
+        local total_lines = vim.fn.line("$")
         local chars =
           { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
         local line_ratio = current_line / total_lines
@@ -339,7 +339,7 @@ return {
             cond = function()
               return package.loaded["noice"] and require("noice").api.status.command.has()
             end,
-            color = fg "Statement",
+            color = fg("Statement"),
           },
           {
             function()
@@ -348,7 +348,7 @@ return {
             cond = function()
               return package.loaded["noice"] and require("noice").api.status.mode.has()
             end,
-            color = fg "Constant",
+            color = fg("Constant"),
           },
           diagnostics,
           diff,
@@ -363,11 +363,13 @@ return {
       opts.inactive_sections = {
         lualine_a = {},
         lualine_b = {},
-        lualine_c = { {
-          "filename",
-          file_status = true,
-          path = 1,
-        } },
+        lualine_c = {
+          {
+            "filename",
+            file_status = true,
+            path = 1,
+          },
+        },
         lualine_x = { "location" },
         lualine_y = {},
         lualine_z = {},
@@ -395,9 +397,6 @@ return {
     event = "VeryLazy",
     opts = {
       lsp = {
-        -- progress = {
-        -- 	view = "notify",
-        -- },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
@@ -438,6 +437,7 @@ return {
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
     },
   },
   -- --------------------------------------------------- }}}
@@ -448,7 +448,7 @@ return {
       {
         "<leader>un",
         function()
-          require("notify").dismiss { silent = true, pending = true }
+          require("notify").dismiss({ silent = true, pending = true })
         end,
         desc = "Dismiss notification",
       },
@@ -467,10 +467,10 @@ return {
     },
     init = function()
       -- when noice is not enabled, install notify on VeryLazy
-      local Util = require "config.functions"
-      if not Util.has "noice.nvim" then
+      local Util = require("config.functions")
+      if not Util.has("noice.nvim") then
         Util.on_very_lazy(function()
-          vim.notify = require "notify"
+          vim.notify = require("notify")
         end)
       end
     end,
@@ -487,14 +487,6 @@ return {
   },
 
   -------------------------------------------------------------------------- }}}}
-  -- {{{ popup.nvim
-
-  {
-    "nvim-lua/popup.nvim",
-    event = "VimEnter",
-  },
-
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ trouble.nvim
 
   {
