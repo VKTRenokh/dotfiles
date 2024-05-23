@@ -155,8 +155,8 @@
         "󰕾"
       ]
     },
-    "on-scroll-up": "bash ~/.config/hypr/scripts/volume incr",
-    "on-scroll-down": "bash ~/.config/hypr/scripts/volume decr",
+    "on-scroll-up": "fennel ~/.config/hypr/scripts/volume.fnl incr",
+    "on-scroll-down": "fennel ~/.config/hypr/scripts/volume.fnl decr",
     "scroll-step": 5,
     "on-click": "pavucontrol"
   },
@@ -180,7 +180,6 @@
     "return-type": "json",
     "on-scroll-up": "playerctl previous",
     "on-scroll-down": "playerctl next",
-    "on-click-right": "g4music",
     "max-length": 35
   }
 }
