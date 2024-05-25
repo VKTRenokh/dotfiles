@@ -1,5 +1,4 @@
 Icons = require("config.constants").icons
-
 return {
   -- {{{ nvim-treesitter
   {
@@ -95,7 +94,7 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ rainbow-delimiters
   {
-    url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+    "HiPhish/rainbow-delimiters.nvim",
     opts = {},
     event = "LazyFile",
     main = "rainbow-delimiters.setup",
@@ -155,4 +154,19 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  {
+    "diegoulloao/neofusion.nvim",
+    dir = "/mnt/sda1/workspace/neofusion.nvim",
+    enabled = false,
+    opts = {
+      transparent_mode = true,
+    },
+    lazy = false,
+    priority = 1000,
+    config = function(_, opts)
+      require("neofusion").setup(opts)
+
+      vim.cmd.colorscheme("neofusion")
+    end,
+  },
 }

@@ -397,6 +397,9 @@ return {
     event = "VeryLazy",
     opts = {
       lsp = {
+        progress = {
+          view = false,
+        },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
@@ -465,15 +468,6 @@ return {
         return math.floor(vim.o.columns * 0.75)
       end,
     },
-    init = function()
-      -- when noice is not enabled, install notify on VeryLazy
-      local Util = require("config.functions")
-      if not Util.has("noice.nvim") then
-        Util.on_very_lazy(function()
-          vim.notify = require("notify")
-        end)
-      end
-    end,
   },
   -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-web-devicons
@@ -481,9 +475,7 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
-    opts = {
-      -- override = Constants.icons.web_devicons, -- Slows down vim startup time
-    },
+    opts = {},
   },
 
   -------------------------------------------------------------------------- }}}}

@@ -1,8 +1,6 @@
--- {{{ Global definitions
+local functions = require("config.functions")
+local keymap = functions.keymap
 
-Functions = require("config.functions")
-Keymap = Functions.keymap
--- ------------------------------------------------------------------------- }}}
 -- {{{ General mappings
 
 -- Modes
@@ -14,131 +12,118 @@ Keymap = Functions.keymap
 -- command_mode =      "c",
 
 -- Better window navigation
-Keymap("n", "<C-h>", "<C-w>h")
-Keymap("n", "<C-j>", "<C-w>j")
-Keymap("n", "<C-k>", "<C-w>k")
-Keymap("n", "<C-l>", "<C-w>l")
-Keymap("n", "sh", "<C-w>h")
-Keymap("n", "sj", "<C-w>j")
-Keymap("n", "sk", "<C-w>k")
-Keymap("n", "sl", "<C-w>l")
+keymap("n", "<C-h>", "<C-w>h")
+keymap("n", "<C-j>", "<C-w>j")
+keymap("n", "<C-k>", "<C-w>k")
+keymap("n", "<C-l>", "<C-w>l")
+keymap("n", "sh", "<C-w>h")
+keymap("n", "sj", "<C-w>j")
+keymap("n", "sk", "<C-w>k")
+keymap("n", "sl", "<C-w>l")
 
 -- Resize splits
-Keymap("n", "<M-,>", "<c-w>5>")
-Keymap("n", "<M-.>", "<c-w>5<")
-Keymap("n", "<M-t>", "<C-W>+")
-Keymap("n", "<M-s>", "<C-W>-")
+keymap("n", "<M-,>", "<c-w>5>")
+keymap("n", "<M-.>", "<c-w>5<")
+keymap("n", "<M-t>", "<C-W>+")
+keymap("n", "<M-s>", "<C-W>-")
 
 -- Navigate buffers
-Keymap("n", "<S-l>", ":bnext<CR>")
-Keymap("n", "<S-h>", ":bprevious<CR>")
+keymap("n", "<S-l>", ":bnext<CR>")
+keymap("n", "<S-h>", ":bprevious<CR>")
 
 -- Inc and Dec numbars
-Keymap("n", "+", "<C-a>")
-Keymap("n", "-", "<C-x>")
+keymap("n", "+", "<C-a>")
+keymap("n", "-", "<C-x>")
 
 -- Splits
-Keymap("n", "<leader>s", ":split<cr><C-w>w")
-Keymap("n", "sv", ":vsplit<cr><C-w>w")
-Keymap("n", "<leader>", "<C-w>w")
+keymap("n", "<leader>s", ":split<cr><C-w>w")
+keymap("n", "sv", ":vsplit<cr><C-w>w")
+keymap("n", "<leader>", "<C-w>w")
 
 -- Select (charwise) the contents of the current line, excluding indentation.
-Keymap("n", "vv", "^vg_")
-
--- Select entire buffer
-Keymap("n", "<C-a>", "ggVG")
-Keymap("n", "<leader>V", "V`]")
+keymap("n", "vv", "^vg_")
 
 -- Save all files.
-Keymap("n", "<F2>", "<cmd>wall<cr>")
+keymap("n", "<F2>", "<cmd>wall<cr>")
 
 -- Toggle [in]visible characters.
-Keymap("n", "<leader>i", "<cmd>set list!<cr>")
+keymap("n", "<leader>i", "<cmd>set list!<cr>")
 
 -- Stay in indent mode.
-Keymap("v", "<", "<gv")
-Keymap("v", ">", ">gv")
+keymap("v", "<", "<gv")
+keymap("v", ">", ">gv")
 
 -- Visual yank
-Keymap("v", "<leader>cc", '"+y')
+keymap("v", "<leader>cc", '"+y')
 
 -- Obfuscate
-Keymap("n", "<F3>", "mmggg?G`m")
+keymap("n", "<F3>", "mmggg?G`m")
 
 -- Delete
-Keymap("n", "<leader>d", '"_d')
-Keymap("n", "x", '"_x')
-Keymap("n", "dw", 'vb"_d')
+keymap("n", "<leader>d", '"_d')
+keymap("n", "x", '"_x')
+keymap("n", "dw", 'vb"_d')
 
 -- Move text up and down
-Keymap("v", "<A-j>", ":m .+1<CR>==")
-Keymap("v", "<A-k>", ":m .-2<CR>==")
-Keymap("v", "p", '"_dP')
-Keymap("x", "J", ":m '>+1<CR>gv-gv")
-Keymap("x", "K", ":m '<-2<CR>gv-gv")
-Keymap("x", "<A-j>", ":m '>+1<CR>gv-gv")
-Keymap("x", "<A-k>", ":m '<-2<CR>gv-gv")
+keymap("v", "<A-j>", ":m .+1<CR>==")
+keymap("v", "<A-k>", ":m .-2<CR>==")
+keymap("v", "p", '"_dP')
+keymap("x", "J", ":m '>+1<CR>gv-gv")
+keymap("x", "K", ":m '<-2<CR>gv-gv")
+keymap("x", "<A-j>", ":m '>+1<CR>gv-gv")
+keymap("x", "<A-k>", ":m '<-2<CR>gv-gv")
 
 -- Alternative ESC key to avoid <Ctrl-[>.  Useful when a RCP is used to connect
 -- to a remote host.
-Keymap("i", "jk", "<esc>")
-Keymap("c", "jk", "<esc>")
+keymap("i", "jk", "<esc>")
+keymap("c", "jk", "<esc>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
 
 -- Close all fold except the current one.
-Keymap("n", "zv", "zMzvzz")
+keymap("n", "zv", "zMzvzz")
 
 -- Close current fold when open. Always open next fold.
-Keymap("n", "zj", "zcjzOzz")
+keymap("n", "zj", "zcjzOzz")
 
 -- Close current fold when open. Always open previous fold.
-Keymap("n", "zk", "zckzOzz")
+keymap("n", "zk", "zckzOzz")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Keep the cursor in place while joining lines.
 
-Keymap("n", "J", "mzJ`z")
-Keymap("n", "<leader>J", "myvipJ`ygq<cr>")
+keymap("n", "J", "mzJ`z")
+keymap("n", "<leader>J", "myvipJ`ygq<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 ---- {{{ Shell commands.
 
 -- Execute the current line of test as a shell command.
-Keymap("n", "<localleader>E", [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
-Keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
+keymap("n", "<localleader>E", [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
+keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Quit all
 
-Keymap("n", "<c-q>", "<cmd>qall!<cr>")
-Keymap("n", "<leader>qq", "<cmd>qall!<cr>")
+keymap("n", "<c-q>", "<cmd>qall!<cr>")
+keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 ---- {{{ leader + space
 
-Keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
+keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Help
 
-Keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ L - LSP
-
--- TODO: Finish implementing LSP keybindings.  Some plugins are not installed.
-
-Keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>")
-Keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>")
-Keymap("n", "K", ":lua vim.lsp.buf.hover()<CR>")
+keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ V - Linewise reselection of what you just pasted.
 
-Keymap("n", "<leader>VV", "V`]")
+keymap("n", "<leader>VV", "V`]")
 
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Lazy
-Keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
+keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
 -- }}}

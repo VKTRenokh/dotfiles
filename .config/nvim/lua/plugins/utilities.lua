@@ -24,4 +24,21 @@ return {
     },
   },
   -- }}}
+  -- {{{ nfnlk
+  {
+    "Olical/nfnl",
+    ft = { "fennel" },
+  },
+  -- }}}
+
+  {
+    dir = "/mnt/sda1/workspace/pipka.nvim",
+    opts = {
+      split = "left",
+    },
+    keys = {
+      { "<leader>P", "<cmd>Pipka<cr>" },
+    },
+    cmd = "Pipka",
+  },
 }
