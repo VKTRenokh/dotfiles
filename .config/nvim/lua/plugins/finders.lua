@@ -68,8 +68,8 @@ return {
           layout_config = { prompt_position = "top" },
           layout_strategy = "horizontal",
           prompt_prefix = Constants.icons.ui.Telescope,
+          selection_caret = "󱞩 ",
           sorting_strategy = "ascending",
-          winblend = 10,
 
           mappings = {
             ["n"] = {

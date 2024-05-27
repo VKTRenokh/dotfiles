@@ -127,3 +127,8 @@ keymap("n", "<leader>VV", "V`]")
 -- {{{ Lazy
 keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
 -- }}}
+-- {{{ Keep cursor in the center of the screen when scrolling with C-e or C-y
+keymap("n", "<leader>to", function()
+  vim.opt.scrolloff = 999 - vim.o.scrolloff
+end)
+-- }}}

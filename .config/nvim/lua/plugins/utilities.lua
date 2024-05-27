@@ -34,7 +34,7 @@ return {
   {
     dir = "/mnt/sda1/workspace/pipka.nvim",
     opts = {
-      split = "left",
+      split = "right",
     },
     keys = {
       { "<leader>P", "<cmd>Pipka<cr>" },
