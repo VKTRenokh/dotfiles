@@ -30,4 +30,15 @@ return {
   -- {{{ Mini.ai - better vim a/i motions
   { "https://github.com/echasnovski/mini.ai", event = "LazyFile" },
   -- }}}
+  {
+    "mfussenegger/nvim-snippasta",
+    keys = {
+      {
+        "<leader>p",
+        function()
+          require("snippasta").paste()
+        end,
+      },
+    },
+  },
 }

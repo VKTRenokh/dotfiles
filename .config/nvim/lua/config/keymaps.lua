@@ -1,5 +1,4 @@
-local functions = require("config.functions")
-local keymap = functions.keymap
+local keymap = require("config.functions").keymap
 
 -- {{{ General mappings
 
@@ -16,10 +15,6 @@ keymap("n", "<C-h>", "<C-w>h")
 keymap("n", "<C-j>", "<C-w>j")
 keymap("n", "<C-k>", "<C-w>k")
 keymap("n", "<C-l>", "<C-w>l")
-keymap("n", "sh", "<C-w>h")
-keymap("n", "sj", "<C-w>j")
-keymap("n", "sk", "<C-w>k")
-keymap("n", "sl", "<C-w>l")
 
 -- Resize splits
 keymap("n", "<M-,>", "<c-w>5>")
@@ -31,7 +26,7 @@ keymap("n", "<M-s>", "<C-W>-")
 keymap("n", "<S-l>", ":bnext<CR>")
 keymap("n", "<S-h>", ":bprevious<CR>")
 
--- Inc and Dec numbars
+-- Inc and Dec numbers
 keymap("n", "+", "<C-a>")
 keymap("n", "-", "<C-x>")
 
@@ -114,16 +109,6 @@ keymap("n", "<leader>qq", "<cmd>qall!<cr>")
 keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Help
-
-keymap("n", "<leader>HH", "<cmd>silent vert bo help<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ V - Linewise reselection of what you just pasted.
-
-keymap("n", "<leader>VV", "V`]")
-
--- ------------------------------------------------------------------------- }}}
 -- {{{ Lazy
 keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
 -- }}}
@@ -131,4 +116,14 @@ keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
 keymap("n", "<leader>to", function()
   vim.opt.scrolloff = 999 - vim.o.scrolloff
 end)
+-- }}}
+-- {{{ Vim mappings in russian
+-- stylua: ignore
+local langmap_keys = {
+  'ёЁ;`~', '№;#',
+  'йЙ;qQ', 'цЦ;wW', 'уУ;eE', 'кК;rR', 'еЕ;tT', 'нН;yY', 'гГ;uU', 'шШ;iI', 'щЩ;oO', 'зЗ;pP', 'хХ;[{', 'ъЪ;]}',
+  'фФ;aA', 'ыЫ;sS', 'вВ;dD', 'аА;fF', 'пП;gG', 'рР;hH', 'оО;jJ', 'лЛ;kK', 'дД;lL', [[жЖ;\;:]], [[эЭ;'\"]],
+  'яЯ;zZ', 'чЧ;xX', 'сС;cC', 'мМ;vV', 'иИ;bB', 'тТ;nN', 'ьЬ;mM', [[бБ;\,<]], 'юЮ;.>',
+}
+vim.o.langmap = table.concat(langmap_keys, ",")
 -- }}}

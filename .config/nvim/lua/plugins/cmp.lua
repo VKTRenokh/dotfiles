@@ -13,7 +13,7 @@ return {
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-emoji",
+
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
     },
@@ -27,7 +27,7 @@ return {
       end
 
       local completion = {
-        completeopt = "menu,menuone,noinsert",
+        completeopt = "menu,menuone,noselect",
         -- keyword_length = 1,
       }
 
@@ -65,6 +65,7 @@ return {
           c = cmp.mapping.close(),
         }),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -141,8 +142,44 @@ return {
       config = function()
         require("luasnip.loaders.from_vscode").lazy_load()
         require("luasnip.loaders.from_snipmate").lazy_load()
+        require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
       end,
     },
+    keys = {
+      {
+        "<C-j>",
+        function()
+          require("luasnip").jump(1)
+        end,
+        noremap = true,
+        mode = "i",
+      },
+      {
+        "<C-k>",
+        function()
+          require("luasnip").jump(-1)
+        end,
+        noremap = true,
+        mode = "i",
+      },
+      {
+        "<M-n>",
+        function()
+          require("luasnip").change_choice(1)
+        end,
+        noremap = true,
+        mode = { "n", "i", "v" },
+      },
+      {
+        "<M-b>",
+        function()
+          require("luasnip").change_choice(-1)
+        end,
+        noremap = true,
+        mode = { "n", "i", "v" },
+      },
+    },
+    build = "make install_jsregexp",
     opts = {
       history = true,
       delete_check_events = "TextChanged",

@@ -502,4 +502,37 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
+  --{{{ hover.nvim
+  {
+    "lewis6991/hover.nvim",
+    enabled = false,
+    -- {{{ keys
+    keys = {
+      --stylua: ignore start
+      { "K", function() require("hover").hover() end, },
+      { "<C-p>", function() require("hover").hover_switch('previous') end, },
+      { "<C-n>", function() require("hover").hover_switch('next') end, },
+      --stylua: ignore end
+    },
+    -- }}}
+    opts = {
+      init = function()
+        local providers = { "hover.providers.lsp", "hover.providers.gh", "hover.providers.gh_user" }
+
+        for _, provider in pairs(providers) do
+          local succes = pcall(require, provider)
+
+          if not succes then
+            require("config.functions").notify("Cannot load hover provider: " .. provider)
+          end
+        end
+      end,
+      preview_opts = {
+        border = "single",
+      },
+      preview_window = false,
+      title = true,
+    },
+  },
+  --}}}
 }

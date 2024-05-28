@@ -28,22 +28,6 @@ return {
         end,
         desc = "Current Buffer Fuzzy",
       },
-      {
-        "sf",
-        function()
-          require("telescope").extensions.file_browser.file_browser({
-            path = "%:p:h",
-            cwd = vim.fn.expand("%:p:h"),
-            respect_gitignore = false,
-            hidden = true,
-            grouped = true,
-            previewer = false,
-            initial_mode = "normal",
-            layout_config = { prompt_position = "top", height = 60 },
-          })
-        end,
-        desc = "File browser",
-      },
       { "<leader>LS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>" },
       { "<leader>Ls", "<cmd>Telescope lsp_document_symbols<cr>" },
       -- stylua: ignore
@@ -58,7 +42,6 @@ return {
     version = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
     },
     opts = function()
       local actions = require("telescope.actions")
@@ -92,7 +75,24 @@ return {
   {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim" },
-    --  cmd = "Telescope",
+    keys = {
+      {
+        "sf",
+        function()
+          require("telescope").extensions.file_browser.file_browser({
+            path = "%:p:h",
+            cwd = vim.fn.expand("%:p:h"),
+            respect_gitignore = false,
+            hidden = true,
+            grouped = true,
+            previewer = false,
+            initial_mode = "normal",
+            layout_config = { prompt_position = "top", height = 60 },
+          })
+        end,
+        desc = "File browser",
+      },
+    },
     config = function()
       local telescope = require("telescope")
       local fb_actions = require("telescope").extensions.file_browser.actions

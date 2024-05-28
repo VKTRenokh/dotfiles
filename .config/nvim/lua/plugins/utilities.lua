@@ -34,7 +34,12 @@ return {
   {
     dir = "/mnt/sda1/workspace/pipka.nvim",
     opts = {
-      split = "right",
+      split = "below",
+      ensure_installed = {
+        "igor",
+        "bogdan",
+        "utia",
+      },
     },
     keys = {
       { "<leader>P", "<cmd>Pipka<cr>" },
