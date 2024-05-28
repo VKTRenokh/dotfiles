@@ -127,3 +127,10 @@ local langmap_keys = {
 }
 vim.o.langmap = table.concat(langmap_keys, ",")
 -- }}}
+-- {{{ Reload file and lsp
+keymap("n", "<leader>L", function()
+  vim.cmd("e")
+  vim.cmd("LspRestart")
+  require("config.functions").notify("Reloaded file and lsp")
+end)
+-- }}}
