@@ -9,3 +9,7 @@
 (call_expression
   function: (identifier) @tabstop
   arguments: (arguments) @tabstop)
+
+(pair 
+  key: (property_identifier) @tabstop
+  value: _ @tabstop)

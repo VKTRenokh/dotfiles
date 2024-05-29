@@ -42,7 +42,7 @@ return {
         format = function(_, item)
           local icon = (Constants.icons.kind and Constants.icons.kind[item.kind]) or ""
 
-          item.kind = icon .. item.kind
+          item.kind = icon .. (item.kind or "??")
 
           return item
         end,
@@ -137,14 +137,6 @@ return {
   -- {{{ LuaSnip
   {
     "L3MON4D3/LuaSnip",
-    dependencies = {
-      "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip.loaders.from_snipmate").lazy_load()
-        require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
-      end,
-    },
     keys = {
       {
         "<C-j>",
@@ -184,6 +176,11 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
+    config = function(_, opts)
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_snipmate").lazy_load()
+      require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
+    end,
   },
   -- --------------------------------------------------------------------- }}}
 }

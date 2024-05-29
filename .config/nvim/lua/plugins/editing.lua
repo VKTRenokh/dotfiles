@@ -39,6 +39,14 @@ return {
           require("snippasta").paste()
         end,
       },
+      {
+        "<Tab>",
+        function()
+          vim.snippet.jump(1)
+        end,
+        noremap = true,
+        mode = { "i" },
+      },
     },
   },
 }
