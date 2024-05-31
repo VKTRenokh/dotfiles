@@ -62,6 +62,7 @@ require("lazy").setup({
         "bugreport",
         "ftplugin",
         "matchparen",
+        "spellfile",
       },
     },
   },

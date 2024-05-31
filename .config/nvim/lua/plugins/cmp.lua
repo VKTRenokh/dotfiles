@@ -8,14 +8,13 @@ return {
     version = false,
     dependencies = {
       "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-calc",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-nvim-lsp-document-symbol",
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-calc",
 
       "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
     },
     opts = function(_, opts)
       local cmp = require("cmp")
@@ -118,9 +117,11 @@ return {
 
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = {
+        sources = cmp.config.sources({
+          { name = "nvim_lsp_document_symbol" },
+        }, {
           { name = "buffer" },
-        },
+        }),
       })
 
       opts.completion = completion
@@ -137,6 +138,9 @@ return {
   -- {{{ LuaSnip
   {
     "L3MON4D3/LuaSnip",
+    dependencies = {
+      "saadparwaiz1/cmp_luasnip",
+    },
     keys = {
       {
         "<C-j>",
@@ -176,7 +180,7 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
-    config = function(_, opts)
+    config = function()
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_snipmate").lazy_load()
       require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })

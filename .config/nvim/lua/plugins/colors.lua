@@ -97,7 +97,7 @@ return {
   {
     "HiPhish/rainbow-delimiters.nvim",
     opts = {},
-    enabled = false,
+    enabled = true,
     event = "LazyFile",
     main = "rainbow-delimiters.setup",
   },
@@ -156,4 +156,14 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ gruvbox.nvim - dont use this please
+  {
+    "ellisonleao/gruvbox.nvim",
+    enabled = false,
+    config = function(_, opts)
+      require("gruvbox").setup(opts)
+
+      vim.cmd.colorscheme("gruvbox")
+    end,
+  }, -- }}}
 }

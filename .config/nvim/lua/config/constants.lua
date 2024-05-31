@@ -280,14 +280,6 @@ Constants = {
   -- {{{ Completion source mapping
 
   completion = {
-    source_mapping = {
-      nvim_lsp = "[LSP]",
-      luasnip = "[Snippet]",
-      buffer = "[Buffer]",
-      path = "[Path]",
-      nvim_lua = "[Lua]",
-    },
-
     sources = {
       { name = "nvim_lsp", keyword_length = 2, max_item_count = 30 },
       { name = "luasnip", keyword_length = 2, max_item_count = 30 },
@@ -295,7 +287,6 @@ Constants = {
       { name = "path", keyword_length = 3, max_item_count = 30 },
       { name = "nvim_lua", keyword_length = 1, max_item_count = 30 },
       { name = "calc", keyword_length = 2, max_item_count = 30 },
-      { name = "emoji", keyword_length = 2 },
     },
   },
   -- ----------------------------------------------------------------------- }}}
