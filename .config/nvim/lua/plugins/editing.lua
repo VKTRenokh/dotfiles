@@ -1,8 +1,20 @@
 return {
-  -- {{{ nvim-autopairs
+  -- {{{ mini.pairs
   {
     "echasnovski/mini.pairs",
     event = "InsertEnter",
+    keys = {
+      {
+        "<leader>up",
+        function()
+          vim.g.minipairs_disable = not vim.g.minipairs_disable
+
+          require("config.functions").notify(
+            (vim.g.minipairs_disable and "Enabled" or "Disabled") .. " " .. "mini.nvim"
+          )
+        end,
+      },
+    },
     opts = {},
   },
   -- ----------------------------------------------------------------------- }}}
@@ -27,9 +39,10 @@ return {
     end,
   },
   -- }}}
-  -- {{{ Mini.ai - better vim a/i motions
+  -- {{{ mini.ai - better vim a/i motions
   { "https://github.com/echasnovski/mini.ai", event = "LazyFile" },
   -- }}}
+  -- {{{ nvim-snippasta
   {
     "mfussenegger/nvim-snippasta",
     keys = {
@@ -48,5 +61,5 @@ return {
         mode = { "i" },
       },
     },
-  },
+  }, -- }}}
 }

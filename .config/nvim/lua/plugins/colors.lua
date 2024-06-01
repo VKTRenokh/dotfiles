@@ -1,5 +1,9 @@
 Icons = require("config.constants").icons
 
+local function fg(color)
+  return { fg = color }
+end
+
 return {
   -- {{{ nvim-treesitter
   {
@@ -115,6 +119,19 @@ return {
         sidebars = "transparent",
         floats = "transparent",
       },
+      on_colors = function(colors)
+        local util = require("tokyonight.util")
+
+        colors.border_highlight = util.darken(colors.blue7, 0.8)
+      end,
+      on_highlights = function(highlights, colors)
+        local util = require("config.functions")
+
+        local border_highlights =
+          { "NoiceCmdlinePopupBorder", "TelescopePromptBorder", "TelescopePromptTitle" }
+
+        util.each(border_highlights, util.set(highlights, fg(colors.border_highlight)))
+      end,
     },
     config = function(_, opts)
       require("tokyonight").setup(opts)

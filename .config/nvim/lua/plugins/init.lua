@@ -1,5 +1,3 @@
-local lazyFile = require("config.lazy-file")
-
-lazyFile()
+require("config.lazy-file")()
 
 return {}

@@ -28,4 +28,23 @@ function M.notify(text, level, options)
   vim.notify(text, level, rewrite_notify_options(options))
 end
 
+---@param table table
+---@param fn function
+function M.each(table, fn)
+  for k, v in pairs(table) do
+    fn(v, k)
+  end
+end
+
+---@param table table
+function M.set(table, value)
+  return function(key)
+    table[key] = value
+  end
+end
+
+function M.config_files()
+  require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+end
+
 return M

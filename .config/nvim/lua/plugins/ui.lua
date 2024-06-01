@@ -27,7 +27,7 @@ return {
         dashboard.button(
           "c",
           Icons.ui.Gear .. " Config",
-          ":e ~/.config/nvim/init.lua | cd ~/.config/nvim<CR>"
+          ":lua require('config.functions').config_files() <cr>"
         ),
         dashboard.button("u", Icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
         dashboard.button("q", Icons.ui.SignOut .. " Quit", ":qa<CR>"),
@@ -53,6 +53,8 @@ return {
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
           dashboard.section.footer.val = " Neovim loaded "
+            .. stats.loaded
+            .. "/"
             .. stats.count
             .. " plugins in "
             .. ms
@@ -357,7 +359,7 @@ return {
   -- {{{ markdown-perview.nvim
   {
     "iamcco/markdown-preview.nvim",
-    ft = "markdown",
+    cmd = "MarkdownPreview",
     config = function()
       vim.fn["mkdp#util#install"]()
     end,

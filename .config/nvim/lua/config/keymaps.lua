@@ -98,20 +98,6 @@ keymap("n", "<localleader>E", [[0mMvg_"ky :exec "r!" getreg("k")<cr>]])
 keymap("v", "<localleader>E", [["ky :exec "r!" getreg("k")<cr>]])
 
 -- ------------------------------------------------------------------------- }}}
--- {{{ Quit all
-
-keymap("n", "<c-q>", "<cmd>qall!<cr>")
-keymap("n", "<leader>qq", "<cmd>qall!<cr>")
-
--- ------------------------------------------------------------------------- }}}
----- {{{ leader + space
-
-keymap("n", "<leader><space>", "<cmd>nohlsearch<cr>")
-
--- ------------------------------------------------------------------------- }}}
--- {{{ Lazy
-keymap("n", "<leader>l", "<cmd>:Lazy<cr>")
--- }}}
 -- {{{ Keep cursor in the center of the screen when scrolling with C-e or C-y
 keymap("n", "<leader>to", function()
   vim.opt.scrolloff = 999 - vim.o.scrolloff
@@ -126,11 +112,4 @@ local langmap_keys = {
   'яЯ;zZ', 'чЧ;xX', 'сС;cC', 'мМ;vV', 'иИ;bB', 'тТ;nN', 'ьЬ;mM', [[бБ;\,<]], 'юЮ;.>',
 }
 vim.o.langmap = table.concat(langmap_keys, ",")
--- }}}
--- {{{ Reload file and lsp
-keymap("n", "<leader>L", function()
-  vim.cmd("e")
-  vim.cmd("LspRestart")
-  require("config.functions").notify("Reloaded file and lsp")
-end)
 -- }}}

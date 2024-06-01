@@ -18,11 +18,15 @@ require("lazy").setup({
     { import = "plugins" },
   },
   change_detection = {
+    enabled = false,
     notify = false,
   },
   defaults = {
     lazy = true,
     version = false,
+  },
+  checker = {
+    enabled = false,
   },
   install = { colorscheme = { "tokyonight" } },
   ui = {
@@ -63,6 +67,7 @@ require("lazy").setup({
         "ftplugin",
         "matchparen",
         "spellfile",
+        "osc52",
       },
     },
   },
