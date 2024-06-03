@@ -9,3 +9,5 @@ require("config.lazy")
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
+
+local shit = { afdasfasfasdfasdfasfdasfsadfsadfsadff_adsfadsfasf = "ssdfdsf" }

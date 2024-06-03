@@ -9,8 +9,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "LazyFile",
+    version = false,
     build = ":TSUpdate",
-    -- version = "v0.9.1",
     keys = {
       { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
@@ -24,20 +24,6 @@ return {
         enable = true,
         disable = Constants.disabled.treesitter,
         additional_vim_regex_highlighting = true,
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-          },
-          selection_modes = {},
-          include_surrounding_whitespace = true,
-        },
       },
       indent = { enable = false, disable = { "yml", "yaml" } },
       rainbow = {

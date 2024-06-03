@@ -78,6 +78,9 @@ return {
         },
       },
       setup = {},
+      document_highlight = {
+        enabled = true,
+      },
     },
     config = function(_, opts)
       vim.diagnostic.config(opts.diagnostics)
@@ -139,37 +142,22 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ conform.nvim
-  {
-    "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    keys = {
-      {
-        "<leader>fr",
-        function()
-          require("conform").format()
-        end,
-        mode = { "x", "n", "v" },
-        desc = "Format file or selection",
-      },
-    },
-    opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-        javascript = { { "prettierd" } },
-        typescript = { { "prettierd" } },
-        vue = { { "prettierd" } },
-      },
-      format_on_save = {
-        lsp_fallback = true,
-      },
-    },
-  },
-  -- }}}
-  -- {{{ neodev.nvim
-  { "folke/neodev.nvim", enabled = false },
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ neoconf.nvim
   { "folke/neoconf.nvim", enabled = false, cmd = "Neoconf", config = true },
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ lazydev.nvim
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- Library items can be absolute paths
+        -- "~/projects/my-awesome-lib",
+        -- Or relative, which means they will be resolved as a plugin
+        -- "LazyVim",
+        -- When relative, you can also provide a path to the library in the plugin dir
+        "luvit-meta/library", -- see below
+      },
+    },
+  }, -- }}}
 }
