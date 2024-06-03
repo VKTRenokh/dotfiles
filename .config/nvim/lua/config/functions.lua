@@ -1,5 +1,9 @@
 local M = {}
 
+---@param mode string
+---@param lhs string
+---@param rhs string|function
+---@param opts table|nil
 function M.keymap(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   options = vim.tbl_deep_extend("force", options, opts or {})
