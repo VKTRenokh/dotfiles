@@ -15,7 +15,7 @@ return {
         },
       },
       log_level = vim.log.levels.INFO,
-      max_concurrent_installers = 4,
+      max_concurrent_installers = 10,
       ensure_installed = Constants.ensure_installed.mason,
     },
     config = function(_, opts)
@@ -43,9 +43,9 @@ return {
     event = "LazyFile",
     keys = {
       -- stylua: ignore start
-			{ "<leader>Ll", function() vim.lsp.codelens.run() end, },
-			{ "gI", function() vim.lsp.buf.code_action() end, desc = "Code action" },
-			{ "<leader>r", function() vim.lsp.buf.rename() end, desc = "Rename variable" },
+      { "<localleader>d", vim.lsp.implementation, desc = "Goto implementation" },
+			{ "gI", vim.lsp.buf.code_action, desc = "Code action" },
+			{ "<leader>r", vim.lsp.buf.rename, desc = "Rename variable" },
       -- stylua: ignore end
     },
     dependencies = {
@@ -145,19 +145,4 @@ return {
   -- {{{ neoconf.nvim
   { "folke/neoconf.nvim", enabled = false, cmd = "Neoconf", config = true },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ lazydev.nvim
-  {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    opts = {
-      library = {
-        -- Library items can be absolute paths
-        -- "~/projects/my-awesome-lib",
-        -- Or relative, which means they will be resolved as a plugin
-        -- "LazyVim",
-        -- When relative, you can also provide a path to the library in the plugin dir
-        "luvit-meta/library", -- see below
-      },
-    },
-  }, -- }}}
 }

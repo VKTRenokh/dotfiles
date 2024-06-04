@@ -51,4 +51,10 @@ function M.config_files()
   require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
 end
 
+function M.current_buffer_fuzzy_find()
+  require("telescope.builtin").current_buffer_fuzzy_find(
+    require("telescope.themes").get_dropdown({ previewer = false })
+  )
+end
+
 return M

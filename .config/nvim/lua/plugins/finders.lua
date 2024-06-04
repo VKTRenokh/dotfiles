@@ -5,38 +5,20 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     keys = { -- {{{
-      -- stylua: ignore
+      -- stylua: ignore start
 			{ ";f", function() require("telescope.builtin").find_files({ hidden = true }) end, desc = "Find files" },
-      -- stylua: ignore
 			{ ";g", function() require("telescope.builtin").git_commits() end, desc = "Show git commits" },
-      -- stylua: ignore
 			{ ";r", function() require("telescope.builtin").live_grep() end, desc = "Find text in files" },
-      -- stylua: ignore
-			{ "\\\\", function() require("telescope.builtin").buffers() end, desc = "Show all buffers" },
-      -- stylua: ignore
 			{ ";t", function() require("telescope.builtin").help_tags() end, desc = "Show helps" },
-      -- stylua: ignore
-			{ ";;", function() require("telescope.builtin").resume() end, desc = "Open last telescope" },
-      -- stylua: ignore
 			{ ";e", function() require("telescope.builtin").diagnostics() end, desc = "Find errors" },
-      {
-        ";F",
-        function()
-          require("telescope.builtin").current_buffer_fuzzy_find(
-            require("telescope.themes").get_dropdown({ winblend = 10, previewer = false })
-          )
-        end,
-        desc = "Current Buffer Fuzzy",
-      },
-      { "<leader>LS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>" },
-      { "<leader>Ls", "<cmd>Telescope lsp_document_symbols<cr>" },
-      -- stylua: ignore
-			{ "gD", function() vim.lsp.buf.declaration() end, desc = "Goto Definition", },
-      { "gd", "<Cmd>Telescope lsp_definitions<cr>", desc = "References" },
-      { "gr", "<Cmd>Telescope lsp_references<cr>", desc = "references" },
+      { ";F", require("config.functions").current_buffer_fuzzy_find, desc = "Current Buffer Fuzzy", },
+      { ";s", "<cmd>Telescope lsp_document_symbols<cr>" },
+      { "gD", "<Cmd>Telescope lsp_definitions<cr>", desc = "Open telescope with lsp defenetions" },
+      { "gr", "<Cmd>Telescope lsp_references<cr>", desc = "Open telescope with lsp references" },
       { "gK", "<Cmd>Telescope lsp_implementations<cr>", desc = "lsp implementations" },
       { "gt", "<Cmd>Telescope lsp_type_definitions<cr>", desc = "Lsp type defenetions" },
       { ";n", "<Cmd>Telescope notify<cr>", desc = "Find Notifications" },
+      -- stylua: ignore end
     }, -- }}}
     cmd = "Telescope",
     version = false,

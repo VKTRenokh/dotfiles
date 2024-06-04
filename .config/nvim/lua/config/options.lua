@@ -65,7 +65,7 @@ local options = {
 }
 
 vim.scriptencoding = "utf-8"
-vim.opt.shortmess:append("c")
+vim.opt.shortmess:append("sl")
 vim.opt.path:append({ "**" })
 
 for k, v in pairs(options) do

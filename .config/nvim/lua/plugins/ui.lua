@@ -40,7 +40,7 @@ return {
 
       dashboard.section.header.opts.hl = "AlphaHeader"
       dashboard.section.buttons.opts.hl = "AlphaButtons"
-      dashboard.section.footer.opts.hl = "@comment"
+      dashboard.section.footer.opts.hl = "@keyword"
       dashboard.opts.opts.noautocmd = true
       return dashboard
     end,
@@ -465,16 +465,19 @@ return {
         desc = "open trouble with lsp symbols",
       },
       {
-        "<leader>T",
-        "<Cmd>Trouble lsp_references<cr>",
+        "<leader>t",
+        "<Cmd>Trouble diagnostics<cr>",
         desc = "open trouble with lsp references",
       },
       -- stylua: ignore
-			{ "<leader>t", "<cmd>Trouble<cr>", desc = "Open trouble selection menu", },
+			{ "<leader>T", "<cmd>Trouble<cr>", desc = "Open trouble selection menu", },
 
       { "<leader>td", "<cmd>Trouble diagnostics<cr>", desc = "Open Trouble Diagnostics" },
     },
-    opts = { use_diagnostic_signs = true },
+    opts = {
+      use_diagnostic_signs = true,
+      auto_jump = true,
+    },
   },
 
   -- ----------------------------------------------------------------------- }}}

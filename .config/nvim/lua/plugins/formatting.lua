@@ -25,7 +25,7 @@ return {
       lsp_fallback = true,
     },
     format_on_save = {
-      lsp_fallback = true
-    }
+      lsp_fallback = true,
+    },
   },
 }
