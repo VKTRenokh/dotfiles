@@ -17,7 +17,6 @@ return {
       { "gr", "<Cmd>Telescope lsp_references<cr>", desc = "Open telescope with lsp references" },
       { "gK", "<Cmd>Telescope lsp_implementations<cr>", desc = "lsp implementations" },
       { "gt", "<Cmd>Telescope lsp_type_definitions<cr>", desc = "Lsp type defenetions" },
-      { ";n", "<Cmd>Telescope notify<cr>", desc = "Find Notifications" },
       -- stylua: ignore end
     }, -- }}}
     cmd = "Telescope",
@@ -28,6 +27,12 @@ return {
     opts = function()
       local actions = require("telescope.actions")
 
+      local maps = {
+        ["<C-e>"] = actions.select_vertical,
+        ["<C-v>"] = actions.select_horizontal,
+        ["<C-t>"] = actions.select_tab,
+      }
+
       return {
         defaults = {
           layout_config = { prompt_position = "top" },
@@ -35,18 +40,11 @@ return {
           prompt_prefix = Constants.icons.ui.Telescope,
           selection_caret = "󱞩 ",
           sorting_strategy = "ascending",
+          ignore = "*.lua",
 
           mappings = {
-            ["n"] = {
-              ["<C-e>"] = actions.select_vertical,
-              ["<C-v>"] = actions.select_horizontal,
-              ["<C-t>"] = actions.select_tab,
-            },
-            ["i"] = {
-              ["<C-e>"] = actions.select_vertical,
-              ["<C-v>"] = actions.select_horizontal,
-              ["<C-t>"] = actions.select_tab,
-            },
+            ["n"] = maps,
+            ["i"] = maps,
           },
         },
       }

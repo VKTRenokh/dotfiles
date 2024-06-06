@@ -141,26 +141,6 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ solarized-osaka.nvim
-  {
-    "craftzdog/solarized-osaka.nvim",
-    priority = 1000,
-    opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-    },
-    lazy = false,
-    config = function(_, opts)
-      require("solarized-osaka").setup(opts)
-
-      vim.cmd.colorscheme("solarized-osaka")
-    end,
-    enabled = false,
-  },
-  -- }}}
   -- {{{ nvim-colorizer
   {
     "JosefLitos/colorizer.nvim",
@@ -174,14 +154,4 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ gruvbox.nvim - dont use this please
-  {
-    "ellisonleao/gruvbox.nvim",
-    enabled = false,
-    config = function(_, opts)
-      require("gruvbox").setup(opts)
-
-      vim.cmd.colorscheme("gruvbox")
-    end,
-  }, -- }}}
 }

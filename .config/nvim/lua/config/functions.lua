@@ -3,7 +3,7 @@ local M = {}
 ---@param mode string
 ---@param lhs string
 ---@param rhs string|function
----@param opts table|nil
+---@param opts table?
 function M.keymap(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   options = vim.tbl_deep_extend("force", options, opts or {})
@@ -48,7 +48,23 @@ function M.set(table, value)
 end
 
 function M.config_files()
-  require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+  local config = vim.fn.stdpath("config")
+  local actions = require("telescope.actions")
+  local actions_state = require("telescope.actions.state")
+
+  require("telescope.builtin").find_files({
+    cwd = config,
+    attach_mappings = function(prompt_bufnr)
+      actions.select_default:replace(function()
+        actions.close(prompt_bufnr)
+
+        vim.cmd.edit(actions_state.get_selected_entry().path)
+        vim.fn.chdir(config)
+      end)
+
+      return true
+    end,
+  })
 end
 
 function M.current_buffer_fuzzy_find()

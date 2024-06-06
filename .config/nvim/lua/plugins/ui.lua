@@ -27,7 +27,7 @@ return {
         dashboard.button(
           "c",
           Icons.ui.Gear .. " Config",
-          ":cd ~/.config/nvim | :lua require('config.functions').config_files() <cr>"
+          ":lua require('config.functions').config_files() <cr>"
         ),
         dashboard.button("u", Icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
         dashboard.button("q", Icons.ui.SignOut .. " Quit", ":qa<CR>"),
