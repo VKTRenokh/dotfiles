@@ -154,4 +154,20 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ rose-pine
+  {
+    "https://github.com/rose-pine/neovim.git",
+    name = "rose-pine",
+    lazy = false,
+    enabled = false,
+    priority = 1000,
+    opts = {
+      variant = "dawn",
+    },
+    config = function(_, opts)
+      require("rose-pine").setup(opts)
+
+      vim.cmd.colorscheme("rose-pine")
+    end,
+  }, -- }}}
 }
