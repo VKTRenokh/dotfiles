@@ -459,24 +459,18 @@ return {
     "folke/trouble.nvim",
     cmd = "Trouble",
     keys = {
-      {
-        "<leader>Ld",
-        "<cmd>TroubleToggle lsp_document_symbols<cr>",
-        desc = "open trouble with lsp symbols",
-      },
-      {
-        "<leader>t",
-        "<Cmd>Trouble diagnostics<cr>",
-        desc = "open trouble with lsp references",
-      },
-      -- stylua: ignore
+      --stylua: ignore start
+      { "<leader>t", "<Cmd>Trouble diagnostics<cr>", desc = "Open trouble diagnostics", },
 			{ "<leader>T", "<cmd>Trouble<cr>", desc = "Open trouble selection menu", },
-
-      { "<leader>td", "<cmd>Trouble diagnostics<cr>", desc = "Open Trouble Diagnostics" },
+      -- stylua: ignore end
+      { "<leader>cl", "<cmd>Trouble lsp<cr>", desc = "Open trouble with lsp" },
     },
     opts = {
       use_diagnostic_signs = true,
-      auto_jump = true,
+      auto_jump = false,
+      open_no_results = true,
+      warn_no_results = false,
+      focus = true,
     },
   },
 
