@@ -129,7 +129,6 @@ return {
           serverOpts = serverOpts == true and {} or serverOpts
 
           if serverOpts.mason == false or not vim.tbl_contains(allMslpServers, server) then
-            vim.notify(server)
             setup(server)
           elseif serverOpts.enabled ~= false then
             ensureInstalled[#ensureInstalled + 1] = server
