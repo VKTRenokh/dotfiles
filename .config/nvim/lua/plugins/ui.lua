@@ -434,19 +434,9 @@ return {
       },
     },
     opts = {
-      -- level = 3,
       render = "wrapped-compact",
       stages = "static",
       timeout = 3000,
-      routes = {
-        {
-          filter = {
-            event = "notify",
-            find = "No information available",
-          },
-          opts = { skip = true },
-        },
-      },
       max_height = function()
         return math.floor(vim.o.lines * 0.75)
       end,
