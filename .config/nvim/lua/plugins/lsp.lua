@@ -72,6 +72,35 @@ return {
       capabilities = {},
       servers = {
         jsonls = require("plugins.lsp.jsonls"),
+        vtsls = {
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enabledMoveToFileCodeAction = true,
+              auotUseWorkspaceTskd = true,
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+            },
+            typescript = {
+              updateImportsOnFileMove = { enabled = "always" },
+              suggest = { completeFunctionCalls = true },
+            },
+          },
+        },
+        tsserver = {
+          enabled = false,
+        },
         lua_ls = {
           settings = {
             Lua = Constants.lua_ls.Lua,
