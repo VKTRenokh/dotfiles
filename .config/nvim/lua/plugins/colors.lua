@@ -1,10 +1,10 @@
 Icons = require("config.constants").icons
-
+-- {{{ Utils
 ---@param color string
 local function fg(color)
   return { fg = color }
 end
-
+-- }}}
 return {
   -- {{{ nvim-treesitter
   {
@@ -141,16 +141,13 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-colorizer
+  -- {{{ mini.hipatternsk
   {
-    "JosefLitos/colorizer.nvim",
+    "echasnovski/mini.hipatterns",
     event = "LazyFile",
-    opts = {
-      filetypes = { "*" },
-      mode = "background",
-    },
+    opts = {},
     config = function(_, opts)
-      require("colorizer").setup(opts)
+      require("mini.hipatterns").setup(opts)
     end,
   },
   -- ----------------------------------------------------------------------- }}}

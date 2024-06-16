@@ -13,10 +13,12 @@ return {
   },
   opts = {
     formatters_by_ft = {
-      lua = { "stylua" },
-      javascript = { "prettierd" },
-      typescript = { "prettierd" },
-      vue = { "prettierd" },
+      ["lua"] = { "stylua" },
+      ["javascript"] = { "prettierd" },
+      ["typescript"] = { "prettierd" },
+      ["vue"] = { "prettierd" },
+      ["markdown"] = { "prettierd" },
+      ["markdown.mdx"] = { "prettierd" },
     },
     format = {
       timeout_ms = 3000,

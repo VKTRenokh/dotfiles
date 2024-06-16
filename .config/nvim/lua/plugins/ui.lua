@@ -371,9 +371,6 @@ return {
     event = "VeryLazy",
     opts = {
       lsp = {
-        progress = {
-          view = false,
-        },
         hover = {
           silent = true,
         },
@@ -383,26 +380,9 @@ return {
           ["cmp.entry.get_documentation"] = false,
         },
       },
-      routes = {
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            kind = "wmsg",
-          },
-          opts = { skip = true },
-        },
-      },
       presets = {
-        bottom_search = false,
+        bottom_search = true,
         long_message_to_split = true,
-        inc_rename = false,
         lsp_doc_border = true,
       },
       cmdline_popup = {

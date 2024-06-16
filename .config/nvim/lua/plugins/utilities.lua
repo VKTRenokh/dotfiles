@@ -24,13 +24,13 @@ return {
     },
   },
   -- }}}
-  -- {{{ nfnlk
+  -- {{{ Olical nfnl
   {
     "Olical/nfnl",
     ft = { "fennel" },
   },
   -- }}}
-
+  -- {{{ pipka.nvim
   {
     dir = "/mnt/sda1/workspace/pipka.nvim",
     opts = {
@@ -45,5 +45,5 @@ return {
       { "<leader>P", "<cmd>Pipka<cr>" },
     },
     cmd = "Pipka",
-  },
+  }, -- }}}
 }

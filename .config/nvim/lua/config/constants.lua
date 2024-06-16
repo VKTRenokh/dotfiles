@@ -63,7 +63,6 @@ Constants = {
       "gitignore",
       "c",
       "http",
-      "cpp",
       "css",
       "dockerfile",
       "html",
@@ -82,6 +81,7 @@ Constants = {
       "vim",
       "yaml",
       "fennel",
+      "printf",
     },
   },
 
