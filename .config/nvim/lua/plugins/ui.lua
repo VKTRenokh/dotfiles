@@ -371,6 +371,9 @@ return {
     event = "VeryLazy",
     opts = {
       lsp = {
+        progress = {
+          view = false,
+        },
         hover = {
           silent = true,
         },
@@ -378,6 +381,22 @@ return {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = false,
+        },
+      },
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            kind = "",
+          },
+          opts = { skip = true },
+        },
+        {
+          filter = {
+            event = "msg_show",
+            kind = "wmsg",
+          },
+          opts = { skip = true },
         },
       },
       presets = {

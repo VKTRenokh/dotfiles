@@ -92,4 +92,32 @@ return {
       },
     },
   }, -- }}}
+  -- {{{ todo-comments.nvim
+  {
+    "folke/todo-comments.nvim",
+    event = "LazyFile",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "]t",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "Jump to the next todo comment (folke/todo-comments.nvim)",
+      },
+      {
+        "[t",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "Jump to the previous todo comment (folke/todo-comments.nvim)",
+      },
+      {
+        ";d",
+        "<Cmd>TodoTelescope<cr>",
+      },
+    },
+    opts = {},
+    config = true,
+  }, -- }}}
 }
