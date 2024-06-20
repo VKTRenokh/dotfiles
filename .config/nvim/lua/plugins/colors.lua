@@ -101,7 +101,14 @@ return {
   -- {{{ rainbow-delimiters
   {
     "HiPhish/rainbow-delimiters.nvim",
-    opts = {},
+    opts = {
+      blacklist = {
+        "vue",
+        "html",
+        "jsx",
+        "tsx",
+      },
+    },
     enabled = true,
     event = "LazyFile",
     main = "rainbow-delimiters.setup",

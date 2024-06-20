@@ -139,6 +139,7 @@ return {
       { "<leader>Sp", '<cmd>lua require "gitsigns".preview_hunk()<cr>' },
       { "<leader>Sr", '<cmd>lua require "gitsigns".reset_buffer()<cr>' },
     },
+    version = false,
     opts = {
       signs = {
         add = { text = "▎" },
@@ -163,9 +164,6 @@ return {
         virt_text_pos = "eol",
         delay = 1000,
         ignore_whitespace = false,
-      },
-      current_line_blame_formatter_opts = {
-        relative_time = false,
       },
       sign_priority = 6,
       update_debounce = 100,

@@ -18,25 +18,22 @@ return {
     opts = {},
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-surround
+  -- {{{ mini.surround
   {
-    "kylechui/nvim-surround",
+    "echasnovski/mini.surround",
     keys = {
-      "<C-g>s",
-      "<C-g>S",
-      "ys",
-      "yss",
-      { "yS", mode = { "n", "v", "x" } },
-      "ySS",
-      { "S", mode = { "n", "v", "x" } },
-      "gS",
-      "ds",
-      "cs",
-      "cS",
+      { "sa", mode = { "v", "n" }, desc = "Add surrounding" },
+      { "sd", desc = "Delete surrounding" },
+      { "sh", desc = "Highlight closest surrounding" },
+      { "sr", mode = { "v", "n" }, desc = "Replace surrounding" },
+      { "sn", desc = "Update surroundings in n_lines" },
     },
-    config = function(_, opts)
-      require("nvim-surround").setup(opts)
-    end,
+    opts = {
+      mappings = {
+        find = "",
+        find_left = "",
+      },
+    },
   },
   -- }}}
   -- {{{ mini.ai - better vim a/i motions
