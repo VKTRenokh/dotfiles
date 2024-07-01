@@ -72,11 +72,52 @@ return {
       capabilities = {},
       servers = {
         jsonls = require("plugins.lsp.jsonls"),
-        vtsls = require("plugins.lsp.vtsls"),
-        volar = require("plugins.lsp.volar"),
-        tsserver = {
+        vtsls = { -- {{{
+          enabled = false, -- NOTE: disable typescript-language-server if this server is enabled
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.jsx",
+          },
+          settings = {
+            complete_function_calls = true,
+            vtsls = {
+              enableMoveToFileCodeAction = true,
+              autoUseWorkspaceTskd = true,
+              experimental = {
+                completion = {
+                  enableServerSideFuzzyMatch = true,
+                },
+              },
+            },
+            typescript = {
+              suggest = { completeFunctionCalls = true },
+              updateImportsOnFileMove = { enabled = "always" },
+            },
+            inlayHints = {
+              enumMemberValues = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              parameterNames = { enabled = "literals" },
+              parameterTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              variableTypes = { enabled = false },
+            },
+          },
+        }, -- }}}}}}
+        volar = { -- {{{
+          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+          init_options = {
+            vue = {
+              hybridMode = false,
+            },
+          },
+        }, -- }}}
+        tsserver = { -- {{{
           enabled = true, -- NOTE: disable tsserver if vtsls is enabled
-        },
+        }, -- }}}
         lua_ls = {
           settings = {
             Lua = Constants.lua_ls.Lua,

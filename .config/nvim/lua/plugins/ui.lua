@@ -80,6 +80,8 @@ return {
       { "<C-Tab>", "<cmd>tablast<cr>", desc = "Jump to the last tab" },
       { "<C-S-Tab>", "<cmd>tabfirst<cr>", desc = "Jump to the first tab" },
       { "<leader>tp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin tab" },
+      { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
+      { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
     },
     opts = {
       options = {
@@ -87,7 +89,7 @@ return {
         separator_style = "thin",
         show_buffer_close_icons = false,
         show_close_icon = false,
-        color_icons = true,
+        color_icons = false,
         diagnostics = "nvim_lsp",
         always_show_bufferline = false,
         diagnostics_indicator = function(_, _, diag)
@@ -185,8 +187,11 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = "LazyFile",
     enabled = true, -- enable when plugin author fixes it
+    keys = {
+      { "<leader>di", "<Cmd>IBLToggle<cr>", desc = "Toggle indention guides" },
+    },
     opts = {
-      indent = { char = "│" },
+      indent = { char = "" }, -- 
       scope = {
         show_start = false,
       },
@@ -470,6 +475,14 @@ return {
       open_no_results = true,
       warn_no_results = false,
       focus = true,
+      keys = {
+        gb = {
+          action = function(view)
+            view:filter({ buf = 0 }, { toggle = true })
+          end,
+          desc = "Toggle Current Buffer Filter (trouble)",
+        },
+      },
     },
   },
 

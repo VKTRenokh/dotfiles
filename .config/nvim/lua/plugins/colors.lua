@@ -27,6 +27,29 @@ return {
         additional_vim_regex_highlighting = true,
       },
       textobjects = {
+        move = {
+          enable = true,
+          goto_next_start = {
+            ["]f"] = "@function.outer",
+            ["]c"] = "@class.outer",
+            ["]a"] = "@parameter.inner",
+          },
+          goto_next_end = {
+            ["]F"] = "@function.outer",
+            ["]C"] = "@class.outer",
+            ["]A"] = "@parameter.inner",
+          },
+          goto_previous_start = {
+            ["[f"] = "@function.outer",
+            ["[c"] = "@class.outer",
+            ["[a"] = "@parameter.inner",
+          },
+          goto_previous_end = {
+            ["[F"] = "@function.outer",
+            ["[C"] = "@class.outer",
+            ["[A"] = "@parameter.inner",
+          },
+        },
         select = {
           enable = true,
           lookahead = true,
@@ -139,6 +162,8 @@ return {
           { "NoiceCmdlinePopupBorder", "TelescopePromptBorder", "TelescopePromptTitle" }
 
         util.each(border_highlights, util.set(highlights, fg(colors.border_highlight)))
+
+        highlights.Folded.bg = "none"
       end,
     },
     config = function(_, opts)
@@ -148,30 +173,21 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ mini.hipatternsk
+  -- {{{ mini.hipatterns
   {
     "echasnovski/mini.hipatterns",
     event = "LazyFile",
-    opts = {},
+    opts = function()
+      local hl = require("mini.hipatterns")
+      return {
+        highlighters = {
+          hex_color = hl.gen_highlighter.hex_color({ priority = 2000 }),
+        },
+      }
+    end,
     config = function(_, opts)
       require("mini.hipatterns").setup(opts)
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ rose-pine
-  {
-    "https://github.com/rose-pine/neovim.git",
-    name = "rose-pine",
-    lazy = false,
-    enabled = false,
-    priority = 1000,
-    opts = {
-      variant = "dawn",
-    },
-    config = function(_, opts)
-      require("rose-pine").setup(opts)
-
-      vim.cmd.colorscheme("rose-pine")
-    end,
-  }, -- }}}
 }
