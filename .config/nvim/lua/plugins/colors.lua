@@ -146,6 +146,7 @@ return {
     opts = {
       transparent = true,
       style = "moon",
+      dim_inactive = true,
       styles = {
         sidebars = "transparent",
         floats = "transparent",
