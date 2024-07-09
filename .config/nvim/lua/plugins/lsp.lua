@@ -132,6 +132,10 @@ return {
     config = function(_, opts)
       vim.diagnostic.config(opts.diagnostics)
 
+      local map = require("config.functions").keymap
+
+      map("n", "gd", vim.lsp.buf.definition, { desc = "Goto defenetion" })
+
       local servers = opts.servers
 
       local hasCmp, cmpNvimLsp = pcall(require, "cmp_nvim_lsp")

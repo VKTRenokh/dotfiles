@@ -13,7 +13,7 @@ return {
 			{ ";e", function() require("telescope.builtin").diagnostics() end, desc = "Find errors" },
       { ";F", require("config.functions").current_buffer_fuzzy_find, desc = "Current Buffer Fuzzy", },
       { ";s", "<cmd>Telescope lsp_document_symbols<cr>" },
-      { "gd", "<Cmd>Telescope lsp_definitions<cr>", desc = "Open telescope with lsp defenetions" },
+      { "gD", "<Cmd>Telescope lsp_definitions<cr>", desc = "Open telescope with lsp defenetions" },
       { "gr", "<Cmd>Telescope lsp_references<cr>", desc = "Open telescope with lsp references" },
       { "gK", "<Cmd>Telescope lsp_implementations<cr>", desc = "lsp implementations" },
       { "gt", "<Cmd>Telescope lsp_type_definitions<cr>", desc = "Lsp type defenetions" },
