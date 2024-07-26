@@ -56,11 +56,9 @@ local options = {
   virtualedit = { "block" },
   wildmode = { "list", "longest" },
   wildoptions = "pum",
-  winblend = 0,
   wrap = false,
   writebackup = false,
   pumheight = 10,
-  pumblend = 5,
   laststatus = 3,
 }
 

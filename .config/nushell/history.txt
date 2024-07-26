@@ -1,0 +1,370 @@
+clear
+l
+sls
+ls
+clear
+workspace
+ls
+cd .config
+ls
+claer
+ls
+clear
+cd nushell
+ls
+$nu.env-path
+ls
+clear
+source $nu.env-path
+ls
+$nu.config-path
+clera
+claer
+clear
+ls
+50 / 500
+50 / 50
+(http get https://api.chucknorris.io/jokes/random).valueE
+доавлыа
+~/.local
+ls
+cd bin
+ls
+config nu
+help http get
+http get https://github.com
+ls | where type == file
+ps | where cpu > 0 | sort-by cpu | reverse
+parse
+ls
+cd dotfiles
+ls
+df -h | str replace "Mounted on" Mounted_On | detect columnsE
+cargo search shells --limit 10 | lines | parse "{crate_name} = {version} #{description}" | str trimE
+fihs
+fish
+sudo pacman -S fish
+fish --command
+fish --command "complete"
+ls
+clera
+clear
+fastfetch
+ls
+workspace
+ls
+claer
+ls
+clear
+zo
+z
+zoxide
+sudo pacman -S zoxide
+paru -S zoxide
+ls
+z
+zoxide
+ls
+clear
+cd /mnt
+ls
+cd sda
+ls
+cd sda1/
+ls
+cd workspace
+ls
+cd vktrenokh-angular2024q3/
+ls
+git add
+ls
+cd ..l
+cd ..
+sl
+cd ~
+ls
+cd .local/share
+ls
+cd ..
+cat bin/tmux-sessionizer
+ls
+cd bin
+ls
+nvim ts
+./ts
+ls
+chmod +x ts
+./ts
+fdjkfdsjf
+ts safd
+ls
+nvim ts
+;s
+ls
+rm -rf ts
+ls
+clear
+cd .config/kitty
+l
+ls
+alias
+alias hello="nvim"
+alias hello = "nvim"
+alias hello = nvim
+hello
+clear
+clera
+clear
+kls
+ls
+carapace
+sudo pacman -S carapace
+overlay
+overlay list
+overlay new
+overlay --help
+ls
+v
+workspace
+ls
+cd =
+cd -
+clear
+ls
+menu name: ide_completion_menu
+menunext
+> echo $nu.keybinding-pathE/home/sophia/.config/nu/keybindings.ymlE
+echo $nu.keybinding-pathE/home/sophia/.config/nu/keybindings.yml
+echo $nu.keybinding-pathE
+echo $nu.
+completion_menu
+keybindsp
+keybindings
+keybindings list
+sdkjfsdlkfj
+jkdjfdsk
+uuu
+ls
+keybindings list
+nvim config.nu
+ls
+b
+v
+kdsfjlasdfjlk
+keybindings list 
+ls
+cllear
+clear
+ls
+nvim
+v
+ksdafasdjklj
+config reload
+config
+config nu
+ls
+clear
+ls
+clear
+ls
+cleasr
+clear
+ls
+clear
+claer
+neofetch
+fastfetch
+clear
+ls
+tmux
+chsh -s /usr/bin/nu
+ls
+tmux
+ls
+clear
+ls
+git clone https://github.com/nushell/nu_scripts.git
+cp nu_scripts/themes/ ~/.config/nu
+cp nu_scripts/themes/ ~/.config/nu -r
+ls
+cd .config/nu
+ls
+ls nu-themes/
+source nu-themes/tokyo-moon.nu
+ls
+clear
+fastfetch
+v
+ls
+source
+config nu
+ls
+kitten theme
+ls
+nu config
+config
+ls
+config kitty
+ls
+cd ..
+ls
+cd .confgi
+cd .config
+ls
+cd kitty
+ls
+kitten theme
+ls
+clear
+worksace
+workspace
+ls
+cd .config
+ls
+cd kitty
+b
+ls
+cd .config/nu
+ls
+cd nu-themes
+ls
+clear
+ls
+print
+ls
+nu config
+ls
+clear
+parsyu
+ls
+clear
+ls
+clear
+ls
+sudo mount /dev/sda1 /mnt/sda1/
+ls
+clear
+ls
+cd youtube
+cd youtube
+ls
+ls
+ng serve
+config nu
+ng
+source
+source %
+$nu.config-path
+source $nu.config-path
+ls
+ng
+b
+sudo dinitctl start bluetoothd && rfkill unblock all
+sudo dinitctl start bluetoothd and rfkill unblock all
+sudo dinitctl start bluetoothd
+rfkill unblock all
+ls
+clera
+ls
+cd .config
+ls
+cd nu
+ls
+v nu-themes
+ls
+nvim nu-themes
+source nu-themes/tokyo-night.nu
+source nu-themes/tokyo-storm.nu
+ls
+cd .config/nu
+ls
+tks
+v
+exit
+cd .config/nu
+ls
+config nu
+ls
+cd .config/kitty
+ls
+lsl
+ls
+v
+cd .config/kitty
+ls
+clear
+ls
+exit
+tmux
+ls
+jls
+ls
+clear
+ls
+l
+ls
+cles
+ls
+clear
+neofethc
+neofetch
+ls
+config nu
+ls
+source .config/nu/config.nu
+source .config/nushell/config.nu
+ls
+cd .config/nushell
+ls
+cd .
+cd ..
+ls
+cd nu
+ls
+$nu.config-path
+nvim nushell
+ls
+cd .config/nushell
+ls
+$nu.config-path
+$nu.config-path
+uwufetch
+pfetch
+paru -S pfetch
+ls
+pfetch
+ls
+pfetch
+pfetch --help
+pfetch
+printf # std.nu, `used` to load all standard library componentsEEexport module assert.nuEexport module dirs.nuEexport module dt.nuEexport module formats.nuEexport module help.nuEexport module input.nuEexport module iter.nuEexport module log.nuEexport module math.nuEexport module xml.nuEexport-env {E    use dirs.nu []E    use log.nu []E}EEuse dt.nu [datetime-diff, pretty-print-duration]EE# Add the given paths to the PATH.E#E# # ExampleE# - adding some dummy paths to an empty PATHE# ```nushellE# >_ with-env { PATH: [] } {E#     std path add "foo"E#     std path add "bar" "baz"E#     std path add "fooo" --appendE#E#     assert equal $env.PATH ["bar" "baz" "foo" "fooo"]E#E#     print (std path add "returned" --ret)E# }E# ╭───┬──────────╮E# │ 0 │ returned │E# │ 1 │ bar      │E# │ 2 │ baz      │E# │ 3 │ foo      │E# │ 4 │ fooo     │E# ╰───┴──────────╯E# ```E# - adding paths based on the operating systemE# ```nushellE# >_ std path add {linux: "foo", windows: "bar", darwin: "baz"}E# ```Eexport def --env "path add" [E    --ret (-r)  # return $env.PATH, useful in pipelines to avoid scoping.E    --append (-a)  # append to $env.PATH instead of prepending to.E    ...paths  # the paths to add to $env.PATH.E] {E    let span = (metadata $paths).spanE    let paths = $paths | flattenEE    if ($paths | is-empty) or ($paths | length) == 0 {E        error make {msg: "Empty input", label: {E            text: "Provide at least one string or a record",E            span: $spanE        }}E    }EE    let path_name = if "PATH" in $env { "PATH" } else { "Path" }EE    let paths = $paths | each {|p|E        let p = match ($p | describe | str replace --regex '<.*' '') {E            "string" => $p,E            "record" => { $p | get --ignore-errors $nu.os-info.name },E        }EE        $p | path expand --no-symlinkE    }EE    if null in $paths or ($paths | is-empty) {E        error make {msg: "Empty input", label: {E            text: $"Received a record, that does not contain a ($nu.os-info.name) key",E            span: $spanE        }}E    }EE    load-env {$path_name: (E        $envE            | get $path_nameE            | split row (char esep)E            | if $append { append $paths } else { prepend $paths }E    )}EE    if $ret {E        $env | get $path_nameE    }E}EE# convert an integer amount of nanoseconds to a real durationEdef "from ns" [] {E    [$in "ns"] | str join | into durationE}EE# run a piece of `nushell` code multiple times and measure the time of execution.E#E# this command returns a benchmark report of the following form:E# ```E# record<E#   mean: durationE#   std: durationE#   times: list<duration>E# >E# ```E#E# > **Note**E# > `std bench --pretty` will return a `string`.E#E# # ExamplesE#     measure the performance of simple additionE#     > std bench { 1 + 2 } -n 10 | table -eE#     ╭───────┬────────────────────╮E#     │ mean  │ 4µs 956ns          │E#     │ std   │ 4µs 831ns          │E#     │       │ ╭───┬────────────╮ │E#     │ times │ │ 0 │ 19µs 402ns │ │E#     │       │ │ 1 │  4µs 322ns │ │E#     │       │ │ 2 │  3µs 352ns │ │E#     │       │ │ 3 │  2µs 966ns │ │E#     │       │ │ 4 │        3µs │ │E#     │       │ │ 5 │   3µs 86ns │ │E#     │       │ │ 6 │   3µs 84ns │ │E#     │       │ │ 7 │  3µs 604ns │ │E#     │       │ │ 8 │   3µs 98ns │ │E#     │       │ │ 9 │  3µs 653ns │ │E#     │       │ ╰───┴────────────╯ │E#     ╰───────┴────────────────────╯E#E#     get a pretty benchmark reportE#     > std bench { 1 + 2 } --prettyE#     3µs 125ns +/- 2µs 408nsEexport def bench [E    code: closure  # the piece of `nushell` code to measure the performance ofE    --rounds (-n): int = 50  # the number of benchmark rounds (hopefully the more rounds the less variance)E    --verbose (-v) # be more verbose (namely prints the progress)E    --pretty # shows the results in human-readable format: "<mean> +/- <stddev>"E] {E    let times = (E        seq 1 $rounds | each {|i|E            if $verbose { print -n $"($i) / ($rounds)\r" }E            timeit { do $code } | into int | into floatE        }E    )EE    if $verbose { print $"($rounds) / ($rounds)" }EE    let report = {E        mean: ($times | math avg | from ns)E        min: ($times | math min | from ns)E        max: ($times | math max | from ns)E        std: ($times | math stddev | from ns)E        times: ($times | each { from ns })E    }EE    if $pretty {E        $"($report.mean) +/- ($report.std)"E    } else {E        $reportE    }E}EE# Print a banner for nushell with information about the projectEexport def banner [] {Elet dt = (datetime-diff (date now) 2019-05-10T09:59:12-07:00)E$"(ansi green)     __  ,(ansi reset)E(ansi green) .--\(\)°'.' (ansi reset)Welcome to (ansi green)Nushell(ansi reset),E(ansi green)'|, . ,'   (ansi reset)based on the (ansi green)nu(ansi reset) language,E(ansi green) !_-\(_\\    (ansi reset)where all data is structured!EEPlease join our (ansi purple)Discord(ansi reset) community at (ansi purple)https://discord.gg/NtAbbGn(ansi reset)EOur (ansi green_bold)GitHub(ansi reset) repository is at (ansi green_bold)https://github.com/nushell/nushell(ansi reset)EOur (ansi green)Documentation(ansi reset) is located at (ansi green)https://nushell.sh(ansi reset)E(ansi cyan)Tweet(ansi reset) us at (ansi cyan_bold)@nu_shell(ansi reset)ELearn how to remove this at: (ansi green)https://nushell.sh/book/configuration.html#remove-welcome-message(ansi reset)EEIt's been this long since (ansi green)Nushell(ansi reset)'s first commit:E(pretty-print-duration $dt)EEStartup Time: ($nu.startup-time)E"E}EE# the cute and friendly mascot of Nushell :)Eexport def ellie [] {E    let ellie = [E        "     __  ,",E        " .--()°'.'",E        "'|, . ,'",E        " !_-(_\\",E    ]EE    $ellie | str join "\n" | $"(ansi green)($in)(ansi reset)"E}EE# Return the current working directoryEexport def pwd [E    --physical (-P) # resolve symbolic linksE] {E    if $physical {E        $env.PWD | path expandE    } else {E        $env.PWDE    }E}EE# repeat anything a bunch of times, yielding a list of *n* times the inputE#E# # ExamplesE#     repeat a stringE#     > "foo" | std repeat 3 | str joinE#     "foofoofoo"Eexport def repeat [E    n: int  # the number of repetitions, must be positiveE]: any -> list<any> {E    let item = $inEE    if $n < 0 {E        let span = metadata $n | get spanE        error make {E            msg: $"(ansi red_bold)invalid_argument(ansi reset)"E            label: {E                text: $"n should be a positive integer, found ($n)"E            	span: $spanE            }E        }E    }EE    if $n == 0 {E        return []E    }EE    1..$n | each { $item }E}EE# return a null device file.E#E# # ExamplesE#     run a command and ignore it's stderr outputE#     > cat xxx.txt e> (null-device)Eexport def null-device []: nothing -> path {E    if ($nu.os-info.name | str downcase) == "windows" {E        '\\.\NUL'E    } else {E        "/dev/null"E    }E}
+VC# std.nu, `used` to load all standard library componentsEEexport module assert.nuEexport module dirs.nuEexport module dt.nuEexport module formats.nuEexport module help.nuEexport module input.nuEexport module iter.nuEexport module log.nuEexport module math.nuEexport module xml.nuEexport-env {E    use dirs.nu []E    use log.nu []E}EEuse dt.nu [datetime-diff, pretty-print-duration]EE# Add the given paths to the PATH.E#E# # ExampleE# - adding some dummy paths to an empty PATHE# ```nushellE# >_ with-env { PATH: [] } {E#     std path add "foo"E#     std path add "bar" "baz"E#     std path add "fooo" --appendE#E#     assert equal $env.PATH ["bar" "baz" "foo" "fooo"]E#E#     print (std path add "returned" --ret)E# }E# ╭───┬──────────╮E# │ 0 │ returned │E# │ 1 │ bar      │E# │ 2 │ baz      │E# │ 3 │ foo      │E# │ 4 │ fooo     │E# ╰───┴──────────╯E# ```E# - adding paths based on the operating systemE# ```nushellE# >_ std path add {linux: "foo", windows: "bar", darwin: "baz"}E# ```Eexport def --env "path add" [E    --ret (-r)  # return $env.PATH, useful in pipelines to avoid scoping.E    --append (-a)  # append to $env.PATH instead of prepending to.E    ...paths  # the paths to add to $env.PATH.E] {E    let span = (metadata $paths).spanE    let paths = $paths | flattenEE    if ($paths | is-empty) or ($paths | length) == 0 {E        error make {msg: "Empty input", label: {E            text: "Provide at least one string or a record",E            span: $spanE        }}E    }EE    let path_name = if "PATH" in $env { "PATH" } else { "Path" }EE    let paths = $paths | each {|p|E        let p = match ($p | describe | str replace --regex '<.*' '') {E            "string" => $p,E            "record" => { $p | get --ignore-errors $nu.os-info.name },E        }EE        $p | path expand --no-symlinkE    }EE    if null in $paths or ($paths | is-empty) {E        error make {msg: "Empty input", label: {E            text: $"Received a record, that does not contain a ($nu.os-info.name) key",E            span: $spanE        }}E    }EE    load-env {$path_name: (E        $envE            | get $path_nameE            | split row (char esep)E            | if $append { append $paths } else { prepend $paths }E    )}EE    if $ret {E        $env | get $path_nameE    }E}EE# convert an integer amount of nanoseconds to a real durationEdef "from ns" [] {E    [$in "ns"] | str join | into durationE}EE# run a piece of `nushell` code multiple times and measure the time of execution.E#E# this command returns a benchmark report of the following form:E# ```E# record<E#   mean: durationE#   std: durationE#   times: list<duration>E# >E# ```E#E# > **Note**E# > `std bench --pretty` will return a `string`.E#E# # ExamplesE#     measure the performance of simple additionE#     > std bench { 1 + 2 } -n 10 | table -eE#     ╭───────┬────────────────────╮E#     │ mean  │ 4µs 956ns          │E#     │ std   │ 4µs 831ns          │E#     │       │ ╭───┬────────────╮ │E#     │ times │ │ 0 │ 19µs 402ns │ │E#     │       │ │ 1 │  4µs 322ns │ │E#     │       │ │ 2 │  3µs 352ns │ │E#     │       │ │ 3 │  2µs 966ns │ │E#     │       │ │ 4 │        3µs │ │E#     │       │ │ 5 │   3µs 86ns │ │E#     │       │ │ 6 │   3µs 84ns │ │E#     │       │ │ 7 │  3µs 604ns │ │E#     │       │ │ 8 │   3µs 98ns │ │E#     │       │ │ 9 │  3µs 653ns │ │E#     │       │ ╰───┴────────────╯ │E#     ╰───────┴────────────────────╯E#E#     get a pretty benchmark reportE#     > std bench { 1 + 2 } --prettyE#     3µs 125ns +/- 2µs 408nsEexport def bench [E    code: closure  # the piece of `nushell` code to measure the performance ofE    --rounds (-n): int = 50  # the number of benchmark rounds (hopefully the more rounds the less variance)E    --verbose (-v) # be more verbose (namely prints the progress)E    --pretty # shows the results in human-readable format: "<mean> +/- <stddev>"E] {E    let times = (E        seq 1 $rounds | each {|i|E            if $verbose { print -n $"($i) / ($rounds)\r" }E            timeit { do $code } | into int | into floatE        }E    )EE    if $verbose { print $"($rounds) / ($rounds)" }EE    let report = {E        mean: ($times | math avg | from ns)E        min: ($times | math min | from ns)E        max: ($times | math max | from ns)E        std: ($times | math stddev | from ns)E        times: ($times | each { from ns })E    }EE    if $pretty {E        $"($report.mean) +/- ($report.std)"E    } else {E        $reportE    }E}EE# Print a banner for nushell with information about the projectEexport def banner [] {Elet dt = (datetime-diff (date now) 2019-05-10T09:59:12-07:00)E$"(ansi green)     __  ,(ansi reset)E(ansi green) .--\(\)°'.' (ansi reset)Welcome to (ansi green)Nushell(ansi reset),E(ansi green)'|, . ,'   (ansi reset)based on the (ansi green)nu(ansi reset) language,E(ansi green) !_-\(_\\    (ansi reset)where all data is structured!EEPlease join our (ansi purple)Discord(ansi reset) community at (ansi purple)https://discord.gg/NtAbbGn(ansi reset)EOur (ansi green_bold)GitHub(ansi reset) repository is at (ansi green_bold)https://github.com/nushell/nushell(ansi reset)EOur (ansi green)Documentation(ansi reset) is located at (ansi green)https://nushell.sh(ansi reset)E(ansi cyan)Tweet(ansi reset) us at (ansi cyan_bold)@nu_shell(ansi reset)ELearn how to remove this at: (ansi green)https://nushell.sh/book/configuration.html#remove-welcome-message(ansi reset)EEIt's been this long since (ansi green)Nushell(ansi reset)'s first commit:E(pretty-print-duration $dt)EEStartup Time: ($nu.startup-time)E"E}EE# the cute and friendly mascot of Nushell :)Eexport def ellie [] {E    let ellie = [E        "     __  ,",E        " .--()°'.'",E        "'|, . ,'",E        " !_-(_\\",E    ]EE    $ellie | str join "\n" | $"(ansi green)($in)(ansi reset)"E}EE# Return the current working directoryEexport def pwd [E    --physical (-P) # resolve symbolic linksE] {E    if $physical {E        $env.PWD | path expandE    } else {E        $env.PWDE    }E}EE# repeat anything a bunch of times, yielding a list of *n* times the inputE#E# # ExamplesE#     repeat a stringE#     > "foo" | std repeat 3 | str joinE#     "foofoofoo"Eexport def repeat [E    n: int  # the number of repetitions, must be positiveE]: any -> list<any> {E    let item = $inEE    if $n < 0 {E        let span = metadata $n | get spanE        error make {E            msg: $"(ansi red_bold)invalid_argument(ansi reset)"E            label: {E                text: $"n should be a positive integer, found ($n)"E            	span: $spanE            }E        }E    }EE    if $n == 0 {E        return []E    }EE    1..$n | each { $item }E}EE# return a null device file.E#E# # ExamplesE#     run a command and ignore it's stderr outputE#     > cat xxx.txt e> (null-device)Eexport def null-device []: nothing -> path {E    if ($nu.os-info.name | str downcase) == "windows" {E        '\\.\NUL'E    } else {E        "/dev/null"E    }E}
+nvim test
+ls
+clear
+ls
+workspace
+ls
+cd youtube
+ls
+ng serve
+ls
+cd youtube
+ls
+gs
+g add -A
+g commit -m "refactor: remove console.logs"
+gp
+ls
+pfetch
+clear
+ls
+color
+nu-highlight
+ls
+ды
+ls
+cd dotfiles
+ls
+cd .config
+cp ~/.config/nushell .

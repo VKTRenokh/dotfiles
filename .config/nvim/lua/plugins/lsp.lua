@@ -1,4 +1,5 @@
 Constants = require("config.constants")
+local map = require("config.functions").keymap
 
 return {
   -- {{{ mason.nvim
@@ -132,9 +133,7 @@ return {
     config = function(_, opts)
       vim.diagnostic.config(opts.diagnostics)
 
-      local map = require("config.functions").keymap
-
-      map("n", "gd", vim.lsp.buf.definition, { desc = "Goto defenetion" })
+      map("n", "gd", vim.lsp.buf.definition, { desc = "goto defenition" })
 
       local servers = opts.servers
 

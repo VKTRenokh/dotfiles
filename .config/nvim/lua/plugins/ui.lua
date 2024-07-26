@@ -450,6 +450,11 @@ return {
   -- ----------------------------------------------------------------------- }}}
   -- {{{ nvim-web-devicons
 
+  -- TODO: change web devicons to mini.icons
+  -- {
+  --   "echasnovski/mini.icons",
+  --   opts = {},
+  -- },
   {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
@@ -492,5 +497,10 @@ return {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "LazyFile",
     enabled = false,
+    config = function()
+      vim.diagnostic.config({ virtual_text = false })
+
+      require("tiny-inline-diagnostic").setup()
+    end,
   }, -- }}}
 }
