@@ -81,9 +81,3 @@ cursor_stop_blinking_after 0
 input_delay 0
 
 shell_integration enabled
-
-
-# BEGIN_KITTY_THEME
-# Tokyo Night Moon
-include current-theme.conf
-# END_KITTY_THEME
