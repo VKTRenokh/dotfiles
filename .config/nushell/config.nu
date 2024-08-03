@@ -7,7 +7,7 @@
 # And here is the theme collection
 # https://github.com/nushell/nu_scripts/tree/main/themes
 # The default config record. This is where much of your global configuration is setup.
-
+# {{{ ?
 $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
 
@@ -753,7 +753,7 @@ $env.config = {
         }
     ]
 }
-
+# }}}
 # {{{ Fish autocomplete
 let fish_completer = {|spans|
     fish --command $'complete "--do-complete=($spans | str join " ")"'
@@ -767,6 +767,8 @@ let external_completer = {
 # }}}
 
 # {{{ Aliases
+source ./nu_scripts/aliases/eza/eza-aliases.nu
+
 alias v = nvim
 alias parsyu = paru -Syu --noconfirm
 alias pacsyu = sudo pacman -Syu --noconfirm
@@ -778,16 +780,19 @@ alias :q = exit
 alias g = git
 alias gp = g push
 alias gs = g status
+alias ll = ls -la
 #}}}
+
 $env.config = {
     show_banner: false
+    edit_mode: vi
 # {{{  Custom keybindings
     keybindings: [
        {
             name: tmux_sessionizer
             modifier: control
             keycode: char_f
-            mode: emacs
+            mode: vi_insert
             event: {
                   send: executehostcommand,
                   cmd: "tmux-sessionizer"
@@ -795,28 +800,22 @@ $env.config = {
         }
     ]
 #}}}
-  }
+}
+
+# {{{ Styling
+$env.PROMPT_INDICATOR_VI_NORMAL = {
+}
 
 use ~/.cache/starship/init.nu
 
 pfetch
 
-let banner = {
-  let dt = (datetime-diff (date now) 2019-05-10T09:59:12-07:00)
-  $"(ansi green)     __  ,(ansi reset)
-  (ansi green) .--\(\)°'.' (ansi reset)Welcome to (ansi green)Nushell(ansi reset),
-  (ansi green)'|, . ,'   (ansi reset)based on the (ansi green)nu(ansi reset) language,
-  (ansi green) !_-\(_\\    (ansi reset)where all data is structured!
-  
-  Please join our (ansi purple)Discord(ansi reset) community at (ansi purple)https://discord.gg/NtAbbGn(ansi reset)
-  Our (ansi green_bold)GitHub(ansi reset) repository is at (ansi green_bold)https://github.com/nushell/nushell(ansi reset)
-  Our (ansi green)Documentation(ansi reset) is located at (ansi green)https://nushell.sh(ansi reset)
-  (ansi cyan)Tweet(ansi reset) us at (ansi cyan_bold)@nu_shell(ansi reset)
-  Learn how to remove this at: (ansi green)https://nushell.sh/book/configuration.html#remove-welcome-message(ansi reset)
-  
-  It's been this long since (ansi green)Nushell(ansi reset)'s first commit:
-  (pretty-print-duration $dt)
-  
-  Startup Time: ($nu.startup-time)
-  "
-}
+let banner = [
+  $"(ansi green)     __  ,(ansi reset)"
+  $"(ansi green) .--\(\)°'.' (ansi reset)Welcome to (ansi green)barankignushell(ansi reset),"
+  $"(ansi green)'|, . ,'   (ansi reset)based on the (ansi green)nu(ansi reset) language,"
+  $"(ansi green) !_-\(_\\    (ansi reset)where all data is structured!"
+]
+
+$banner | str join "\n" | print
+# }}

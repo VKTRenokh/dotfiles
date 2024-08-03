@@ -109,3 +109,7 @@ map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Commen
 -- }}}
 -- change current line without yanking it{{{
 map("n", "<leader>c", '"_cc') -- }}}
+-- {{{ <C-i> fix
+-- When mapping <Tab> this keymap looses it's functionality so you have to
+-- remap it to itself
+map("n", "<C-i>", "<C-i>") -- }}}

@@ -368,3 +368,1539 @@ cd dotfiles
 ls
 cd .config
 cp ~/.config/nushell .
+cp ~/.config/nushell . -r
+rm -rf hypr
+cp ~/.config/hypr . -r
+cp ~/.config/nvim . -r
+ls
+gs
+g add -A
+g commit -m "update neovim, add new hyprland wallpapers, migrate to nushell"
+gp
+ls
+rm -rf kitty
+ls
+cp ~/.config/kitty . -r
+gs
+g add -A
+g commit -m "update kitty config"
+gp
+notify-send ":3"
+cd .config/hypr/waybar
+ls
+kitty +list-fonts
+ls
+rm -rf .cache/*
+sudo rm -rf .cache/*
+ls
+cd music
+ls
+ls -T
+v
+gs
+g add -A
+g commit -m "feat: implement previous page pagination"
+gp
+gs
+g add -A
+g commit -m "chore: add todo"
+gp
+neofetch
+clera
+ды
+ls
+gs
+1gs
+gs
+g add -A 
+g commit -m "refactor: remove code repetion"
+gp
+gs
+g add -A
+g commit -m "refactor: rename function parameter"
+gp
+gs
+g add -A 
+g commit -m 
+gs
+g add -A
+g commit -m 'refactor: more declarative code'
+gp
+g
+gs
+g add -A 
+g commit -m 'refactor: move repeated  type into interface'
+gp
+clear
+parsyu
+sudo pacman -Syyyuuu
+sudo mount /dev/sda1 /mnt/sda1
+vu
+sudo dinitctl start bluetoothd
+open
+open test
+ls
+open core.651
+clear
+help -f regex
+ls
+rm -rf core.*
+ls
+cd .local/bin
+ls
+nvim tmux-sessionizer.ni
+32 | describe
+30mb | describe
+'helol' | describe
+ls | each { |it| $"($it.name) is ($it.size)" }
+1.454545
+1..4545
+1..10
+1..10 | describe
+1..
+-1..1
+-50000..1
+..2
+0o[377]    # Octal
+l
+ls
+cd .local/bin
+ls
+nvim tmux-sessionizer.nu
+./tmux-sessionizer.nu
+chmod +x ./tmux-sessionizer.nu
+./tmux-sessionizer.nu
+nvim tmux
+ls
+cd .local/bin
+ls
+nu tmux-sessionizer.nu
+help find
+find /mnt/sda1/workspace
+help find
+help modules 
+banner
+repeat
+use std
+banner
+std banner
+std banner | wl-copy
+ды
+ls
+cd youtube
+cd youtube
+ls
+ll
+ls -La
+ls -la
+ls
+df
+d
+ls
+print "hello'<\n>"
+ls
+cd dotfiels
+cd dotfiles
+ls
+cd .config
+ls
+cd Music
+ls
+l
+ls
+cd vk_____________treenokh/
+ls
+https://www.youtube.com/watch?v=EHPzMa5giJY
+pidof syncthing
+ls
+nu config
+ls
+swww
+btop
+ls
+cd .config/nushell
+ls
+cd
+ls
+cd nu_scripts
+ls
+colorsvn
+raji
+caga
+cava
+modprobe libiniparser
+paru -Rns cava
+paru -S cava-git
+v starship.toml
+ls
+mv starship.toml starrship.toml
+ls
+mv starship2.toml starship.toml
+ls
+ls
+mv starship.toml starship.tomld
+ls
+mv starrship.toml starhip.toml
+ls
+cd Pictures
+ls
+ffplay Recording.mp3
+ls
+cd youtube
+ls
+eza -T
+exa
+ls
+eza
+ls
+cd youtube
+ls
+eza -T --icons src
+echo $SHELL
+echo $env.SHELL
+clear
+cate
+date
+date humanize
+date now
+пы
+gs
+g add -A
+g commit -m "fix: incorrect pagination logic"
+ls
+gs
+gp
+v
+b
+gs
+g add -A
+g commit -m "refactor: move custom card removal predicate into seperate function"
+gp
+sudo dinitctl start bluetoothd
+v
+ls
+gs
+g add -A
+g commit -m 
+git commit -m 'feat: make use of loading property in store'
+gp
+parsyu
+sudo dinitctl start bluetoothd
+l
+ls
+sudo mount /dev/sda1 /mnt/sda1
+ls
+ezz
+eza
+eza -l --icons
+v
+config nu
+e
+ez
+source $nu.config-path
+clear
+ls
+ez
+ez -T
+sudo dinitctl start bluetoothd
+ls
+cd youtuve
+cd youtube 
+ls
+ng seve
+ls
+cd youtube
+ls
+cd src
+ls
+cd app
+ls
+mkdir favorites
+ls
+cd favorites
+ls
+mkdir components 
+ls
+cd components
+ls
+ng g favorites
+ng g c favorites
+м
+v
+ls
+cd youtube
+gs
+g add -A
+g commit -m 
+g commit -m  'feat: add favorites page'
+gp
+sudo dinitctl start bluetoothd
+brave --help
+brave --disabel-gpu-vsynv --disable-frame-rate-limit
+brave --disabel-gpu-vsync --disable-frame-rate-limit
+brave --disable-gpu-vsync --disable-frame-rate-limit
+ls
+jq
+echo '{"mobile_network_type":"unknown","content":"afsdf","nonce":"1267156526334738432","tts":false,"flags":0}' | jq
+echo '{"mobile_network_type":"unknown","content":"afsdf","nonce":"1267156526334738432","tts":false,"flags":0}' | jq | wl-copy
+ls
+node node.js
+ls
+node node.js
+ls
+mkdir scriptieeeees
+cd scriptieeeees/
+git init
+git remote add origin https://github.com/VKTRenokh/scriptiessssss
+ls
+git status
+git remote -v
+gp
+gp -u
+ls
+cp node.js scriptieeeees/pinging.js
+ls
+g add -A
+g commit -m 'add pinging script'
+ls
+gp
+ls
+cd ..
+ls
+rm -rf scriptieeeees/
+ls
+workspace
+ls
+git clone https://github.com/VKTRenokh/scriptiessssss.git
+rm -rf helix node.js rstasks
+ls
+l
+ls
+ls youtube
+ls
+rm -rf youtube
+ls
+rm -rf core.*
+ls
+l
+workspace
+ls
+cd scriptiessssss/
+ls
+v pinging.js
+ls
+node pinging.js
+ls
+nvim pinging.js
+node pinging.js
+clear
+ls
+gs
+g add -A
+g commit -m 'update script'
+gp
+dbus-launch Hyprland
+date now
+ls
+ffplay `2024-07-28 21-42-08.mp4`
+ffplay `2024-07-28 21-45-33.mp4`
+ffplay `2024-07-28 21-50-30.mp4`
+ды
+ls
+ffplay `2024-07-28 21-45-37.mp4`
+тм
+nvim
+v
+workspace
+ls
+cd scriptiessssss/
+ls
+nvim pinging.js
+node pinging.js
+gs
+g add -A
+g commit -m 
+g commit -m 'feat: add favorite button'
+gp
+parsyu
+btop
+btop --utf-force
+ls
+ffplay `2024-07-28 21-45-37.mp4`
+sudo mount /dev/sda1 /mnt/sda1
+ls
+rm -rf `2024-07-28 21-42-08.mp4`
+rm -rf `2024-07-28 21-45-33.mp4`
+rm -rf `2024-07-28 21-50-30.mp4`
+rm -rf `2024-07-28 22-03-55.mp4`
+ls
+ls mudic
+ls
+cd nu_scripts/
+git pull
+ls
+cp nu_scripts/themes/ ~/.config/nu -r
+cd .config/nu
+ls
+cd ..
+cd .config/nushell
+ls
+config nu
+xta
+ls
+cd .config/nushell
+ls
+cd nushell/
+la
+ls
+cp ~/nu_scripts/
+cp ~/nu_scripts/ . -r
+,s
+ls
+nu config
+xta
+ez
+x
+ls
+xta
+workspace
+ls
+xta
+xta ws
+bt
+ba
+bat
+sudo pacman -S bat
+paru -S bat
+ls
+cd .local/bin
+ls
+fd
+rg
+ls
+rg --help
+rg -mindepth 1
+rg -m 1
+fd -mindepth 1
+fd --help
+fd --depth 1
+fd --max-depth 1
+ls
+./.local/bin/tmux-sessionizer.nu
+fd /mnt/sda1/workspaxe
+fd /mnt/sda1/workspace
+fd --full-path /mnt/sda1/workspace
+ls /mnt/sda1/workspace/
+clear
+ls
+l
+ls
+tmux-sessionizer
+v
+ls
+workspace
+ls
+cd scriptiessssss/
+ls
+nvim pinging.js
+node pinging.js
+workspace
+ls
+cd scriptiessssss/
+ls
+v
+yfw
+ufw
+workspace
+cd scriptiessssss/
+node pinging.js
+ls
+nvim pinging.js
+node pinging.js
+cd youtube
+ls
+sudo dinitctl start bluetoothd
+rfkill unblock all
+pidof syncthing
+ls
+claer
+rm -$f core.*
+ls
+rm -rf core.*
+ls
+clear
+cmup && cmus
+cmus and cmup
+cmup and cmus
+м
+ls
+ffplay `2024-07-28 21-45-37.mp4`
+ffmpeg -ss 62 -i `2024-07-28 21-45-37.mp4`  -t  65 -c copy a.mp4
+ls
+ffplay a.mp4
+ls
+ffmpeg -ss 62 -i `2024-07-28 21-45-37.mp4` -to 65 -c copy a.mp4
+ls
+ffplay a.mp4
+ffmpeg -ss 62  -to 65 -i `2024-07-28 21-45-37.mp4` -c copy a.mp4
+ls
+ffplay a.mp4
+ls
+mkdir a
+mv a.mp4 a
+ls
+cd a
+ls
+ffmpeg -i input.mp4 frame%04d.png
+ffmpeg -i .mp4 frame%04d.png
+ffmpeg -i a.mp4 frame%04d.png
+ls
+ffmpeg -i input.mp4 -vf "fps=10,scale=320:-1:flags=lanczos" -c:v gif output.gifE
+clear
+ffmpeg -i a.mp4 -vf "fps=10,scale=320:-1:flags=lanczos" -c:v gif output.gif
+ls
+ffplay output.gif
+ls
+ffmpeg -i a.mp4 -vf "fps=45,scale=320:-1:flags=lanczos" -c:v gif output.gif
+ffplay output.gif
+ды
+ls
+rm -rf a
+ls
+cd src
+l
+ls
+cd app
+ls
+cd shared
+ls
+cd components
+ls
+ng g c pagination
+ls
+gs
+g add -A
+g commit -m "refactor: move pagination into reusable component"
+gp
+workspace
+ls
+cd scriptiessssss/
+ls
+node pinging.js
+ls
+nvim pinging.js
+node pinging.js
+ga
+gs
+g add -A
+g commit -m 'refactor: remove useless console.logs'
+gp
+g
+gs
+g add -A
+g commit -m 'feat: add styles for loader'
+ls
+gp
+ls
+gs
+ga
+gs 
+g add -A
+g commit -m 'feat: change buttons layout'
+gp
+ls
+ды
+ls
+cd ..
+ls
+workspace
+ls
+cd scriptiessssss/
+gs
+g add -A 
+g commit -m 'feat: add favorites reducer'
+gp
+ls
+workspace
+ls
+cd scriptiessssss/
+ls
+node pinging.js
+ls
+nvim pinging.js
+node pinging.js
+ls
+cd .config
+ls
+cd nushell
+ls
+workspace
+cd vktrenokh-angular2024q3/
+gs
+g add -A
+g commit -m 'feat: add addition to favorite action'
+gp
+pidof syncthing
+cd Music/
+ls
+cd vk_____________treenokh/
+ls
+zsh
+ls
+clear
+ls
+cat note
+nvim note
+ls
+cat игорь_уйди_пожалуйста
+ды
+ls
+cd Music
+ls
+cd jump/
+ls
+nvim note
+node
+node --alow-typescript
+node --ehlp
+node --help
+node --help | grep allow
+reboot
+clear
+parsyu
+sudo pacman -Sssyyuuu
+sudo pacman -Syyuuu
+sudo pacman -Syyuuuu
+sudo dinitctl start bluetoothd
+curl parselapp.com
+curl https://parcelsapp.com/en/tracking/LE628136870DE
+ls
+parsyu
+sudoedit /etc/mkinitcpio.d/linux.preset
+mkinitcpio
+sudo dinitctl start bluetoothd
+ls
+sudo mount /dev/sda1 /mnt/sda1
+ls
+cd youtube
+ls
+l
+ls
+ng seve
+parsyu
+bun upgrade
+bun
+.bun
+ls
+cd bin
+lsd
+ls
+./bun upgrade
+ls
+config nu
+bun
+syncthing
+cd music
+ls
+cd jump
+l
+ls
+cat note
+cd ..
+cd vk_____________treenokh/
+ls
+cd phonk$/
+ls
+cd music
+ls
+cd vk_____________treenokh/
+ls
+cd phonk$/
+cd ..
+ls
+v ?
+g add -A
+g s
+gs
+g commit -m 'feat: add favorites reducer to provideStore'
+gp
+pidof syncthing
+v
+g
+gs
+g add -A
+g commit -m 'feat: add favorite selectors'
+gp
+ga
+gs
+g add -A
+g commit -m 'fix: incorrect typings'
+gp
+gs
+g commit -m 'refactor: remove useless console logs'
+gp
+g add -A
+g commit -m 'refactor: remove useless console logs'
+gp
+date
+date now
+gs
+g add -A
+g commit -m 'feat: implement favorite toggling functionality'
+gp
+gs
+g add -A 
+g commit -m 'refactor: remove repeating code'
+gp
+date
+date now
+gs
+g add -A 
+g commit -m 'feat: implement selectFavoriteVideos selector'
+gp
+вфеу тщц
+date now
+parsyu
+clear
+sudo dinitctl start bluetoothd
+rfkill unblock all
+sudo mount /dev/sda1 /mnt/sda1
+cat /proc/mem
+ды
+cd youtube/
+ls
+cd src
+ls
+gs
+g add -A 
+g commit -m 
+g commit -m 'feat: display favorite videos on favorites page'
+gp
+ls
+cd app/src/shared/components
+cd src/app/shared/components
+cd /app/shared/components
+cd app/shared/components
+ls
+ng g c favorite-button
+gs
+g add -A
+g commit -m 'feat: implement favorite button reusable component'
+gp
+gs
+g add -A 
+g commit -m 'feat: implement favorite button'
+gp
+clear
+parsyu
+nano
+sudo dinitctl start bluetoothd
+sudo mount /dev/sda1 /mnt/sda1
+v
+cd youtube/
+cd youtube/
+rfkill unblock all
+gs
+g add -A
+g commit -m 'refactor: fully rewrite favorite button component'
+gp
+gs
+g add -A
+g commit -m 'refactor: add favorite button to detailed info component'
+gp
+gs
+g commit --amend
+gp -f
+ls
+ng build
+scp dist/youtube/browser/ root@45.93.137.165:/root
+scp -r dist/youtube/browser/ root@45.93.137.165:/root
+kitten ssh root@45.93.137.165
+v
+date
+date now
+date
+date now
+v
+wg-quick
+sudo pacman -S wireguard
+sudo pacman -S wireguard-dinit
+sudoedit /etc/wireguard/wg0.conf
+$ umask 077E$ wg genkey > privatekey
+umask -77
+umask
+zsh
+clear
+ls
+cat privatekey
+dinitclt
+sudo dinitctl start wg-quick 
+sudo dinitctl start wg-quick@wg0
+wg-quick up wg0
+ping google.com
+wg-quick down wg0
+rfkill unblock all
+ufw
+zsh
+sudoedit /etc/wireguard/wg0.conf
+wg-quick down wg0
+wg-quick up wg0
+wg show
+sudo wg show
+ping google.com
+wg down wg0
+wg-quick down wg0
+dafsadf
+gs
+g add -A 
+g commit -m 'fix: add takeUntilDestroyed'
+gp
+gs
+ga
+g add -A 
+g commit -m 'feat: add @empty fallback'
+gp
+gs
+ls
+v
+g add -a
+g add -A 
+g commit -m 'refactor: remove useless class field'
+gp
+ls
+cd .config
+ls
+v
+nu config
+config u
+config nu
+git checkout develop
+git pull
+git graph
+ls
+clear
+ng test
+ls -T
+ls
+zta
+xta
+xta src
+ls
+npm install --save-dev jest jest-preset-angular @types/jest
+ls
+ll
+pnpm install --save-dev jest jest-preset-angular @types/jest
+pnpm
+ls
+cd .pnpm
+ls
+cd .npm
+ls
+ll
+cd ..
+ls
+rm -rf core.*
+ls
+cd /usr/lib/node_modules/
+ls
+pnpm
+ls
+ll
+cd ..
+ls
+cd ..
+ls
+cd ..
+ls
+/usr/bin/pnpm
+.local/share/pnpm/pnpm
+ls
+~
+.local/share/pnpm/pnpm
+ls
+ls
+pnpm install --save-dev jest jest-preset-angular @types/jest
+ls
+pnpm install --save-dev jest jest-preset-angular @types/jest
+$path
+$Nu.path
+$nu.PATH
+$PATH
+$env.PATH
+/home/vktrenokh/.local/share/pnpm/pnpm 
+v
+ls
+pnpm install --save-dev jest jest-preset-angular @types/jest
+sudo pacman -S gleam
+env sh
+paru -S gleam
+пдуфь
+gleam
+ls
+cd Documents/
+ls
+gleam
+ls
+workspace
+clear
+gleam new
+gleam new test
+gleam new hello
+cd hello
+ls
+gleam test
+v
+workspace
+ls
+cd ~
+ls
+workspace
+ls
+git clone https://github.com/cmus-enjoyers/sneaky-cmup-9
+tks
+v
+ls
+gleam new cmup
+ls
+rm -rf cmup
+gleam new glema
+ls
+rm -rf glema
+ls
+gleam new gleam
+mkdir gleam
+cd gleam
+ды
+ls
+gleam new cmup
+lks
+ls
+ды
+ls
+ls -T
+xta
+ls
+v
+cd cmup
+v
+ls
+git checkout vktrenokh
+git checkout -b vktrenokh
+g commit -m 'init: init gleam project'
+gs
+g add -A
+g commit -m 'init: init gleam project'
+gs
+gleam
+ls
+nvim test.glea
+parsyu
+sudo dinitctl start bluetoothd
+sudo dinitctl lgos
+sudo dinitctl logs
+sudo dinitctl --help
+dinitctl list
+sudo dinitctl list
+cmup and cmus
+м
+v
+paru -S gleam-lsp
+paru -S gleam_lsp
+gleam compile
+gleam build
+sudo pacman -S firefox
+firefox
+sudoeidt /etc/wireguard/wg0.conf
+ls
+cd /etc/wireguard/
+ls
+cd /etc/wireguard/
+sudo su
+wg-quick up wg0
+ping 45.93.137.165
+wg down wg0
+sudo wg down wg0
+wg-quick down wg0
+sudo wg-quick up wg0
+ping 45.93.137.165
+sudo wg-quick down wg0
+ping 45.93.137.165
+wg show
+ip addr show wg0
+ip route
+ls
+wg-quick up wg0
+ping 45.93.137.165
+ip route
+wg-quick down wg0
+wg-quick up wg0
+ping 45.93.137.165
+wg-quick down wg0
+kitten ssh root@45.93.137.165
+ls
+sudo su
+wg-quick down wg0
+sudo wg-quick up wg0
+ping 45.93.137.165
+wg-quick down wg0
+sudoedit /etc/wireguard/wg0.conf
+sudo wg-quick up wg0
+ping 45.93.137.165
+curl 2ip.ua
+wg show
+sudowg show
+sud owg show
+sudo wg show
+ip route
+sudo wg-quick down wg0
+sudo wg-quick up wg0
+ping 45.93.137.165
+curl 2ip.ua
+wg show conf wg0
+ls
+sudo wg show conf wg0
+wg
+sudo wg
+sudoedit /etc/wireguard/wg0.conf
+sudo wg down wg0
+sudo wg-quick up wg0
+sudo wg-quick down wg0
+sudo wg-quick up wg0
+wg show
+sudo wg show
+ping 45.93.137.165
+sudo wg show
+sudo wg-quick down wg0
+sudo wg-quick up wg0
+curl 2ip.ua
+sudo wg-quick down wg0
+sudo mount /dev/sda1 /mnt/sda1
+v
+ls
+cd gleam
+ls
+cd cmup
+ls
+gleam run
+gleam build
+ls
+cd build
+ls
+ls
+xta gleam
+gleam run
+ls
+cd gleam
+ls
+gleam run
+cd cmup
+gleam run
+ls
+gleam build
+пдуфь
+gleam
+gleam lsp
+gleam docs
+gleam build
+ls
+gleam build
+ls
+1ls
+ls
+cd build
+ls
+cd prod
+ls
+cd erlang/
+ls
+cd ..
+ls
+cd ..
+ls
+cd dev
+ls
+cd erlang/
+ls
+cd cmup
+ls
+cd ebin
+ls
+./cmup.beam
+ls
+beam
+cd ...
+ls
+cd ......
+ls
+cd gleam
+ls
+cd cmup
+ls
+gleam compile
+gleam compile-package
+gleam compile-package --help
+gleam compile-package --traget
+gleam compile-package --target
+gleam compile-package --target js
+gleam compile-package --out dist
+gleam compile-package --out dist --target js --package cmup
+gleam compile-package --out dist --target js --package cmup --lib .
+ls
+gleam compile-package --out dist --target js --package . --lib .
+gleam compile-package --out dist --target erlang --package . --lib .
+gleam compile-package --out dist --target erlang --package . --lib io
+gleam compile-package --out dist --target erlang --package . --lib gleam/io
+gleam build --trarget javascript
+gleam build --target javascript
+ls
+gleam build --target javascript
+ls
+gleam urn
+gleam run
+gleam run --target javascript
+ls
+cat file.txt
+ls
+time gleam run --target javascript
+ls
+gleam run --target javascript
+ls
+gleam run --target javascript
+beam
+gleam run --target javascript
+ls
+cd build
+v
+cd build
+gleam run --target javascript
+gleam build && gleam run --target javascript
+gleam build ; gleam run --target javascript
+gleam build --target js ; gleam run --target javascript
+ls
+cd ..
+ls
+rm -rf build
+gleam build --target js ; gleam run --target javascript
+v
+gleam build --target js ; gleam run --target javascript
+ls
+cat file.txt
+gleam build --target js ; gleam run --target javascript
+bun
+gleam build --target js ; gleam run --target javascript
+gleam add simplifile
+gleam remove simplfile
+gleam remove simplifile
+gleam build --target js ; gleam run --target javascript
+ls
+node hello.js
+пы
+gs
+g add -A
+g commit -m 'feat: implement write file interop'
+cmus
+ls
+cd .config/
+ls
+cd cmus/playlists/
+;s
+ls
+rm -rf *
+ls
+cmup
+cmus
+ls
+cd ..
+ls
+..
+ls
+cd ..
+cd .local/bin/
+ls
+cmup
+env sh
+cmup
+cmus
+rm -fr .config/cmus/playlists/*
+pidof syncthing
+ls
+cd Music
+v
+cd vk_____________treenokh/
+v
+cd ..
+ls
+cd jump/
+v
+gleam run --target javascript
+v
+ls
+cd youtuve
+cd youtube
+cd youtube
+м
+ls
+cd gleam
+ls
+v
+cd cmup
+gleam run --target javascript
+gs
+g add -A 
+g commit -m 'feat: add banner'
+gp
+git log
+git reset --soft 31ae556913c6515ca8fb444fe13c4da2fe9e94c7
+gp -f
+g
+gs
+git reflog
+git reset --hard 5a5897c
+ls
+gs
+v
+ls
+;q
+:
+cd youtube
+ls
+l
+ls
+м
+git  checkout -b signals
+ls
+gp -u
+lgs
+gs
+g add -A
+g commit -m 'feat: add toSignal convertion to isLoading field'
+gp
+ls
+ng build
+scp -r dist/youtube/browser/ root@45.93.137.165:/root
+gs
+date now
+ls
+cd Music
+ls
+cd vk_____________treenokh/
+ls
+mkdir unreal-sleep-evening-bim-bom$
+ls
+cd unreal-sleep-evening-bim-bom$/
+v
+;s
+ls
+v
+git reset --hard
+ls
+v
+ls
+cd gleam/cmup
+ls
+parsyu
+sudo dinitctl start bluetoothd
+rfkill unblock all
+sudo mount /dev/sda1 /mnt/sda1
+ls
+cd .config
+cd cmus
+ls
+v
+ls
+cd ..
+ls
+clea
+clear
+workspace
+ls
+v
+cd gleam/cmup
+v
+tks
+ls
+cd gleam/cmup
+v
+ls
+v test.glea
+v test.gleam
+ls
+rm -rf tets.glea
+rm -rf tets.gleam
+ls
+cd Downloads/
+ls
+sudo mkdir /mnt/win
+sudo mount Win11_23H2_EnglishInternational_x64v2.iso -o loop /mnt/win
+cd /mnt/win
+ls
+ll
+chmod 777 .
+ls
+ls -T
+xta
+ls
+clear
+ls
+cd /etc/win
+ls
+cd /mnt/win
+ls
+mkdir ~/win-11-sio
+cp -r /mnt/win/* ~/win-11-sio/
+sudo cp -r /mnt/win/* ~/win-11-sio/
+lls
+ls
+rm -rf win-11-sio/
+sudo rm -rf win-11-sio/
+ls
+mkdir /mnt/sda1/win
+cp -r /mnt/win/* ~/mnt/sda1/win
+cp -r /mnt/win/* /mnt/sda1/win/
+sudo cp -r /mnt/win/* /mnt/sda1/win/
+ls
+cd ..
+sudo umount /mnt/win/
+ls
+cd sda1/
+ls
+cd win
+ls
+v
+sudo pacman -S wimtools
+paru -S wimtools
+pacman wim
+pacman -Qs wim
+pacman -Q wim
+pacman --help
+paru
+paru wim
+paru -S wimlib
+sudo pacman -S genisoimage xorriso squashfs-toolsE
+paru -S genisoimage
+ls
+cd sources
+ls
+cat install.wim
+sudo pacman -S wimlib
+ls
+tar -xf wimlib-1.14.4.tar.gz
+ls
+cd wimlib-1.14.4/
+ls
+make
+ls
+v
+make
+make install
+ls
+nvim README.md
+./configure
+sudo pacman -S libntfs-3g
+paru -S libntfs-3g
+paru -S libntfs
+paru -S ntfs-g
+paru -S ntfs-3g
+ls
+./configure
+v
+make
+ls
+sudo make install
+wimlib
+wimlib-imagex 
+sudo wimlib-imagex mount /mnt/sda1/win/sources/install.wim 1 /mnt/win/
+cd /mnt/win
+cd /mnt
+ls
+cd win
+cat win
+ls
+cd /mnt/sda1/
+ls
+cd win
+ls
+ll
+sudo mount ~/Downloads/Win11_23H2_EnglishInternational_x64v2.iso -o loop /mnt/win
+cd /mntwin
+cd /mnt/
+ls
+cd win
+ls
+ll
+cd ..
+ls
+ls
+ll
+ll
+cd boot
+ls
+ll
+cd /mnt
+ls
+sudo umount win
+ls
+sudo wimlib-imagex mount /mnt/sda1/win/sources/install.wim 1 /mnt/win/ --rw
+ls
+tks
+ls
+rm -rf wimlib-1.14.4/
+ls
+rm -rf wimlib-1.14.4.tar.gz
+ls
+rm -rf test.gleam
+rm -rf privatekey
+ls
+rm -rf publickey
+ls
+ды
+ls
+wg show
+cd /etc/
+ls
+v
+cd gleam/cmup
+gleam run
+gleam format
+gleam run
+gleam run --target javascript
+ls
+cd Downloads/
+ls
+rm -rf Win11_23H2_EnglishInternational_x64v2.iso
+ls
+gleam run --target javascript
+ls
+gleam run --target javascript
+ls
+gleam run --target javascript
+workspace
+ls
+cd vktrenokh-angular2024q3/
+ls
+v
+git checkout develop
+git pull
+git checkout -b testing
+gp -u
+gleam run --target javascript
+1ls
+gleam run --target javascript
+1ls
+gleam run --target javascript
+gs
+g add -A
+g commit -m 'feat: update banner code'
+gleam run --target javascript
+g
+gs
+g add -A
+g commit -m 'fix: incorrect symbol used as an side border'
+gleam run --target javascript
+gleam format
+gleam run --target javascript
+gleam format
+gleam run --target javascript
+gs
+g add -A 
+g commit -m 'refactor: more cleaner cod'
+git commit --amend
+cd Music
+ls
+cd vk_____________treenokh/
+ls
+ls
+mkdir idkwtp$
+cd idkwtp$/
+ls
+cd Downloadsa
+cd Downloads
+ls
+magick lucy.svg lucy.png
+gleam run --target javascript
+gleam format
+gs
+ls
+gleam run --target javascript
+gs
+g add -A
+g commit -m 'feat: implement get longest string length function'
+tsk
+date
+date now
+ls
+cd youtube
+ls
+ng test
+gs
+g add -A
+g commit -m 'feat: remove test field from angular.json'
+gp
+parsyu
+dbus-launch nvim
+sudo dinitctl start bluetoothd
+sudo mount /dev/sda1 /mnt/sda1
+ls
+v
+tk
+ls
+cd gleam/cmup
+cd gleam/cmup
+gleam run --target javascript
+ls
+cat tet
+cat test
+gleam run --target javascript
+ls
+gleam run --target javascript
+ls
+gleam run --target javascript
+ls
+gleam run --target javascript
+gleam build --target js
+ls
+cd build
+ls
+cd dev
+ls
+cd javascript/
+ls
+cd cmup
+gleam clean
+v
+ls
+cd ..
+ls
+cd cmup
+ls
+cat hello.js
+rm -rf hello.js
+ls
+gleam build --target js
+ls
+gleam run
+gleam run --target javascript
+gs
+g add -A 
+g commit -m 'feat: implement ls'
+parsyu
+dbus-launch nvim
+sudo mount /dev/sda1 /mnt/sda1
+v
+cd gleam/cmup
+tks
+v
+cd gleam/cmup
+gleam run --target javascript
+cd dotfiels
+cd dotfiles
+ls
+cd .cofngi
+cd .confgi
+cd .config
+rm -rf nvim
+cp ~/.config/nvim . -r
+rm -rf hypr
+cp ~/.config/hypr . -r
+ls
+rm -rf nushell
