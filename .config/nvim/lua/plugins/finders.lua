@@ -17,6 +17,7 @@ return {
       { "gr", "<Cmd>Telescope lsp_references<cr>", desc = "Open telescope with lsp references" },
       { "gK", "<Cmd>Telescope lsp_implementations<cr>", desc = "lsp implementations" },
       { "gt", "<Cmd>Telescope lsp_type_definitions<cr>", desc = "Lsp type defenetions" },
+      {";j", "<Cmd>Telsecope jumplist<cr>", desc = "Open telescope with jumplist"},
       -- stylua: ignore end
     }, -- }}}
     cmd = "Telescope",
@@ -105,4 +106,18 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  {
+    "echasnovski/mini.files",
+    keys = {
+      {
+        "<leader>fs",
+        function()
+          MiniFiles.open()
+        end,
+      },
+    },
+    config = function()
+      require("mini.files").setup()
+    end,
+  },
 }
