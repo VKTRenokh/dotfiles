@@ -24,6 +24,7 @@ return {
     version = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "echasnovski/mini.icons",
     },
     opts = function()
       local actions = require("telescope.actions")

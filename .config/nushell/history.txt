@@ -1904,3 +1904,460 @@ rm -rf hypr
 cp ~/.config/hypr . -r
 ls
 rm -rf nushell
+neofetch
+fastfethc
+sudo pacman -S fastfetch
+fastfetch
+grim
+sudo pacman -S grim slurp
+sudo pacman -S firefox
+clear
+fastfetch
+girm
+grim
+slurp
+cd .config/hypr
+ls
+v
+nvim
+v
+nvim
+v
+nvim
+clear
+fastfetch
+sudo pacman -S wl-clipboard
+clear
+fastfetch
+sudo pacman -S bluetooth
+sudo pacman -S bluetoothd
+sudo pacman -S bluez
+sudo pacman -S fennel
+brightnessctl
+sudo pacman -S bluez
+sudo dinitctl start bluetoothd; rfkill unblock all;
+sudo pacman -S bluez-dinit
+sudo dinitctl start bluetoothd; rfkill unblock all;
+sudo pacman -S blueberry
+сдуфк
+clear
+sudo pacman -S --needed base-develEgit clone https://aur.archlinux.org/paru.gitEcd paruEmakepkg -si
+git clone https://aur.archlinux/org/paru.git
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+clear
+fastfetch
+duf
+sudo pacman -S duf
+duh
+duf
+clear
+lsblk
+paru -S swww
+paru -S swww wofi
+fastfetch
+swww
+swww init
+swww-daemon
+chsh
+clear
+ls
+sudo dinitctl start bluetoothd; rfkill unblock all;
+paru 
+paru -S blueberry
+brightnessctl
+config nu
+cd .config/hypr/
+paru -S wofi gitmux bibata-cursor-theme playerctl eza hyprshade
+paru -S ncpamixer
+curl -sS https://starship.rs/install.sh | sh
+clear
+cd .config/
+ls
+cat starhip.toml
+ls
+clear
+ls
+nu config
+config nu
+clear
+config nu
+ls
+cd nushell
+ls
+v config.nu
+nvim config.nu
+sudo pacman -S pfetch
+paru -S pfetch
+cd /boot
+ls
+cd grub
+ls
+sudo grub-mkconfig /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+nvim grub.cfg
+ls
+clear
+pfetch
+clear
+ls
+cd .config/hypr
+sudo pacman -S node
+sudo pacman -S nodejs
+ncpamixer
+pamixer
+ncpamixer
+mix
+man nc
+ncpamixer
+clear
+ls
+config nu
+clear
+ls
+nvm
+nvim
+cd .config/nushell/
+ls
+nvim env.nu
+cd .config
+ls
+mv starhip.toml starship.toml
+clear
+sudo pacman -S zip
+unzip
+sudo pacman -S unzip
+sudo dinitctl start bluetoothd; rfkill unblock all;
+ncpamixer
+paru -S ncpamixer
+paru -R pulseaudio
+paru -S pavucontrol
+paru -S brave
+cd Downloads
+ls
+cat settings.txt
+tmux
+clear
+s
+ls
+cd Documents
+mkdir Documents
+cd Documents
+ls
+cd dotfiles
+ls
+cp .gitconfig
+ll
+cp .gitconfig ~/
+nvim ~/.gitconfig
+git clone https://github.com/VKTRenokh/t.git
+clear
+ls
+cd t
+node
+sudo pacman -S npm
+suod npm install -g pnpm
+sudo  npm install -g pnpm
+pnpm
+clear
+ls
+pnpm i
+clear
+ls
+v
+lsls
+ls
+cd Downloads
+ls
+mkdir iosevka
+mv Iosevka Iosevka.zip
+mv Iosevka.zip iosevka 
+ls
+mkdir victor
+ls
+cd src
+ng serve
+ng buidl
+ng serve --aot
+ng serve --help
+ng build
+l
+ls
+sudo pnpm i -g vite
+sudo npm i -g vite
+vite
+ls
+cd src
+ls
+cd ..
+cd dist
+ls
+cd t/browser
+ls
+vite serve
+vite serve --help
+vite preview index.html
+ls
+vite preview index.html
+s
+ls
+vite
+ls
+vite
+vite --help
+ls
+brave index.html
+vite
+ng serve
+ng build
+vite preview
+s
+ls
+vite previe
+s
+ls
+vite preview index.htnl
+vite preview index.html
+ls
+ng build
+clear
+ls
+curl localhost:4173
+vite preview
+ls
+cd images
+vite preview
+cd ..
+vite
+ng build --aot
+ls
+vite
+git reset --hard
+clear
+ls
+cd Downloads
+ls
+mv VictorMono.zip victor
+ls
+cd victor/
+ls
+cd ..
+ls
+cd iosevka/
+l
+sls
+ls
+unzip Iosevka.zip
+ls
+rm -rf Iosevka.zip
+ls
+cd .local/share/fonts
+clear
+pfetch
+clear
+fastfetch
+ды
+ls
+ды
+ls
+rm -rf core.1460
+ls
+ды
+ls
+ды
+ls
+rm -rf 20240901_17h21m30s_grim.png
+ls
+ды
+ls
+mkdir .local/share/fonts
+ls
+cd Downloads/
+ls
+cd iosevka/
+ls
+rm -rf *.zip
+ls
+cp Io* ~/.local/share/fonts
+fc-cache
+fc-cache reload
+ls
+ды
+cd .local
+ls
+cp share/fonts/ .
+ls
+cp share/fonts/ . -r
+cd .config/kitty
+ls
+sudo pacman -S nerd-fonts
+sudo pacman -S ttf-victor-mono-nerd
+sudo pacman -S tff-iosevka-mono-nerd
+sudo pacman -S tff-iosevka-nerd
+sudo pacman -S ttf-iosevka-nerd
+ls
+cd .config/kitty
+l
+s
+ls
+kitty +list-fonts
+clear
+ls
+workspace
+ls
+paru -S noto-fonts-cjk
+paru -S  noto-fonts-cjk noto-fonts-emoji noto-fonts
+clear
+ls
+ды
+ls
+cd dotfiles
+ls
+cd .local
+ls
+cp bin ~/.local
+cp bin ~/.local -r
+ls
+cd .local
+ls
+cd bin
+ls
+nu config
+~/.local/bin/tmux-sessionizer
+cd .local/bin/
+ls
+chmod 777 tmux-sessionizer
+ls
+paru -S fzy
+ls
+s
+ls
+clear
+ls
+cd Documents
+ls
+paru -S fennel
+fennel
+git https://github.com/bakpakin/Fennel.git --depth 1
+git --depth 1 
+git --depth 1  https://github.com/bakpakin/Fennel.git
+git clone https://github.com/bakpakin/Fennel.git
+c Fennel/
+cd Fennel/
+ls
+make -si
+make install
+sudo make install
+git clone https://github.com/cmus-enjoyers/sneaky-cmup-10.git
+lxappearence
+tks
+ls
+v
+wofi
+tks
+brave --disable-gpu-vsync --disable-frame-rate-limit
+brave --args --disable-gpu-vsync --disable-frame-rate-limit
+brave --help
+man brave
+sudo pacman -S man man-pages
+man brave
+brave --disable-gpu-vsync --disable-frame-rate-limit
+fastfetch
+sudo pacman -S syncthing
+sudo os-prober
+sudo blkid /dev/nvmen1p1
+sudo blkid /dev/nvme0n1p0
+sudo blkid /dev/nvme0n1p1
+cd /etc/grub.d
+ls
+sudo chmod o+w 40_custom
+open
+edit
+oepn ./40_custom
+nvim 40_custom
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+nvim /boot/grub/grub.cfg
+cd .local/bin
+ls
+nvim browser-wofi
+chmod 777 browser-wofi
+ls
+cd .config/hypr
+v
+ls
+git checkout feature/TRA-13
+ls
+git reset --hard 
+git checkout feature/TRA-13
+clear
+ls
+v
+gs
+git pull origin develop --rebase
+gs
+git rebase --abort
+ls
+gs
+git log
+git reset --hard 59a9180e0690c9ac6393ddccb0b96b88775cd5c4
+git pull origin develop --rebase
+gs
+git push -f
+zig
+ls
+cd Documents
+ls
+cd sneaky-cmup-10/
+ls
+s
+ls
+sudo pacman -S zig
+s
+ls
+cd zig
+ls
+cd cmup
+zig build
+zig build -Doptimize=ReleaseFast
+ls
+timeit ./zig-out/bin/zig --write
+ng serve
+cd src
+l
+ls
+cd app
+brightnessctl
+ls
+cd search
+l
+ls
+cd components
+ls
+ng g c filter
+disable touchpad
+ls
+cd ..
+ls
+cd services
+ls
+mkdir search
+cd search
+ng g c search
+ng g s search
+gs
+g add -a
+g add -A
+g commit -m 'feat: add search servic'
+git commit --amend
+ls
+gp
+ls
+cd dotfiles
+;s
+ls
+cd .config
+rm -rf nvim hypr nushell
+cp ~/.config/{nvim, hypr, nushell} -r .
+cp ~/.config/nvim . -r
+gs
