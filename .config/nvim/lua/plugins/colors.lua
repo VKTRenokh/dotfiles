@@ -130,6 +130,7 @@ return {
         "html",
         "jsx",
         "tsx",
+        "zig",
       },
     },
     enabled = true,

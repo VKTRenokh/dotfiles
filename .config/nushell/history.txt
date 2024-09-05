@@ -2361,3 +2361,109 @@ rm -rf nvim hypr nushell
 cp ~/.config/{nvim, hypr, nushell} -r .
 cp ~/.config/nvim . -r
 gs
+cp * -r ~/.config
+exit
+ls
+config nu
+clear
+sudo dinitctl start bluetoothd; rfkill unblock all;
+ls
+sudo pacman -S ttf-iosevka-nerd
+cd .local
+ls
+cd bion
+ls
+cd bin
+ls
+cd ..
+s
+ls
+qmkl
+qmk
+clear
+ls
+cd fonts
+ls
+rm -rf *
+rm -rfi *
+ls
+cd ..
+ls
+cd ..
+cd Downloads/
+ls
+cd iosevka/
+ls
+cp * -r ~/.local/fonts
+l
+ls
+cd ..
+ls
+cd victor/
+cp * -r ~/.local/fonts
+zmup --write
+cd Music
+ls
+unzip VictorMono.zip
+cp * -r ~/.local/fonts
+fc-cache reload
+ls
+kitty +list-fonts
+ды
+ls
+clear
+ls
+mkdir Documents
+cd Documents
+git clone https://github.com/cmus-enjoyers/sneaky-cmup-10.git https://github.com/vktrenokh/t
+ls
+cd https:/
+ls
+cd ..
+ls
+rm -rf https:/
+ls
+git clone https://github.com/cmus-enjoyers/sneaky-cmup-10.git 
+git clone https://github.com/vktrenokh/t
+nvim .gitconfig
+ll
+ls
+ls
+tks
+v
+cd zig/cmup
+v
+cd zig/cmup
+v
+ls
+cd Sync
+ls
+cd ..
+syncthing
+killall syncthing
+syncthign
+ls
+mkdir Music
+ls
+cd Music
+ls
+cd ..
+ls
+rm -rf Music
+ls
+clear
+ls
+syncthing
+clear
+ls
+cd .config/kitty
+v
+clear
+v
+fastfetch
+cd dotfiles
+ls
+cd .config
+rm -rf nvim
+cp ~/.config/nvim . -r
+rm -rf nushell

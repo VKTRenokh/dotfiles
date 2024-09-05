@@ -186,7 +186,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "LazyFile",
-    enabled = true, -- enable when plugin author fixes it
+    enabled = false, -- enable when plugin author fixes it
     keys = {
       { "<leader>di", "<Cmd>IBLToggle<cr>", desc = "Toggle indention guides" },
     },
