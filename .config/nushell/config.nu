@@ -769,6 +769,7 @@ let external_completer = {
 # {{{ Aliases
 # source ./nu_scripts/aliases/eza/eza-aliases.nu  fix this later
 
+alias ytla = yt-dlp --no-playlist -x --audio-format  "mp3"
 alias v = nvim
 alias parsyu = paru -Syu --noconfirm
 alias pacsyu = sudo pacman -Syu --noconfirm

@@ -2467,3 +2467,1096 @@ cd .config
 rm -rf nvim
 cp ~/.config/nvim . -r
 rm -rf nushell
+cp ~/.config/nushell . -r
+gs
+g add -A
+g commit -m 'updated'
+git commit --amend
+gp
+exit
+cd .local/bin/
+s
+ls
+cd Documents
+ls
+git clone https://github.com/cmus-enjoyers/third-bot-rewrite
+cd third-bot-rewrite/
+bun update
+curl -fsSL https://bun.sh/install | bash
+bun version
+bun --version
+ls
+s
+ls
+bun init
+lsd
+ls
+mkdir src
+mv index.ts src
+ls
+ls
+bun run
+gs
+g add -A
+g commit -m 'feat: init project'
+gp
+v
+gs
+g add -A
+g commit -m 'chore: add .ignore<\n>'
+gp
+ls
+bun install prettier 
+ls
+cd Documents/
+git clone https://github.com/vktrenokh/duck-fp
+ды
+ld
+ls
+cd duck-fp/
+v
+ls
+bun install discordjs
+bun install discord.js
+bun install @types/discord.js
+gs
+g add -A
+g commit -m 'chore: add prettierrc and editorconfig'
+gp
+bun install duck-fp
+ls
+bun run --help
+bun run --help | grep watch
+bun run
+bun run de
+bun run dev
+gs
+g add -A
+g commit -m 'chore: add package.json scripts'
+gp
+bun add bufferutil
+bun install utf-8-validate
+bun install @discordjs/voice
+ls
+gs
+g add -A
+g commit -m 'feat: add bot function'
+gp
+cd Documents/
+cd duck-fp/
+bun run dev
+gs
+g add -A
+g commit -m 'fix: better error handling'
+gp
+tmux
+v angular
+cat angular
+v
+s
+ls
+mpv 'https://www.youtube.com/watch?v=4cuMmC4Nuso' --vo=tct
+sudo pacman -S mpv
+mpv 'https://www.youtube.com/watch?v=4cuMmC4Nuso' --vo=tct
+sudo pacman -S youtube-dlp
+sudo pacman -S yt-dlp
+mpv 'https://www.youtube.com/watch?v=4cuMmC4Nuso' --vo=tct
+clear
+mpv
+cd .local/share/lazy
+cd .local/share/nvim
+ls
+cd lazy
+ls
+cd brainrot.nvim/
+ls
+mv brainrot.mp4
+mpv brainrot.mp4
+mpv brainrot.mp4 --vo=tct --really-quiet
+v
+ды
+ls
+cd music
+ls
+cd Music
+ls
+cd .zshrc
+cd dotfiles
+ls
+ytla
+ls
+cd music
+ls
+cd Music
+ls
+д
+ды
+ls
+ls -LA
+ls -la
+cat .syncthing.zjumpad2019.tmp
+ls .stfolder
+ls
+cd vk_____________treenokh/
+ls
+cd pg3d$/
+ls
+cd ..
+ls
+cd phonk$/
+ls
+cd ..
+ytla
+ytla 'https://www.youtube.com/watch?v=OHU6tSl-B7I'
+ls
+parsyu
+clear
+м
+v
+sudo dinitctl start bluetoothd; rfkill unblock all;
+ls
+bun serve
+zmup --write
+gs
+g add -A
+g commit -m 'feat: add music-player'
+gp
+gs
+g add -A
+g commit -m 'feat: add command detection'
+gp
+parsyu
+cd Documents
+git clone https://github.com/cmus-enjoyers/zmup.git
+cd zmup
+zig init
+ls
+g add -A
+gs
+g add -A
+g commit -m 'init'
+gp
+sudo dinitctl start bluetoothd; rfkill unblock all;
+bun serve
+ls
+bun dev
+bun update
+bun upgrade
+paru -S swappy
+cd .config/hypr
+swappy
+grim -g "$(slurp -b 1e1e1e40 -c 78aeed)" - | swappy - | wl-copy
+grim -g "$(slurp -b 1e1e1e40 -c 78aeed)" - | swappy | wl-copy
+grim -g "$(slurp -b 1e1e1e40 -c 78aeed)" - | swappy -
+grim -g $(slurp -b 1e1e1e40 -c 78aeed) - | swappy -
+zsh
+gs
+g ad d-A
+g add -A
+g commit -m 'feat: add is connected check'
+gp
+bun install youtube-dl-exec
+gs
+g add -A
+g commit -m 'feat: add errors'
+gp
+parsyu
+v
+==]=\==]\
+"\\<\n>?"
+ls
+sudo dinitctl start bluetoothd; rfkill unblock all;
+zmup --write
+ls
+rm -rf angular
+rm -rf core.776
+rm -rf core.30151
+ls
+cd Music
+ls
+cd vk_____________treenokh/
+ls
+rm -rf 'Aaron Hibell - i feel lost [85-so5m3CMM].mp3'
+ls
+rm -rf 'After Dark x Sweater Weather [hvL-2TF9bLY].mp3'
+ls
+rm -rf 'all im saying (instrumental) [zK6URCTVkhI].mp3'
+ls
+rm -rf 'Born of a Star [jwIWJIdpNFs].mp3'
+ls
+zmup --write
+cmup
+ls
+v
+pnpm update
+ls
+ды
+ls
+bun install
+ls
+rm -rf package-lock.json
+ls
+bun install
+gs
+g add -A
+g commit -m 'feat: migrate to bun package manager'
+gp
+ls
+git branch
+git fetch origin
+git branch
+git checkout develop
+git push
+gs
+git log
+gs
+ls
+git checkout main
+l
+ls
+git log
+git reset --hard 721cae592059f220c4d3dfcbeba5dc8aadf484a7
+gs
+git checkout develop
+bun install
+rm -rf package-lock.json
+ls
+bun update
+g add -A
+g commit -m 'chore: migrate to bun package manager'
+gpgp
+gp
+bun run test
+npm run test
+bun run test
+npm run test
+ls
+mv 'pandora,chillwithme,cødy - the perfect girl [OHU6tSl-B7I].mp3' Music/vk_____________treenokh/
+zmup --write
+cmus
+l
+cmup
+ды
+cd music
+ytlda
+ytla
+ls
+cd Music
+cd vk_____________treenokh/
+ls
+cd idkwtp$/
+ls
+ytla 'https://www.youtube.com/watch?v=POhPEt1UsY4&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=195'
+ytla 'https://www.youtube.com/watch?v=POhPEt1UsY4&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=195' --no-playlist
+ls
+cd ..
+ytla 'https://www.youtube.com/watch?v=POhPEt1UsY4&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=195' --no-playlist
+cd Music/vk_____________treenokh/
+ls
+ytla 'https://www.youtube.com/watch?v=58zuvah8bSQ&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=265'
+config nu
+ytla 'https://www.youtube.com/watch?v=58zuvah8bSQ&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=265'
+source %
+source
+eixt
+exit
+cd Music/vk_____________treenokh/
+ytla 'https://www.youtube.com/watch?v=58zuvah8bSQ&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=265'
+cd phonk$/
+ls
+ytla 'https://www.youtube.com/watch?v=UGSG6ZI3frI&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=362'
+ls
+cd ..
+mkdir koichi$
+cd koichi$/
+ls
+ytla 'https://www.youtube.com/watch?v=ZzZ1qmXZBuY&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=380'
+ytla 'https://www.youtube.com/watch?v=1CVCKzIt2aM&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=382'
+ls
+cd ..
+mkdir gshfl$
+cd gshfl$/
+ls
+ytla 'https://www.youtube.com/watch?v=VBxX_0oR-xs&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=412'
+ls
+cd ..
+ls
+cd phonk$/
+ytla 'https://www.youtube.com/watch?v=HIZFER-kMBM&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=413'
+ls
+cd ..
+cd phonk$/
+ytla 'https://www.youtube.com/watch?v=dxfOqbsAvXQ&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=339'
+cd ..
+ytla 'https://www.youtube.com/watch?v=c8jyIg7tnv8&list=PLWV_na8qUoXuUgGCy5tc7mtb-GSGNr81Q&index=233'
+cmus
+gs
+g add -A
+g commit -m 'feat: debloat'
+gp
+bun run test
+npm run test
+ls
+bun run test
+gs
+g add -A
+g commit -m 'fix: tests'
+gp
+bun run test
+пы
+g
+gs
+g add -A
+g commit -m 'feat: add toBoolean maybe method'
+gpgs
+gs
+g add -A
+g commit -m 'feat: add vim fold'
+gp
+gs
+g add -A
+g commit -m 'feat: make asyncMap method return TaskEither'
+gp
+ls
+npm run tet
+npm run test
+bun run test
+v
+bun run test
+gs
+g add -A
+g commit -m 'fix: either tests'
+gp
+bun test
+bun test-coverage
+ls
+bun build
+bun build src/index.ts
+bun add -D @types/bun
+v
+bls
+bun run bunbuild.ts
+ls
+ls dist
+bun add -D bun-plugin-dts
+bun run bunbuild.ts
+ls
+ls dist
+gs
+bun run build
+clear
+parsyu
+reboot
+clear
+sudo dinitctl start bluetoothd; rfkill unblock all;
+ls
+bun run build
+kitten ssh root@45.93.137.165
+sudo pacman -S ssh
+sudo pacman -S openssh
+v
+gs
+g add -A
+git log
+g commit -m 'feat: make asyncMap method in maybe return TaskMaybe'
+ls
+nvim .gitignore
+gs
+rm -rf dist
+gs
+g add -A
+g commit -m 'chore: remove dist'
+gp
+bun run changeset
+gs
+g add -A
+g commit -m 'chore: add changesets'
+gp
+lse
+ls
+v
+bun run build
+bun run index.ts
+ls
+bun run test.ts
+ls
+gs
+g add -A
+g commit -m 'chore: modify tsconfig'
+gp
+gs
+g add -A
+g commit -m 'feat: add test script in package json'
+gp
+bgs
+gs
+g add -A
+g commit -m 'chore: update lint workflow to use bun'
+gp
+gs
+g add 0A
+g add -A
+g commit -m 'fix: make uses field in action correct'
+gp
+gs
+g add -A
+g commit -m 'chore: remove npm from actions'
+gp
+v test.ts
+ls
+rm -rf index.ts
+ls
+rm -rf test.ts
+ls
+1gs
+gs
+g add -A
+g commit -m 'chore: remove useless line in tsconfig'
+gp
+git checkout main
+git pull 
+v
+ls
+bun run version-packages
+gs
+bun run relase
+bun run release
+npm authorize
+npm login
+npm authorize
+bun run release
+g add -A && git commit -m 'release' --no-verify && git push && git push origin v2.0.0
+g add -A ; git commit -m 'release' --no-verify; git push; git push origin v2.0.0
+елы
+l
+ls
+bun update
+v
+gs
+g add -A
+g commit -m 'chore: update packages'
+gp
+gs
+g add -A
+g commit -m 'refactor: make use of lens'
+gp
+cd .config/hypr
+v keybinds.conf
+sudo dinitctl start bluetoothd; rfkill unblock all;
+whereis yt-dlp
+bun run dev
+parsyu
+duf
+du
+sudo dinitctl start bluetoothd; rfkill unblock all;
+cd .config/hypr
+bls
+ls
+bun add play-dl
+ls
+bun remove play-dl
+bun add youtube-dl-exec
+bun dev
+/usr/bin/yt-dlp
+yt-dlp https://www.youtube.com/watch?v=ox0gzRD1_2k
+yt-dlp https://www.youtube.com/watch?v=E2s3DPnoWxk
+ls
+rm -rf 'kiss me again. [E2s3DPnoWxk].webm'
+yt-dlp --dump-user-agent
+sudo dinitctl start bluetoothd; rfkill unblock all;
+bun dv
+gs
+g add -A
+ls
+rm -rf 'ZØMB & Willix - HOPELESS! [ox0gzRD1_2k].webm'
+ls
+gs
+g add -A
+g commit -m 'feat: add atleast one attachment error'
+gp
+bun add @types/node
+sudo dinitctl start bluetoothd; rfkill unblock all;
+cv
+bun run format
+v
+ls
+cd Documents/
+s
+ls
+cd duck-fp/
+ls
+bun update
+gs
+g add -A
+g commit -m 'feat: task either'
+gp
+gs
+g add gs
+gw
+gs
+g add -A
+g commit -m 'fix: discord boit wont join voice channel'
+gp
+v
+cd Documents/
+ls
+cd duck-fp/
+ls
+bun add tweetnacl
+bun run dev
+gs
+g add -A
+g commit -m 'feat: implement abillity to play music from  attachment'
+gp
+ls
+rm -rf index.ts core.758
+parsyu
+sudo dinitctl start bluetoothd; rfkill unblock all;
+dtae now
+date now
+gs
+g add -A
+g commit -m 'refactor: more abstract code'
+gp
+ls
+cat "hello" > hello
+cat
+echo "hello" > hello
+ls
+nvim x
+gs
+g add -A
+g commit -m 'feat: add is audio file check'
+gp
+gs
+g add -A
+g commit -m 'feat: add bot wrapper'
+gp
+gs
+g add -A
+g commit -m 'fix: check'
+gp
+cd Documents/
+cd duck-fp/
+v test.nu
+nu test.nu
+bluetoothctl
+sudo pacman -S bluetoothctl
+sudo pacman -S bluez-utils
+nu test.nu
+echo-g
+v test.nu
+nu test.nu
+bun add sharp fabric
+bun remove fabric
+bun add node-canvas
+bun remove node-canvas
+bun add fabric
+ls
+1gs
+gs
+g add -A
+g commit -m 'feat: add imagine command'
+gp
+wl-paste
+wl-paste > test.png
+ls
+sudo dinitctl start bluetoothd; rfkill unblock all;
+gs
+g add -A
+g commit -m 'feat: add command constant'
+gp
+clear
+parsyu
+sudo dinitctl start bluetoothd; rfkill unblock all;
+date now
+v
+gs
+g add -A
+g commit -m 'feat: add command classs'
+git commit --amend
+gp
+bun run dev
+sudo dinitctl start bluetoothd; rfkill unblock all;
+bun run dev
+v
+ls
+git checkout develop
+git stash
+git checkout develop
+git stash pop
+v
+gs
+g add -A
+g commit -m 'feat: make orElse method better'
+gp
+sudo dinitctl start bluetoothd; rfkill unblock all;
+gs
+g add -A
+g commit -m 'feat: add zen command'
+gp
+gs
+g add -A
+g commit -m 'feat: add zen structure'
+gpo
+gp
+gs
+g add -A
+g commit -m 'feat: update zens'
+gp
+bun run dv
+bun run dev
+gs
+g add -A
+g commit -m 'feat: implement zen'
+gp
+kts
+bun test
+v
+gs
+git log
+git reset --hard d11e1b3fcf0911b371e26393fed3f5d57f710117 ; git push -f
+v
+bcv
+cd Documents
+cd duck-fp/
+bun test
+gs
+bun tesf
+bun test
+gs
+bun test
+gs
+bun test
+gs
+g add -A
+bun run changeset
+gs
+g add -A
+g commit -m 'feat: better maybe#orElse method'
+gp
+ls
+git checkout main
+ls
+git pull
+npm run version-packages
+npm run relase
+npm run release
+git add -A
+g commit -m 'release'
+g commit -m 'release' --no-edit
+g commit -m 'release' --no-verify
+gp; git push origin v2.1.0
+ls
+bun update
+v
+gs
+g add -A
+g commit -m 'feat: update duck fp, add correct dimensions fn'
+gp
+parsyu
+dbus-launch Hyprlad
+dbus-launch Hyprlabd
+sudo dinitctl start bluetoothd; rfkill unblock all;
+ды
+bun add canvas
+bun remove fabric
+bun run dev
+ls
+cd Music
+ls
+cd vk_____________treenokh/
+ls
+cd phonk$/
+ytla 'https://www.youtube.com/watch?v=-XW3pIduJAc'
+ytla 'https://www.youtube.com/watch?v=h5oL9Cbux6U'
+ytla 'https://www.youtube.com/watch?v=mQ83tfUHzhU'
+ytla 'https://www.youtube.com/watch?v=CdHzaL19XcY'
+ytla 'https://www.youtube.com/watch?v=dCBOS8lXCbQ&list=OLAK5uy_kY4OjnAuIlccYNGtz5vedaXbdoSi6W5C0'
+ls
+ytla 'https://www.youtube.com/watch?v=FO5mHZLvW_s&list=OLAK5uy_lRiuBCDG703VnCJ2ZcjfMDUKZY9dpWiwQ&index=6'
+ytla 'https://www.youtube.com/watch?v=W60i7p_DEdw&list=OLAK5uy_kYDWJgDCRi_pZMrhYGU1HWZeGlQ3CTpA8'
+ytla 'https://www.youtube.com/watch?v=6aIo-HnobZg'
+cmus
+zmup --write
+cmis
+м
+v
+ls
+rm -rf x
+rm -rf test.nu
+rm -rf swappy-20240911_171700.png
+rm -rf core.*
+ls
+sudo dinitctl start bluetoothd; rfkill unblock all;
+bun run dev
+ls
+bun dev
+bun upgrade
+s
+ls
+bun run dev
+bun add node-canvas@next
+bun add canvas@next
+bun run dev
+gs
+g add -A
+g commit -m 'feat: add getBackground method'
+gp
+dbus-launch Hyprlabd
+sudo dinitctl start bluetoothd; rfkill unblock all;
+ls
+cd Documents
+ls
+ng new test
+ns
+cd ..
+ls
+cd Documents
+ls
+v
+ls
+parsyu
+dbus-launch Hyprland
+parsyu
+sudo dinitctl start bluetoothd; rfkill unblock all;
+cd Documents/
+ls
+cd duck-fp/
+cmus
+zmup --write
+ls
+rm -rf *.png test
+ls
+cd Music
+l
+ls
+date now
+date now | wl-copy
+ls
+wl-paste
+date now | wl-copy
+wl-paste
+date now
+v `zlu: 2024-09-12 22:50`
+м
+gs
+g add -A
+g commit -m 'feat: add options class'
+gp
+ping google.com
+rfkill unblock all
+4513
+rfkill unblock all
+ping google.com
+connmanctl
+v
+clear
+sudo dinitctl start bluetoothd; rfkill unblock all;
+v
+gs
+gs add -A
+g add -A
+g commit -m 'refactor: rewrite function to class for easier programming'
+gp
+clear
+sudo dinitctl start bluetoothd; rfkill unblock all;
+cd .config/hypr
+v
+zmup --write
+clear
+м
+v
+ды
+ls
+cd Documens
+cd Documents
+ls
+v
+bun run dev
+parsyu
+sudo dinitctl start bluetoothd; rfkill unblock all;
+gs
+g add -A
+gs
+g add -A
+g commit -m 'fix: image wasnt drawn'
+gp
+bun test
+bun test | grep fromEither
+clear
+bun test
+gs
+bgs
+gs
+g add -A
+bun run changeset
+gs
+g add -A
+g commit -m 'feat: implement fromEither'
+gpggp
+gp
+gs
+npm run version-packages
+npm run release
+g add -A
+g commit -m 'release' --no-verify
+gp && gp origin v2.2.0
+gp ; gp origin v2.2.0
+ls
+v
+ls
+bun update
+sudo dinitctl start bluetoothd; rfkill unblock all;
+paru -S vesktop
+paru
+sudo pacman -R paru
+git clone https://aur.archlinux.org/paru.gitEcd paruEmakepkg -si
+git clone https://aur.archlinux.org/paru.git
+cd paru
+ls
+makepkg -si
+paru
+patchelf
+gs
+g add -A
+g commit -m 'feat: migraete to newer version of duck-fp'
+gp
+parsyu
+clear
+bun dev
+gs
+g add -A
+g commit -m 'feat: implement font'
+gp
+clear
+bc
+430 * 6
+pacsyu
+ping google.com
+connmanctl
+ping google.com
+pacsyu
+parsyu
+clear
+sudo dinitctl start bluetoothd; rfkill unblock all;
+cmus
+zmup --write
+v
+cd ..
+ls
+cd Documents/
+git clone https://github.com/VKTRenokh/z-ws.git
+ls
+gs
+zig init server
+ls
+mkdir server
+cd server
+zig init
+cd ..
+ls
+mkdir client
+cd client
+ls
+bun init vite
+ls
+rm -rf *
+ls
+bun init vue@latest
+ls
+rm -rf *
+bun create vue@latest
+ls
+bun install
+ls
+v
+cd ..
+lz
+ls
+cd ..
+ls
+cd server
+zig build run
+cd Documents
+cd sneaky-cmup-10/
+zig build run
+sudo dinitctl start bluetoothd; rfkill unblock all;
+ls
+cd client
+cd server
+ls
+gs
+g add -A
+g commit -m 'init: ini'
+gp
+zig build run
+curl 127.0.0.1:6969
+zig build run
+gs
+ggs
+g add -A
+g commit -m 'feat: add simple tcp server'
+gp
+g commit -m 'feat: add simple tcp server'
+curl 127.0.0.1:6969
+zig build run
+curl 127.0.0.1:6969
+echo "hello" | nc localhost 6969
+sudo pacman -S netcat
+echo "hello" | nc localhost 6969
+zig build run
+curl 127.0.0.1:6969
+zig build run
+curl 127.0.0.1:6969
+bun run dev
+nc
+zig build run
+nc localhost 6969
+curl 127.0.0.1:6969
+zig build run
+gs
+rm gs
+gs
+rm -rf .zig-cache/
+rm -rf zig-out/
+gs
+g add -A
+g commit -m 'fix: infinite server hanging'
+gp
+zig build run
+curl 127.0.0.1:6969
+curl 127.0.0.1:6969 -i
+zig build run
+sudo ln -s /usr/lib/libalpm.so.15.0.0 /usr/lib/libalpm.so.14E
+paru
+cd paru
+ls
+sudo pacman -Rns paru
+makepkg -si
+git pull
+makepkg -si
+sudo pacman -Scc
+makepkg -si
+paru
+ls
+ll
+rm -rf src/
+cd ..
+ls
+rm -rf paru
+rm -rf swappy-20240914_230617.png
+rm -rf test.md
+rm -rf core.*
+ls
+git clone https://aur.archlinux.org/paru.git
+cd paru
+ls
+makepkg -si
+v
+gs
+g add -A
+g commit -m 'feat: add usefetch custom hook'
+gp
+sudo reboo
+sudo dinitctl start bluetoothd; rfkill unblock all;
+cd client
+lls
+ls
+cd client
+ls
+cd server
+s
+ls
+s
+ls
+gs
+gp
+git config --global http.version HTTP/1.1
+gp
+gs
+g add -A
+g commit -m 'feat: implement refetch'
+gp
+ls
+cd ls
+s
+ls
+cd Music
+ls
+date now
+v
+bun run dev
+zig build run
+ls
+cd server
+zig build run
+zig build run --watch
+bun run dev
+ls
+cd ..
+ls
+cd client
+zig build run
+gs
+g add -A
+g commit -m 'feat: add json formatting'
+gp
+zig build run
+gs
+g add -A
+g commit -m 'feat: implement request reading'
+gp
+clear
+pasrsyu
+parsyu
+pacsyu
+ping artixlinux.org
+pacsyu
+sudo pacman -Syyuuuu
+connmanctl
+sudo pacman -Syyuuuu
+clear
+pacsyu
+clear
+pacsyu
+reboot
+clear
+ls
+ping artixlinux.org
+curl artixlinux.org
+curl angular.dev
+lynx
+sudo pacman -S lynx
+clear
+ls
+lynx
+clear
+сьгы
+sudo dinitctl start bluetoothd; rfkill unblock all;
+bcv
+ls
+cd client
+ls
+cd server
+zig run build
+bun run dev
+zig build run
+playerctl
+playerctl metadata
+cd .config/waybar
+ls
+cd .config/hypr/waybar
+zsh
+cd .config/hypr/waybar
+ls
+ping wttr.in -c1
+curl wttr.in
+nash
+s
+cd dotfiles
+ls
+cd .config
+rm -rf hypr
+rm -rf nvim
+rm -rf nushell

@@ -74,10 +74,8 @@ window#waybar {
 }
 
 #clock {
-  /* color: #e6b9c6; */
   color: lightgray;
   background-color: #282828;
-  /*border-radius: 0px 0px 0px 24px;*/
   border-radius: 0;
   padding-left: 13px;
   padding-right: 15px;
@@ -86,7 +84,6 @@ window#waybar {
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: bold;
-  /*border-left: solid 1px #282738;*/
 }
 
 #clock #EBN {
@@ -185,9 +182,7 @@ window#waybar {
   margin-left: 10px;
 }
 
-#custom-caway {
-  padding-left: 15px;
-  padding-right: 14px;
+#custom-playerctl {
   border-radius: 16px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -195,7 +190,7 @@ window#waybar {
   font-family: VictorMono NFM;
   font-weight: bold;
   font-style: italic;
-  font-size: 16px;
+  font-size: 13px;
 }
 
 #custom-playerlabel {
@@ -237,6 +232,16 @@ window#waybar {
 }
 
 #temperature {
+  background-color: #282828;
+  border-radius: 10px;
+  margin: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding: 0px 10px 0px 10px;
+  font-weight: bold;
+}
+
+#user {
   background-color: #282828;
   border-radius: 10px;
   margin: 5px;

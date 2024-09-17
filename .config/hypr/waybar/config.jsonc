@@ -10,16 +10,17 @@
     "custom/launcher",
     "hyprland/workspaces",
     "battery",
-    "custom/caway"
+    "custom/playerctl",
   ],
   "modules-center": [
     "cpu",
     "memory",
     "disk",
     "temperature",
-    "custom/updates"
+    "user"
   ],
   "modules-right": [
+    "bluetooth",
     "network",
     "pulseaudio",
     "backlight",
@@ -54,30 +55,13 @@
     }
   },
   "custom/playerctl": {
-    "format": "{icon}",
-    "return-type": "json",
-    "max-length": 64,
-    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-    "on-click-middle": "playerctl play-pause",
-    "on-click": "playerctl previous",
-    "on-click-right": "playerctl next",
-    "format-icons": {
-      "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
-      "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
-    }
-  },
-  "custom/playerlabel": {
-    "format": "<span>{}</span>",
+    "format": "{}",
     "return-type": "json",
     "max-length": 48,
-    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click-middle": "playerctl play-pause",
     "on-click": "playerctl previous",
-    "on-click-right": "playerctl next",
-    "format-icons": {
-      "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
-      "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
-    }
+    "on-click-right": "playerctl next"
   },
   "battery": {
     "states": {
@@ -89,8 +73,6 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon} ",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
     "format-icons": [
       "",
       "",
@@ -119,17 +101,13 @@
     "format": "°C {temperatureC}"
   },
   "network": {
-    "format-wifi": "󰤨 {}",
+    "format-wifi": "󰤨  {}",
     "tooltip-format": "{essid} {ipaddr}/{cidr} strength {signalStrength}%",
     "format-ethernet": "󰈁 {ifname}: Aesthetic",
     "format-linked": " {ifname} (No IP)",
     "format-disconnected": "󰤭",
-    "format-alt": "󰤨 {ifname}: {ipaddr}/{cidr}",
+    "format-alt": "󰤨  {ifname}: {ipaddr}/{cidr}",
     "on-click-right": "nm-connection-editor"
-  },
-  "tray": {
-    "icon-size": 16,
-    "spacing": 5
   },
   "backlight": {
     "format": " {percent}%", // replace  icon with {} for dynamic icon changes
@@ -167,19 +145,19 @@
     "format": "{}",
     "exec": "~/.config/hypr/scripts/systemupdate.sh"
   },
-  "custom/caway": {
-    "format": "{icon}{}",
-    "format-alt": "",
-    "format-icons": {
-      "Paused": " ",
-      "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
-    },
-    "escape": true,
-    "tooltip": true,
-    "exec": "~/.config/hypr/scripts/caway",
-    "return-type": "json",
-    "on-scroll-up": "playerctl previous",
-    "on-scroll-down": "playerctl next",
-    "max-length": 35
+  "bluetooth": {
+    "format": "󰂯 {status}",
+    "format-disabled": "",
+    "format-connected": "󰂯 {num_connections} connected",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+  "user": {
+    "format": "{work_H}:{work_M} ↑",
+    "interval": 60,
+    "height": 30,
+    "width": 30,
+    "icon": true
   }
 }

@@ -516,4 +516,12 @@ return {
       require("tiny-inline-diagnostic").setup()
     end,
   }, -- }}}
+  -- {{{ markdown.nvim
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    opts = {},
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" }, -- if you use the mini.nvim suite
+    ft = "markdown",
+  },
+  -- }}}
 }

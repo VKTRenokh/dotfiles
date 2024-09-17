@@ -70,7 +70,14 @@ return {
           },
         },
       },
-      capabilities = {},
+      capabilities = {
+        workspace = {
+          fileOperations = {
+            didRename = true,
+            willRename = true,
+          },
+        },
+      },
       servers = {
         jsonls = require("plugins.lsp.jsonls"),
         vtsls = { -- {{{
