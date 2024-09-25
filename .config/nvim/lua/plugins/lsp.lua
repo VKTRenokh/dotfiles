@@ -131,6 +131,9 @@ return {
             Lua = Constants.lua_ls.Lua,
           },
         },
+        zls = {
+          cmd = { "/home/vktrenokh/.local/bin/zls" },
+        },
       },
       setup = {},
       document_highlight = {
@@ -186,14 +189,17 @@ return {
 
           if serverOpts.mason == false or not vim.tbl_contains(allMslpServers, server) then
             setup(server)
-          elseif serverOpts.enabled ~= false then
+          elseif serverOpts.enabled ~= false or not server.cmd then
             ensureInstalled[#ensureInstalled + 1] = server
           end
         end
       end
 
       if hasMason then
-        mlsp.setup({ ensure_installed = ensureInstalled, handlers = { setup } })
+        mlsp.setup({
+          ensure_installed = ensureInstalled,
+          handlers = { setup },
+        })
       end
     end,
   },

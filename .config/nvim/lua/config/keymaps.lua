@@ -113,3 +113,4 @@ map("n", "<leader>c", '"_cc') -- }}}
 -- When mapping <Tab> this keymap looses it's functionality so you have to
 -- remap it to itself
 map("n", "<C-i>", "<C-i>") -- }}}
+map("n", "<leader>dt", "<Cmd>:pu=strftime('%c')<cr>")
