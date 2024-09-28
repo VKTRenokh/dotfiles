@@ -46,4 +46,9 @@ return {
     },
     cmd = "Pipka",
   }, -- }}}
+  {
+    "mawkler/demicolon.nvim",
+    keys = { ",", ";" },
+    opts = {},
+  },
 }

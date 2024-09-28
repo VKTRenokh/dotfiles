@@ -107,18 +107,15 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  -- {{{
   {
-    "echasnovski/mini.files",
+    "nvim-telescope/telescope-frecency.nvim",
     keys = {
-      {
-        "<leader>fs",
-        function()
-          MiniFiles.open()
-        end,
-      },
+      { ";h", "<Cmd>:Telescope frecency<cr>" },
     },
     config = function()
-      require("mini.files").setup()
+      require("telescope").load_extension("frecency")
     end,
   },
+  -- }}}
 }
