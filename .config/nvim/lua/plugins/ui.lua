@@ -524,4 +524,9 @@ return {
     ft = "markdown",
   },
   -- }}}
+  {
+    "nvim-zh/colorful-winsep.nvim",
+    event = { "LazyFile" },
+    config = true,
+  },
 }
