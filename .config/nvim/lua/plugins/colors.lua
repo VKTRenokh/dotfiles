@@ -64,13 +64,6 @@ return {
         },
       },
       indent = { enable = false, disable = { "yml", "yaml" } },
-      rainbow = {
-        enable = true,
-        extended_mode = false,
-        max_file_lines = nil,
-        query = "rainbow-parens",
-        -- colors = Constants.colors.rainbow,
-      },
       disable = { "latex" },
       ensure_installed = Constants.ensure_installed.treesitter,
       incremental_selection = {
@@ -121,29 +114,12 @@ return {
     },
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ rainbow-delimiters
-  {
-    "HiPhish/rainbow-delimiters.nvim",
-    opts = {
-      blacklist = {
-        "vue",
-        "html",
-        "jsx",
-        "tsx",
-        "zig",
-      },
-    },
-    enabled = true,
-    event = "LazyFile",
-    main = "rainbow-delimiters.setup",
-  },
-  -- }}}
   -- {{{ tokyonight.nvim
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    enabled = true,
+    enabled = false,
     opts = {
       transparent = true,
       style = "moon",
@@ -192,4 +168,13 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = "rktjmp/lush.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("zenbones")
+    end,
+  },
 }

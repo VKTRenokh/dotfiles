@@ -3,7 +3,7 @@
 local options = {
   autoindent = true,
   inccommand = "split",
-  background = "dark",
+  background = "light",
   backup = false,
   backspace = { "start", "eol", "indent" },
   breakindent = true,
