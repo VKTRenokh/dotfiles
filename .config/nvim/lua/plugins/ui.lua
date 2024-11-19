@@ -1,71 +1,6 @@
 Icons = require("config.constants").icons
 
 return {
-  -- {{{ alpha.nvim
-  {
-    "goolord/alpha-nvim",
-    keys = {
-      { "<leader>aa", "<cmd>Alpha<cr>", desc = "Open alpha" },
-    },
-    event = "VimEnter",
-    opts = function()
-      local dashboard = require("alpha.themes.dashboard")
-      local logo = [[
-       _______             ____   ____.__
-       \      \   ____  ___\   \ /   /|__| _____
-       /   |   \_/ __ \/  _ \   Y   / |  |/     \
-      /    |    \  ___(  <_> )     /  |  |  Y Y  \
-      \____|__  /\____ >____/ \___/   |__|__|_|  /
-              \/                               \/
-      ]]
-
-      dashboard.section.header.val = vim.split(logo, "\n", {})
-      dashboard.section.buttons.val = {
-        dashboard.button("f", Icons.documents.Files .. " Find file", ":Telescope find_files <CR>"),
-        dashboard.button("r", Icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
-        dashboard.button("t", Icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
-        dashboard.button(
-          "c",
-          Icons.ui.Gear .. " Config",
-          ":lua require('config.functions').config_files() <cr>"
-        ),
-        dashboard.button("u", Icons.ui.CloudDownload .. " Update", ":Lazy update<CR>"),
-        dashboard.button("q", Icons.ui.SignOut .. " Quit", ":qa<CR>"),
-      }
-
-      for _, button in ipairs(dashboard.section.buttons.val) do
-        button.opts.hl = "AlphaButtons"
-        button.opts.hl_shortcut = "AlphaShortcut"
-      end
-
-      dashboard.section.header.opts.hl = "AlphaHeader"
-      dashboard.section.buttons.opts.hl = "AlphaButtons"
-      dashboard.section.footer.opts.hl = "@keyword"
-      dashboard.opts.opts.noautocmd = true
-      return dashboard
-    end,
-    config = function(_, dashboard)
-      require("alpha").setup(dashboard.opts)
-
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "LazyVimStarted",
-        callback = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = " Neovim loaded "
-            .. stats.loaded
-            .. "/"
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
-            .. ""
-          pcall(vim.cmd.AlphaRedraw)
-        end,
-      })
-    end,
-  },
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ bufferline.nvim
   {
     "akinsho/bufferline.nvim",
@@ -160,7 +95,7 @@ return {
         follow_files = true,
       },
       attach_to_untracked = true,
-      current_line_blame = false,
+      current_line_blame = true,
       current_line_blame_opts = {
         virt_text = true,
         virt_text_pos = "eol",
@@ -186,12 +121,12 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "LazyFile",
-    enabled = false, -- enable when plugin author fixes it
+    enabled = true,
     keys = {
       { "<leader>di", "<Cmd>IBLToggle<cr>", desc = "Toggle indention guides" },
     },
     opts = {
-      indent = { char = "" }, -- 
+      indent = { }, -- 
       scope = {
         show_start = false,
       },
@@ -524,9 +459,25 @@ return {
     ft = "markdown",
   },
   -- }}}
+-- {{{ colorful-winsep
   {
     "nvim-zh/colorful-winsep.nvim",
     event = { "LazyFile" },
     config = true,
-  },
+  },-- }}}
+-- {{{ snacks
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bigfile = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      statuscolumn = { enabled = false },
+      dashboard = {enabled = true},
+      words = { enabled = false },
+    }
+  }
+-- }}}
 }

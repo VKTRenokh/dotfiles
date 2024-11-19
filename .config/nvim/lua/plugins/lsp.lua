@@ -123,7 +123,7 @@ return {
             },
           },
         }, -- }}}
-        tsserver = { -- {{{
+        ts_ls = { -- {{{
           enabled = true, -- NOTE: disable tsserver if vtsls is enabled
         }, -- }}}
         lua_ls = {
