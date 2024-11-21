@@ -126,7 +126,7 @@ return {
       { "<leader>di", "<Cmd>IBLToggle<cr>", desc = "Toggle indention guides" },
     },
     opts = {
-      indent = { }, -- 
+      indent = {}, -- 
       scope = {
         show_start = false,
       },
@@ -459,13 +459,13 @@ return {
     ft = "markdown",
   },
   -- }}}
--- {{{ colorful-winsep
+  -- {{{ colorful-winsep
   {
     "nvim-zh/colorful-winsep.nvim",
     event = { "LazyFile" },
     config = true,
-  },-- }}}
--- {{{ snacks
+  }, -- }}}
+  -- {{{ snacks.nvim
   {
     "folke/snacks.nvim",
     priority = 1000,
@@ -475,9 +475,19 @@ return {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = false },
-      dashboard = {enabled = true},
+      dashboard = { enabled = true },
       words = { enabled = false },
-    }
-  }
--- }}}
+    },
+  },
+  -- }}}
+  -- {{{ incline.nvim
+  {
+    "b0o/incline.nvim",
+    event = "LazyFile",
+    opts = { },
+    config = function (_, opts)
+      require('incline').setup(opts);
+    end
+  },
+  -- }}}
 }

@@ -119,7 +119,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    enabled = false,
+    enabled = true,
     opts = {
       transparent = true,
       style = "moon",
@@ -171,6 +171,7 @@ return {
   {
     "zenbones-theme/zenbones.nvim",
     dependencies = "rktjmp/lush.nvim",
+    enabled = false,
     lazy = false,
     priority = 1000,
     config = function()

@@ -2,7 +2,7 @@ return {
   "stevearc/conform.nvim",
   event = "BufWritePre",
   cmd = "ConformInfo",
-  enabled = false,
+  enabled = true,
   keys = {
     {
       "<leader>fr",
@@ -31,12 +31,15 @@ return {
       lsp_fallback = true,
     },
     format_on_save = function(bufnr)
-      -- local bufname = vim.api.nvim_buf_get_name(bufnr)
+      local is_formatting_enabled = false
 
-      return {
+      local opts = {
         lsp_fallback = true,
         timeout_ms = 3000,
+        enabled = false,
       }
+
+      return is_formatting_enabled and opts or nil
     end,
   },
 }

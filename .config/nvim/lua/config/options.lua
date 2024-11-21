@@ -3,7 +3,7 @@
 local options = {
   autoindent = true,
   inccommand = "split",
-  background = "light",
+  background = "dark",
   backup = false,
   backspace = { "start", "eol", "indent" },
   breakindent = true,
@@ -60,6 +60,7 @@ local options = {
   writebackup = false,
   pumheight = 10,
   laststatus = 3,
+  linebreak = false,
 }
 
 vim.scriptencoding = "utf-8"
