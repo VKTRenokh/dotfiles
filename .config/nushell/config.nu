@@ -88,8 +88,7 @@ $env.config = {
     }
 
     color_config: {} # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
-    use_grid_icons: true
-    footer_mode: "25" # always, never, number_of_rows, auto
+    footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
     buffer_editor: "" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
     use_ansi_coloring: true
@@ -737,13 +736,6 @@ $env.config = {
             event: { edit: cutselection }
             # event: { edit: cutselectionsystem }
         }
-         {
-             name: paste_system
-             modifier: control_shift
-             keycode: char_v
-             mode: emacs
-             event: { edit: pastesystem }
-         }
         {
             name: select_all
             modifier: control_shift
@@ -767,7 +759,7 @@ let external_completer = {
 # }}}
 
 # {{{ Aliases
-# source ./nu_scripts/aliases/eza/eza-aliases.nu  fix this later
+source ./theme.nu
 
 alias ytla = yt-dlp --no-playlist -x --audio-format  "mp3"
 alias v = nvim
@@ -782,6 +774,10 @@ alias g = git
 alias gp = g push
 alias gs = g status
 alias ll = ls -la
+
+def gco [] {
+  git checkout (git branch | fzy | str trim)
+}
 #}}}
 
 $env.config = {
