@@ -383,7 +383,7 @@ return {
     },
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-web-devicons
+  -- {{{ mini.icons
   {
     "echasnovski/mini.icons",
     lazy = true,
@@ -403,12 +403,6 @@ return {
       end
     end,
   },
-  {
-    "nvim-tree/nvim-web-devicons",
-    lazy = true,
-    opts = {},
-  },
-
   -------------------------------------------------------------------------- }}}}
   -- {{{ trouble.nvim
 
@@ -444,7 +438,7 @@ return {
   {
     "rachartier/tiny-inline-diagnostic.nvim",
     event = "LazyFile",
-    enabled = false,
+    enabled = true,
     config = function()
       vim.diagnostic.config({ virtual_text = false })
 
@@ -464,7 +458,8 @@ return {
     "nvim-zh/colorful-winsep.nvim",
     event = { "LazyFile" },
     config = true,
-  }, -- }}}
+  },
+  -- }}}
   -- {{{ snacks.nvim
   {
     "folke/snacks.nvim",
