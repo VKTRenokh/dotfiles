@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+wallpapers_path="$HOME/.config/hypr/wallpapers/"
+
+files=("$wallpapers_path"/*)
+
+choices=""
+
+for file in "${files[@]}"; do
+    choices+=$(basename "$file")$'\n'
+done
+
+selected=$(wofi --dmenu <<< "$choices")
+
+swww img "$wallpapers_path$selected" --transition-duration 2 --transition-type center --transition-fps 60
+
+exit 0
