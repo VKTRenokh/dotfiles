@@ -30,25 +30,4 @@ return {
     ft = { "fennel" },
   },
   -- }}}
-  -- {{{ pipka.nvim
-  {
-    dir = "/mnt/sda1/workspace/pipka.nvim",
-    opts = {
-      split = "below",
-      ensure_installed = {
-        "igor",
-        "bogdan",
-        "utia",
-      },
-    },
-    keys = {
-      { "<leader>P", "<cmd>Pipka<cr>" },
-    },
-    cmd = "Pipka",
-  }, -- }}}
-  {
-    "mawkler/demicolon.nvim",
-    keys = { ",", ";" },
-    opts = {},
-  },
 }

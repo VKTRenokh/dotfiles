@@ -114,3 +114,5 @@ map("n", "<leader>c", '"_cc') -- }}}
 -- remap it to itself
 map("n", "<C-i>", "<C-i>") -- }}}
 map("n", "<leader>dt", "<Cmd>:pu=strftime('%c')<cr>")
+
+map("n", "<leader>in", "<Cmd>:set fo-=tc<cr>")

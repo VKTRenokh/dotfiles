@@ -31,7 +31,7 @@ return {
       lsp_fallback = true,
     },
     format_on_save = function(bufnr)
-      local is_formatting_enabled = false
+      local is_formatting_enabled = true
 
       local opts = {
         lsp_fallback = true,
