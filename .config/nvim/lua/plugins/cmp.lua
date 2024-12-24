@@ -1,190 +1,82 @@
 Constants = require("config.constants")
 
 return {
-  -- {{{ nvim-cmp
+  -- {{{ blink.cmp
   {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    version = false,
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-nvim-lsp-document-symbol",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-calc",
+    "saghen/blink.cmp",
+    -- optional: provides snippets for the snippet source
+    dependencies = "rafamadriz/friendly-snippets",
 
-      "hrsh7th/cmp-path",
-    },
-    opts = function(_, opts)
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
+    -- use a release tag to download pre-built binaries
+    version = "*",
+    -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+    -- build = 'cargo build --release',
+    -- If you use nix, you can build from source using latest nightly rust with:
+    -- build = 'nix run .#build-plugin',
 
-      local check_backspace = function()
-        local col = vim.fn.col(".") - 1
-        return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-      end
-
-      local completion = {
-        completeopt = "menu,menuone,noselect",
-        -- keyword_length = 1,
-      }
-
-      local snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      }
-
-      local formatting = {
-        -- default fields order i.e completion word + item.kind + item.kind icons fields = field_arrangement[cmp_style] or { "abbr", "kind", "menu" },
-        format = function(_, item)
-          local icon = (Constants.icons.kind and Constants.icons.kind[item.kind]) or ""
-
-          item.kind = icon .. (item.kind or "??")
-
-          return item
-        end,
-      }
-
-      local confirm_opts = {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-      }
-
-      local mapping = {
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-2), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(2), { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-y>"] = cmp.config.disable,
-        ["<C-e>"] = cmp.mapping({
-          i = cmp.mapping.abort(),
-          c = cmp.mapping.close(),
-        }),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expandable() then
-            luasnip.expand()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          elseif check_backspace() then
-            fallback()
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      }
-
-      local window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      }
-
-      local experimental = {
-        ghost_text = true,
-      }
-
-      cmp.setup.filetype("gitcommit", {
-        sources = cmp.config.sources({
-          { name = "cmp_git" },
-        }, {
-          { name = "buffer" },
-        }),
-      })
-
-      cmp.setup.cmdline(":", {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "path" },
-        }, {
-          { name = "cmdline" },
-        }),
-      })
-
-      cmp.setup.cmdline({ "/", "?" }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = "nvim_lsp_document_symbol" },
-        }, {
-          { name = "buffer" },
-        }),
-      })
-
-      opts.completion = completion
-      opts.snippet = snippet
-      opts.confirm_opts = confirm_opts
-      opts.formatting = formatting
-      opts.mapping = mapping
-      opts.sources = Constants.completion.sources
-      opts.window = window
-      opts.experimental = experimental
-    end,
-  },
-  -- --------------------------------------------------------------------- }}}
-  -- {{{ LuaSnip
-  {
-    "L3MON4D3/LuaSnip",
-    dependencies = {
-      "saadparwaiz1/cmp_luasnip",
-    },
-    keys = {
-      {
-        "<C-j>",
-        function()
-          require("luasnip").jump(1)
-        end,
-        noremap = true,
-        mode = "i",
-      },
-      {
-        "<C-k>",
-        function()
-          require("luasnip").jump(-1)
-        end,
-        noremap = true,
-        mode = "i",
-      },
-      {
-        "<M-n>",
-        function()
-          require("luasnip").change_choice(1)
-        end,
-        noremap = true,
-        mode = { "n", "i", "v" },
-      },
-      {
-        "<M-b>",
-        function()
-          require("luasnip").change_choice(-1)
-        end,
-        noremap = true,
-        mode = { "n", "i", "v" },
-      },
-    },
-    build = "make install_jsregexp",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
     opts = {
-      history = true,
-      delete_check_events = "TextChanged",
+      -- 'default' for mappings similar to built-in completion
+      -- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+      -- See the full "keymap" documentation for information on defining your own keymap.
+      keymap = {
+        preset = "default",
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+        ["<Esc>"] = { "hide", "fallback" },
+        ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
+        ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
+        -- stylua: ignore start
+        ['<A-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
+        ['<A-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
+        ['<A-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
+        ['<A-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
+        ['<A-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
+        ['<A-6>'] = { function(cmp) cmp.accept({ index = 6 }) end },
+        ['<A-7>'] = { function(cmp) cmp.accept({ index = 7 }) end },
+        ['<A-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
+        ['<A-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
+        ['<A-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
+        -- stylua: ignore end
+      },
+
+      completion = {
+        list = { selection = "manual" },
+        menu = {
+          draw = {
+            columns = { { "item_idx" }, { "kind_icon" }, { "label", "label_description", gap = 1 } },
+            components = {
+              item_idx = {
+                text = function(ctx)
+                  return ctx.idx == 10 and "0" or ctx.idx >= 10 and " " or tostring(ctx.idx)
+                end,
+                highlight = "BlinkCmpItemIdx", -- optional, only if you want to change its color
+              },
+            },
+          },
+        },
+      },
+
+      appearance = {
+        -- Sets the fallback highlight groups to nvim-cmp's highlight groups
+        -- Useful for when your theme doesn't support blink.cmp
+        -- Will be removed in a future release
+        use_nvim_cmp_as_default = false,
+        -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+        -- Adjusts spacing to ensure icons are aligned
+        nerd_font_variant = "mono",
+      },
+
+      -- Default list of enabled providers defined so that you can extend it
+      -- elsewhere in your config, without redefining it, due to `opts_extend`
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
     },
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-      require("luasnip.loaders.from_snipmate").lazy_load()
-      require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/snippets" })
-    end,
+    opts_extend = { "sources.default" },
   },
-  -- --------------------------------------------------------------------- }}}
+  -- }}}
 }
