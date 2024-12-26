@@ -39,7 +39,6 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ nvim-lspconfig
   {
     "neovim/nvim-lspconfig",
     event = "LazyFile",
@@ -81,7 +80,7 @@ return {
       servers = {
         jsonls = require("plugins.lsp.jsonls"),
         vtsls = { -- {{{
-          enabled = false, -- NOTE: disable typescript-language-server if this server is enabled
+          enabled = true, -- NOTE: disable typescript-language-server if this server is enabled
           filetypes = {
             "javascript",
             "javascriptreact",
@@ -115,17 +114,17 @@ return {
             },
           },
         }, -- }}}}}}
-        volar = { -- {{{
+        volar = {
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
           init_options = {
             vue = {
               hybridMode = false,
             },
           },
-        }, -- }}}
-        ts_ls = { -- {{{
-          enabled = true, -- NOTE: disable tsserver if vtsls is enabled
-        }, -- }}}
+        },
+        ts_ls = {
+          enabled = false, -- NOTE: disable tsserver if vtsls is enabled
+        },
         lua_ls = {
           settings = {
             Lua = Constants.lua_ls.Lua,

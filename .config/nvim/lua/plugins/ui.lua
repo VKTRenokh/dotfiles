@@ -338,7 +338,7 @@ return {
         },
       },
       presets = {
-        bottom_search = true,
+        bottom_search = false,
         long_message_to_split = true,
         lsp_doc_border = true,
       },
@@ -479,10 +479,10 @@ return {
   {
     "b0o/incline.nvim",
     event = "LazyFile",
-    opts = { },
-    config = function (_, opts)
-      require('incline').setup(opts);
-    end
+    opts = {},
+    config = function(_, opts)
+      require("incline").setup(opts)
+    end,
   },
   -- }}}
 }

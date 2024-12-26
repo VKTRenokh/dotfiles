@@ -45,6 +45,7 @@ return {
 
       completion = {
         list = { selection = "manual" },
+        ghost_text = { enabled = true },
         menu = {
           draw = {
             columns = { { "item_idx" }, { "kind_icon" }, { "label", "label_description", gap = 1 } },
