@@ -119,7 +119,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    enabled = true,
+    enabled = false,
     opts = {
       transparent = true,
       style = "moon",
@@ -168,14 +168,18 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ vague.nvim
   {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = "rktjmp/lush.nvim",
-    enabled = false,
+    "vague2k/vague.nvim",
     lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("zenbones")
+    opts = {
+      transparent = true,
+    },
+    config = function(_, opts)
+      require("vague").setup(opts)
+
+      vim.cmd.colorscheme("vague")
     end,
   },
+  -- }}}
 }
