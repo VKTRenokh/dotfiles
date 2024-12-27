@@ -1,0 +1,14 @@
+background = 0e0f1a 
+
+mouse-hide-while-typing = true
+cursor-click-to-move = false
+background-opacity = 0.95
+window-padding-x = 7
+
+font-family = Iosevka NFM
+font-family-bold = Iosevka NFM
+font-size = 13.5
+
+gtk-titlebar = false
+
+confirm-close-surface
