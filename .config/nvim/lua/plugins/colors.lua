@@ -119,7 +119,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    enabled = false,
+    enabled = true,
     opts = {
       transparent = true,
       style = "moon",
@@ -172,6 +172,7 @@ return {
   {
     "vague2k/vague.nvim",
     lazy = false,
+    enabled = false,
     opts = {
       transparent = true,
     },
