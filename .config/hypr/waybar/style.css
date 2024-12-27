@@ -287,3 +287,14 @@ window#waybar {
 #custom-kernel {
   margin-left: 7px;
 }
+
+#custom-tty {
+  margin-left: 7px;
+}
+
+tooltip {
+  background: rgb(14, 15, 26);
+  font-weight: normal;
+  border-radius: 10px;
+  border: solid 1px #9a9ec9;
+}
