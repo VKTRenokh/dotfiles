@@ -1,0 +1,7 @@
+theme = "tokyonight-transparent"
+
+[editor]
+line-number = 'relative'
+
+[keys.insert]
+C-c='normal_mode'
