@@ -4,11 +4,22 @@ mouse-hide-while-typing = true
 cursor-click-to-move = false
 background-opacity = 0.95
 window-padding-x = 7
+window-padding-y = 3
 
 font-family = Iosevka NFM
 font-family-bold = Iosevka NFM
 font-size = 13.5
 
 gtk-titlebar = false
+resize-overlay = never
+window-decoration = false
 
-confirm-close-surface
+confirm-close-surface = false
+
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+w=close_surface
+keybind = ctrl+shift+l=next_tab
+keybind = ctrl+shift+h=previous_tab
+
+keybind = ctrl+shift+5=new_split:right
+keybind = ctrl+shift+'=new_split:down
