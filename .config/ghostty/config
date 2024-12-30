@@ -17,9 +17,17 @@ window-decoration = false
 confirm-close-surface = false
 
 keybind = ctrl+shift+t=new_tab
-keybind = ctrl+shift+w=close_surface
 keybind = ctrl+shift+l=next_tab
 keybind = ctrl+shift+h=previous_tab
 
-keybind = ctrl+shift+5=new_split:right
-keybind = ctrl+shift+'=new_split:down
+keybind = ctrl+b>s=new_split:right
+keybind = ctrl+b>v=new_split:down
+
+keybind = ctrl+b>x=close_surface
+
+keybind = ctrl+b>h=goto_split:left
+keybind = ctrl+b>j=goto_split:bottom
+keybind = ctrl+b>k=goto_split:top
+keybind = ctrl+b>l=goto_split:right
+
+keybind = ctrl+b>r=reload_config
