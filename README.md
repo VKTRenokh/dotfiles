@@ -20,7 +20,7 @@ https://gist.github.com/themagicalmammal/37276c97897d40598e975f5e563252a6
 Install all needed packages
 
 ```bash
-sudo pacman -S --needed hyprland waybar dunst neovim lua lxappearance artix-dark-theme tmux kitty qutebrowser \
+sudo pacman -S --needed hyprland waybar dunst neovim helix lua lxappearance artix-dark-theme tmux kitty qutebrowser \
                         pipewire pipewire-pulse wireplumber xdg-desktop-portal-hyprland brightnessctl wpa_supplicant \
                         noto-fonts-cjk noto-fonts-emoji noto-fonts ripgrep fzy fzf zsh
 ```
