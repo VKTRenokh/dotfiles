@@ -50,6 +50,10 @@ cargo install --path .
 - Victor Mono NFM
 - Iosevka Mono NFM
 
+# Bootloader Theme
+
+https://github.com/catppuccin/grub
+
 ## Firmware
 
 - [qmk](https://github.com/vktrenokh/qmk_firmware)
