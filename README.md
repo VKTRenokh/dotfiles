@@ -50,7 +50,7 @@ cargo install --path .
 - Victor Mono NFM
 - Iosevka Mono NFM
 
-# Bootloader Theme
+## Bootloader Theme
 
 https://github.com/catppuccin/grub
 
