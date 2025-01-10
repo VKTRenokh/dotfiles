@@ -80,7 +80,7 @@ return {
       servers = {
         jsonls = require("plugins.lsp.jsonls"),
         vtsls = { -- {{{
-          enabled = true, -- NOTE: disable typescript-language-server if this server is enabled
+          enabled = false, -- NOTE: disable typescript-language-server if this server is enabled
           filetypes = {
             "javascript",
             "javascriptreact",
@@ -123,7 +123,7 @@ return {
           },
         },
         ts_ls = {
-          enabled = false, -- NOTE: disable tsserver if vtsls is enabled
+          enabled = true, -- NOTE: disable tsserver if vtsls is enabled
         },
         lua_ls = {
           settings = {

@@ -41,7 +41,6 @@ Constants = {
       "volar",
     },
     mason = {
-      "vtsls",
       "css-lsp",
       "emmet-ls",
       "eslint-lsp",
