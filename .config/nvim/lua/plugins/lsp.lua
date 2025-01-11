@@ -56,18 +56,7 @@ return {
     },
     opts = {
       diagnostics = {
-        underline = true,
-        update_in_insert = false,
-        virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
-        severity_sort = true,
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = Icons.diagnostics.Error,
-            [vim.diagnostic.severity.WARN] = Icons.diagnostics.Warning,
-            [vim.diagnostic.severity.HINT] = Icons.diagnostics.Hint,
-            [vim.diagnostic.severity.INFO] = Icons.diagnostics.Information,
-          },
-        },
+        virtual_text = false,
       },
       capabilities = {
         workspace = {
