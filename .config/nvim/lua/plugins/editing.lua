@@ -69,26 +69,6 @@ return {
     end,
   },
   -- }}}
-  -- {{{ nvim-snippasta
-  {
-    "mfussenegger/nvim-snippasta",
-    keys = {
-      {
-        "<leader>p",
-        function()
-          require("snippasta").paste()
-        end,
-      },
-      {
-        "<Tab>",
-        function()
-          vim.snippet.jump(1)
-        end,
-        noremap = true,
-        mode = { "i" },
-      },
-    },
-  }, -- }}}
   -- {{{ todo-comments.nvim
   {
     "folke/todo-comments.nvim",
