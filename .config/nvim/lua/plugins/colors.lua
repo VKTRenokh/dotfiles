@@ -1,10 +1,12 @@
 Icons = require("config.constants").icons
+
 -- {{{ Utils
 ---@param color string
 local function fg(color)
   return { fg = color }
 end
 -- }}}
+
 return {
   -- {{{ nvim-treesitter
   {
@@ -168,19 +170,9 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ vague.nvim
   {
-    "vague2k/vague.nvim",
+    "vitesse.nvim",
+    dir = "~/Documents/vitesse.nvim",
     lazy = false,
-    enabled = false,
-    opts = {
-      transparent = true,
-    },
-    config = function(_, opts)
-      require("vague").setup(opts)
-
-      vim.cmd.colorscheme("vague")
-    end,
   },
-  -- }}}
 }
