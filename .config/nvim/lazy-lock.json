@@ -28,7 +28,7 @@
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
   "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
   "render-markdown.nvim": { "branch": "main", "commit": "be3e3ab807059ddd247a802e8253b0cd3edef5a3" },
-  "snacks.nvim": { "branch": "main", "commit": "f06f14c4ae4d131eb5e15f4c49994f8debddff42" },
+  "snacks.nvim": { "branch": "main", "commit": "1da4c8e271b7827be8c660b242758394dfc6d4f0" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "626998e5c1b71c130d8bc6cf7abb6709b98287bb" },
   "telescope-frecency.nvim": { "branch": "master", "commit": "6e581bb7bea187fc03a4be3b252a8adecabc398a" },
   "telescope.nvim": { "branch": "master", "commit": "415af52339215926d705cccc08145f3782c4d132" },
