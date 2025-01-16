@@ -1,5 +1,6 @@
 Constants = require("config.constants")
 local map = require("config.functions").keymap
+local get_pkg_path = require("config.functions").get_pkg_path
 
 return {
   -- {{{ mason.nvim
@@ -20,22 +21,19 @@ return {
       max_concurrent_installers = 10,
       ensure_installed = Constants.ensure_installed.mason,
     },
+    opts_extend = { "ensure_installed" },
     config = function(_, opts)
       require("mason").setup(opts)
       local mr = require("mason-registry")
-      local function ensure_installed()
+
+      mr.refresh(function()
         for _, tool in ipairs(opts.ensure_installed) do
           local p = mr.get_package(tool)
           if not p:is_installed() then
             p:install()
           end
         end
-      end
-      if mr.refresh then
-        mr.refresh(ensure_installed)
-      else
-        ensure_installed()
-      end
+      end)
     end,
   },
   -- ----------------------------------------------------------------------- }}}
@@ -68,8 +66,8 @@ return {
       },
       servers = {
         jsonls = require("plugins.lsp.jsonls"),
-        vtsls = { -- {{{
-          enabled = false, -- NOTE: disable typescript-language-server if this server is enabled
+        vtsls = {
+          enabled = true,
           filetypes = {
             "javascript",
             "javascriptreact",
@@ -77,6 +75,7 @@ return {
             "typescript",
             "typescriptreact",
             "typescript.jsx",
+            "vue",
           },
           settings = {
             complete_function_calls = true,
@@ -86,6 +85,20 @@ return {
               experimental = {
                 completion = {
                   enableServerSideFuzzyMatch = true,
+                },
+              },
+              tsserver = {
+                globalPlugins = {
+                  {
+                    name = "@vue/typescript-plugin",
+                    languages = { "vue" },
+                    configNamespace = "typescript",
+                    location = get_pkg_path(
+                      "vue-language-server",
+                      "/node_modules/@vue/language-server"
+                    ),
+                    enableForWorkspaceTypescriptVersion = true,
+                  },
                 },
               },
             },
@@ -102,17 +115,17 @@ return {
               variableTypes = { enabled = false },
             },
           },
-        }, -- }}}}}}
+        },
         volar = {
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
           init_options = {
             vue = {
-              hybridMode = false,
+              hybridMode = true,
             },
           },
         },
         ts_ls = {
-          enabled = true, -- NOTE: disable tsserver if vtsls is enabled
+          enabled = false, -- NOTE: disable tsserver if vtsls is enabled
         },
         lua_ls = {
           settings = {
@@ -129,6 +142,8 @@ return {
       },
     },
     config = function(_, opts)
+      print(get_pkg_path("vue-language-server", "node_modules/@vue/language-server"))
+
       vim.diagnostic.config(opts.diagnostics)
 
       map("n", "gd", vim.lsp.buf.definition, { desc = "goto defenition" })
