@@ -142,8 +142,6 @@ return {
       },
     },
     config = function(_, opts)
-      print(get_pkg_path("vue-language-server", "node_modules/@vue/language-server"))
-
       vim.diagnostic.config(opts.diagnostics)
 
       map("n", "gd", vim.lsp.buf.definition, { desc = "goto defenition" })
