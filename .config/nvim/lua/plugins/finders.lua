@@ -31,7 +31,9 @@ return {
     opts = {
       keymaps = {
         ["q"] = { "actions.close", mode = "n" },
+        ["<C-h>"] = "actions.parent",
       },
+      skip_confirm_for_simpe_edits = true,
     },
     keys = { { "sf", "<cmd>:Oil<cr>" } },
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
