@@ -49,14 +49,7 @@ return {
         menu = {
           border = "rounded",
           draw = {
-            columns = { { "item_idx" }, { "kind_icon" }, { "label", "label_description", gap = 1 } },
             components = {
-              item_idx = {
-                text = function(ctx)
-                  return ctx.idx == 10 and "0" or ctx.idx >= 10 and " " or tostring(ctx.idx)
-                end,
-                highlight = "BlinkCmpItemIdx", -- optional, only if you want to change its color
-              },
               kind_icon = {
                 ellipsis = false,
                 text = function(ctx)
