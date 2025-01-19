@@ -1,0 +1,13 @@
+window#waybar {
+  background-color: #1a1b26;
+  font-family: Iosevka Nerd Font;
+  color: #f1f1f1;
+  font-size: 19px;
+}
+
+#custom-separator {
+  color: white;
+  font-size: 26px;
+  margin-left: 3px;
+  margin-right: 3px;
+}

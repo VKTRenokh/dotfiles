@@ -1,0 +1,51 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": [
+    "custom/launcher",
+    "custom/separator",
+    "custom/playerctl",
+    "custom/separator",
+    "custom/caway"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "cpu",
+    "custom/separator",
+    "battery",
+    "custom/separator",
+    "pulseaudio",
+    "custom/separator",
+    "network",
+    "custom/separator",
+    "backlight",
+    "custom/separator",
+    "clock"
+  ],
+  "passthrough": true,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-bottom": 0,
+  "cpu": {
+    "format": "<span foreground='#F38BA8'> </span> {usage}%"
+  },
+  "network": {
+    "format-wifi": "<span foreground='#7AA2F7'></span>  {}",
+  },
+  "battery": {
+    "format": "<span foreground='#A6E3A1'>{icon} </span> {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "custom/separator": {
+    "format": ""
+  }
+}
