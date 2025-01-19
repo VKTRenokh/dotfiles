@@ -33,7 +33,7 @@
     "format": "<span foreground='#F38BA8'> </span> {usage}%"
   },
   "network": {
-    "format-wifi": "<span foreground='#7AA2F7'></span>  {}",
+    "format-wifi": "<span foreground='#7AA2F7'></span> {}",
   },
   "battery": {
     "format": "<span foreground='#A6E3A1'>{icon} </span> {capacity}%",
@@ -45,7 +45,38 @@
       ""
     ]
   },
+  "backlight": {
+    "format": "<span foreground='#F38BA8'></span> {percent}%"
+  },
+  "custom/launcher": {
+    "format": ""
+  },
   "custom/separator": {
     "format": ""
-  }
+  },
+  "pulseaudio": {
+    "format": "<span foreground='#E0AF68'></span> {volume}%"
+  },
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "disable-scroll": false,
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十",
+      "sort-by-number": true
+    }
+  },
 }

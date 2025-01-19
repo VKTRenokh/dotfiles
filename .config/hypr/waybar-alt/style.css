@@ -2,12 +2,27 @@ window#waybar {
   background-color: #1a1b26;
   font-family: Iosevka Nerd Font;
   color: #f1f1f1;
-  font-size: 19px;
+  font-size: 17px;
+  padding-right: 20px;
 }
 
 #custom-separator {
-  color: white;
-  font-size: 26px;
-  margin-left: 3px;
-  margin-right: 3px;
+  color: #f38ba8;
+  font-size: 23px;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+#custom-launcher {
+  color: #7aa2f7;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#workspaces button {
+  color: #f4d9e1;
+}
+
+#clock {
+  margin-right: 10px;
 }
