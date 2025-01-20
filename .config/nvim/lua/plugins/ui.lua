@@ -1,48 +1,6 @@
 Icons = require("config.constants").icons
 
 return {
-  -- {{{ bufferline.nvim
-  {
-    "akinsho/bufferline.nvim",
-    enabled = true,
-    keys = {
-      { "te", "<cmd>:tabedit<cr>", desc = "Create new tab" },
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Cycle tabs forwards" },
-      { "gt", "<cmd>BufferLinePick<cr>", desc = "Pick tab" },
-      { "gT", "<cmd>BufferLinePickClose<cr>", desc = "Pick tab to close" },
-      { "gtd", "<cmd>BufferLineClose<cr>", desc = "Close all tabs" },
-      { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Cycle tabs backwards" },
-      { "<C-Tab>", "<cmd>tablast<cr>", desc = "Jump to the last tab" },
-      { "<C-S-Tab>", "<cmd>tabfirst<cr>", desc = "Jump to the first tab" },
-      { "<leader>tp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin tab" },
-      { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-      { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
-    },
-    opts = {
-      options = {
-        mode = "tabs",
-        separator_style = "thin",
-        show_buffer_close_icons = false,
-        show_close_icon = false,
-        color_icons = true,
-        diagnostics = "nvim_lsp",
-        always_show_bufferline = false,
-        diagnostics_indicator = function(_, _, diag)
-          local icons = Constants.icons.diagnostics
-          local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-            .. (diag.warning and icons.Warning .. diag.warning or "")
-          return vim.trim(ret)
-        end,
-      },
-      highlights = {
-        buffer_selected = {
-          italic = true,
-          bold = false,
-        },
-      },
-    },
-  },
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ dressing
   {
     "stevearc/dressing.nvim",
@@ -485,4 +443,17 @@ return {
     end,
   },
   -- }}}
+  -- {{{ mini.tabline
+  {
+    "echasnovski/mini.tabline",
+    version = false,
+    opts = {
+      tabpage_section = "none",
+    },
+    keys = {
+      { "te", "<cmd>:tabedit<cr>" },
+      { "<Tab>", "gt" },
+      { "<S-Tab>", "gT" },
+    },
+  }, -- }}}
 }
