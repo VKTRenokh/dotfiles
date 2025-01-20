@@ -4,9 +4,7 @@
   "modules-left": [
     "custom/launcher",
     "custom/separator",
-    "custom/playerctl",
-    "custom/separator",
-    "custom/caway"
+    "custom/playerctl"
   ],
   "modules-center": [
     "hyprland/workspaces"
@@ -78,5 +76,14 @@
       "10": "十",
       "sort-by-number": true
     }
+  },
+  "custom/playerctl": {
+    "format": "{}",
+    "return-type": "json",
+    "max-length": 48,
+    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+    "on-click-middle": "playerctl play-pause",
+    "on-click": "playerctl previous",
+    "on-click-right": "playerctl next"
   },
 }

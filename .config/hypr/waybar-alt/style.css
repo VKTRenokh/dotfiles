@@ -21,6 +21,9 @@ window#waybar {
 
 #workspaces button {
   color: #f4d9e1;
+
+  font-weight: bold;
+  font-style: normal;
 }
 
 #clock {
