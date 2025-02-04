@@ -81,6 +81,25 @@ return {
 
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
+
+      local parsers = require("nvim-treesitter.parsers").get_parser_configs()
+
+      parsers.zql = {
+        install_info = {
+          url = "https://github.com/cmus-enjoyers/tree-sitter-zql",
+          files = { "src/parser.c" },
+          branch = "dev",
+          generate_requires_npm = false,
+          requires_generate_from_grammar = false,
+        },
+        filetype = "zql",
+      }
+
+      vim.filetype.add({
+        extension = {
+          zql = "zql",
+        },
+      })
     end,
 
     dependencies = {
@@ -121,7 +140,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    enabled = true,
+    enabled = false,
     opts = {
       transparent = true,
       style = "moon",
@@ -170,9 +189,16 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+
   {
-    "vitesse.nvim",
-    dir = "~/Documents/vitesse.nvim",
+    "ellisonleao/gruvbox.nvim",
     lazy = false,
+    priority = 1000,
+    opts = { transparent = true },
+    config = function(_, opts)
+      require("gruvbox").setup(opts)
+
+      vim.cmd.colorscheme("gruvbox")
+    end,
   },
 }
