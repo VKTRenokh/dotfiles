@@ -65,7 +65,6 @@ require("lazy").setup({
         "compiler",
         "bugreport",
         "ftplugin",
-        "matchparen",
         "spellfile",
         "osc52",
       },

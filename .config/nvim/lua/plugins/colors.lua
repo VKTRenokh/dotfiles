@@ -140,7 +140,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    enabled = false,
+    enabled = true,
     opts = {
       transparent = true,
       style = "moon",
@@ -194,6 +194,7 @@ return {
     "ellisonleao/gruvbox.nvim",
     lazy = false,
     priority = 1000,
+    enabled = false,
     opts = { transparent = true },
     config = function(_, opts)
       require("gruvbox").setup(opts)
