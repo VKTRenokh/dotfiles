@@ -189,17 +189,31 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-
+  -- {{{ rainbow-delimiters.nvim
   {
-    "ellisonleao/gruvbox.nvim",
-    lazy = false,
-    priority = 1000,
+    "hiphish/rainbow-delimiters.nvim",
+    event = "LazyFile",
     enabled = false,
-    opts = { transparent = true },
-    config = function(_, opts)
-      require("gruvbox").setup(opts)
-
-      vim.cmd.colorscheme("gruvbox")
-    end,
-  },
+    opts = {
+      query = {
+        [""] = "rainbow-delimiters",
+        lua = "rainbow-blocks",
+      },
+      priority = {
+        [""] = 110,
+        lua = 210,
+      },
+      highlight = {
+        "RainbowDelimiterRed",
+        "RainbowDelimiterYellow",
+        "RainbowDelimiterBlue",
+        "RainbowDelimiterOrange",
+        "RainbowDelimiterGreen",
+        "RainbowDelimiterViolet",
+        "RainbowDelimiterCyan",
+      },
+    },
+    config = true,
+    main = "rainbow-delimiters.setup",
+  }, -- }}}
 }
