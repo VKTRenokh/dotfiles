@@ -189,31 +189,4 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ rainbow-delimiters.nvim
-  {
-    "hiphish/rainbow-delimiters.nvim",
-    event = "LazyFile",
-    enabled = false,
-    opts = {
-      query = {
-        [""] = "rainbow-delimiters",
-        lua = "rainbow-blocks",
-      },
-      priority = {
-        [""] = 110,
-        lua = 210,
-      },
-      highlight = {
-        "RainbowDelimiterRed",
-        "RainbowDelimiterYellow",
-        "RainbowDelimiterBlue",
-        "RainbowDelimiterOrange",
-        "RainbowDelimiterGreen",
-        "RainbowDelimiterViolet",
-        "RainbowDelimiterCyan",
-      },
-    },
-    config = true,
-    main = "rainbow-delimiters.setup",
-  }, -- }}}
 }
