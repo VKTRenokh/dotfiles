@@ -103,5 +103,5 @@ mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
 $env.PATH = ($env.PATH | split row (char esep) | append
-"~/.local/bin:~/.cargo/bin:~/.bun/bin:~/.local/share/pnpm")
+"~/.local/bin:~/.cargo/bin:~/.bun/bin:~/.local/share/pnpm:/usr/lib/llvm18/bin")
 $env.EDITOR = "nvim"
