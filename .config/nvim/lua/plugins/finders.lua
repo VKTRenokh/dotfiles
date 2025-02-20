@@ -34,6 +34,7 @@ return {
         ["q"] = { "actions.close", mode = "n" },
         ["<esc>"] = { "actions.close", mode = "n" },
         ["<C-h>"] = "actions.parent",
+        ["<C-o>"] = "actions.parent",
       },
       skip_confirm_for_simpe_edits = true,
     },
