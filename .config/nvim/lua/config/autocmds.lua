@@ -5,7 +5,6 @@ end
 -- {{{ Q to exit some filetypes
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
-    "PlenaryTestPopup",
     "help",
     "lspinfo",
     "notify",
