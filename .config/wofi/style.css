@@ -1,9 +1,8 @@
 window {
   margin: 0px;
-  border: 5px solid #111019;
-  background-color: rgba(11, 10, 16, 0.9);
-  border-radius: 15px;
-  font-family: "Victor Mono Nerd Font";
+  background-color: rgba(11, 10, 16, 1);
+  font-family: "Iosevka Nerd Font Mono";
+  font-size: 14px;
 }
 
 #input {
@@ -44,6 +43,8 @@ window {
 }
 
 #text {
+  padding-top: 7px;
+  padding-bottom: 7px;
   margin-left: 5px;
 }
 
@@ -51,7 +52,7 @@ window {
   /* color: #f1f0f5; */
   color: black;
   border: none;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 #entry {
@@ -67,6 +68,6 @@ window {
   border: none;
   border-radius: 10px;
   /* background: linear-gradient(90deg, #E97193 0%, #f09db5 100%); */
-  background: #a4bcd4; 
+  background: #a4bcd4;
   color: black;
 }
