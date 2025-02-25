@@ -423,7 +423,7 @@ return {
   {
     "folke/snacks.nvim",
     priority = 1000,
-    enabled = false,
+    enabled = true,
     lazy = false,
     opts = {
       bigfile = { enabled = true },
@@ -435,17 +435,7 @@ return {
     },
   },
   -- }}}
-  -- {{{ incline.nvim
-  {
-    "b0o/incline.nvim",
-    event = "LazyFile",
-    opts = {},
-    config = function(_, opts)
-      require("incline").setup(opts)
-    end,
-  },
-  -- }}}
-  {
+  { -- {{{ bufferline.nvim
     "akinsho/bufferline.nvim",
     enabled = true,
     keys = {
@@ -484,5 +474,5 @@ return {
         },
       },
     },
-  },
+  }, -- }}}
 }
