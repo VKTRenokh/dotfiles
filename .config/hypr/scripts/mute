@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+output=$(wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle)
+
+notify () {
+  notify-send -h string:x-canonical-private-synchronous:hypr-cfg -u low $1
+}
+
+if echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@)" | grep -q '\[MUTED\]'; then
+  notify "Muted"
+else
+  notify "Unmuted"
+fi
