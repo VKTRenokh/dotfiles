@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e 
+
+slurp_output=$(slurp -b 1e1e1e40 -c 78aeed)
+
+pos_x=$(echo "$slurp_output" | awk -F'[,x ]' '{print $1}')
+pos_y=$(echo "$slurp_output" | awk -F'[,x ]' '{print $2}')
+width=$(echo "$slurp_output" | awk -F'[,x ]' '{print $3}')
+height=$(echo "$slurp_output" | awk -F'[,x ]' '{print $4}')
+
+hyprctl "dispatch exec [float; move $pos_x $pos_y; size $width $height] kitty"
