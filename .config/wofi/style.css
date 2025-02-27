@@ -1,8 +1,8 @@
 window {
   margin: 0px;
-  background-color: rgba(11, 10, 16, 1);
-  font-family: "Iosevka Nerd Font Mono";
-  font-size: 14px;
+  background-color: #15151e;
+  font-family: "Victor Mono Nerd Font";
+  font-size: 14.2px;
 }
 
 #input {
@@ -43,8 +43,8 @@ window {
 }
 
 #text {
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin-left: 5px;
 }
 
@@ -60,14 +60,15 @@ window {
   border: none;
   border-radius: 15px;
   background-color: transparent;
+  color: #c0caf4;
 }
 
 #entry:selected {
   border: 0;
   outline: 0;
   border: none;
-  border-radius: 10px;
+  border-radius: 5px;
   /* background: linear-gradient(90deg, #E97193 0%, #f09db5 100%); */
-  background: #a4bcd4;
+  background: #c0caf4;
   color: black;
 }
