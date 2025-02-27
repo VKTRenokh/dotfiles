@@ -12,7 +12,7 @@ $env.config = {
     show_banner: false # true or false to enable or disable the welcome banner at startup
 
     ls: {
-        use_ls_colors: true # use the LS_COLORS environment variable to colorize output
+        use_ls_colors: false # use the LS_COLORS environment variable to colorize output
         clickable_links: true # enable or disable clickable links. Your terminal has to support links.
     }
 
@@ -58,7 +58,7 @@ $env.config = {
 
     history: {
         max_size: 100_000 # Session has to be reloaded for this to take effect
-        sync_on_enter: true # Enable to share history between multiple sessions, else you have to close the session to write history to file
+        sync_on_enter: false # Enable to share history between multiple sessions, else you have to close the session to write history to file
         file_format: "plaintext" # "sqlite" or "plaintext"
         isolation: false # only available with sqlite file_format. true enables history isolation, false disables it. true will allow the history to be isolated to the current session using up/down arrows. false will allow the history to be shared across all sessions.
     }
@@ -122,7 +122,7 @@ $env.config = {
         reset_application_mode: true
     }
     render_right_prompt_on_last_line: false # true or false to enable or disable right prompt to be rendered on last line of the prompt.
-    use_kitty_protocol: false # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
+    use_kitty_protocol: true # enables keyboard enhancement protocol implemented by kitty console, only if your terminal support this.
     highlight_resolved_externals: false # true enables highlighting of external commands in the repl resolved by which.
     recursion_limit: 50 # the maximum number of times nushell allows recursion before stopping it
 
@@ -745,21 +745,8 @@ $env.config = {
     ]
 }
 # }}}
-# {{{ Fish autocomplete
-let fish_completer = {|spans|
-    fish --command $'complete "--do-complete=($spans | str join " ")"'
-    | $"value(char tab)description(char newline)" + $in
-    | from tsv --flexible --no-infer
-}
-
-let external_completer = {
-    $fish_completer
-}
-# }}}
 
 # {{{ Aliases
-source ./theme.nu
-
 alias ytla = yt-dlp --no-playlist -x --audio-format  "mp3"
 alias v = nvim
 alias parsyu = paru -Syu --noconfirm
@@ -799,6 +786,8 @@ $env.config = {
 }
 
 # {{{ Styling
+use ./theme.nu
+
 $env.PROMPT_INDICATOR_VI_NORMAL = {
 }
 
@@ -806,10 +795,12 @@ use ~/.cache/starship/init.nu
 
 let banner = [
   $"(ansi green)     __  ,(ansi reset)"
-  $"(ansi green) .--\(\)°'.' (ansi reset)Welcome to (ansi green)barankignushell(ansi reset),"
+  $"(ansi green) .--\(\)°'.' (ansi reset)Welcome to (ansi green)gnushell(ansi reset),"
   $"(ansi green)'|, . ,'   (ansi reset)based on the (ansi green)nu(ansi reset) language,"
   $"(ansi green) !_-\(_\\    (ansi reset)where all data is structured!"
 ]
 
-$banner | str join "\n" | print
+# $banner | str join "\n" | print
+
+pfetch
 # }}

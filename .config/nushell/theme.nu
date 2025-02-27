@@ -1,3 +1,4 @@
+# Retrieve the theme settings
 export def main [] {
     return {
         separator: "#a9b1d6"
@@ -77,6 +78,7 @@ export def main [] {
         shape_table: { fg: "#7aa2f7" attr: "b" }
         shape_variable: "#bb9af7"
 
+        background: "#1a1b26"
         foreground: "#c0caf5"
         cursor: "#c0caf5"
     }
@@ -92,9 +94,13 @@ export def "update terminal" [] {
     let theme = (main)
 
     # Set terminal colors
+    let osc_screen_foreground_color = '10;'
+    let osc_screen_background_color = '11;'
     let osc_cursor_color = '12;'
         
     $"
+    (ansi -o $osc_screen_foreground_color)($theme.foreground)(char bel)
+    (ansi -o $osc_screen_background_color)($theme.background)(char bel)
     (ansi -o $osc_cursor_color)($theme.cursor)(char bel)
     "
     # Line breaks above are just for source readability
