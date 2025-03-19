@@ -7,29 +7,24 @@
   "margin-left": 0,
   "margin-right": 0,
   "modules-left": [
-    "custom/launcher",
     "hyprland/workspaces",
     "battery",
-    "custom/playerctl",
-    "custom/kernel",
-    "custom/tty"
+    "custom/dynamic_pill",
   ],
   "modules-center": [
     "cpu",
     "memory",
     "disk",
     "temperature",
-    "user",
   ],
   "modules-right": [
-    "bluetooth",
     "network",
     "pulseaudio",
     "backlight",
     "clock"
   ],
   "clock": {
-    "format": " {:%H <span foreground='#89b4fa'>󰇙</span> %M}",
+    "format": "{:%H:%M}",
     "tooltip": "true",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": " {:%d<span foreground='#89b4fa'> / </span>%m}"
@@ -56,7 +51,7 @@
       "sort-by-number": true
     }
   },
-  "custom/playerctl": {
+  "custom/dynamic_pill": {
     "format": "{}",
     "return-type": "json",
     "max-length": 48,
@@ -156,20 +151,10 @@
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
   },
   "user": {
-    "format": "{work_H}:{work_M} ↑",
+    "format": "{user} {work_H}:{work_M} ↑",
     "interval": 60,
     "height": 30,
     "width": 30,
     "icon": true
   },
-  "custom/kernel": {
-    "format": "{}",
-    "exec": "uname -r",
-    "tooltip": "true",
-    "tooltip-format": "{}"
-  },
-  "custom/tty": {
-    "format": "{}",
-    "exec": "tty"
-  }
 }
