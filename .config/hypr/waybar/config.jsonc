@@ -1,7 +1,7 @@
 {
   "position": "top",
   "layer": "top",
-  "height": 38,
+  "height": 28,
   "margin-top": 0,
   "margin-bottom": 0,
   "margin-left": 0,
@@ -79,18 +79,28 @@
     ]
   },
   "memory": {
-    "format": " {}%",
-    "format-alt": "󰍛 {used}/{total} GiB",
+    "format": " {used} of {total} GiB",
+    "format-alt": " {}%",
     "interval": 5
   },
   "cpu": {
-    "format": "󰻠 {usage}%",
+    "interval": 1,
+    "format": "{icon0} {icon1} {icon2} {icon3}",
     "format-alt": "󰻠 {avg_frequency} GHz",
-    "interval": 5
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ]
   },
   "disk": {
-    "format": "󰋊 {percentage_used}%",
-    "format-alt": "󰋊 {used}/{total} GiB",
+    "format": "󰋊 {used} of {total} GiB",
+    "format-alt": "󰋊 {percentage_used}%",
     "interval": 5,
     "path": "/"
   },
