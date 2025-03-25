@@ -3,5 +3,11 @@ theme = "tokyonight-transparent"
 [editor]
 line-number = 'relative'
 
+[editor.cursor-shape] 
+insert = "bar"
+
+[editor.file-picker]
+hidden = false
+
 [keys.insert]
-C-c='normal_mode'
+j = { k = "normal_mode" }
