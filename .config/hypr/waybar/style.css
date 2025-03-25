@@ -10,8 +10,20 @@ window#waybar {
 }
 
 #workspaces {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 7px;
+  margin-bottom: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #1a1b26;
+  border-radius: 10px;
+  border-bottom-width: 3px;
+  border-bottom-color: #3c3d52;
+  border-bottom-style: solid;
 }
 #workspaces button {
+  padding: 0 5px;
 }
 
 #workspaces button.active {
@@ -33,14 +45,14 @@ window#waybar {
 #custom-expand,
 #custom-cycle_wall,
 #custom-ss,
-#custom-dynamic_pill,
+#custom-music,
 #custom-playerctl {
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 7px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   margin-left: 5px;
   margin-right: 5px;
   background-color: #1a1b26;
@@ -50,16 +62,7 @@ window#waybar {
   border-bottom-style: solid;
 }
 
-#custom-dynamic_pill.low {
-}
-#custom-dynamic_pill.normal {
-}
-#custom-dynamic_pill.critical {
-}
-
-#custom-dynamic_pill.playing {
-}
-#custom-dynamic_pill.paused {
+#custom-music {
 }
 
 #custom-ss {

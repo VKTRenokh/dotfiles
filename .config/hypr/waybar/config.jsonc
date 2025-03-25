@@ -1,7 +1,6 @@
 {
   "position": "top",
   "layer": "top",
-  "height": 28,
   "margin-top": 0,
   "margin-bottom": 0,
   "margin-left": 0,
@@ -9,7 +8,7 @@
   "modules-left": [
     "hyprland/workspaces",
     "battery",
-    "custom/dynamic_pill",
+    "custom/music",
   ],
   "modules-center": [
     "cpu",
@@ -51,18 +50,24 @@
       "sort-by-number": true
     }
   },
-  "custom/dynamic_pill": {
-    "format": "{}",
+  "custom/music": {
+    "format": "{icon} {text}",
+    "format-icons": {
+      "Paused": " ",
+      "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
+    },
+    "escape": true,
+    "tooltip": true,
+    "exec": "~/.config/hypr/scripts/caway",
     "return-type": "json",
-    "max-length": 48,
-    "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
-    "on-click-middle": "playerctl play-pause",
-    "on-click": "playerctl previous",
-    "on-click-right": "playerctl next"
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "max-length": 35
   },
   "battery": {
     "states": {
-      "good": 95,
+      "good": 60,
       "warning": 30,
       "critical": 15
     },
