@@ -37,6 +37,8 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
+      "default": "󰽤",
+      "active": "󰽢",
       "1": "一",
       "2": "二",
       "3": "三",
