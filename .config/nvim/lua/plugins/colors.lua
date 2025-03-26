@@ -162,6 +162,8 @@ return {
 
         util.each(border_highlights, util.set(highlights, fg(colors.border_highlight)))
 
+        highlights["@punctuation.bracket"].fg = colors.red
+        highlights["@tag.delimiter.vue"] = fg(colors.red)
         highlights.Folded.bg = "none"
       end,
     },
@@ -189,4 +191,18 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
+  -- {{{ vim-nightfly-colors
+  {
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = false,
+    enabled = false,
+    priority = 1000,
+    config = function(_, opts)
+      vim.g.nightflyTransparent = true
+
+      vim.cmd.colorscheme("nightfly")
+    end,
+  },
+  -- }}}
 }
