@@ -164,6 +164,7 @@ return {
 
         highlights["@punctuation.bracket"].fg = colors.red
         highlights["@tag.delimiter.vue"] = fg(colors.red)
+        highlights.BlinkCmpMenu = { bg = "#1e2030" }
         highlights.Folded.bg = "none"
       end,
     },

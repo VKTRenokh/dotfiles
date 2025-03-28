@@ -40,11 +40,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = "LazyFile",
+    enabled = true,
     keys = {
       -- stylua: ignore start
-      { "<localleader>d", vim.lsp.implementation, desc = "Goto implementation" },
-			{ "gI", vim.lsp.buf.code_action, desc = "Code action" },
-			{ "<leader>r", vim.lsp.buf.rename, desc = "Rename variable" },
+      { "<localleader>d", vim.lsp.implementation,  desc = "Goto implementation" },
+      { "gI",             vim.lsp.buf.code_action, desc = "Code action" },
+      { "<leader>r",      vim.lsp.buf.rename,      desc = "Rename variable" },
       -- stylua: ignore end
     },
     dependencies = {
@@ -182,7 +183,7 @@ return {
       local all_mslp_servers = {}
       if have_mason then
         all_mslp_servers =
-          vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+            vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
       end
 
       local ensure_installed = {} ---@type string[]

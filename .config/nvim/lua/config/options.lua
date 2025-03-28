@@ -1,5 +1,3 @@
---- {{{ Listing of settings I like.
-
 local options = {
   autoindent = true,
   inccommand = "split",
@@ -74,4 +72,3 @@ end
 vim.cmd([[filetype plugin indent on]])
 vim.cmd([[language en_US.UTF-8]])
 vim.cmd([[set iskeyword+=-]])
--- ------------------------------------------------------------------------- }}}
