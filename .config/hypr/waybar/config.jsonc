@@ -56,7 +56,6 @@
     "format": "{icon} {text}",
     "format-icons": {
       "Paused": " ",
-      "Stopped": "&#x202d;ﭥ " // This stop symbol is RTL. So &#x202d; is left-to-right override.
     },
     "escape": true,
     "tooltip": true,

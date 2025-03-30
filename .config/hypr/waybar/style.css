@@ -12,6 +12,28 @@
   }
 }
 
+@keyframes gradient_wave {
+  0% {
+    background-position: 0% 100%;
+  }
+
+  25% {
+    background-position: 100% 0%;
+  }
+
+  50% {
+    background-position: 200% 100%;
+  }
+
+  75% {
+    background-position: 300% 0%;
+  }
+
+  100% {
+    background-position: 400% 100%;
+  }
+}
+
 * {
   font-family: "Iosevka NF";
   font-size: 13px;
@@ -78,6 +100,22 @@ window#waybar {
 }
 
 #custom-music {
+  background: radial-gradient(
+    circle,
+    #c2f0ea 0%,
+    #c7dbf5 8%,
+    #bac2de 18%,
+    #b6bce6 28%,
+    #b4aeea 38%,
+    #d3a7e5 48%,
+    #e7b4db 58%,
+    #f5c2e7 68%,
+    #f2b0cd 78%,
+    #dea0b8 100%
+  );
+  background-size: 400%, 400%;
+  animation: gradient_wave 20s linear infinite;
+  color: black;
 }
 
 #custom-ss {
@@ -99,20 +137,20 @@ window#waybar {
 #cpu {
   background: radial-gradient(
     circle,
-    rgba(200, 200, 200, 1) 0%,
-    rgba(190, 190, 190, 1) 6%,
-    rgba(180, 180, 180, 1) 14%,
-    rgba(170, 170, 170, 1) 14%,
-    rgba(160, 160, 160, 1) 18%,
-    rgba(150, 150, 150, 1) 28%,
-    rgba(140, 140, 140, 1) 28%,
-    rgba(130, 130, 130, 1) 58%,
-    rgba(120, 120, 120, 1) 69%,
-    rgba(110, 110, 110, 1) 69%,
-    rgba(100, 100, 100, 1) 72%,
-    rgba(90, 90, 90, 1) 73%,
-    rgba(80, 80, 80, 1) 78%,
-    rgba(70, 70, 70, 1) 100%
+    #f5c2e7 0%,
+    #e9b6dc 6%,
+    #dcb0e1 14%,
+    #cdb7e6 14%,
+    #bac2de 18%,
+    #a7bde4 28%,
+    #92b2e4 28%,
+    #86a8e3 58%,
+    #769ee0 69%,
+    #6e94d5 69%,
+    #647ac0 72%,
+    #5b66aa 73%,
+    #4d558e 78%,
+    #3f4372 100%
   );
   background-size: 400% 400%;
   animation: gradient_f 20s ease-in-out infinite;
