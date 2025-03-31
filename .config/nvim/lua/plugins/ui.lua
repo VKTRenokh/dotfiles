@@ -374,17 +374,6 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ tiny-inline-diagnostic.nvim
-  {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "LazyFile",
-    enabled = false,
-    config = function()
-      vim.diagnostic.config({ virtual_text = false })
-
-      require("tiny-inline-diagnostic").setup()
-    end,
-  }, -- }}}
   -- {{{ markdown.nvim
   {
     "MeanderingProgrammer/render-markdown.nvim",

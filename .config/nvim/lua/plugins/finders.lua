@@ -36,6 +36,10 @@ return {
         ["<C-h>"] = "actions.parent",
         ["<C-o>"] = "actions.parent",
       },
+      show_hidden = true,
+      view_options = {
+        show_hidden = true,
+      },
       skip_confirm_for_simpe_edits = true,
     },
     keys = { {
