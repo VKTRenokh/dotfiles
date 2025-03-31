@@ -55,7 +55,9 @@ return {
     },
     opts = {
       diagnostics = {
-        virtual_text = false,
+        virtual_lines = {
+          current_line = true,
+        },
       },
       capabilities = {
         workspace = {
@@ -183,7 +185,7 @@ return {
       local all_mslp_servers = {}
       if have_mason then
         all_mslp_servers =
-            vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+          vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
       end
 
       local ensure_installed = {} ---@type string[]
