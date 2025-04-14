@@ -56,23 +56,6 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ indent-blankline.nvim
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "LazyFile",
-    enabled = true,
-    keys = {
-      { "<leader>di", "<Cmd>IBLToggle<cr>", desc = "Toggle indention guides" },
-    },
-    opts = {
-      indent = {}, -- 
-      scope = {
-        show_start = false,
-      },
-    },
-    main = "ibl",
-  },
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ lualine.nvim
   {
     "nvim-lualine/lualine.nvim",
@@ -385,6 +368,7 @@ return {
       dashboard = { enabled = true },
       words = { enabled = false },
       input = { enabled = true },
+      scoped = { enabled = true },
     },
   },
   -- }}}
