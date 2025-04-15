@@ -116,11 +116,21 @@
   "network": {
     "format-wifi": "󰤨  {}",
     "tooltip-format": "{essid} {ipaddr}/{cidr} strength {signalStrength}%",
-    "format-ethernet": "󰈁 {ifname}: Aesthetic",
+    "format-ethernet": "󰈁 {ifname} /{cidr} {icon}",
     "format-linked": " {ifname} (No IP)",
     "format-disconnected": "󰤭",
     "format-alt": "󰤨  {ifname}: {ipaddr}/{cidr}",
-    "on-click-right": "nm-connection-editor"
+    "on-click-right": "nm-connection-editor",
+    "format-icons": [
+      "▁",
+      "▂",
+      "▃",
+      "▄",
+      "▅",
+      "▆",
+      "▇",
+      "█"
+    ]
   },
   "backlight": {
     "format": " {percent}%", // replace  icon with {} for dynamic icon changes
