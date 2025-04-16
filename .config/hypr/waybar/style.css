@@ -35,13 +35,13 @@
 }
 
 * {
-  font-family: "Iosevka NF";
-  font-size: 13px;
+  font-family: "CozetteVector";
 }
 
 window#waybar {
   background: transparent;
   margin: 0;
+  color: #e0def4;
   padding: 0;
 }
 
@@ -58,12 +58,15 @@ window#waybar {
   border-bottom-color: #3c3d52;
   border-bottom-style: solid;
 }
+
 #workspaces button {
   padding: 0 5px;
+  font-size: 23px;
+  color: #e0def4;
 }
 
 #workspaces button.active {
-  color: gray;
+  color: #6195e3;
 }
 
 #clock,
