@@ -29,7 +29,7 @@ Aur Packages
 
 ```bash
 paru -S wofi gitmux bibata-cursor-theme swww playerctl brave exa hyprshade grimblast \
-        waypaper
+        waypaper nerd-fonts-cozette-ttf
 ```
 
 Starship
