@@ -52,10 +52,11 @@ window#waybar {
   margin-bottom: 12px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: #1a1b26;
+  /* background-color: #1a1b26; */
+
   border-radius: 10px;
   border-bottom-width: 3px;
-  border-bottom-color: #3c3d52;
+  /* border-bottom-color: #3c3d52; */
   border-bottom-style: solid;
 }
 
@@ -66,7 +67,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-  color: #6195e3;
+  color: #93778c;
 }
 
 #clock,
@@ -86,16 +87,18 @@ window#waybar {
 #custom-cycle_wall,
 #custom-ss,
 #custom-music,
+#workspaces,
 #custom-playerctl {
   padding-left: 10px;
   padding-right: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
   margin-top: 7px;
   margin-bottom: 10px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: #1a1b26;
+  background-color: #fef0f5;
+  color: #1a1b26;
   border-radius: 10px;
   border-bottom-width: 3px;
   border-bottom-color: #3c3d52;
@@ -103,22 +106,21 @@ window#waybar {
 }
 
 #custom-music {
-  background: radial-gradient(
-    circle,
-    #c2f0ea 0%,
-    #c7dbf5 8%,
-    #bac2de 18%,
-    #b6bce6 28%,
-    #b4aeea 38%,
-    #d3a7e5 48%,
-    #e7b4db 58%,
-    #f5c2e7 68%,
-    #f2b0cd 78%,
-    #dea0b8 100%
-  );
-  background-size: 400%, 400%;
-  animation: gradient_wave 20s linear infinite;
-  color: black;
+  /* background: radial-gradient( */
+  /*   circle, */
+  /*   #c2f0ea 0%, */
+  /*   #c7dbf5 8%, */
+  /*   #bac2de 18%, */
+  /*   #b6bce6 28%, */
+  /*   #b4aeea 38%, */
+  /*   #d3a7e5 48%, */
+  /*   #e7b4db 58%, */
+  /*   #f5c2e7 68%, */
+  /*   #f2b0cd 78%, */
+  /*   #dea0b8 100% */
+  /* ); */
+  /* background-size: 400%, 400%; */
+  /* animation: gradient_wave 20s linear infinite; */
 }
 
 #custom-ss {
@@ -138,25 +140,25 @@ window#waybar {
 }
 
 #cpu {
-  background: radial-gradient(
-    circle,
-    #f5c2e7 0%,
-    #e9b6dc 6%,
-    #dcb0e1 14%,
-    #cdb7e6 14%,
-    #bac2de 18%,
-    #a7bde4 28%,
-    #92b2e4 28%,
-    #86a8e3 58%,
-    #769ee0 69%,
-    #6e94d5 69%,
-    #647ac0 72%,
-    #5b66aa 73%,
-    #4d558e 78%,
-    #3f4372 100%
-  );
-  background-size: 400% 400%;
-  animation: gradient_f 20s ease-in-out infinite;
+  /* background: radial-gradient( */
+  /*   circle, */
+  /*   #f5c2e7 0%, */
+  /*   #e9b6dc 6%, */
+  /*   #dcb0e1 14%, */
+  /*   #cdb7e6 14%, */
+  /*   #bac2de 18%, */
+  /*   #a7bde4 28%, */
+  /*   #92b2e4 28%, */
+  /*   #86a8e3 58%, */
+  /*   #769ee0 69%, */
+  /*   #6e94d5 69%, */
+  /*   #647ac0 72%, */
+  /*   #5b66aa 73%, */
+  /*   #4d558e 78%, */
+  /*   #3f4372 100% */
+  /* ); */
+  /* background-size: 400% 400%; */
+  /* animation: gradient_f 20s ease-in-out infinite; */
 }
 
 #memory {
