@@ -2,7 +2,14 @@ return {
   -- {{{ mini.pairs
   {
     "echasnovski/mini.pairs",
-    event = "InsertEnter",
+    event = "LazyFile",
+    opts = {
+      modes = { insert = true, command = true, terminal = false },
+      skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+      skip_ts = { "string" },
+      skip_unbalanced = true,
+      markdown = true,
+    },
     keys = {
       {
         "<leader>up",
@@ -10,12 +17,11 @@ return {
           vim.g.minipairs_disable = not vim.g.minipairs_disable
 
           require("config.functions").notify(
-            (vim.g.minipairs_disable and "Disabled" or "Enabled") .. " " .. "mini.nvim"
+            (vim.g.minipairs_disable and "Disabled" or "Enabled") .. " " .. "mini.pairs"
           )
         end,
       },
     },
-    opts = {},
   },
   -- ----------------------------------------------------------------------- }}}
   -- {{{ mini.surround
