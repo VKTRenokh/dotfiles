@@ -116,3 +116,7 @@ map("n", "<C-i>", "<C-i>") -- }}}
 map("n", "<leader>dt", "<Cmd>:pu=strftime('%c')<cr>")
 
 map("n", "<leader>in", "<Cmd>:set fo-=tc<cr>")
+
+map("n", "ycc", function()
+  return "yy" .. vim.v.count1 .. "gcc']p"
+end, { remap = true, expr = true })
