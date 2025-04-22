@@ -46,6 +46,12 @@ return -- {{{ blink.cmp
     completion = {
       list = { selection = { preselect = false, auto_insert = false } },
       ghost_text = { enabled = true },
+      accept = {
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      documentation = { auto_show = true, auto_show_delay_ms = 150 },
       menu = {
         draw = {
           components = {
