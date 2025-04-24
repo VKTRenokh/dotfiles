@@ -20,10 +20,17 @@ return {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
+        delete = { text = "" },
+        topdelete = { text = "" },
         changedelete = { text = "▎" },
         untracked = { text = "▎" },
+      },
+      signs_staged = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
       },
       signcolumn = true,
       numhl = true,
@@ -309,6 +316,13 @@ return {
       use_diagnostic_signs = true,
       auto_jump = false,
       open_no_results = true,
+      presets = {
+        modes = {
+          lsp = {
+            win = { position = "right" },
+          },
+        },
+      },
       warn_no_results = false,
       focus = true,
       keys = {

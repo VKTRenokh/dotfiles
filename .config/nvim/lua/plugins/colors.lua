@@ -192,18 +192,4 @@ return {
     end,
   },
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ vim-nightfly-colors
-  {
-    "bluz71/vim-nightfly-colors",
-    name = "nightfly",
-    lazy = false,
-    enabled = false,
-    priority = 1000,
-    config = function(_, opts)
-      vim.g.nightflyTransparent = true
-
-      vim.cmd.colorscheme("nightfly")
-    end,
-  },
-  -- }}}
 }
