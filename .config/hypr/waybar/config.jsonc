@@ -8,7 +8,6 @@
   "modules-left": [
     "hyprland/workspaces",
     "battery",
-    "custom/music",
   ],
   "modules-center": [
     "cpu",
@@ -23,7 +22,7 @@
     "clock"
   ],
   "clock": {
-    "format": "{:%H:%M}",
+    "format": " {:%H:%M}",
     "tooltip": "true",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": " {:%d<span foreground='#89b4fa'> / </span>%m}"
