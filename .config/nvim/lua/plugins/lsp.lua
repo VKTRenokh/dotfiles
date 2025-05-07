@@ -183,10 +183,11 @@ return {
       -- get all the servers that are available through mason-lspconfig
       local have_mason, mlsp = pcall(require, "mason-lspconfig")
       local all_mslp_servers = {}
-      if have_mason then
-        all_mslp_servers =
-          vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
-      end
+      -- doesn't work
+      -- if have_mason then
+      --   all_mslp_servers =
+      --     vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
+      -- end
 
       local ensure_installed = {} ---@type string[]
       for server, server_opts in pairs(servers) do
