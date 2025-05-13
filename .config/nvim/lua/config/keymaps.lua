@@ -68,10 +68,6 @@ map("x", "K", ":m '<-2<CR>gv-gv")
 map("x", "<A-j>", ":m '>+1<CR>gv-gv")
 map("x", "<A-k>", ":m '<-2<CR>gv-gv")
 
--- Alternative ESC key to avoid <Ctrl-[>.  Useful when a RCP is used to connect
--- to a remote host.
-map("i", "jk", "<esc>")
-map("c", "jk", "<esc>")
 -- ------------------------------------------------------------------------- }}}
 -- {{{ Folding commands.
 
