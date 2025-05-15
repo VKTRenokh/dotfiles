@@ -1,47 +1,10 @@
-@keyframes gradient_f {
-  0% {
-    background-position: 0% 200%;
-  }
-
-  50% {
-    background-position: 200% 0%;
-  }
-
-  100% {
-    background-position: 400% 200%;
-  }
-}
-
-@keyframes gradient_wave {
-  0% {
-    background-position: 0% 100%;
-  }
-
-  25% {
-    background-position: 100% 0%;
-  }
-
-  50% {
-    background-position: 200% 100%;
-  }
-
-  75% {
-    background-position: 300% 0%;
-  }
-
-  100% {
-    background-position: 400% 100%;
-  }
-}
-
 * {
   font-family: "CozetteVector";
 }
 
 window#waybar {
-  background: transparent;
+  background: #191724;
   margin: 0;
-  color: #e0def4;
   padding: 0;
 }
 
@@ -52,25 +15,24 @@ window#waybar {
   margin-bottom: 12px;
   margin-left: 5px;
   margin-right: 5px;
-  /* background-color: #1a1b26; */
 
-  border-radius: 10px;
-  border-bottom-width: 3px;
   /* border-bottom-color: #3c3d52; */
-  border-bottom-style: solid;
+  background-color: #1f1d2e;
 }
 
 #workspaces button {
   padding: 0 5px;
-  font-size: 23px;
-  color: #a7a4c3;
+  font-size: 27px;
+  color: #e0def4;
+  /* color: #a7a4c3; */
 }
 
 #workspaces button.active {
-  color: #93778c;
+  color: #eb6f92;
+  /* color: #93778c; */
 }
-
 #clock,
+#custom-launcher,
 #battery,
 #cpu,
 #memory,
@@ -97,30 +59,20 @@ window#waybar {
   margin-bottom: 10px;
   margin-left: 5px;
   margin-right: 5px;
-  background-color: #fef0f5;
-  color: #1a1b26;
-  border-radius: 10px;
   border-bottom-width: 3px;
-  border-bottom-color: #3c3d52;
-  border-bottom-style: solid;
 }
 
-#custom-music {
-  /* background: radial-gradient( */
-  /*   circle, */
-  /*   #c2f0ea 0%, */
-  /*   #c7dbf5 8%, */
-  /*   #bac2de 18%, */
-  /*   #b6bce6 28%, */
-  /*   #b4aeea 38%, */
-  /*   #d3a7e5 48%, */
-  /*   #e7b4db 58%, */
-  /*   #f5c2e7 68%, */
-  /*   #f2b0cd 78%, */
-  /*   #dea0b8 100% */
-  /* ); */
-  /* background-size: 400%, 400%; */
-  /* animation: gradient_wave 20s linear infinite; */
+#custom-launcher {
+  font-size: 27px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 7px;
+  margin-bottom: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  /* border-bottom-color: #3c3d52; */
+  background-color: #1f1d2e;
 }
 
 #custom-ss {
@@ -137,28 +89,6 @@ window#waybar {
 }
 
 #battery.critical:not(.charging) {
-}
-
-#cpu {
-  /* background: radial-gradient( */
-  /*   circle, */
-  /*   #f5c2e7 0%, */
-  /*   #e9b6dc 6%, */
-  /*   #dcb0e1 14%, */
-  /*   #cdb7e6 14%, */
-  /*   #bac2de 18%, */
-  /*   #a7bde4 28%, */
-  /*   #92b2e4 28%, */
-  /*   #86a8e3 58%, */
-  /*   #769ee0 69%, */
-  /*   #6e94d5 69%, */
-  /*   #647ac0 72%, */
-  /*   #5b66aa 73%, */
-  /*   #4d558e 78%, */
-  /*   #3f4372 100% */
-  /* ); */
-  /* background-size: 400% 400%; */
-  /* animation: gradient_f 20s ease-in-out infinite; */
 }
 
 #memory {

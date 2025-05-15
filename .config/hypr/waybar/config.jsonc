@@ -6,8 +6,8 @@
   "margin-left": 0,
   "margin-right": 0,
   "modules-left": [
-    "hyprland/workspaces",
-    "battery",
+    "custom/launcher",
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "cpu",
@@ -151,7 +151,7 @@
     "on-click": "pavucontrol"
   },
   "custom/launcher": {
-    "format": "󰘧"
+    "format": ""
   },
   "custom/updates": {
     "format": "{}",
