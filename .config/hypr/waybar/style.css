@@ -59,7 +59,16 @@ window#waybar {
   margin-bottom: 10px;
   margin-left: 5px;
   margin-right: 5px;
-  border-bottom-width: 3px;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 7px;
+  margin-bottom: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+
+  /* border-bottom-color: #3c3d52; */
+  background-color: #1f1d2e;
 }
 
 #custom-launcher {
