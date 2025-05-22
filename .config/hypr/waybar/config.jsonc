@@ -9,13 +9,13 @@
     "custom/launcher",
     "hyprland/workspaces"
   ],
-  "modules-center": [
+  "modules-center": [],
+  "modules-right": [
     "cpu",
+    "battery",
     "memory",
     "disk",
     "temperature",
-  ],
-  "modules-right": [
     "network",
     "pulseaudio",
     "backlight",
@@ -74,8 +74,8 @@
     ]
   },
   "memory": {
-    "format": " {used} of {total} GiB",
-    "format-alt": " {}%",
+    "format-alt": " {used} of {total} GiB",
+    "format": " {}%",
     "interval": 5
   },
   "cpu": {
@@ -94,8 +94,8 @@
     ]
   },
   "disk": {
-    "format": "󰋊 {used} of {total} GiB",
-    "format-alt": "󰋊 {percentage_used}%",
+    "format-alt": "󰋊 {used} of {total} GiB",
+    "format": "󰋊 {percentage_used}%",
     "interval": 5,
     "path": "/"
   },
