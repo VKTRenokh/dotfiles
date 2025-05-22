@@ -71,16 +71,24 @@ return {
         jsonls = require("plugins.lsp.jsonls"),
         vtsls = {
           enabled = true,
+          mason = false,
           filetypes = {
+            "vue",
             "javascript",
             "javascriptreact",
-            "javascript.jsx",
             "typescript",
             "typescriptreact",
-            "typescript.jsx",
-            "vue",
           },
+
           settings = {
+
+            filetypes = {
+              "vue",
+              "javascript",
+              "javascriptreact",
+              "typescript",
+              "typescriptreact",
+            },
             complete_function_calls = true,
             vtsls = {
               enableMoveToFileCodeAction = true,
@@ -96,10 +104,7 @@ return {
                     name = "@vue/typescript-plugin",
                     languages = { "vue" },
                     configNamespace = "typescript",
-                    location = get_pkg_path(
-                      "vue-language-server",
-                      "/node_modules/@vue/language-server"
-                    ),
+                    location = get_pkg_path("vue_ls", "/node_modules/@vue/language-server"),
                     enableForWorkspaceTypescriptVersion = true,
                   },
                 },
@@ -119,7 +124,7 @@ return {
             },
           },
         },
-        volar = {
+        vue_ls = {
           filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
           init_options = {
             vue = {
@@ -186,7 +191,7 @@ return {
       local all_mslp_servers = {}
 
       if have_mason then
-        all_mslp_servers = vim.tbl_values(mlsp.get_mappings().package_to_lspconfig)
+        all_mslp_servers = vim.tbl_keys(mlsp.get_mappings().lspconfig_to_package)
       end
 
       local ensure_installed = {} ---@type string[]
@@ -209,6 +214,7 @@ return {
           -- TODO: fix this (Constants.ensure_installed.mason)
           ensure_installed = vim.tbl_deep_extend("force", ensure_installed, {}),
           handlers = { setup },
+          automatic_enable = true,
         })
       end
     end,
