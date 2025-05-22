@@ -49,7 +49,7 @@ Constants = {
       "pyright",
       "rust-analyzer",
       "yaml-language-server",
-      "vtsls",
+      "vetur-vls",
       "stylua",
       "prettierd",
       "eslint_d",
