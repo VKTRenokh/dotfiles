@@ -50,7 +50,10 @@ return {
     },
     dependencies = {
       "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      {
+        "williamboman/mason-lspconfig.nvim",
+        branch = "release-please--branches--main--components--mason-lspconfig.nvim",
+      },
       "saghen/blink.cmp",
     },
     opts = {
@@ -71,23 +74,22 @@ return {
         jsonls = require("plugins.lsp.jsonls"),
         vtsls = {
           enabled = true,
-          mason = false,
+          mason = true,
           filetypes = {
-            "vue",
             "javascript",
             "javascriptreact",
             "typescript",
             "typescriptreact",
+            "vue",
           },
 
           settings = {
-
             filetypes = {
-              "vue",
               "javascript",
               "javascriptreact",
               "typescript",
               "typescriptreact",
+              "vue",
             },
             complete_function_calls = true,
             vtsls = {
@@ -98,13 +100,16 @@ return {
                   enableServerSideFuzzyMatch = true,
                 },
               },
-              tsserver = {
-                globalPlugins = {
+              ts_ls = {
+                init_options = {
                   {
                     name = "@vue/typescript-plugin",
                     languages = { "vue" },
                     configNamespace = "typescript",
-                    location = get_pkg_path("vue_ls", "/node_modules/@vue/language-server"),
+                    location = get_pkg_path(
+                      "vue-language-server",
+                      "/node_modules/@vue/language-server"
+                    ),
                     enableForWorkspaceTypescriptVersion = true,
                   },
                 },
@@ -133,7 +138,7 @@ return {
           },
         },
         ts_ls = {
-          enabled = false, -- NOTE: disable tsserver if vtsls is enabled
+          enabled = true, -- NOTE: disable tsserver if vtsls is enabled
         },
         lua_ls = {
           settings = {

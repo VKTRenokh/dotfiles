@@ -26,7 +26,7 @@ Constants = {
       "clangd",
       "cssls",
       "diagnosticls",
-      "emmet_ls",
+      "emmet-language-server",
       "eslint",
       "html",
       "jsonls",
@@ -41,7 +41,7 @@ Constants = {
     },
     mason = {
       "css-lsp",
-      "emmet-ls",
+      "emmet-language-server",
       "flake8",
       "html-lsp",
       "json-lsp",
