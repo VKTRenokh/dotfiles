@@ -56,18 +56,6 @@ return {
       "saghen/blink.cmp",
     },
     opts = function()
-      local path = vim.fn.expand("$MASON/packages") .. "/vue-language-server"
-
-      local vue_fix = {
-        name = "@vue/typescript-plugin",
-        languages = { "vue" },
-        configNamespace = "typescript",
-        location = path,
-        enableForWorkspaceTypescriptVersions = true,
-      }
-
-      print(path)
-
       return {
         diagnostics = {
           virtual_lines = {
@@ -84,48 +72,23 @@ return {
         },
         servers = {
           jsonls = require("plugins.lsp.jsonls"),
-          vtsls = {
-            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+          vue_ls = {},
+          ts_ls = {
             mason = false,
-
-            settings = {
-              complete_function_calls = true,
-              vtsls = {
-                autoUseWorkspaceTsdk = true,
-                filetypes = {
-                  "javascript",
-                  "javascriptreact",
-                  "typescript",
-                  "typescriptreact",
-                  "vue",
+            enabled = false,
+            enable = false,
+            init_options = {
+              plugins = {
+                {
+                  name = "@vue/typescript-plugin",
+                  location = vim.fn.expand("$MASON/packages")
+                    .. "/vue-language-server/node_modules/@vue/language-server",
+                  languages = { "vue" },
                 },
-                enableMoveToFileCodeAction = true,
-
-                experimental = {
-                  completion = {
-                    enableServerSideFuzzyMatch = true,
-                  },
-                },
-
-                tsserver = {
-                  globalPlugins = { vue_fix },
-                },
-              },
-              typescript = {
-                suggest = { completeFunctionCalls = true },
-                updateImportsOnFileMove = { enabled = "always" },
-              },
-              inlayHints = {
-                enumMemberValues = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                parameterNames = { enabled = "literals" },
-                parameterTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                variableTypes = { enabled = false },
               },
             },
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
           },
-          vue_ls = {},
           lua_ls = {
             settings = {
               Lua = Constants.lua_ls.Lua,
@@ -139,7 +102,6 @@ return {
       }
     end,
     config = function(_, opts)
-      vim.lsp.set_log_level("trace")
       vim.diagnostic.config(opts.diagnostics)
 
       map("n", "gd", vim.lsp.buf.definition, { desc = "goto defenition" })
