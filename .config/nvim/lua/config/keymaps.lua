@@ -109,18 +109,22 @@ map("n", "<leader>c", '"_cc') -- }}}
 -- When mapping <Tab> this keymap looses it's functionality so you have to
 -- remap it to itself
 map("n", "<C-i>", "<C-i>") -- }}}
-map("n", "<leader>dt", "<Cmd>:pu=strftime('%c')<cr>")
-
-map("n", "<leader>in", "<Cmd>:set fo-=tc<cr>")
-
+-- {{{ Current date time
+map("n", "<leader>dt", "<Cmd>:pu=strftime('%c')<cr>", { desc = "Current date time" })
+-- }}}
+-- {{{ disable automatic line break
+map("n", "<leader>in", "<Cmd>:set fo-=tc<cr>", { desc = "disable automatic line break" })
+-- }}}
+-- {{{ Comment and copy paste current line
 map("n", "ycc", function()
   return "yy" .. vim.v.count1 .. "gcc']p"
-end, { remap = true, expr = true })
-
+end, { remap = true, expr = true, desc = "Comment and copy paste current line" })
+-- }}}
+-- {{{ Insert mode treesitter node jump
 vim.keymap.set("i", "<C-L>", function()
   local node = vim.treesitter.get_node()
   if node ~= nil then
     local row, col = node:end_()
     pcall(vim.api.nvim_win_set_cursor, 0, { row + 1, col })
   end
-end, { desc = "insjump" })
+end, { desc = "treesitter insjump" }) -- }}}
