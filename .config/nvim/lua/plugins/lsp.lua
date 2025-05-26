@@ -1,6 +1,5 @@
 Constants = require("config.constants")
 local map = require("config.functions").keymap
-local get_pkg_path = require("config.functions").get_pkg_path
 
 return {
   -- {{{ mason.nvim

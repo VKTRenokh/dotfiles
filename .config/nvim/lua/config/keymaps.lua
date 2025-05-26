@@ -116,3 +116,11 @@ map("n", "<leader>in", "<Cmd>:set fo-=tc<cr>")
 map("n", "ycc", function()
   return "yy" .. vim.v.count1 .. "gcc']p"
 end, { remap = true, expr = true })
+
+vim.keymap.set("i", "<C-L>", function()
+  local node = vim.treesitter.get_node()
+  if node ~= nil then
+    local row, col = node:end_()
+    pcall(vim.api.nvim_win_set_cursor, 0, { row + 1, col })
+  end
+end, { desc = "insjump" })
