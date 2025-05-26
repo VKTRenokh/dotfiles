@@ -56,105 +56,91 @@ return {
       },
       "saghen/blink.cmp",
     },
-    opts = {
-      diagnostics = {
-        virtual_lines = {
-          current_line = true,
-        },
-      },
-      capabilities = {
-        workspace = {
-          fileOperations = {
-            didRename = true,
-            willRename = true,
-          },
-        },
-      },
-      servers = {
-        jsonls = require("plugins.lsp.jsonls"),
-        vtsls = {
-          enabled = true,
-          mason = true,
-          filetypes = {
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "vue",
-          },
+    opts = function()
+      local path = vim.fn.expand("$MASON/packages") .. "/vue-language-server"
 
-          settings = {
-            filetypes = {
-              "javascript",
-              "javascriptreact",
-              "typescript",
-              "typescriptreact",
-              "vue",
+      local vue_fix = {
+        name = "@vue/typescript-plugin",
+        languages = { "vue" },
+        configNamespace = "typescript",
+        location = path,
+        enableForWorkspaceTypescriptVersions = true,
+      }
+
+      print(path)
+
+      return {
+        diagnostics = {
+          virtual_lines = {
+            current_line = true,
+          },
+        },
+        capabilities = {
+          workspace = {
+            fileOperations = {
+              didRename = true,
+              willRename = true,
             },
-            complete_function_calls = true,
-            vtsls = {
-              enableMoveToFileCodeAction = true,
-              autoUseWorkspaceTskd = true,
-              experimental = {
-                completion = {
-                  enableServerSideFuzzyMatch = true,
+          },
+        },
+        servers = {
+          jsonls = require("plugins.lsp.jsonls"),
+          vtsls = {
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+            mason = false,
+
+            settings = {
+              complete_function_calls = true,
+              vtsls = {
+                autoUseWorkspaceTsdk = true,
+                filetypes = {
+                  "javascript",
+                  "javascriptreact",
+                  "typescript",
+                  "typescriptreact",
+                  "vue",
                 },
-              },
-              ts_ls = {
-                init_options = {
-                  {
-                    name = "@vue/typescript-plugin",
-                    languages = { "vue" },
-                    configNamespace = "typescript",
-                    location = get_pkg_path(
-                      "vue-language-server",
-                      "/node_modules/@vue/language-server"
-                    ),
-                    enableForWorkspaceTypescriptVersion = true,
+                enableMoveToFileCodeAction = true,
+
+                experimental = {
+                  completion = {
+                    enableServerSideFuzzyMatch = true,
                   },
                 },
+
+                tsserver = {
+                  globalPlugins = { vue_fix },
+                },
+              },
+              typescript = {
+                suggest = { completeFunctionCalls = true },
+                updateImportsOnFileMove = { enabled = "always" },
+              },
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = "literals" },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = false },
               },
             },
-            typescript = {
-              suggest = { completeFunctionCalls = true },
-              updateImportsOnFileMove = { enabled = "always" },
-            },
-            inlayHints = {
-              enumMemberValues = { enabled = true },
-              functionLikeReturnTypes = { enabled = true },
-              parameterNames = { enabled = "literals" },
-              parameterTypes = { enabled = true },
-              propertyDeclarationTypes = { enabled = true },
-              variableTypes = { enabled = false },
+          },
+          vue_ls = {},
+          lua_ls = {
+            settings = {
+              Lua = Constants.lua_ls.Lua,
             },
           },
         },
-        vue_ls = {
-          filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-          init_options = {
-            vue = {
-              hybridMode = true,
-            },
-          },
+        setup = {},
+        document_highlight = {
+          enabled = true,
         },
-        ts_ls = {
-          enabled = true, -- NOTE: disable tsserver if vtsls is enabled
-        },
-        lua_ls = {
-          settings = {
-            Lua = Constants.lua_ls.Lua,
-          },
-        },
-        zls = {
-          cmd = { "/home/vktrenokh/.local/bin/zls" },
-        },
-      },
-      setup = {},
-      document_highlight = {
-        enabled = true,
-      },
-    },
+      }
+    end,
     config = function(_, opts)
+      vim.lsp.set_log_level("trace")
       vim.diagnostic.config(opts.diagnostics)
 
       map("n", "gd", vim.lsp.buf.definition, { desc = "goto defenition" })
