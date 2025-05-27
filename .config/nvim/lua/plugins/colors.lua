@@ -170,6 +170,7 @@ return {
         highlights["@tag.delimiter.vue"] = fg(colors.red)
         highlights.BlinkCmpMenu = { bg = "#1e2030" }
         highlights.Folded.bg = "none"
+        highlights.WinSeparator = fg(colors.terminal_black)
       end,
     },
     config = function(_, opts)
