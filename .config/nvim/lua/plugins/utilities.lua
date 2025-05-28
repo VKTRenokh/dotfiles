@@ -17,4 +17,11 @@ return {
       keymap.map_combo(mode, "jk", "<BS><BS><Esc>")
     end,
   },
+  {
+    "stevearc/quicker.nvim",
+    event = "FileType qf",
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {},
+  },
 }
