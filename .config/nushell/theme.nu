@@ -7,13 +7,7 @@ export def main [] {
         empty: "#7aa2f7"
         bool: {|| if $in { "#7dcfff" } else { "light_gray" } }
         int: "#a9b1d6"
-        filesize: {|e|
-            if $e == 0b {
-                "#a9b1d6"
-            } else if $e < 1mb {
-                "#7dcfff"
-            } else {{ fg: "#7aa2f7" }}
-        }
+        filesize:"#e0af68"
         duration: "#a9b1d6"
         date: {|| (date now) - $in |
             if $in < 1hr {
@@ -32,16 +26,16 @@ export def main [] {
                 "#7aa2f7"
             } else { "dark_gray" }
         }
-        range: "#a9b1d6"
-        float: "#a9b1d6"
-        string: "#a9b1d6"
-        nothing: "#a9b1d6"
-        binary: "#a9b1d6"
-        cell-path: "#a9b1d6"
+        range: "#cdd6f4"
+        float: "#cdd6f4"
+        string: "#cdd6f4"
+        nothing: "#cdd6f4"
+        binary: "#cdd6f4"
+        cell-path: "#cdd6f4"
         row_index: { fg: "#9ece6a" attr: "b" }
-        record: "#a9b1d6"
-        list: "#a9b1d6"
-        block: "#a9b1d6"
+        record: "#cdd6f4"
+        list: "#cdd6f4"
+        block: "#cdd6f4"
         hints: "dark_gray"
         search_result: { fg: "#f7768e" bg: "#a9b1d6" }
 
@@ -51,8 +45,8 @@ export def main [] {
         shape_bool: "#7dcfff"
         shape_custom: "#9ece6a"
         shape_datetime: { fg: "#7dcfff" attr: "b" }
-        shape_directory: "#7dcfff"
-        shape_external: "#7dcfff"
+        shape_directory: "#9ece6a"
+        shape_external: "#cdd6f4"
         shape_externalarg: { fg: "#9ece6a" attr: "b" }
         shape_filepath: "#7dcfff"
         shape_flag: { fg: "#7aa2f7" attr: "b" }
@@ -94,7 +88,7 @@ export def "update terminal" [] {
     let theme = (main)
 
     # Set terminal colors
-    let osc_screen_foreground_color = '10;'
+    let osc_screen_foreground_color = '#cdd6f4'
     let osc_screen_background_color = '11;'
     let osc_cursor_color = '12;'
         

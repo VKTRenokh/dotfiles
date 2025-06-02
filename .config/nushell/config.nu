@@ -786,8 +786,6 @@ $env.config = {
 }
 
 # {{{ Styling
-use ./theme.nu
-
 $env.PROMPT_INDICATOR_VI_NORMAL = {
 }
 
@@ -802,5 +800,7 @@ let banner = [
 
 # $banner | str join "\n" | print
 
-pfetch
+pokemon-colorscripts --random --no-title
+
+source ~/.config/nushell/theme.nu
 # }}
