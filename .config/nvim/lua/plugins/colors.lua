@@ -156,7 +156,7 @@ return {
       on_colors = function(colors)
         local util = require("tokyonight.util")
 
-        colors.border_highlight = util.darken(colors.blue7, 0.8)
+        colors.border_highlight = util.darken(colors.blue, 0.8)
       end,
       on_highlights = function(highlights, colors)
         local util = require("config.functions")
