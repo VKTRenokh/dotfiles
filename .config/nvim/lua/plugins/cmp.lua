@@ -43,7 +43,7 @@ return -- {{{ blink.cmp
     },
 
     completion = {
-      list = { selection = { preselect = false, auto_insert = false } },
+      list = { selection = { preselect = true, auto_insert = false } },
       ghost_text = { enabled = true },
       accept = {
         auto_brackets = {
