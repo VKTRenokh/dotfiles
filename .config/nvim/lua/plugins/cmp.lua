@@ -25,7 +25,7 @@ return -- {{{ blink.cmp
       preset = "default",
       ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
       ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-      ["<CR>"] = { "accept", "fallback" },
+      ["<CR>"] = { "select_and_accept", "fallback" },
       ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
       ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
       -- stylua: ignore start

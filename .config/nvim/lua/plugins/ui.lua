@@ -369,6 +369,7 @@ return {
       { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
       { ";gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
       { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
+      { "<leader>ex", function() Snacks.picker.explorer() end, desc = "Explorer" },
 
      { ";t", function() Snacks.picker.help() end, desc = "Help Pages" },
 
