@@ -18,12 +18,16 @@ return {
       },
       skip_confirm_for_simpe_edits = true,
     },
-    keys = { {
-      "sf",
-      function()
-        require("oil").open_float()
-      end,
-    } },
+    keys = {
+      {
+        "sf",
+        function()
+          require("oil").open_float()
+          -- disable blink.cmp completions in oil
+          vim.b.completion = false
+        end,
+      },
+    },
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
   }, -- }}}
 }

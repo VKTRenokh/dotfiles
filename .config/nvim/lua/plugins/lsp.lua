@@ -111,8 +111,6 @@ return {
     config = function(_, opts)
       vim.diagnostic.config(opts.diagnostics)
 
-      map("n", "gd", vim.lsp.buf.definition, { desc = "goto defenition" })
-
       local servers = opts.servers
       local has_blink, blink = pcall(require, "blink.cmp")
 
