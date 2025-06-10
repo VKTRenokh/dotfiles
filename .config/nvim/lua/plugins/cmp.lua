@@ -83,12 +83,14 @@ return -- {{{ blink.cmp
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lsp", "path", "snippets", "buffer" },
-      -- transform_items = function(_, items)
-      --   return vim.tbl_filter(function(item)
-      --     return item.kind ~= require("blink.cmp.types").CompletionItemKind.Snippet
-      --   end, items)
-      -- end,
+      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
+      },
     },
   },
   opts_extend = { "sources.default" },

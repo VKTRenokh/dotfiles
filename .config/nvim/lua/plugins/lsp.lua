@@ -38,7 +38,7 @@ return {
   -- ----------------------------------------------------------------------- }}}
   {
     "neovim/nvim-lspconfig",
-    event = "LazyFile",
+    event = "BufReadPre",
     enabled = true,
     keys = {
       -- stylua: ignore start
@@ -52,6 +52,15 @@ return {
       {
         "williamboman/mason-lspconfig.nvim",
         branch = "release-please--branches--main--components--mason-lspconfig.nvim",
+      },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+          library = {
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
       },
       "saghen/blink.cmp",
     },
