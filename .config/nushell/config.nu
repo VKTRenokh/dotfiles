@@ -800,7 +800,5 @@ let banner = [
 
 # $banner | str join "\n" | print
 
-pokemon-colorscripts --random --no-title
-
 source ~/.config/nushell/theme.nu
 # }}
