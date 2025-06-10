@@ -3,6 +3,7 @@ return {
   {
     "echasnovski/mini.pairs",
     event = "LazyFile",
+    enabled = false,
     opts = {
       modes = { insert = true, command = true, terminal = false },
       skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
@@ -99,4 +100,11 @@ return {
     opts = {},
   },
   -- }}}
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup({})
+    end,
+  },
 }
