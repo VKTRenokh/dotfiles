@@ -1,12 +1,9 @@
 return {
   {
-    "Olical/nfnl",
-    ft = { "fennel" },
-  },
-  {
     "echasnovski/mini.keymap",
     event = "LazyFile",
     opts = {},
+    enabled = false,
     config = function(_, opts)
       local keymap = require("mini.keymap")
 
