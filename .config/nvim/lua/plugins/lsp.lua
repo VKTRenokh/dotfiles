@@ -67,6 +67,7 @@ return {
     opts = function()
       return {
         diagnostics = {
+          update_in_insert = false,
           virtual_lines = {
             current_line = true,
           },

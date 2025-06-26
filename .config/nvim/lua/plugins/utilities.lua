@@ -21,4 +21,18 @@ return {
     ---@type quicker.SetupOptions
     opts = {},
   },
+  -- {{{
+  {
+    "echasnovski/mini.diff",
+    opts = {},
+    keys = {
+      {
+        "<leader>dv",
+        function()
+          MiniDiff.toggle_overlay()
+        end,
+      },
+    },
+  },
+  -- }}}
 }
