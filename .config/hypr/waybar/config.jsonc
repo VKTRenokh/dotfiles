@@ -9,9 +9,10 @@
     "custom/launcher",
     "hyprland/workspaces"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "cpu"
+  ],
   "modules-right": [
-    "cpu",
     "battery",
     "memory",
     "disk",
@@ -36,8 +37,6 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      "default": "󰋑",
-      "active": "󰋑",
       "sort-by-number": true
     }
   },

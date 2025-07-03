@@ -1,11 +1,12 @@
 * {
-  font-family: "CozetteVector";
+  font-family: "Victor Mono Nerd Font";
 }
 
 window#waybar {
-  background: #191724;
+  background: transparent;
   margin: 0;
   padding: 0;
+  font-size: 0;
 }
 
 #workspaces {
@@ -15,20 +16,17 @@ window#waybar {
   margin-bottom: 12px;
   margin-left: 5px;
   margin-right: 5px;
-
-  /* border-bottom-color: #3c3d52; */
   background-color: #1f1d2e;
 }
 
 #workspaces button {
   padding: 0 5px;
-  font-size: 27px;
   color: #e0def4;
   /* color: #a7a4c3; */
 }
 
 #workspaces button.active {
-  color: #eb6f92;
+  color: #80c4ef;
   /* color: #93778c; */
 }
 #clock,
@@ -51,10 +49,11 @@ window#waybar {
 #custom-music,
 #workspaces,
 #custom-playerctl {
+  font-size: 14px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 3px;
-  padding-bottom: 3px;
+  padding-bottom: 5px;
   margin-top: 7px;
   margin-bottom: 10px;
   margin-left: 5px;
@@ -69,19 +68,11 @@ window#waybar {
 
   /* border-bottom-color: #3c3d52; */
   background-color: #1f1d2e;
+  border-radius: 8px;
 }
 
 #custom-launcher {
-  font-size: 27px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 7px;
-  margin-bottom: 12px;
-  margin-left: 5px;
-  margin-right: 5px;
-
-  /* border-bottom-color: #3c3d52; */
-  background-color: #1f1d2e;
+  padding-right: 15px;
 }
 
 #custom-ss {
@@ -149,4 +140,9 @@ window#waybar {
 }
 
 #mpd.paused {
+}
+
+#cpu {
+  /* background-image: linear-gradient(#87e0ea, #80c4ef); */
+  color: #80c4ef;
 }
