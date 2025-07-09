@@ -174,6 +174,7 @@ Item {
                     previewDownloadPath: root.previewDownloadPath
                     downloadPath: root.downloadPath
                     nsfwPath: root.nsfwPath
+                    systemImages: Booru.systemImages
                 }
             }
 
@@ -535,48 +536,6 @@ Item {
                     font.pixelSize: Appearance.font.pixelSize.large
                     color: Appearance.colors.colOnLayer1
                     text: "•"
-                }
-
-                Item {
-                    // NSFW toggle
-                    visible: width > 0
-                    implicitWidth: switchesRow.implicitWidth
-                    Layout.fillHeight: true
-
-                    RowLayout {
-                        id: switchesRow
-                        spacing: 5
-                        anchors.centerIn: parent
-
-                        MouseArea {
-                            hoverEnabled: true
-                            PointingHandInteraction {}
-                            onClicked: {
-                                nsfwSwitch.checked = !nsfwSwitch.checked;
-                            }
-                        }
-
-                        StyledText {
-                            Layout.fillHeight: true
-                            Layout.leftMargin: 10
-                            Layout.alignment: Qt.AlignVCenter
-                            font.pixelSize: Appearance.font.pixelSize.smaller
-                            color: nsfwSwitch.enabled ? Appearance.colors.colOnLayer1 : Appearance.m3colors.m3outline
-                            text: qsTr("Allow NSFW")
-                        }
-                        StyledSwitch {
-                            id: nsfwSwitch
-                            enabled: Booru.currentProvider !== "zerochan"
-                            scale: 0.6
-                            Layout.alignment: Qt.AlignVCenter
-                            checked: (Persistent.states.booru.allowNsfw && Booru.currentProvider !== "zerochan")
-                            onCheckedChanged: {
-                                if (!nsfwSwitch.enabled)
-                                    return;
-                                Persistent.states.booru.allowNsfw = checked;
-                            }
-                        }
-                    }
                 }
 
                 Item {

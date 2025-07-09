@@ -16,278 +16,37 @@ Singleton {
 
     signal tagSuggestion(string query, var suggestions)
 
+    property var systemImages: []
+
     property string failMessage: qsTr("That didn't work. Tips:\n- Check your tags and NSFW settings\n- If you don't have a tag in mind, type a page number")
     property var responses: []
     property int runningRequests: 0
     property var defaultUserAgent: Config.options?.networking?.userAgent || "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
-    property var providerList: Object.keys(providers).filter(provider => provider !== "system" && providers[provider].api)
+    property var providerList: Object.keys(providers)
     property var providers: {
         "system": {
-            "name": qsTr("System")
-        },
-        "yandere": {
-            "name": "yande.re",
-            "url": "https://yande.re",
-            "api": "https://yande.re/post.json",
-            "description": qsTr("All-rounder | Good quality, decent quantity"),
-            "mapFunc": response => {
-                return response.map(item => {
-                    return {
-                        "id": item.id,
-                        "width": item.width,
-                        "height": item.height,
-                        "aspect_ratio": item.width / item.height,
-                        "tags": item.tags,
-                        "rating": item.rating,
-                        "is_nsfw": (item.rating != 's'),
-                        "md5": item.md5,
-                        "preview_url": item.preview_url,
-                        "sample_url": item.sample_url ?? item.file_url,
-                        "file_url": item.file_url,
-                        "file_ext": item.file_ext,
-                        "source": getWorkingImageSource(item.source) ?? item.file_url
-                    };
-                });
-            },
-            "tagSearchTemplate": "https://yande.re/tag.json?order=count&name={{query}}*",
-            "tagMapFunc": response => {
-                return response.map(item => {
-                    return {
-                        "name": item.name,
-                        "count": item.count
-                    };
-                });
-            }
-        },
-        "konachan": {
-            "name": "Konachan",
-            "url": "https://konachan.com",
-            "api": "https://konachan.com/post.json",
-            "description": qsTr("For desktop wallpapers | Good quality"),
-            "mapFunc": response => {
-                return response.map(item => {
-                    return {
-                        "id": item.id,
-                        "width": item.width,
-                        "height": item.height,
-                        "aspect_ratio": item.width / item.height,
-                        "tags": item.tags,
-                        "rating": item.rating,
-                        "is_nsfw": (item.rating != 's'),
-                        "md5": item.md5,
-                        "preview_url": item.preview_url,
-                        "sample_url": item.sample_url ?? item.file_url,
-                        "file_url": item.file_url,
-                        "file_ext": item.file_ext,
-                        "source": getWorkingImageSource(item.source) ?? item.file_url
-                    };
-                });
-            },
-            "tagSearchTemplate": "https://konachan.com/tag.json?order=count&name={{query}}*",
-            "tagMapFunc": response => {
-                return response.map(item => {
-                    return {
-                        "name": item.name,
-                        "count": item.count
-                    };
-                });
-            }
-        },
-        "zerochan": {
-            "name": "Zerochan",
-            "url": "https://www.zerochan.net",
-            "api": "https://www.zerochan.net/?json",
-            "description": qsTr("Clean stuff | Excellent quality, no NSFW"),
-            "mapFunc": response => {
-                response = response.items;
-                return response.map(item => {
-                    return {
-                        "id": item.id,
-                        "width": item.width,
-                        "height": item.height,
-                        "aspect_ratio": item.width / item.height,
-                        "tags": item.tags.join(" "),
-                        "rating": "safe" // Zerochan doesn't have nsfw
-                        ,
-                        "is_nsfw": false,
-                        "md5": item.md5,
-                        "preview_url": item.thumbnail,
-                        "sample_url": item.thumbnail,
-                        "file_url": item.thumbnail,
-                        "file_ext": "avif",
-                        "source": getWorkingImageSource(item.source) ?? item.thumbnail,
-                        "character": item.tag
-                    };
-                });
-            }
-        },
-        "danbooru": {
-            "name": "Danbooru",
-            "url": "https://danbooru.donmai.us",
-            "api": "https://danbooru.donmai.us/posts.json",
-            "description": qsTr("The popular one | Best quantity, but quality can vary wildly"),
-            "mapFunc": response => {
-                return response.map(item => {
-                    return {
-                        "id": item.id,
-                        "width": item.image_width,
-                        "height": item.image_height,
-                        "aspect_ratio": item.image_width / item.image_height,
-                        "tags": item.tag_string,
-                        "rating": item.rating,
-                        "is_nsfw": (item.rating != 's'),
-                        "md5": item.md5,
-                        "preview_url": item.preview_file_url,
-                        "sample_url": item.file_url ?? item.large_file_url,
-                        "file_url": item.large_file_url,
-                        "file_ext": item.file_ext,
-                        "source": getWorkingImageSource(item.source) ?? item.file_url
-                    };
-                });
-            },
-            "tagSearchTemplate": "https://danbooru.donmai.us/tags.json?search[name_matches]={{query}}*",
-            "tagMapFunc": response => {
-                return response.map(item => {
-                    return {
-                        "name": item.name,
-                        "count": item.post_count
-                    };
-                });
-            }
-        },
-        "gelbooru": {
-            "name": "Gelbooru",
-            "url": "https://gelbooru.com",
-            "api": "https://gelbooru.com/index.php?page=dapi&s=post&q=index&json=1",
-            "description": qsTr("The hentai one | Great quantity, a lot of NSFW, quality varies wildly"),
-            "mapFunc": response => {
-                response = response.post;
-                return response.map(item => {
-                    return {
-                        "id": item.id,
-                        "width": item.width,
-                        "height": item.height,
-                        "aspect_ratio": item.width / item.height,
-                        "tags": item.tags,
-                        "rating": item.rating.replace('general', 's').charAt(0),
-                        "is_nsfw": (item.rating != 's'),
-                        "md5": item.md5,
-                        "preview_url": item.preview_url,
-                        "sample_url": item.sample_url ?? item.file_url,
-                        "file_url": item.file_url,
-                        "file_ext": item.file_url.split('.').pop(),
-                        "source": getWorkingImageSource(item.source) ?? item.file_url
-                    };
-                });
-            },
-            "tagSearchTemplate": "https://gelbooru.com/index.php?page=dapi&s=tag&q=index&json=1&orderby=count&name_pattern={{query}}%",
-            "tagMapFunc": response => {
-                return response.tag.map(item => {
-                    return {
-                        "name": item.name,
-                        "count": item.count
-                    };
-                });
-            }
-        },
-        "waifu.im": {
-            "name": "waifu.im",
-            "url": "https://waifu.im",
-            "api": "https://api.waifu.im/search",
-            "description": qsTr("Waifus only | Excellent quality, limited quantity"),
-            "mapFunc": response => {
-                response = response.images;
-                return response.map(item => {
-                    return {
-                        "id": item.image_id,
-                        "width": item.width,
-                        "height": item.height,
-                        "aspect_ratio": item.width / item.height,
-                        "tags": item.tags.map(tag => {
-                            return tag.name;
-                        }).join(" "),
-                        "rating": item.is_nsfw ? "e" : "s",
-                        "is_nsfw": item.is_nsfw,
-                        "md5": item.md5,
-                        "preview_url": item.sample_url ?? item.url // preview_url just says access denied (maybe i fucked up and sent too many requests idk)
-                        ,
-                        "sample_url": item.url,
-                        "file_url": item.url,
-                        "file_ext": item.extension,
-                        "source": getWorkingImageSource(item.source) ?? item.url
-                    };
-                });
-            },
-            "tagSearchTemplate": "https://api.waifu.im/tags",
-            "tagMapFunc": response => {
-                return [...response.versatile.map(item => {
-                        return {
-                            "name": item
-                        };
-                    }), ...response.nsfw.map(item => {
-                        return {
-                            "name": item
-                        };
-                    })];
-            }
-        },
-        "t.alcy.cc": {
-            "name": "Alcy",
-            "url": "https://t.alcy.cc",
-            "api": "https://t.alcy.cc/",
-            "description": qsTr("Large images | God tier quality, no NSFW."),
-            "fixedTags": [
-                {
-                    "name": "ycy",
-                    "count": "General"
-                },
-                {
-                    "name": "moez",
-                    "count": "Moe"
-                },
-                {
-                    "name": "ysz",
-                    "count": "Genshin Impact"
-                },
-                {
-                    "name": "fj",
-                    "count": "Landscape"
-                },
-                {
-                    "name": "bd",
-                    "count": "Girl on white background"
-                },
-                {
-                    "name": "xhl",
-                    "count": "Shiggy"
-                },
-            ],
-            "manualParseFunc": responseText => {
-                // Alcy just returns image links, each on a new line
-                const lines = responseText.trim().split('\n');
-                return lines.map(line => {
-                    return {
-                        "id": Qt.md5(line),
-                        // Alcy doesn't provide dimensions and images are often of god resolution
-                        "width": 1000,
-                        "height": 1000,
-                        "aspect_ratio": 1 // Default aspect ratio
-                        ,
-                        "tags": "[no tags]",
-                        "rating": "s",
-                        "is_nsfw": false,
-                        "md5": Qt.md5(line),
-                        "preview_url": line,
-                        "sample_url": line,
-                        "file_url": line,
-                        "file_ext": line.split('.').pop(),
-                        "source": ""
-                    };
-                });
-            }
+            "name": qsTr("System"),
+            "description": qsTr("System wallpapers")
         }
     }
     property var currentProvider: Persistent.states.booru.provider
+
+    Process {
+        id: wallpaperList
+        command: ["bash", "-c", "ls ~/.config/hypr/wallpapers/"]
+        running: true
+        stdout: StdioCollector {
+            onStreamFinished: root.systemImages = this.text.split("\n").filter(Boolean).map(name => {
+                const path = "file:///home/vktrenokh/.config/hypr/wallpapers/" + name;
+
+                return {
+                    preview_url: path,
+                    file_url: path,
+                    aspect_ratio: 1
+                };
+            })
+        }
+    }
 
     function getWorkingImageSource(url) {
         if (url.includes('pximg.net')) {
@@ -321,106 +80,24 @@ Singleton {
     }
 
     function constructRequestUrl(tags, nsfw = true, limit = 20, page = 1) {
-        var provider = providers[currentProvider];
-        var baseUrl = provider.api;
-        var url = baseUrl;
-        var tagString = tags.join(" ");
-        if (!nsfw && !(["zerochan", "waifu.im", "t.alcy.cc"].includes(currentProvider))) {
-            if (currentProvider == "gelbooru")
-                tagString += " rating:general";
-            else
-                tagString += " rating:safe";
-        }
-        var params = [];
-        // Tags & limit
-        if (currentProvider === "zerochan") {
-            params.push("c=" + tagString); // zerochan doesn't have search in api, so we use color
-            params.push("l=" + limit);
-            params.push("s=" + "fav");
-            params.push("t=" + 1);
-            params.push("p=" + page);
-        } else if (currentProvider === "waifu.im") {
-            var tagsArray = tagString.split(" ");
-            tagsArray.forEach(tag => {
-                params.push("included_tags=" + encodeURIComponent(tag));
-            });
-            params.push("limit=" + Math.min(limit, 30)); // Only admin can do > 30
-            params.push("is_nsfw=" + (nsfw ? "null" : "false")); // null is random
-        } else if (currentProvider === "t.alcy.cc") {
-            url += tagString;
-            params.push("json");
-            params.push("quantity=" + limit);
-        } else {
-            params.push("tags=" + encodeURIComponent(tagString));
-            params.push("limit=" + limit);
-            if (currentProvider == "gelbooru") {
-                params.push("pid=" + page);
-            } else {
-                params.push("page=" + page);
-            }
-        }
-        if (baseUrl.indexOf("?") === -1) {
-            url += "?" + params.join("&");
-        } else {
-            url += "&" + params.join("&");
-        }
-        return url;
+        console.log(JSON.stringify(root.systemImages) + " images");
+        return "";
     }
 
     function makeRequest(tags, nsfw = false, limit = 20, page = 1) {
         var url = constructRequestUrl(tags, nsfw, limit, page);
+        console.log("making request");
         // console.log("[Booru] Making request to " + url)
 
         const newResponse = root.booruResponseDataComponent.createObject(null, {
             "provider": currentProvider,
             "tags": tags,
             "page": page,
-            "images": [],
+            "images": root.systemImages,
             "message": ""
         });
 
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", url);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                try {
-                    // console.log("[Booru] Raw response: " + xhr.responseText)
-                    const provider = providers[currentProvider];
-                    let response;
-                    if (provider.manualParseFunc) {
-                        response = provider.manualParseFunc(xhr.responseText);
-                    } else {
-                        response = JSON.parse(xhr.responseText);
-                        response = provider.mapFunc(response);
-                    }
-                    // console.log("[Booru] Mapped response: " + JSON.stringify(response))
-                    newResponse.images = response;
-                    newResponse.message = response.length > 0 ? "" : root.failMessage;
-                } catch (e) {
-                    console.log("[Booru] Failed to parse response: " + e);
-                    newResponse.message = root.failMessage;
-                } finally {
-                    root.runningRequests--;
-                    root.responses = [...root.responses, newResponse];
-                }
-            } else if (xhr.readyState === XMLHttpRequest.DONE) {
-                console.log("[Booru] Request failed with status: " + xhr.status);
-            }
-        };
-
-        try {
-            // Required for danbooru
-            if (currentProvider == "danbooru") {
-                xhr.setRequestHeader("User-Agent", defaultUserAgent);
-            } else if (currentProvider == "zerochan") {
-                const userAgent = Config.options?.sidebar?.booru?.zerochan?.username ? `Desktop sidebar booru viewer - username: ${Config.options.sidebar.booru.zerochan.username}` : defaultUserAgent;
-                xhr.setRequestHeader("User-Agent", userAgent);
-            }
-            root.runningRequests++;
-            xhr.send();
-        } catch (error) {
-            console.log("Could not set User-Agent:", error);
-        }
+        root.responses = [...root.responses, newResponse];
     }
 
     property var currentTagRequest: null
@@ -449,7 +126,6 @@ Singleton {
                     var response = JSON.parse(xhr.responseText);
 
                     response = provider.tagMapFunc(response);
-                    console.log("[Booru] Mapped response: " + JSON.stringify(response));
                     root.tagSuggestion(query, response);
                 } catch (e) {
                     console.log("[Booru] Failed to parse response: " + e);
@@ -460,7 +136,6 @@ Singleton {
         };
 
         try {
-            // Required for danbooru
             if (currentProvider == "danbooru") {
                 xhr.setRequestHeader("User-Agent", defaultUserAgent);
             }

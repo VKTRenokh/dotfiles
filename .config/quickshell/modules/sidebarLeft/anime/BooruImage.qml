@@ -22,8 +22,8 @@ Button {
     property string previewDownloadPath
     property string downloadPath
     property string nsfwPath
-    property string fileName: decodeURIComponent((imageData.file_url).substring((imageData.file_url).lastIndexOf('/') + 1))
-    property string filePath: `${root.previewDownloadPath}/${root.fileName}`
+    property string fileName: decodeURIComponent((imageData.file_url))
+    property string filePath: root.fileName
     property int maxTagStringLineLength: 50
     property real imageRadius: Appearance.rounding.small
 
@@ -33,13 +33,14 @@ Button {
         running: false
         command: ["bash", "-c", `[ -f ${root.filePath} ] || curl -sSL '${root.imageData.preview_url ?? root.imageData.sample_url}' -o '${root.filePath}'`]
         onExited: (exitCode, exitStatus) => {
-            imageObject.source = `${previewDownloadPath}/${root.fileName}`
+            imageObject.source = `${previewDownloadPath}/${root.fileName}`;
         }
     }
 
     Component.onCompleted: {
+        console.log("fileName!!!!!!!!!!!!!!!!!!!!!!!!!!", root.fileName);
         if (root.manualDownload) {
-            downloadProcess.running = true
+            downloadProcess.running = true;
         }
     }
 
@@ -109,7 +110,7 @@ Button {
             }
 
             onClicked: {
-                root.showActions = !root.showActions
+                root.showActions = !root.showActions;
             }
         }
 
@@ -155,10 +156,10 @@ Button {
                             Layout.fillWidth: true
                             buttonText: qsTr("Open file link")
                             onClicked: {
-                                root.showActions = false
-                                Hyprland.dispatch("keyword cursor:no_warps true")
-                                Qt.openUrlExternally(root.imageData.file_url)
-                                Hyprland.dispatch("keyword cursor:no_warps false")
+                                root.showActions = false;
+                                Hyprland.dispatch("keyword cursor:no_warps true");
+                                Qt.openUrlExternally(root.imageData.file_url);
+                                Hyprland.dispatch("keyword cursor:no_warps false");
                             }
                         }
                         MenuButton {
@@ -168,10 +169,10 @@ Button {
                             buttonText: StringUtils.format(qsTr("Go to source ({0})"), StringUtils.getDomain(root.imageData.source))
                             enabled: root.imageData.source && root.imageData.source.length > 0
                             onClicked: {
-                                root.showActions = false
-                                Hyprland.dispatch("keyword cursor:no_warps true")
-                                Qt.openUrlExternally(root.imageData.source)
-                                Hyprland.dispatch("keyword cursor:no_warps false")
+                                root.showActions = false;
+                                Hyprland.dispatch("keyword cursor:no_warps true");
+                                Qt.openUrlExternally(root.imageData.source);
+                                Hyprland.dispatch("keyword cursor:no_warps false");
                             }
                         }
                         MenuButton {
@@ -179,10 +180,8 @@ Button {
                             Layout.fillWidth: true
                             buttonText: qsTr("Download")
                             onClicked: {
-                                root.showActions = false
-                                Quickshell.execDetached(["bash", "-c", 
-                                    `curl '${root.imageData.file_url}' -o '${root.imageData.is_nsfw ? root.nsfwPath : root.downloadPath}/${root.fileName}' && notify-send '${qsTr("Download complete")}' '${root.downloadPath}/${root.fileName}' -a 'Shell'`
-                                ])
+                                root.showActions = false;
+                                Quickshell.execDetached(["bash", "-c", `curl '${root.imageData.file_url}' -o '${root.imageData.is_nsfw ? root.nsfwPath : root.downloadPath}/${root.fileName}' && notify-send '${qsTr("Download complete")}' '${root.downloadPath}/${root.fileName}' -a 'Shell'`]);
                             }
                         }
                     }
