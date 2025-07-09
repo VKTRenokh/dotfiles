@@ -162,12 +162,12 @@ Singleton {
 
     font: QtObject {
         property QtObject family: QtObject {
-            property string main: "Rubik"
+            property string main: "Victor Mono Nerd Font"
             property string title: "Gabarito"
-            property string iconMaterial: "Material Symbols Rounded"
-            property string iconNerd: "SpaceMono NF"
-            property string monospace: "JetBrains Mono NF"
-            property string reading: "Readex Pro"
+            property string iconMaterial: "Material Icons Round"
+            property string iconNerd: "Victor Mono Nerd Font"
+            property string monospace: "Victor Mono Nerd Font"
+            property string reading: "Victor Mono Nerd Font"
         }
         property QtObject pixelSize: QtObject {
             property int smallest: 10
