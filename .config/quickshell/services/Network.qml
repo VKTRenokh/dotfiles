@@ -11,16 +11,29 @@ import QtQuick
 Singleton {
     id: root
 
+    property string networkManager: ""
+
     property bool wifi: true
     property bool ethernet: false
     property int updateInterval: 1000
     property string networkName: ""
     property int networkStrength
     property string materialSymbol: ethernet ? "lan" : (Network.networkName.length > 0 && Network.networkName != "lo") ? (Network.networkStrength > 80 ? "signal_wifi_4_bar" : Network.networkStrength > 60 ? "network_wifi_3_bar" : Network.networkStrength > 40 ? "network_wifi_2_bar" : Network.networkStrength > 20 ? "network_wifi_1_bar" : "signal_wifi_0_bar") : "signal_wifi_off"
+
     function update() {
-        updateConnectionType.startCheck();
         updateNetworkName.running = true;
         updateNetworkStrength.running = true;
+    }
+
+    Process {
+        id: networkHandler
+        command: ["bash", "-c", '[ -n "$(pgrep NetworkManager)" ] && echo "nmcli" || echo "connmanctl"']
+        running: true
+        stdout: SplitParser {
+            onRead: data => {
+                root.networkManager = data;
+            }
+        }
     }
 
     Timer {
@@ -34,41 +47,15 @@ Singleton {
     }
 
     Process {
-        id: updateConnectionType
-        property string buffer
-        command: ["sh", "-c", "nmcli -t -f NAME,TYPE,DEVICE c show --active"]
-        running: true
-        function startCheck() {
-            buffer = "";
-            updateConnectionType.running = true;
-        }
-        stdout: SplitParser {
-            onRead: data => {
-                updateConnectionType.buffer += data + "\n";
-            }
-        }
-        onExited: (exitCode, exitStatus) => {
-            const lines = updateConnectionType.buffer.trim().split('\n');
-            let hasEthernet = false;
-            let hasWifi = false;
-            lines.forEach(line => {
-                if (line.includes("ethernet"))
-                    hasEthernet = true;
-                else if (line.includes("wireless"))
-                    hasWifi = true;
-            });
-            root.ethernet = hasEthernet;
-            root.wifi = hasWifi;
-        }
-    }
-
-    Process {
         id: updateNetworkName
         command: ["bash", "-c", "connmanctl services | grep -E '\*A[OR]' | awk '{print $2}'"]
         running: true
         stdout: SplitParser {
             onRead: data => {
                 root.networkName = data;
+
+                root.ethernet = data.startsWith("ethernet");
+                root.wifi = !root.ethernet;
             }
         }
     }

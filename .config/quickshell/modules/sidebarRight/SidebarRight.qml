@@ -27,7 +27,7 @@ Scope {
         visible: GlobalStates.sidebarRightOpen
 
         function hide() {
-            GlobalStates.sidebarRightOpen = false
+            GlobalStates.sidebarRightOpen = false;
         }
 
         exclusiveZone: 0
@@ -45,10 +45,11 @@ Scope {
 
         HyprlandFocusGrab {
             id: grab
-            windows: [ sidebarRoot ]
+            windows: [sidebarRoot]
             active: GlobalStates.sidebarRightOpen
             onCleared: () => {
-                if (!active) sidebarRoot.hide()
+                if (!active)
+                    sidebarRoot.hide();
             }
         }
 
@@ -69,7 +70,7 @@ Scope {
             height: parent.height - Appearance.sizes.hyprlandGapsOut * 2
 
             focus: GlobalStates.sidebarRightOpen
-            Keys.onPressed: (event) => {
+            Keys.onPressed: event => {
                 if (event.key === Qt.Key_Escape) {
                     sidebarRoot.hide();
                 }
@@ -137,8 +138,8 @@ Scope {
                                     toggled: false
                                     buttonIcon: "restart_alt"
                                     onClicked: {
-                                        Hyprland.dispatch("reload")
-                                        Quickshell.reload(true)
+                                        Hyprland.dispatch("reload");
+                                        Quickshell.reload(true);
                                     }
                                     StyledToolTip {
                                         content: qsTr("Reload Hyprland & Quickshell")
@@ -148,8 +149,8 @@ Scope {
                                     toggled: false
                                     buttonIcon: "settings"
                                     onClicked: {
-                                        Hyprland.dispatch("global quickshell:sidebarRightClose")
-                                        Quickshell.execDetached(["qs", "-p", root.settingsQmlPath])
+                                        Hyprland.dispatch("global quickshell:sidebarRightClose");
+                                        Quickshell.execDetached(["qs", "-p", root.settingsQmlPath]);
                                     }
                                     StyledToolTip {
                                         content: qsTr("Settings")
@@ -159,7 +160,7 @@ Scope {
                                     toggled: false
                                     buttonIcon: "power_settings_new"
                                     onClicked: {
-                                        Hyprland.dispatch("global quickshell:sessionOpen")
+                                        Hyprland.dispatch("global quickshell:sessionOpen");
                                     }
                                     StyledToolTip {
                                         content: qsTr("Session")
@@ -199,8 +200,6 @@ Scope {
                 }
             }
         }
-
-
     }
 
     IpcHandler {
@@ -208,7 +207,8 @@ Scope {
 
         function toggle(): void {
             GlobalStates.sidebarRightOpen = !GlobalStates.sidebarRightOpen;
-            if(GlobalStates.sidebarRightOpen) Notifications.timeoutAll();
+            if (GlobalStates.sidebarRightOpen)
+                Notifications.timeoutAll();
         }
 
         function close(): void {
@@ -227,7 +227,8 @@ Scope {
 
         onPressed: {
             GlobalStates.sidebarRightOpen = !GlobalStates.sidebarRightOpen;
-            if(GlobalStates.sidebarRightOpen) Notifications.timeoutAll();
+            if (GlobalStates.sidebarRightOpen)
+                Notifications.timeoutAll();
         }
     }
     GlobalShortcut {
@@ -247,5 +248,4 @@ Scope {
             GlobalStates.sidebarRightOpen = false;
         }
     }
-
 }
