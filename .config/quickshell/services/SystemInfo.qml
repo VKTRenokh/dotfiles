@@ -60,7 +60,7 @@ Singleton {
                 distroIcon = "arch-symbolic";
                 break;
             case "artix":
-                distroIcon = "ubuntu-symbolic";
+                distroIcon = "arch-symbolic";
                 break;
             case "endeavouros":
                 distroIcon = "endeavouros-symbolic";
