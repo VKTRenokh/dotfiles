@@ -26,11 +26,11 @@ map ctrl+a>ctrl+a send_text all \x01
 include ./current-theme.conf
 
 # background_opacity 0.70
-background_opacity 0.75
+background_opacity 0.80
 
 cursor_trail 1
 
-window_padding_width      7
+window_padding_width      3
 
 kitty_mod ctrl+shift
 
@@ -86,8 +86,8 @@ shell_integration enabled
 
 
 # BEGIN_KITTY_FONTS
-font_family      family="VictorMono Nerd Font Mono"
-bold_font        auto
+font_family      family="ZedMono Nerd Font Mono"
+bold_font        family="ZedMono Nerd Font Mono"
 italic_font      auto
 bold_italic_font auto
 # END_KITTY_FONTS
@@ -99,7 +99,7 @@ adjust_column_width 0
 
 font_features 			none
 
-font_size           12.3
+font_size           13.3
 
 force_ltr           no
 
