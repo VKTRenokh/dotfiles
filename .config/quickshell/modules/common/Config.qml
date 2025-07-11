@@ -85,7 +85,7 @@ Singleton {
                 property string bluetooth: "blueberry"
                 property string network: "plasmawindowed org.kde.plasma.networkmanagement"
                 property string networkEthernet: "kcmshell6 kcm_networkmanagement"
-                property string taskManager: "kitty -e btop"
+                property string taskManager: "kitty -1 btop"
                 property string terminal: "kitty -1" // This is only for shell actions
             }
 
