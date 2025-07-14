@@ -38,7 +38,6 @@ Button {
     }
 
     Component.onCompleted: {
-        console.log("fileName!!!!!!!!!!!!!!!!!!!!!!!!!!", root.fileName);
         if (root.manualDownload) {
             downloadProcess.running = true;
         }

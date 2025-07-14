@@ -25,16 +25,16 @@ Singleton {
         updateNetworkStrength.running = true;
     }
 
-    Process {
-        id: networkHandler
-        command: ["bash", "-c", '[ -n "$(pgrep NetworkManager)" ] && echo "nmcli" || echo "connmanctl"']
-        running: true
-        stdout: SplitParser {
-            onRead: data => {
-                root.networkManager = data;
-            }
-        }
-    }
+    // Process {
+    //     id: networkHandler
+    //     command: ["bash", "-c", '[ -n "$(pgrep NetworkManager)" ] && echo "nmcli" || echo "connmanctl"']
+    //     running: true
+    //     stdout: SplitParser {
+    //         onRead: data => {
+    //             root.networkManager = data;
+    //         }
+    //     }
+    // }
 
     Timer {
         interval: 10
@@ -48,7 +48,7 @@ Singleton {
 
     Process {
         id: updateNetworkName
-        command: ["bash", "-c", "connmanctl services | grep -E '\*A[OR]' | awk '{print $2}'"]
+        command: ["bash", "-c", "connmanctl services | grep -E '\*A[OR]' | awk '{print $2}' | head -n 1"]
         running: true
         stdout: SplitParser {
             onRead: data => {
@@ -63,7 +63,7 @@ Singleton {
     Process {
         id: updateNetworkStrength
         running: true
-        command: ["bash", "-c", "connmanctl services $(connmanctl services | grep '\*' | awk '{print $NF}') | grep Strength | awk '{print $3}'"]
+        command: ["bash", "-c", "connmanctl services $(connmanctl services | grep '\*' | awk '{print $NF}' | head -n 1) | grep Strength | awk '{print $3}'"]
         stdout: SplitParser {
             onRead: data => {
                 root.networkStrength = parseInt(data);

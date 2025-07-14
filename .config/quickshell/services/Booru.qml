@@ -31,18 +31,31 @@ Singleton {
     }
     property var currentProvider: Persistent.states.booru.provider
 
+    function aspectRatio(dimensions) {
+        return dimensions[0] / dimensions[1];
+    }
+
     Process {
         id: wallpaperList
-        command: ["bash", "-c", "ls ~/.config/hypr/wallpapers/"]
+        command: ["bash", "-c", "ls ~/.cache/waypaper | xargs -I {} identify '/home/vktrenokh/.cache/waypaper/{}'"]
         running: true
         stdout: StdioCollector {
-            onStreamFinished: root.systemImages = this.text.split("\n").filter(Boolean).map(name => {
-                const path = "file:///home/vktrenokh/.config/hypr/wallpapers/" + name;
+            onStreamFinished: root.systemImages = this.text.split("\n").filter(Boolean).map(result => {
+                const output = result.split(" ");
+
+                const path = output[0];
+                const dimensions = output[2].split("x");
+                const aspectRatio = Booru.aspectRatio(dimensions);
+
+                const filename = path.slice(path.lastIndexOf('/') + 1, path.length);
+
+                const preview_path = "file://" + path;
+                const real_path = "file:///home/vktrenokh/.config/hypr/wallpapers/" + filename;
 
                 return {
-                    preview_url: path,
-                    file_url: path,
-                    aspect_ratio: 1
+                    preview_url: preview_path,
+                    file_url: real_path,
+                    aspect_ratio: aspectRatio
                 };
             })
         }
@@ -80,14 +93,11 @@ Singleton {
     }
 
     function constructRequestUrl(tags, nsfw = true, limit = 20, page = 1) {
-        console.log(JSON.stringify(root.systemImages) + " images");
         return "";
     }
 
     function makeRequest(tags, nsfw = false, limit = 20, page = 1) {
         var url = constructRequestUrl(tags, nsfw, limit, page);
-        console.log("making request");
-        // console.log("[Booru] Making request to " + url)
 
         const newResponse = root.booruResponseDataComponent.createObject(null, {
             "provider": currentProvider,
