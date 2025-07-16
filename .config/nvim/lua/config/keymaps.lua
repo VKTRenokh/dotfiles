@@ -129,4 +129,4 @@ vim.keymap.set("i", "<C-L>", function()
   end
 end, { desc = "treesitter insjump" }) -- }}}
 
-vim.keymap.set({ "i", "c", "x", "s" }, "jk", "<esc>")
+vim.keymap.set({ "i", "c", "s" }, "jk", "<esc>")
