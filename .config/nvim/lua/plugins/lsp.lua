@@ -168,13 +168,11 @@ return {
       if have_mason then
         mlsp.setup({
           ensure_installed = vim.tbl_deep_extend("force", ensure_installed, {}),
-          -- https://github.com/mason-org/mason-lspconfig.nvim/issues/587
-          automatic_enable = { enable = true, exclude = { "vue_ls" } },
+          automatic_enable = { enable = true },
           handlers = { setup },
         })
 
-        -- https://github.com/mason-org/mason-lspconfig.nvim/issues/587
-        vim.lsp.enable({ "vue_ls" })
+        -- vim.lsp.enable({ "vue_ls" })
       end
     end,
   },
