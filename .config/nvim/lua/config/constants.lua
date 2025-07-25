@@ -78,6 +78,8 @@ Constants = {
       "yaml",
       "fennel",
       "printf",
+      "solidity",
+      "tsx",
     },
   },
 
