@@ -59,6 +59,7 @@ local options = {
   pumheight = 10,
   laststatus = 3,
   linebreak = false,
+  formatoptions = "jcroql",
 }
 
 vim.scriptencoding = "utf-8"
