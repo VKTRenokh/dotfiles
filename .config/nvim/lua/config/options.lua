@@ -60,6 +60,7 @@ local options = {
   laststatus = 3,
   linebreak = false,
   formatoptions = "jcroql",
+  winborder = "rounded",
 }
 
 vim.scriptencoding = "utf-8"
