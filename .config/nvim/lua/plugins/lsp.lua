@@ -157,7 +157,6 @@ return {
           server_opts = server_opts == true and {} or server_opts
           if server_opts.enabled ~= false then
             if server_opts.mason == false or not vim.tbl_contains(all_mslp_servers, server) then
-              print("setup", server)
               setup(server)
             else
               ensure_installed[#ensure_installed + 1] = server
@@ -167,7 +166,6 @@ return {
       end
 
       if have_mason then
-        print("mlsp setup")
         mlsp.setup({
           ensure_installed = ensure_installed,
           handlers = { setup },
