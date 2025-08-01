@@ -81,7 +81,7 @@ return {
   {
     "folke/flash.nvim",
     event = "LazyFile",
-    vscode = true,
+    enabled = true,
     opts = {},
     -- stylua: ignore
     keys = {

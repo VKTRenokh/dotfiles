@@ -380,7 +380,25 @@ return {
       notifier = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = false },
-      dashboard = { enabled = true },
+      dashboard = {
+        enabled = true,
+        preset = {
+          -- https://patorjk.com/software/taag/#p=testall&f=Alpha&t=zxc
+          header = [[
+       ,----,                      
+     .'   .`|,--,  ,--,            
+  .'   .'  .'|'. \/ .`|    ,---.   
+,---, '   ./ '  \/  / ;   /     \  
+;   | .'  /   \  \.' /   /    / '  
+`---' /  ;--,  \  ;  ;  .    ' /   
+  /  /  / .`| / \  \  \ '   ; :__  
+./__;     .'./__;   ;  \'   | '.'| 
+;   |  .'   |   :/\  \ ;|   :    : 
+`---'       `---'  `--`  \   \  /  
+                          `----'   
+]],
+        },
+      },
       words = { enabled = false },
       input = { enabled = true },
       scoped = { enabled = true },
