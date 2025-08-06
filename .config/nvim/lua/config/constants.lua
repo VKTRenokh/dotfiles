@@ -42,7 +42,6 @@ Constants = {
     mason = {
       "css-lsp",
       "emmet-language-server",
-      "solidity",
       "flake8",
       "html-lsp",
       "json-lsp",
