@@ -9,4 +9,4 @@ pos_y=$(echo "$slurp_output" | awk -F'[,x ]' '{print $2}')
 width=$(echo "$slurp_output" | awk -F'[,x ]' '{print $3}')
 height=$(echo "$slurp_output" | awk -F'[,x ]' '{print $4}')
 
-hyprctl "dispatch exec [float; move $pos_x $pos_y; size $width $height] kitty"
+hyprctl "dispatch exec [float; move $pos_x $pos_y; size $width $height] kitty $*"
