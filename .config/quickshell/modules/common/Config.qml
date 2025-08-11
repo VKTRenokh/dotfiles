@@ -4,6 +4,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
+// TODO: make pretty disk usage info
 Singleton {
     id: root
     property string filePath: Directories.shellConfigPath
