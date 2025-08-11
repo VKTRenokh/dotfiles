@@ -16,8 +16,8 @@ Scope {
     property var focusedScreen: Quickshell.screens.find(s => s.name === Hyprland.focusedMonitor?.name)
 
     function triggerOsd() {
-        showOsdValues = true
-        osdTimeout.restart()
+        showOsdValues = true;
+        osdTimeout.restart();
     }
 
     Timer {
@@ -26,35 +26,39 @@ Scope {
         repeat: false
         running: false
         onTriggered: {
-            root.showOsdValues = false
-            root.protectionMessage = ""
+            root.showOsdValues = false;
+            root.protectionMessage = "";
         }
     }
 
     Connections {
         target: Brightness
         function onBrightnessChanged() {
-            showOsdValues = false
+            showOsdValues = false;
         }
     }
 
-    Connections { // Listen to volume changes
+    Connections {
+        // Listen to volume changes
         target: Audio.sink?.audio ?? null
         function onVolumeChanged() {
-            if (!Audio.ready) return
-            root.triggerOsd()
+            if (!Audio.ready)
+                return;
+            root.triggerOsd();
         }
         function onMutedChanged() {
-            if (!Audio.ready) return
-            root.triggerOsd()
+            if (!Audio.ready)
+                return;
+            root.triggerOsd();
         }
     }
 
-    Connections { // Listen to protection triggers
+    Connections {
+        // Listen to protection triggers
         target: Audio
         function onSinkProtectionTriggered(reason) {
             root.protectionMessage = reason;
-            root.triggerOsd()
+            root.triggerOsd();
         }
     }
 
@@ -68,7 +72,7 @@ Scope {
             Connections {
                 target: root
                 function onFocusedScreenChanged() {
-                    osdRoot.screen = root.focusedScreen
+                    osdRoot.screen = root.focusedScreen;
                 }
             }
 
@@ -116,48 +120,52 @@ Scope {
                         }
                         spacing: 0
 
-                        OsdValueIndicator {
-                            id: osdValues
-                            Layout.fillWidth: true
-                            value: Audio.sink?.audio.volume ?? 0
-                            icon: Audio.sink?.audio.muted ? "volume_off" : "volume_up"
-                            name: qsTr("Volume")
-                        }
+                        RowLayout {
+                            id: volumeInfo
 
-                        Item {
-                            id: protectionMessageWrapper
-                            implicitHeight: protectionMessageBackground.implicitHeight
-                            implicitWidth: protectionMessageBackground.implicitWidth
-                            Layout.alignment: Qt.AlignHCenter
-                            opacity: root.protectionMessage !== "" ? 1 : 0
-
-                            StyledRectangularShadow {
-                                target: protectionMessageBackground
+                            OsdValueIndicator {
+                                id: osdValues
+                                Layout.fillWidth: true
+                                value: Audio.sink?.audio.volume ?? 0
+                                icon: Audio.sink?.audio.muted ? "volume_off" : "volume_up"
+                                name: qsTr("Volume")
                             }
-                            Rectangle {
-                                id: protectionMessageBackground
-                                anchors.centerIn: parent
-                                color: Appearance.m3colors.m3error
-                                property real padding: 10
-                                implicitHeight: protectionMessageRowLayout.implicitHeight + padding * 2
-                                implicitWidth: protectionMessageRowLayout.implicitWidth + padding * 2
-                                radius: Appearance.rounding.normal
 
-                                RowLayout {
-                                    id: protectionMessageRowLayout
+                            Item {
+                                id: protectionMessageWrapper
+                                implicitHeight: protectionMessageBackground.implicitHeight
+                                implicitWidth: protectionMessageBackground.implicitWidth
+                                Layout.alignment: Qt.AlignHCenter
+                                opacity: root.protectionMessage !== "" ? 1 : 0
+
+                                StyledRectangularShadow {
+                                    target: protectionMessageBackground
+                                }
+                                Rectangle {
+                                    id: protectionMessageBackground
                                     anchors.centerIn: parent
-                                    MaterialSymbol {
-                                        id: protectionMessageIcon
-                                        text: "dangerous"
-                                        iconSize: Appearance.font.pixelSize.hugeass
-                                        color: Appearance.m3colors.m3onError
-                                    }
-                                    StyledText {
-                                        id: protectionMessageTextWidget
-                                        horizontalAlignment: Text.AlignHCenter
-                                        color: Appearance.m3colors.m3onError
-                                        wrapMode: Text.Wrap
-                                        text: root.protectionMessage
+                                    color: Appearance.m3colors.m3error
+                                    property real padding: 10
+                                    implicitHeight: protectionMessageRowLayout.implicitHeight + padding * 2
+                                    implicitWidth: protectionMessageRowLayout.implicitWidth + padding * 2
+                                    radius: Appearance.rounding.normal
+
+                                    RowLayout {
+                                        id: protectionMessageRowLayout
+                                        anchors.centerIn: parent
+                                        MaterialSymbol {
+                                            id: protectionMessageIcon
+                                            text: "dangerous"
+                                            iconSize: Appearance.font.pixelSize.hugeass
+                                            color: Appearance.m3colors.m3onError
+                                        }
+                                        StyledText {
+                                            id: protectionMessageTextWidget
+                                            horizontalAlignment: Text.AlignHCenter
+                                            color: Appearance.m3colors.m3onError
+                                            wrapMode: Text.Wrap
+                                            text: root.protectionMessage
+                                        }
                                     }
                                 }
                             }
@@ -169,26 +177,26 @@ Scope {
     }
 
     IpcHandler {
-		target: "osdVolume"
+        target: "osdVolume"
 
-		function trigger() {
-            root.triggerOsd()
+        function trigger() {
+            root.triggerOsd();
         }
 
         function hide() {
-            showOsdValues = false
+            showOsdValues = false;
         }
 
         function toggle() {
-            showOsdValues = !showOsdValues
+            showOsdValues = !showOsdValues;
         }
-	}
+    }
     GlobalShortcut {
         name: "osdVolumeTrigger"
         description: qsTr("Triggers volume OSD on press")
 
         onPressed: {
-            root.triggerOsd()
+            root.triggerOsd();
         }
     }
     GlobalShortcut {
@@ -196,8 +204,7 @@ Scope {
         description: qsTr("Hides volume OSD on press")
 
         onPressed: {
-            root.showOsdValues = false
+            root.showOsdValues = false;
         }
     }
-
 }
