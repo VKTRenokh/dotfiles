@@ -60,10 +60,10 @@ Singleton {
         property color m3onTertiary: "#2D3A28"
         property color m3tertiaryContainer: "#44523E"
         property color m3onTertiaryContainer: "#E4F5D9"
-        property color m3error: "#FFB4AB"
-        property color m3onError: "#690005"
-        property color m3errorContainer: "#93000A"
-        property color m3onErrorContainer: "#FFDAD6"
+        property color m3error: "#D7B8B5"
+        property color m3onError: "#43302E"
+        property color m3errorContainer: "#6A4B49"
+        property color m3onErrorContainer: "#F1E4E3"
         property color m3primaryFixed: "#D4E9F5"
         property color m3primaryFixedDim: "#A3CDE0"
         property color m3onPrimaryFixed: "#032A37"
@@ -97,6 +97,7 @@ Singleton {
         property color term14: "#6EA3B7"
         property color term15: "#1A2025"
     }
+
     // TODO: create theme switcher ?
     //
     // m3colors: QtObject {
