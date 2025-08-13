@@ -69,7 +69,7 @@ return {
         diagnostics = {
           update_in_insert = false,
           virtual_lines = {
-            current_line = true,
+            current_line = false, -- or true
           },
         },
         capabilities = {
