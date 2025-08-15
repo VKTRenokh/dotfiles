@@ -13,7 +13,7 @@ Item {
     id: root
     property bool borderless: Config.options.bar.borderless
     readonly property MprisPlayer activePlayer: MprisController.activePlayer
-    readonly property string cleanedTitle: StringUtils.cleanMusicTitle(activePlayer?.trackTitle) || qsTr("No media")
+    readonly property string cleanedTitle: StringUtils.cleanMusicTitle(activePlayer?.trackTitle) || qsTr("メディアなし")
 
     Layout.fillHeight: true
     implicitWidth: rowLayout.implicitWidth + rowLayout.spacing * 2
@@ -29,7 +29,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         acceptedButtons: Qt.MiddleButton | Qt.BackButton | Qt.ForwardButton | Qt.RightButton | Qt.LeftButton
-        onPressed: (event) => {
+        onPressed: event => {
             if (event.button === Qt.MiddleButton) {
                 activePlayer.togglePlaying();
             } else if (event.button === Qt.BackButton) {
@@ -37,7 +37,7 @@ Item {
             } else if (event.button === Qt.ForwardButton || event.button === Qt.RightButton) {
                 activePlayer.next();
             } else if (event.button === Qt.LeftButton) {
-                Hyprland.dispatch("global quickshell:mediaControlsToggle")
+                Hyprland.dispatch("global quickshell:mediaControlsToggle");
             }
         }
     }
@@ -64,7 +64,6 @@ Item {
                 iconSize: Appearance.font.pixelSize.normal
                 color: Appearance.m3colors.m3onSecondaryContainer
             }
-
         }
 
         StyledText {
@@ -77,7 +76,5 @@ Item {
             color: Appearance.colors.colOnLayer1
             text: `${cleanedTitle}${activePlayer?.trackArtist ? ' • ' + activePlayer.trackArtist : ''}`
         }
-
     }
-
 }
