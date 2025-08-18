@@ -24,7 +24,6 @@ local options = {
   listchars = { eol = "↲", tab = "▸ ", trail = "·" },
   mouse = "a",
   nrformats = { "alpha", "octal", "hex" },
-  guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:ver25-Cursor2/lCursor2,r-cr:hor20,o:hor50",
   number = true,
   numberwidth = 3,
   relativenumber = true,
