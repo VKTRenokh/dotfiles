@@ -35,13 +35,6 @@ return {
               },
             },
           },
-          -- on_attach = function(client)
-          --   if vim.bo.filetype == 'vue' then
-          --     existing_capabilities.semanticTokensProvider.full = false
-          --   else
-          --     existing_capabilities.semanticTokensProvider.full = true
-          --   end
-          -- end,
           filetypes = tsserver_filetypes,
         }
 

@@ -1,6 +1,7 @@
 Constants = require("config.constants")
 
-return -- {{{ blink.cmp
+-- {{{ blink.cmp
+return
 {
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
