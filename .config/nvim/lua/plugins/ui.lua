@@ -307,8 +307,8 @@ return {
     cmd = "Trouble",
     keys = {
       --stylua: ignore start
-      { "<leader>t", "<Cmd>Trouble diagnostics<cr>", desc = "Open trouble diagnostics", },
-			{ "<leader>T", "<cmd>Trouble<cr>", desc = "Open trouble selection menu", },
+      { "<leader>t",  "<Cmd>Trouble diagnostics<cr>", desc = "Open trouble diagnostics", },
+      { "<leader>T",  "<cmd>Trouble<cr>",             desc = "Open trouble selection menu", },
       -- stylua: ignore end
       { "<leader>cl", "<cmd>Trouble lsp<cr>", desc = "Open trouble with lsp" },
     },
@@ -352,26 +352,26 @@ return {
     lazy = false,
     keys = {
       -- stylua: ignore start
-      { ";f", function() Snacks.picker.files() end },
-      { ";r", function () Snacks.picker.grep() end },
-      { ";e", function () require('fzf-lua.providers.diagnostic').diagnostics() end },
-      { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-      { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
-      { "gr", function() Snacks.picker.lsp_references() end, nowait = true, desc = "References" },
-      { "gI", function() Snacks.picker.lsp_implementations() end, desc = "Goto Implementation" },
-      { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
-      { ";s", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
-      { ";S", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+      { ";f",         function() Snacks.picker.files() end },
+      { ";r",         function() Snacks.picker.grep() end },
+      { ";e",         function() require('fzf-lua.providers.diagnostic').diagnostics() end },
+      { "gd",         function() Snacks.picker.lsp_definitions() end,                      desc = "Goto Definition" },
+      { "gD",         function() Snacks.picker.lsp_declarations() end,                     desc = "Goto Declaration" },
+      { "gr",         function() Snacks.picker.lsp_references() end,                       nowait = true,                  desc = "References" },
+      { "gI",         function() Snacks.picker.lsp_implementations() end,                  desc = "Goto Implementation" },
+      { "gy",         function() Snacks.picker.lsp_type_definitions() end,                 desc = "Goto T[y]pe Definition" },
+      { ";s",         function() Snacks.picker.lsp_symbols() end,                          desc = "LSP Symbols" },
+      { ";S",         function() Snacks.picker.lsp_workspace_symbols() end,                desc = "LSP Workspace Symbols" },
 
-      { ";gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
-      { ";g", function() Snacks.picker.git_log() end, desc = "Git Log" },
-      { ";gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-      { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
-      { ";gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
-      { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git Log File" },
-      { "<leader>ex", function() Snacks.picker.explorer() end, desc = "Explorer" },
+      { ";gb",        function() Snacks.picker.git_branches() end,                         desc = "Git Branches" },
+      { ";g",         function() Snacks.picker.git_log() end,                              desc = "Git Log" },
+      { ";gs",        function() Snacks.picker.git_status() end,                           desc = "Git Status" },
+      { "<leader>gS", function() Snacks.picker.git_stash() end,                            desc = "Git Stash" },
+      { ";gd",        function() Snacks.picker.git_diff() end,                             desc = "Git Diff (Hunks)" },
+      { "<leader>gf", function() Snacks.picker.git_log_file() end,                         desc = "Git Log File" },
+      { "<leader>ex", function() Snacks.picker.explorer() end,                             desc = "Explorer" },
 
-     { ";t", function() Snacks.picker.help() end, desc = "Help Pages" },
+      { ";t",         function() Snacks.picker.help() end,                                 desc = "Help Pages" },
 
       -- stylua: ignore end
     },
@@ -383,8 +383,9 @@ return {
       dashboard = {
         enabled = true,
         preset = {
+          -- stylua: ignore start
           -- https://patorjk.com/software/taag/#p=testall&f=Alpha&t=zxc
-          header = [[
+               header = [[
        ,----,                      
      .'   .`|,--,  ,--,            
   .'   .'  .'|'. \/ .`|    ,---.   
@@ -397,6 +398,43 @@ return {
 `---'       `---'  `--`  \   \  /  
                           `----'   
 ]],
+          -- stylua: ignore end
+          keys = {
+            {
+              icon = " ",
+              key = "f",
+              desc = "Find File",
+              action = ":lua Snacks.dashboard.pick('files')",
+            },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            {
+              icon = " ",
+              key = "g",
+              desc = "Find Text",
+              action = ":lua Snacks.dashboard.pick('live_grep')",
+            },
+            {
+              icon = " ",
+              key = "r",
+              desc = "Recent Files",
+              action = ":lua Snacks.dashboard.pick('oldfiles')",
+            },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":cd ~/.config/nvim | :lua Snacks.dashboard.pick('files')",
+            },
+            { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+            {
+              icon = "󰒲 ",
+              key = "L",
+              desc = "Lazy",
+              action = ":Lazy",
+              enabled = package.loaded.lazy ~= nil,
+            },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
         },
       },
       words = { enabled = false },
