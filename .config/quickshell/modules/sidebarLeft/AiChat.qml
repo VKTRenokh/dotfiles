@@ -22,21 +22,21 @@ Item {
     property var suggestionQuery: ""
     property var suggestionList: []
 
-    onFocusChanged: focus => {
+    onFocusChanged: (focus) => {
         if (focus) {
-            root.inputField.forceActiveFocus();
+            root.inputField.forceActiveFocus()
         }
     }
 
-    Keys.onPressed: event => {
-        messageInputField.forceActiveFocus();
+    Keys.onPressed: (event) => {
+        messageInputField.forceActiveFocus()
         if (event.modifiers === Qt.NoModifier) {
             if (event.key === Qt.Key_PageUp) {
-                messageListView.contentY = Math.max(0, messageListView.contentY - messageListView.height / 2);
-                event.accepted = true;
+                messageListView.contentY = Math.max(0, messageListView.contentY - messageListView.height / 2)
+                event.accepted = true
             } else if (event.key === Qt.Key_PageDown) {
-                messageListView.contentY = Math.min(messageListView.contentHeight - messageListView.height / 2, messageListView.contentY + messageListView.height / 2);
-                event.accepted = true;
+                messageListView.contentY = Math.min(messageListView.contentHeight - messageListView.height / 2, messageListView.contentY + messageListView.height / 2)
+                event.accepted = true
             }
         }
     }
@@ -45,14 +45,14 @@ Item {
         {
             name: "model",
             description: qsTr("Choose model"),
-            execute: args => {
+            execute: (args) => {
                 Ai.setModel(args[0]);
             }
         },
         {
             name: "prompt",
             description: qsTr("Set the system prompt for the model."),
-            execute: args => {
+            execute: (args) => {
                 if (args.length === 0 || args[0] === "get") {
                     Ai.printPrompt();
                     return;
@@ -63,9 +63,9 @@ Item {
         {
             name: "key",
             description: qsTr("Set API key"),
-            execute: args => {
+            execute: (args) => {
                 if (args[0] == "get") {
-                    Ai.printApiKey();
+                    Ai.printApiKey()
                 } else {
                     Ai.setApiKey(args[0]);
                 }
@@ -81,10 +81,10 @@ Item {
         {
             name: "temp",
             description: qsTr("Set temperature (randomness) of the model. Values range between 0 to 2 for Gemini, 0 to 1 for other models. Default is 0.5."),
-            execute: args => {
+            execute: (args) => {
                 // console.log(args)
                 if (args.length == 0 || args[0] == "get") {
-                    Ai.printTemperature();
+                    Ai.printTemperature()
                 } else {
                     const temp = parseFloat(args[0]);
                     Ai.setTemperature(temp);
@@ -144,7 +144,8 @@ Inline w/ double dollar signs: $$\\int_0^\\infty e^{-x^2} dx = \\frac{\\sqrt{\\p
 Inline w/ backslash and square brackets \\[\\int_0^\\infty \\frac{1}{x^2} dx = \\infty\\]
 
 Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
-`, Ai.interfaceRole);
+`, 
+                    Ai.interfaceRole);
             }
         },
     ]
@@ -160,7 +161,8 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
             } else {
                 Ai.addMessage(qsTr("Unknown command: ") + command, Ai.interfaceRole);
             }
-        } else {
+        }
+        else {
             Ai.sendUserMessage(inputText);
         }
     }
@@ -169,8 +171,7 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
         id: columnLayout
         anchors.fill: parent
 
-        Item {
-            // Messages
+        Item { // Messages
             Layout.fillWidth: true
             Layout.fillHeight: true
             StyledListView { // Message list
@@ -213,14 +214,13 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                     required property int index
                     messageIndex: index
                     messageData: {
-                        Ai.messageByID[modelData];
+                        Ai.messageByID[modelData]
                     }
                     messageInputField: root.inputField
                 }
             }
 
-            Item {
-                // Placeholder when list is empty
+            Item { // Placeholder when list is empty
                 opacity: Ai.messageIDs.length === 0 ? 1 : 0
                 visible: opacity > 0
                 anchors.fill: parent
@@ -276,8 +276,8 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
             Repeater {
                 id: suggestionRepeater
                 model: {
-                    suggestions.selectedIndex = 0;
-                    return root.suggestionList.slice(0, 10);
+                    suggestions.selectedIndex = 0
+                    return root.suggestionList.slice(0, 10)
                 }
                 delegate: ApiCommandButton {
                     id: commandButton
@@ -296,7 +296,7 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                         }
                     }
                     onClicked: {
-                        suggestions.acceptSuggestion(modelData.name);
+                        suggestions.acceptSuggestion(modelData.name)
                     }
                 }
             }
@@ -329,7 +329,8 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
             radius: Appearance.rounding.small
             color: Appearance.colors.colLayer1
             implicitWidth: messageInputField.implicitWidth
-            implicitHeight: Math.max(inputFieldRowLayout.implicitHeight + inputFieldRowLayout.anchors.topMargin + commandButtonsRow.implicitHeight + commandButtonsRow.anchors.bottomMargin + columnSpacing, 45)
+            implicitHeight: Math.max(inputFieldRowLayout.implicitHeight + inputFieldRowLayout.anchors.topMargin 
+                + commandButtonsRow.implicitHeight + commandButtonsRow.anchors.bottomMargin + columnSpacing, 45)
             clip: true
             border.color: Appearance.colors.colOutlineVariant
             border.width: 1
@@ -356,65 +357,64 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
 
                     background: null
 
-                    onTextChanged: {
-                        // Handle suggestions
-                        if (messageInputField.text.length === 0) {
-                            root.suggestionQuery = "";
-                            root.suggestionList = [];
-                            return;
-                        } else if (messageInputField.text.startsWith(`${root.commandPrefix}model`)) {
-                            root.suggestionQuery = messageInputField.text.split(" ")[1] ?? "";
+                    onTextChanged: { // Handle suggestions
+                        if(messageInputField.text.length === 0) {
+                            root.suggestionQuery = ""
+                            root.suggestionList = []
+                            return
+                        } else if(messageInputField.text.startsWith(`${root.commandPrefix}model`)) {
+                            root.suggestionQuery = messageInputField.text.split(" ")[1] ?? ""
                             const modelResults = Fuzzy.go(root.suggestionQuery, Ai.modelList.map(model => {
                                 return {
                                     name: Fuzzy.prepare(model),
-                                    obj: model
-                                };
+                                    obj: model,
+                                }
                             }), {
                                 all: true,
                                 key: "name"
-                            });
+                            })
                             root.suggestionList = modelResults.map(model => {
                                 return {
                                     name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "model ") : ""}${model.target}`,
                                     displayName: `${Ai.models[model.target].name}`,
-                                    description: `${Ai.models[model.target].description}`
-                                };
-                            });
-                        } else if (messageInputField.text.startsWith(`${root.commandPrefix}prompt`)) {
-                            root.suggestionQuery = messageInputField.text.split(" ")[1] ?? "";
+                                    description: `${Ai.models[model.target].description}`,
+                                }
+                            })
+                        } else if(messageInputField.text.startsWith(`${root.commandPrefix}prompt`)) {
+                            root.suggestionQuery = messageInputField.text.split(" ")[1] ?? ""
                             const promptFileResults = Fuzzy.go(root.suggestionQuery, Ai.promptFiles.map(file => {
                                 return {
                                     name: Fuzzy.prepare(file),
-                                    obj: file
-                                };
+                                    obj: file,
+                                }
                             }), {
                                 all: true,
                                 key: "name"
-                            });
+                            })
                             root.suggestionList = promptFileResults.map(file => {
                                 return {
                                     name: `${messageInputField.text.trim().split(" ").length == 1 ? (root.commandPrefix + "prompt ") : ""}${file.target}`,
                                     displayName: `${FileUtils.trimFileExt(FileUtils.fileNameForPath(file.target))}`,
-                                    description: `Load prompt from ${file.target}`
-                                };
-                            });
-                        } else if (messageInputField.text.startsWith(root.commandPrefix)) {
-                            root.suggestionQuery = messageInputField.text;
+                                    description: `Load prompt from ${file.target}`,
+                                }
+                            })
+                        } else if(messageInputField.text.startsWith(root.commandPrefix)) {
+                            root.suggestionQuery = messageInputField.text
                             root.suggestionList = root.allCommands.filter(cmd => cmd.name.startsWith(messageInputField.text.substring(1))).map(cmd => {
                                 return {
                                     name: `${root.commandPrefix}${cmd.name}`,
-                                    description: `${cmd.description}`
-                                };
-                            });
+                                    description: `${cmd.description}`,
+                                }
+                            })
                         }
                     }
 
                     function accept() {
-                        root.handleInput(text);
-                        text = "";
+                        root.handleInput(text)
+                        text = ""
                     }
 
-                    Keys.onPressed: event => {
+                    Keys.onPressed: (event) => {
                         if (event.key === Qt.Key_Tab) {
                             suggestions.acceptSelectedWord();
                             event.accepted = true;
@@ -427,14 +427,13 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                         } else if ((event.key === Qt.Key_Enter || event.key === Qt.Key_Return)) {
                             if (event.modifiers & Qt.ShiftModifier) {
                                 // Insert newline
-                                messageInputField.insert(messageInputField.cursorPosition, "\n");
-                                event.accepted = true;
-                            } else {
-                                // Accept text
-                                const inputText = messageInputField.text;
-                                messageInputField.clear();
-                                root.handleInput(inputText);
-                                event.accepted = true;
+                                messageInputField.insert(messageInputField.cursorPosition, "\n")
+                                event.accepted = true
+                            } else { // Accept text
+                                const inputText = messageInputField.text
+                                messageInputField.clear()
+                                root.handleInput(inputText)
+                                event.accepted = true
                             }
                         }
                     }
@@ -454,9 +453,9 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                         anchors.fill: parent
                         cursorShape: sendButton.enabled ? Qt.PointingHandCursor : Qt.ArrowCursor
                         onClicked: {
-                            const inputText = messageInputField.text;
-                            root.handleInput(inputText);
-                            messageInputField.clear();
+                            const inputText = messageInputField.text
+                            root.handleInput(inputText)
+                            messageInputField.clear()
                         }
                     }
 
@@ -484,18 +483,18 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                 property var commandsShown: [
                     {
                         name: "model",
-                        sendDirectly: false
+                        sendDirectly: false,
                     },
                     {
                         name: "clear",
-                        sendDirectly: true
-                    },
+                        sendDirectly: true,
+                    }, 
                 ]
 
                 Item {
                     implicitHeight: providerRowLayout.implicitHeight + 5 * 2
                     implicitWidth: providerRowLayout.implicitWidth + 10 * 2
-
+                    
                     RowLayout {
                         id: providerRowLayout
                         anchors.centerIn: parent
@@ -516,7 +515,8 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                         id: toolTip
                         extraVisibleCondition: false
                         alternativeVisibleCondition: mouseArea.containsMouse // Show tooltip when hovered
-                        content: StringUtils.format(qsTr("Current model: {0}\nSet it with {1}model MODEL"), Ai.getModel().name, root.commandPrefix)
+                        content: StringUtils.format(qsTr("Current model: {0}\nSet it with {1}model MODEL"), 
+                            Ai.getModel().name, root.commandPrefix)
                     }
 
                     MouseArea {
@@ -526,35 +526,35 @@ Inline w/ backslash and round brackets \\(e^{i\\pi} + 1 = 0\\)
                     }
                 }
 
-                Item {
-                    Layout.fillWidth: true
-                }
+                Item { Layout.fillWidth: true }
 
                 ButtonGroup {
                     padding: 0
 
-                    Repeater {
-                        // Command buttons
+                    Repeater { // Command buttons
                         model: commandButtonsRow.commandsShown
                         delegate: ApiCommandButton {
                             property string commandRepresentation: `${root.commandPrefix}${modelData.name}`
                             buttonText: commandRepresentation
                             onClicked: {
-                                if (modelData.sendDirectly) {
-                                    root.handleInput(commandRepresentation);
+                                if(modelData.sendDirectly) {
+                                    root.handleInput(commandRepresentation)
                                 } else {
-                                    messageInputField.text = commandRepresentation + " ";
-                                    messageInputField.cursorPosition = messageInputField.text.length;
-                                    messageInputField.forceActiveFocus();
+                                    messageInputField.text = commandRepresentation + " "
+                                    messageInputField.cursorPosition = messageInputField.text.length
+                                    messageInputField.forceActiveFocus()
                                 }
                                 if (modelData.name === "clear") {
-                                    messageInputField.text = "";
+                                    messageInputField.text = ""
                                 }
                             }
                         }
                     }
                 }
             }
+
         }
+        
     }
+
 }

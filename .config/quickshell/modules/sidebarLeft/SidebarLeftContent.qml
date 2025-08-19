@@ -20,7 +20,8 @@ Item {
     property var tabButtonList: [
         ...(Config.options.policies.ai !== 0 ? [{"icon": "auto_awesome", "name": qsTr("Intelligence")}] : []),
         {"icon": "translate", "name": qsTr("Translator")},
-        ...(Config.options.policies.weeb === 1 ? [{"icon": "wallpaper", "name": qsTr("Wallpaper")}] : [])
+        ...(Config.options.policies.weeb === 1 ? [{"icon": "wallpaper", "name": qsTr("Wallpaper")}] : []),
+        {"icon": "cpu", "name": qsTr("Performance")}
     ]
     property int selectedTab: 0
 
@@ -90,7 +91,8 @@ Item {
             contentChildren: [
                 ...(Config.options.policies.ai !== 0 ? [aiChat.createObject()] : []),
                 translator.createObject(),
-                ...(Config.options.policies.weeb === 0 ? [] : [anime.createObject()])
+                ...(Config.options.policies.weeb === 0 ? [] : [anime.createObject()]),
+                performance.createObject()
             ]
         }
 
@@ -106,6 +108,12 @@ Item {
         Component {
             id: anime
             Anime {}
+        }
+
+        Component {
+          id: performance
+
+          Performance {}
         }
         
     }
