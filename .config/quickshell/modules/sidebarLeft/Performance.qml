@@ -90,10 +90,10 @@ RowLayout {
 
         readonly property real thickness: Config.dashboard.sizes.resourceProgessThickness * primaryMult
 
-        property color fg1: Colours.palette.m3primary
-        property color fg2: Colours.palette.m3secondary
-        property color bg1: Colours.palette.m3primaryContainer
-        property color bg2: Colours.palette.m3secondaryContainer
+        property color fg1: Appearance.m3colors.m3primary
+        property color fg2: Appearance.m3colors.m3secondary
+        property color bg1: Appearance.m3colors.m3primaryContainer
+        property color bg2: Appearance.m3colors.m3secondaryContainer
 
         implicitWidth: Config.dashboard.sizes.resourceSize * primaryMult
         implicitHeight: Config.dashboard.sizes.resourceSize * primaryMult
@@ -119,7 +119,7 @@ RowLayout {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 text: res.sublabel1
-                color: Colours.palette.m3onSurface
+                color: "#E0E8EA" 
                 font.pointSize: Appearance.font.size.smaller * res.primaryMult
             }
         }
@@ -141,7 +141,7 @@ RowLayout {
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 text: res.sublabel2
-                color: Colours.palette.m3onSurfaceVariant
+                color: Appearance.m3colors.m3onSurfaceVariant
                 font.pointSize: Appearance.font.size.small * res.primaryMult
             }
         }
