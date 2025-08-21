@@ -1,6 +1,6 @@
 return {
   "mason-org/mason-lspconfig.nvim",
-  lazy = false,
+  event = "VeryLazy",
   opts = {
     ensure_installed = { "lua_ls", "vtsls", "vue_ls", "cssls", "eslint", "html", "jsonls" },
     automatic_enable = {
