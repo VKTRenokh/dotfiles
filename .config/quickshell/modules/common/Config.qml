@@ -137,7 +137,7 @@ Singleton {
             property JsonObject battery: JsonObject {
                 property int low: 20
                 property int critical: 5
-                property bool automaticSuspend: true
+                property bool automaticSuspend: false
                 property int suspend: 3
             }
 
