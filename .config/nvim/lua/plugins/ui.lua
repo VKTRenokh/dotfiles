@@ -181,7 +181,27 @@ return {
   {
     "nvim-zh/colorful-winsep.nvim",
     event = { "LazyFile" },
-    config = true,
+    enabled = false,
+    options = {
+      indicator_for_2wins = {
+        -- only work when the total of windows is two
+        position = "end", -- false to disable or choose between "center", "start", "end" and "both"
+        symbols = {
+          -- the meaning of left, down ,up, right is the position of separator
+          start_left = "",
+          end_left = "",
+          start_down = "",
+          end_down = "",
+          start_up = "",
+          end_up = "",
+          start_right = "",
+          end_right = "",
+        },
+      },
+    },
+    config = function(_, opts)
+      require("colorful-winsep").setup(opts)
+    end,
   },
   -- }}}
   -- {{{ snacks.nvim
@@ -333,6 +353,7 @@ return {
     opts = {},
   },
   -- }}}
+  -- {{{ fidget.nvim
   {
     "j-hui/fidget.nvim",
     event = "LazyFile",
@@ -343,4 +364,5 @@ return {
       },
     },
   },
+  -- }}}
 }
