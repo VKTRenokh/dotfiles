@@ -1,7 +1,7 @@
 return {
   -- {{{ mini.pairs
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     event = "LazyFile",
     enabled = false,
     opts = {
@@ -28,7 +28,7 @@ return {
   -- {{{ mini.surround
 
   {
-    "echasnovski/mini.surround",
+    "nvim-mini/mini.surround",
     keys = {
       { "sa", mode = { "v", "n" }, desc = "Add surrounding" },
       { "sd", desc = "Delete surrounding" },
@@ -46,7 +46,7 @@ return {
   -- }}}
   -- {{{ mini.ai - better vim a/i motions
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     event = "LazyFile",
     opts = function()
       local ai = require("mini.ai")
