@@ -178,7 +178,6 @@ Scope {
                             NetworkToggle {}
                             BluetoothToggle {}
                             NightLight {}
-                            GameMode {}
                             IdleInhibitor {}
                         }
 
