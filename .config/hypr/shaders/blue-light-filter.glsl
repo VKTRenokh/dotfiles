@@ -1,7 +1,8 @@
-// from https://github.com/hyprwm/Hyprland/issues/1140#issuecomment-1335128437
-
+#version 300 es
 precision highp float;
-varying vec2 v_texcoord;
+
+in vec2 v_texcoord;
+out vec4 FragColor;
 uniform sampler2D tex;
 
 const float temperature = 2600.0;
@@ -10,10 +11,7 @@ const float temperatureStrength = 0.5;
 #define WithQuickAndDirtyLuminancePreservation
 const float LuminancePreservationFactor = 1.0;
 
-// function from https://www.shadertoy.com/view/4sc3D7
-// valid from 1000 to 40000 K (and additionally 0 for pure full white)
 vec3 colorTemperatureToRGB(const in float temperature) {
-    // values from: http://blenderartists.org/forum/showthread.php?270332-OSL-Goodness&p=2268693&viewfull=1#post2268693
     mat3 m = (temperature <= 6500.0) ? mat3(vec3(0.0, -2902.1955373783176, -8257.7997278925690),
                                             vec3(0.0, 1669.5803561666639, 2575.2827530017594),
                                             vec3(1.0, 1.3302673723350029, 1.8993753891711275))
@@ -25,10 +23,8 @@ vec3 colorTemperatureToRGB(const in float temperature) {
 }
 
 void main() {
-    vec4 pixColor = texture2D(tex, v_texcoord);
-
-    // RGB
-    vec3 color = vec3(pixColor[0], pixColor[1], pixColor[2]);
+    vec4 pixColor = texture(tex, v_texcoord);
+    vec3 color = pixColor.rgb;
 
 #ifdef WithQuickAndDirtyLuminancePreservation
     color *= mix(1.0, dot(color, vec3(0.2126, 0.7152, 0.0722)) / max(dot(color, vec3(0.2126, 0.7152, 0.0722)), 1e-5),
@@ -37,7 +33,5 @@ void main() {
 
     color = mix(color, color * colorTemperatureToRGB(temperature), temperatureStrength);
 
-    vec4 outCol = vec4(color, pixColor[3]);
-
-    gl_FragColor = outCol;
+    FragColor = vec4(color, pixColor.a);
 }
