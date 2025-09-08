@@ -1,24 +1,17 @@
-import "root:/modules/common"
-import "root:/services"
-import "root:/modules/common/functions/string_utils.js" as StringUtils
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
+import qs
+import qs.services
+import qs.modules.common
+import qs.modules.common.functions
 import "./notification_utils.js" as NotificationUtils
-import Qt5Compat.GraphicalEffects
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Io
-import Quickshell.Widgets
-import Quickshell.Hyprland
-import Quickshell.Services.Notifications
 
 /**
  * A group of notifications from the same app.
  * Similar to Android's notifications
  */
-Item { // Notification group area
+MouseArea { // Notification group area
     id: root
     property var notificationGroup
     property var notifications: notificationGroup?.notifications ?? []
@@ -46,6 +39,17 @@ Item { // Notification group area
         destroyAnimation.running = true;
     }
 
+    hoverEnabled: true
+    onContainsMouseChanged: {
+        if (!root.popup) return;
+        if (root.containsMouse) root.notifications.forEach(notif => {
+            Notifications.cancelTimeout(notif.notificationId);
+        });
+        else root.notifications.forEach(notif => {
+            Notifications.timeoutNotification(notif.notificationId);
+        });
+    }
+
     SequentialAnimation { // Drag finish animation
         id: destroyAnimation
         running: false
@@ -61,7 +65,7 @@ Item { // Notification group area
         onFinished: () => {
             root.notifications.forEach((notif) => {
                 Qt.callLater(() => {
-                    Notifications.discardNotification(notif.id);
+                    Notifications.discardNotification(notif.notificationId);
                 });
             });
         }
@@ -113,7 +117,7 @@ Item { // Notification group area
         id: background
         anchors.left: parent.left
         width: parent.width
-        color: Appearance.colors.colSurfaceContainer
+        color: popup ? ColorUtils.applyAlpha(Appearance.colors.colLayer2, 1 - Appearance.backgroundTransparency) : Appearance.colors.colLayer2
         radius: Appearance.rounding.normal
         anchors.leftMargin: root.xOffset
 
@@ -208,6 +212,11 @@ Item { // Notification group area
                         expanded: root.expanded
                         fontSize: topRow.fontSize
                         onClicked: { root.toggleExpanded() }
+                        altAction: () => { root.toggleExpanded() }
+
+                        StyledToolTip {
+                            content: Translation.tr("Tip: right-clicking a group\nalso expands it")
+                        }
                     }
                 }
 

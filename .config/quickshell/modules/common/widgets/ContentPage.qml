@@ -1,12 +1,11 @@
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
-import "root:/modules/common/"
-import "root:/modules/common/widgets/"
+import qs.modules.common
+import qs.modules.common.widgets
 
-Flickable {
+StyledFlickable {
     id: root
-    property real baseWidth: 550
+    property real baseWidth: 600
     property bool forceWidth: false
     property real bottomContentPadding: 100
 
@@ -22,8 +21,9 @@ Flickable {
         anchors {
             top: parent.top
             horizontalCenter: parent.horizontalCenter
-            margins: 10
+            margins: 20
         }
-        spacing: 20
+        spacing: 30
     }
+
 }

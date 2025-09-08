@@ -1,21 +1,26 @@
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
-import Quickshell
-import Quickshell.Io
-import Quickshell.Hyprland
-import "root:/services/"
-import "root:/modules/common/"
-import "root:/modules/common/widgets/"
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
-import "root:/modules/common/functions/file_utils.js" as FileUtils
+import qs.services
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 
 Flow {
     id: root
     Layout.fillWidth: true
     spacing: 2
-    property list<var> options: []
-    property string configOptionName: ""
+    property list<var> options: [
+        {
+            "displayName": "Option 1",
+            "icon": "check",
+            "value": 1
+        },
+        {
+            "displayName": "Option 2",
+            "icon": "close",
+            "value": 2
+        },
+    ]
     property var currentValue: null
 
     signal selected(var newValue)
@@ -38,7 +43,8 @@ Flow {
             }
             leftmost: index === 0
             rightmost: index === root.options.length - 1
-            buttonText: modelData.displayName;
+            buttonIcon: modelData.icon || ""
+            buttonText: modelData.displayName
             toggled: root.currentValue === modelData.value
             onClicked: {
                 root.selected(modelData.value);

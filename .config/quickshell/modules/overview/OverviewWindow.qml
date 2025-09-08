@@ -1,17 +1,12 @@
-import "root:/"
-import "root:/services/"
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
+import qs
+import qs.services
+import qs.modules.common
+import qs.modules.common.functions
 import Qt5Compat.GraphicalEffects
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Widgets
-import Quickshell.Io
 import Quickshell.Wayland
-import Quickshell.Hyprland
 
 Item { // Window
     id: root
@@ -22,10 +17,11 @@ Item { // Window
     property var availableWorkspaceWidth
     property var availableWorkspaceHeight
     property bool restrictToWorkspace: true
-    property real initX: Math.max((windowData?.at[0] - monitorData?.reserved[0]) * root.scale, 0) + xOffset
-    property real initY: Math.max((windowData?.at[1] - monitorData?.reserved[1]) * root.scale, 0) + yOffset
+    property real initX: Math.max((windowData?.at[0] - (monitorData?.x ?? 0) - monitorData?.reserved[0]) * root.scale, 0) + xOffset
+    property real initY: Math.max((windowData?.at[1] - (monitorData?.y ?? 0) - monitorData?.reserved[1]) * root.scale, 0) + yOffset
     property real xOffset: 0
     property real yOffset: 0
+    property int widgetMonitorId: 0
     
     property var targetWindowWidth: windowData?.size[0] * scale
     property var targetWindowHeight: windowData?.size[1] * scale
@@ -42,8 +38,9 @@ Item { // Window
     
     x: initX
     y: initY
-    width: Math.round(Math.min(windowData?.size[0] * root.scale, (restrictToWorkspace ? windowData?.size[0] : availableWorkspaceWidth - x + xOffset)))
-    height: Math.round(Math.min(windowData?.size[1] * root.scale, (restrictToWorkspace ? windowData?.size[1] : availableWorkspaceHeight - y + yOffset)))
+    width: windowData?.size[0] * root.scale
+    height: windowData?.size[1] * root.scale
+    opacity: windowData.monitor == widgetMonitorId ? 1 : 0.4
 
     layer.enabled: true
     layer.effect: OpacityMask {
@@ -73,6 +70,7 @@ Item { // Window
         captureSource: GlobalStates.overviewOpen ? root.toplevel : null
         live: true
 
+        // Color overlay for interactions
         Rectangle {
             anchors.fill: parent
             radius: Appearance.rounding.windowRounding * root.scale
@@ -91,7 +89,14 @@ Item { // Window
 
             Image {
                 id: windowIcon
-                property var iconSize: Math.min(targetWindowWidth, targetWindowHeight) * (root.compactMode ? root.iconToWindowRatioCompact : root.iconToWindowRatio)
+                property var iconSize: {
+                    // console.log("-=-=-", root.toplevel.title, "-=-=-")
+                    // console.log("Target window size:", targetWindowWidth, targetWindowHeight)
+                    // console.log("Icon ratio:", root.compactMode ? root.iconToWindowRatioCompact : root.iconToWindowRatio)
+                    // console.log("Scale:", root.monitorData.scale)
+                    // console.log("Final:", Math.min(targetWindowWidth, targetWindowHeight) * (root.compactMode ? root.iconToWindowRatioCompact : root.iconToWindowRatio) / root.monitorData.scale)
+                    return Math.min(targetWindowWidth, targetWindowHeight) * (root.compactMode ? root.iconToWindowRatioCompact : root.iconToWindowRatio) / root.monitorData.scale;
+                }
                 // mipmap: true
                 Layout.alignment: Qt.AlignHCenter
                 source: root.iconPath

@@ -1,17 +1,11 @@
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/services"
-import "root:/modules/common/functions/string_utils.js" as StringUtils
-import "root:/modules/common/functions/file_utils.js" as FileUtils
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.services
+import qs.modules.common.functions
 import Qt5Compat.GraphicalEffects
-import Qt.labs.platform
 import QtQuick
-import QtQuick.Controls
-import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
-import Quickshell.Widgets
-import Quickshell.Hyprland
 
 Rectangle {
     id: root
@@ -59,7 +53,7 @@ Rectangle {
     Process {
         id: decodeImageProcess
         command: ["bash", "-c", 
-            `[ -f ${imageDecodeFilePath} ] || echo '${StringUtils.shellSingleQuoteEscape(root.entry)}' | cliphist decode > '${imageDecodeFilePath}'`
+            `[ -f ${imageDecodeFilePath} ] || echo '${StringUtils.shellSingleQuoteEscape(root.entry)}' | ${Cliphist.cliphistBinary} decode > '${imageDecodeFilePath}'`
         ]
         onExited: (exitCode, exitStatus) => {
             if (exitCode === 0) {

@@ -1,16 +1,14 @@
-import "root:/"
-import "root:/services"
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/string_utils.js" as StringUtils
+import qs
+import qs.services
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 import "../"
+import qs.services
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Quickshell.Io
 import Quickshell
-import Quickshell.Widgets
-import Quickshell.Wayland
 import Quickshell.Hyprland
 import Qt5Compat.GraphicalEffects
 
@@ -18,7 +16,6 @@ Rectangle {
     id: root
     property var responseData
     property var tagInputField
-    property var systemImages
 
     property string previewDownloadPath
     property string downloadPath
@@ -35,13 +32,13 @@ Rectangle {
 
     Component.onCompleted: {
         // Break property bind to prevent aggressive updates
-        availableWidth = parent.width;
+        availableWidth = parent.width
     }
 
     Connections {
         target: parent
         function onWidthChanged() {
-            updateWidthTimer.restart();
+            updateWidthTimer.restart()
         }
     }
 
@@ -49,7 +46,7 @@ Rectangle {
         id: updateWidthTimer
         interval: 100
         onTriggered: {
-            availableWidth = parent.width;
+            availableWidth = parent.width
         }
     }
 
@@ -58,15 +55,14 @@ Rectangle {
 
     ColumnLayout {
         id: columnLayout
-
+        
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.margins: responsePadding
         spacing: root.imageSpacing
 
-        RowLayout {
-            // Header
+        RowLayout { // Header
             Rectangle { // Provider name
                 id: providerNameWrapper
                 color: Appearance.colors.colSecondaryContainer
@@ -83,11 +79,8 @@ Rectangle {
                     text: Booru.providers[root.responseData.provider].name
                 }
             }
-            Item {
-                Layout.fillWidth: true
-            }
-            Item {
-                // Page number
+            Item { Layout.fillWidth: true }
+            Item { // Page number
                 visible: root.responseData.page != "" && root.responseData.page > 0
                 implicitWidth: Math.max(pageNumber.implicitWidth + 10 * 2, 30)
                 implicitHeight: pageNumber.implicitHeight + 5 * 2
@@ -99,17 +92,17 @@ Rectangle {
                     font.pixelSize: Appearance.font.pixelSize.smaller
                     color: Appearance.colors.colOnLayer2
                     // text: `Page ${root.responseData.page}`
-                    text: StringUtils.format(qsTr("Page {0}"), root.responseData.page)
+                    text: Translation.tr("Page %1").arg(root.responseData.page)
                 }
             }
         }
 
-        Flickable { // Tag strip
+        StyledFlickable { // Tag strip
             id: tagsFlickable
             visible: root.responseData.tags.length > 0
             Layout.alignment: Qt.AlignLeft
             Layout.fillWidth: {
-                return true;
+                return true
             }
             implicitHeight: tagRowLayout.implicitHeight
             // height: tagRowLayout.implicitHeight
@@ -144,12 +137,12 @@ Rectangle {
                         Layout.fillWidth: false
                         buttonText: modelData
                         onClicked: {
-                            if (root.tagInputField.text.length !== 0)
-                                root.tagInputField.text += " ";
-                            root.tagInputField.text += modelData;
+                            if(root.tagInputField.text.length !== 0) root.tagInputField.text += " "
+                            root.tagInputField.text += modelData
                         }
                     }
                 }
+                
             }
         }
 
@@ -163,9 +156,9 @@ Rectangle {
             wrapMode: Text.WordWrap
             Layout.margins: responsePadding
             textFormat: Text.MarkdownText
-            onLinkActivated: link => {
-                Qt.openUrlExternally(link);
-                Hyprland.dispatch("global quickshell:sidebarLeftClose");
+            onLinkActivated: (link) => {
+                Qt.openUrlExternally(link)
+                GlobalStates.sidebarLeftOpen = false
             }
             PointingHandLinkHover {}
         }
@@ -180,12 +173,10 @@ Rectangle {
                     const minRowHeight = rowTooShortThreshold;
                     const availableImageWidth = availableWidth - root.imageSpacing - (responsePadding * 2);
 
-                    console.log("responseList " + JSON.stringify(responseList));
-
                     while (i < responseList.length) {
                         let row = {
                             height: 0,
-                            images: []
+                            images: [],
                         };
                         let j = i;
                         let combinedAspect = 0;
@@ -266,14 +257,14 @@ Rectangle {
             rightPadding: 5
 
             onClicked: {
-                tagInputField.text = `${responseData.tags.join(" ")} ${parseInt(root.responseData.page) + 1}`;
-                tagInputField.accept();
+                tagInputField.text = `${responseData.tags.join(" ")} ${parseInt(root.responseData.page) + 1}`
+                tagInputField.accept()
             }
 
             buttonRadius: Appearance.rounding.small
             colBackground: Appearance.colors.colSurfaceContainerHighest
             colBackgroundHover: Appearance.colors.colSurfaceContainerHighestHover
-            colRipple: Appearance.colors.colSurfaceContainerHighestActive
+            colRipple: Appearance.colors.colSurfaceContainerHighestActive            
 
             contentItem: Item {
                 anchors.fill: parent

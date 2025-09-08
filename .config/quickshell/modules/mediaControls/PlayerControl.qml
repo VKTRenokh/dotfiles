@@ -1,20 +1,14 @@
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/services"
-import "root:/modules/common/functions/string_utils.js" as StringUtils
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
-import "root:/modules/common/functions/file_utils.js" as FileUtils
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.services
+import qs.modules.common.functions
 import Qt5Compat.GraphicalEffects
 import QtQuick
 import QtQuick.Effects
 import QtQuick.Layouts
-import QtQuick.Controls
 import Quickshell
 import Quickshell.Io
 import Quickshell.Services.Mpris
-import Quickshell.Widgets
-import Quickshell.Wayland
-import Quickshell.Hyprland
 
 Item { // Player instance
     id: playerController
@@ -23,14 +17,12 @@ Item { // Player instance
     property string artDownloadLocation: Directories.coverArt
     property string artFileName: Qt.md5(artUrl) + ".jpg"
     property string artFilePath: `${artDownloadLocation}/${artFileName}`
-    property color artDominantColor: ColorUtils.mix(colorQuantizer?.colors[0], Appearance.colors.colPrimaryContainer, 0.8) || Appearance.m3colors.m3secondaryContainer
+    property color artDominantColor: ColorUtils.mix((colorQuantizer?.colors[0] ?? Appearance.colors.colPrimary), Appearance.colors.colPrimaryContainer, 0.8) || Appearance.m3colors.m3secondaryContainer
     property bool downloaded: false
     property list<real> visualizerPoints: []
     property real maxVisualizerValue: 1000 // Max value in the data points
     property int visualizerSmoothing: 2 // Number of points to average for smoothing
-
-    implicitWidth: widgetWidth
-    implicitHeight: widgetHeight
+    property real radius
 
     component TrackChangeButton: RippleButton {
         implicitWidth: 24
@@ -116,7 +108,7 @@ Item { // Player instance
         anchors.fill: parent
         anchors.margins: Appearance.sizes.elevationMargin
         color: blendedColors.colLayer0
-        radius: root.popupRounding
+        radius: playerController.radius
 
         layer.enabled: true
         layer.effect: OpacityMask {
@@ -149,8 +141,8 @@ Item { // Player instance
 
             Rectangle {
                 anchors.fill: parent
-                color: ColorUtils.transparentize(blendedColors.colLayer0, 0.25)
-                radius: root.popupRounding
+                color: ColorUtils.transparentize(blendedColors.colLayer0, 0.3)
+                radius: playerController.radius
             }
         }
 
@@ -214,6 +206,9 @@ Item { // Player instance
                     color: blendedColors.colOnLayer0
                     elide: Text.ElideRight
                     text: StringUtils.cleanMusicTitle(playerController.player?.trackTitle) || "Untitled"
+                    animateChange: true
+                    animationDistanceX: 6
+                    animationDistanceY: 0
                 }
                 StyledText {
                     id: trackArtist
@@ -222,6 +217,9 @@ Item { // Player instance
                     color: blendedColors.colSubtext
                     elide: Text.ElideRight
                     text: playerController.player?.trackArtist
+                    animateChange: true
+                    animationDistanceX: 6
+                    animationDistanceY: 0
                 }
                 Item { Layout.fillHeight: true }
                 Item {

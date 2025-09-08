@@ -1,7 +1,7 @@
-import "root:/"
-import "root:/modules/common/"
-import "root:/modules/common/widgets"
-import "root:/services"
+import qs
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.services
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -14,7 +14,7 @@ Scope {
 
     PanelWindow {
         id: root
-        visible: (Notifications.popupList.length > 0)
+        visible: (Notifications.popupList.length > 0) && !GlobalStates.screenLocked
         screen: Quickshell.screens.find(s => s.name === Hyprland.focusedMonitor?.name) ?? null
 
         WlrLayershell.namespace: "quickshell:notificationPopup"
@@ -36,10 +36,13 @@ Scope {
 
         NotificationListView {
             id: listview
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.topMargin: 5
+            anchors {
+                top: parent.top
+                bottom: parent.bottom
+                right: parent.right
+                rightMargin: 4
+                topMargin: 4
+            }
             implicitWidth: parent.width - Appearance.sizes.elevationMargin * 2
             popup: true
         }

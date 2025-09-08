@@ -1,15 +1,12 @@
 // pragma NativeMethodBehavior: AcceptThisObject
-import "root:/"
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
-import "root:/modules/common/functions/string_utils.js" as StringUtils
-import "root:/modules/common/functions/fuzzysort.js" as Fuzzy
+import qs
+import qs.services
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
-import Quickshell.Io
 import Quickshell.Widgets
 import Quickshell.Hyprland
 
@@ -18,7 +15,7 @@ RippleButton {
     property var entry
     property string query
     property bool entryShown: entry?.shown ?? true
-    property string itemType: entry?.type
+    property string itemType: entry?.type ?? Translation.tr("App")
     property string itemName: entry?.name
     property string itemIcon: entry?.icon ?? ""
     property var itemExecute: entry?.execute
@@ -27,6 +24,21 @@ RippleButton {
     property string bigText: entry?.bigText ?? ""
     property string materialSymbol: entry?.materialSymbol ?? ""
     property string cliphistRawString: entry?.cliphistRawString ?? ""
+    
+    visible: root.entryShown
+    property int horizontalMargin: 10
+    property int buttonHorizontalPadding: 10
+    property int buttonVerticalPadding: 6
+    property bool keyboardDown: false
+
+    implicitHeight: rowLayout.implicitHeight + root.buttonVerticalPadding * 2
+    implicitWidth: rowLayout.implicitWidth + root.buttonHorizontalPadding * 2
+    buttonRadius: Appearance.rounding.normal
+    colBackground: (root.down || root.keyboardDown) ? Appearance.colors.colSecondaryContainerActive : 
+        ((root.hovered || root.focus) ? Appearance.colors.colSecondaryContainer : 
+        ColorUtils.transparentize(Appearance.colors.colSecondaryContainer, 1))
+    colBackgroundHover: Appearance.colors.colSecondaryContainer
+    colRipple: Appearance.colors.colSecondaryContainerActive
 
     property string highlightPrefix: `<u><font color="${Appearance.colors.colPrimary}">`
     property string highlightSuffix: `</font></u>`
@@ -69,20 +81,7 @@ RippleButton {
         return matches ? matches : [];
     }
     
-    visible: root.entryShown
-    property int horizontalMargin: 10
-    property int buttonHorizontalPadding: 10
-    property int buttonVerticalPadding: 5
-    property bool keyboardDown: false
-
-    implicitHeight: rowLayout.implicitHeight + root.buttonVerticalPadding * 2
-    implicitWidth: rowLayout.implicitWidth + root.buttonHorizontalPadding * 2
-    buttonRadius: Appearance.rounding.normal
-    colBackground: (root.down || root.keyboardDown) ? Appearance.colors.colLayer1Active : 
-        ((root.hovered || root.focus) ? Appearance.colors.colLayer1Hover : 
-        ColorUtils.transparentize(Appearance.colors.colSurfaceContainerHigh, 1))
-    colBackgroundHover: Appearance.colors.colLayer1Hover
-    colRipple: Appearance.colors.colLayer1Active
+    PointingHandInteraction {}
 
     background {
         anchors.fill: root
@@ -90,10 +89,9 @@ RippleButton {
         anchors.rightMargin: root.horizontalMargin
     }
 
-    PointingHandInteraction {}
     onClicked: {
+        GlobalStates.overviewOpen = false
         root.itemExecute()
-        Hyprland.dispatch("global quickshell:overviewClose")
     }
     Keys.onPressed: (event) => {
         if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
@@ -162,7 +160,7 @@ RippleButton {
             StyledText {
                 font.pixelSize: Appearance.font.pixelSize.smaller
                 color: Appearance.colors.colSubtext
-                visible: root.itemType && root.itemType != qsTr("App")
+                visible: root.itemType && root.itemType != Translation.tr("App")
                 text: root.itemType
             }
             RowLayout {
@@ -204,7 +202,7 @@ RippleButton {
                 }
             }
             Loader { // Clipboard image preview
-                active: root.cliphistRawString && /^\d+\t\[\[.*binary data.*\d+x\d+.*\]\]$/.test(root.cliphistRawString)
+                active: root.cliphistRawString && Cliphist.entryIsImage(root.cliphistRawString)
                 sourceComponent: CliphistImage {
                     Layout.fillWidth: true
                     entry: root.cliphistRawString
@@ -224,5 +222,55 @@ RippleButton {
             horizontalAlignment: Text.AlignRight
             text: root.itemClickActionName
         }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignTop
+            Layout.topMargin: root.buttonVerticalPadding
+            Layout.bottomMargin: -root.buttonVerticalPadding // Why is this necessary? Good question.
+            spacing: 4
+            Repeater {
+                model: (root.entry.actions ?? []).slice(0, 4)
+                delegate: RippleButton {
+                    id: actionButton
+                    required property var modelData
+                    property string iconName: modelData.icon
+                    property string materialIconName: modelData.materialIcon
+                    implicitHeight: 34
+                    implicitWidth: 34
+
+                    colBackgroundHover: Appearance.colors.colSecondaryContainerHover
+                    colRipple: Appearance.colors.colSecondaryContainerActive
+
+                    contentItem: Item {
+                        id: actionContentItem
+                        anchors.centerIn: parent
+                        Loader {
+                            anchors.centerIn: parent
+                            active: !(actionButton.iconName && actionButton.iconName !== "") || actionButton.materialIconName
+                            sourceComponent: MaterialSymbol {
+                                text: actionButton.materialIconName || "video_settings"
+                                font.pixelSize: Appearance.font.pixelSize.hugeass
+                                color: Appearance.m3colors.m3onSurface
+                            }
+                        }
+                        Loader {
+                            anchors.centerIn: parent
+                            active: !actionButton.materialIconName && actionButton.iconName && actionButton.iconName !== ""
+                            sourceComponent: IconImage {
+                                source: Quickshell.iconPath(actionButton.iconName)
+                                implicitSize: 20
+                            }
+                        }
+                    }
+
+                    onClicked: modelData.execute()
+
+                    StyledToolTip {
+                        content: modelData.name
+                    }
+                }
+            }
+        }
+
     }
 }

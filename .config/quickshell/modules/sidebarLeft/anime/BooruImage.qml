@@ -1,14 +1,11 @@
-import "root:/"
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/string_utils.js" as StringUtils
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
+import qs
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 import QtQml
-import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import QtQuick.Effects
 import Qt5Compat.GraphicalEffects
 import Quickshell
 import Quickshell.Io
@@ -22,8 +19,8 @@ Button {
     property string previewDownloadPath
     property string downloadPath
     property string nsfwPath
-    property string fileName: decodeURIComponent((imageData.file_url))
-    property string filePath: root.fileName
+    property string fileName: decodeURIComponent((imageData.file_url).substring((imageData.file_url).lastIndexOf('/') + 1))
+    property string filePath: `${root.previewDownloadPath}/${root.fileName}`
     property int maxTagStringLineLength: 50
     property real imageRadius: Appearance.rounding.small
 
@@ -33,13 +30,13 @@ Button {
         running: false
         command: ["bash", "-c", `[ -f ${root.filePath} ] || curl -sSL '${root.imageData.preview_url ?? root.imageData.sample_url}' -o '${root.filePath}'`]
         onExited: (exitCode, exitStatus) => {
-            imageObject.source = `${previewDownloadPath}/${root.fileName}`;
+            imageObject.source = `${previewDownloadPath}/${root.fileName}`
         }
     }
 
     Component.onCompleted: {
         if (root.manualDownload) {
-            downloadProcess.running = true;
+            downloadProcess.running = true
         }
     }
 
@@ -66,12 +63,16 @@ Button {
             anchors.fill: parent
             width: root.rowHeight * modelData.aspect_ratio
             height: root.rowHeight
-            visible: opacity > 0
-            opacity: status === Image.Ready ? 1 : 0
             fillMode: Image.PreserveAspectFit
             source: modelData.preview_url
             sourceSize.width: root.rowHeight * modelData.aspect_ratio
             sourceSize.height: root.rowHeight
+
+            visible: opacity > 0
+            opacity: status === Image.Ready ? 1 : 0
+            Behavior on opacity {
+                animation: Appearance.animation.elementMoveEnter.numberAnimation.createObject(this)
+            }
 
             layer.enabled: true
             layer.effect: OpacityMask {
@@ -80,10 +81,6 @@ Button {
                     height: root.rowHeight
                     radius: imageRadius
                 }
-            }
-
-            Behavior on opacity {
-                animation: Appearance.animation.elementMoveEnter.numberAnimation.createObject(this)
             }
         }
 
@@ -109,7 +106,7 @@ Button {
             }
 
             onClicked: {
-                root.showActions = !root.showActions;
+                root.showActions = !root.showActions
             }
         }
 
@@ -153,34 +150,36 @@ Button {
                         MenuButton {
                             id: openFileLinkButton
                             Layout.fillWidth: true
-                            buttonText: qsTr("Open file link")
+                            buttonText: Translation.tr("Open file link")
                             onClicked: {
-                                root.showActions = false;
-                                Hyprland.dispatch("keyword cursor:no_warps true");
-                                Qt.openUrlExternally(root.imageData.file_url);
-                                Hyprland.dispatch("keyword cursor:no_warps false");
+                                root.showActions = false
+                                Hyprland.dispatch("keyword cursor:no_warps true")
+                                Qt.openUrlExternally(root.imageData.file_url)
+                                Hyprland.dispatch("keyword cursor:no_warps false")
                             }
                         }
                         MenuButton {
                             id: sourceButton
                             visible: root.imageData.source && root.imageData.source.length > 0
                             Layout.fillWidth: true
-                            buttonText: StringUtils.format(qsTr("Go to source ({0})"), StringUtils.getDomain(root.imageData.source))
+                            buttonText: Translation.tr("Go to source (%1)").arg(StringUtils.getDomain(root.imageData.source))
                             enabled: root.imageData.source && root.imageData.source.length > 0
                             onClicked: {
-                                root.showActions = false;
-                                Hyprland.dispatch("keyword cursor:no_warps true");
-                                Qt.openUrlExternally(root.imageData.source);
-                                Hyprland.dispatch("keyword cursor:no_warps false");
+                                root.showActions = false
+                                Hyprland.dispatch("keyword cursor:no_warps true")
+                                Qt.openUrlExternally(root.imageData.source)
+                                Hyprland.dispatch("keyword cursor:no_warps false")
                             }
                         }
                         MenuButton {
                             id: downloadButton
                             Layout.fillWidth: true
-                            buttonText: qsTr("Download")
+                            buttonText: Translation.tr("Download")
                             onClicked: {
-                                root.showActions = false;
-                                Quickshell.execDetached(["bash", "-c", `curl '${root.imageData.file_url}' -o '${root.imageData.is_nsfw ? root.nsfwPath : root.downloadPath}/${root.fileName}' && notify-send '${qsTr("Download complete")}' '${root.downloadPath}/${root.fileName}' -a 'Shell'`]);
+                                root.showActions = false
+                                Quickshell.execDetached(["bash", "-c", 
+                                    `curl '${root.imageData.file_url}' -o '${root.imageData.is_nsfw ? root.nsfwPath : root.downloadPath}/${root.fileName}' && notify-send '${Translation.tr("Download complete")}' '${root.downloadPath}/${root.fileName}' -a 'Shell'`
+                                ])
                             }
                         }
                     }

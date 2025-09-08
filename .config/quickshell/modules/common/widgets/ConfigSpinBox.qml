@@ -1,12 +1,12 @@
-import "root:/modules/common/widgets/"
-import "root:/modules/common/"
+import qs.modules.common.widgets
+import qs.modules.common
 import QtQuick
 import QtQuick.Layouts
-import QtQuick.Controls
 
 RowLayout {
     id: root
     property string text: ""
+    property string icon
     property alias value: spinBoxWidget.value
     property alias stepSize: spinBoxWidget.stepSize
     property alias from: spinBoxWidget.from
@@ -15,12 +15,18 @@ RowLayout {
     Layout.leftMargin: 8
     Layout.rightMargin: 8
 
-    StyledText {
-        id: labelWidget
-        Layout.fillWidth: true
-        text: root.text
-        font.pixelSize: Appearance.font.pixelSize.small
-        color: Appearance.colors.colOnSecondaryContainer
+    RowLayout {
+        spacing: 10
+        OptionalMaterialSymbol {
+            icon: root.icon
+        }
+        StyledText {
+            id: labelWidget
+            Layout.fillWidth: true
+            text: root.text
+            font.pixelSize: Appearance.font.pixelSize.small
+            color: Appearance.colors.colOnSecondaryContainer
+        }
     }
 
     StyledSpinBox {

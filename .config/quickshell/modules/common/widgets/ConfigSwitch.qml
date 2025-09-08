@@ -1,17 +1,22 @@
-import "root:/modules/common/widgets/"
-import "root:/modules/common/"
+import qs.modules.common.widgets
+import qs.modules.common
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
 RippleButton {
     id: root
+    property string buttonIcon
     Layout.fillWidth: true
     implicitHeight: contentItem.implicitHeight + 8 * 2
     onClicked: checked = !checked
 
     contentItem: RowLayout {
         spacing: 10
+        OptionalMaterialSymbol {
+            icon: root.buttonIcon
+            iconSize: Appearance.font.pixelSize.larger
+        }
         StyledText {
             id: labelWidget
             Layout.fillWidth: true

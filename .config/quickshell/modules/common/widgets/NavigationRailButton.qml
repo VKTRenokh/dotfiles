@@ -1,16 +1,16 @@
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import Quickshell.Io
 
 TabButton {
     id: root
 
     property bool toggled: TabBar.tabBar.currentIndex === TabBar.index
     property string buttonIcon
+    property real buttonIconRotation: 0
     property string buttonText
     property bool expanded: false
     property bool showToggledHighlight: true
@@ -100,6 +100,7 @@ TabButton {
             }
             MaterialSymbol {
                 id: navRailButtonIcon
+                rotation: root.buttonIconRotation
                 anchors.centerIn: parent
                 iconSize: 24
                 fill: toggled ? 1 : 0

@@ -1,10 +1,10 @@
 import QtQuick
 import QtQuick.Layouts
-import "root:/modules/common/"
-import "root:/modules/common/widgets/"
+import qs.modules.common
+import qs.modules.common.widgets
 
 StyledText {
     text: "Subsection"
     color: Appearance.colors.colSubtext
-    Layout.leftMargin: 4
+    Layout.leftMargin: 2
 }

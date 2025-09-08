@@ -1,24 +1,22 @@
-import "root:/"
-import "root:/services"
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
+import qs
+import qs.services
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 import Qt5Compat.GraphicalEffects
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Effects
 import QtQuick.Layouts
-import Quickshell.Io
 import Quickshell
 import Quickshell.Widgets
 import Quickshell.Wayland
-import Quickshell.Hyprland
 
 Item {
     id: root
     property real maxWindowPreviewHeight: 200
     property real maxWindowPreviewWidth: 300
     property real windowControlsHeight: 30
+    property real buttonPadding: 5
 
     property Item lastHoveredButton
     property bool buttonHovered: false
@@ -60,9 +58,13 @@ Item {
                 if (pinnedApps.length > 0) {
                     map.set("SEPARATOR", { pinned: false, toplevels: [] });
                 }
-                
+
+                // Ignored apps
+                const ignoredRegexStrings = Config.options?.dock.ignoredAppRegexes ?? [];
+                const ignoredRegexes = ignoredRegexStrings.map(pattern => new RegExp(pattern, "i"));
                 // Open windows
                 for (const toplevel of ToplevelManager.toplevels.values) {
+                    if (ignoredRegexes.some(re => re.test(toplevel.appId))) continue;
                     if (!map.has(toplevel.appId.toLowerCase())) map.set(toplevel.appId.toLowerCase(), ({
                         pinned: false,
                         toplevels: []
@@ -83,6 +85,9 @@ Item {
             required property var modelData
             appToplevel: modelData
             appListRoot: root
+
+            topInset: Appearance.sizes.hyprlandGapsOut + root.buttonPadding
+            bottomInset: Appearance.sizes.hyprlandGapsOut + root.buttonPadding
         }
     }
 

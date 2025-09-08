@@ -1,12 +1,9 @@
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 import Qt5Compat.GraphicalEffects
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts
-import Quickshell.Io
-import Quickshell.Widgets
 
 /**
  * A button with ripple effect similar to in Material Design.
@@ -15,6 +12,7 @@ Button {
     id: root
     property bool toggled
     property string buttonText
+    property bool pointingHandCursor: true
     property real buttonRadius: Appearance?.rounding?.small ?? 4
     property real buttonRadiusPressed: buttonRadius
     property real buttonEffectiveRadius: root.down ? root.buttonRadiusPressed : root.buttonRadius
@@ -32,11 +30,12 @@ Button {
     property color colRipple: Appearance?.colors.colLayer1Active ?? "#D6CEE2"
     property color colRippleToggled: Appearance?.colors.colPrimaryActive ?? "#D6CEE2"
 
-    property color buttonColor: root.enabled ? (root.toggled ? 
+    opacity: root.enabled ? 1 : 0.4
+    property color buttonColor: ColorUtils.transparentize(root.toggled ? 
         (root.hovered ? colBackgroundToggledHover : 
             colBackgroundToggled) :
         (root.hovered ? colBackgroundHover : 
-            colBackground)) : colBackground
+            colBackground), root.enabled ? 0 : 1)
     property color rippleColor: root.toggled ? colRippleToggled : colRipple
 
     function startRipple(x, y) {
@@ -60,7 +59,7 @@ Button {
 
     MouseArea {
         anchors.fill: parent
-        cursorShape: Qt.PointingHandCursor
+        cursorShape: root.pointingHandCursor ? Qt.PointingHandCursor : Qt.ArrowCursor
         acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
         onPressed: (event) => { 
             if(event.button === Qt.RightButton) {
@@ -94,6 +93,7 @@ Button {
 
     RippleAnim {
         id: rippleFadeAnim
+        duration: rippleDuration * 2
         target: ripple
         property: "opacity"
         to: 0
@@ -134,7 +134,7 @@ Button {
     background: Rectangle {
         id: buttonBackground
         radius: root.buttonEffectiveRadius
-        implicitHeight: 50
+        implicitHeight: 30
 
         color: root.buttonColor
         Behavior on color {

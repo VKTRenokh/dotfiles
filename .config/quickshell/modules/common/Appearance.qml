@@ -1,8 +1,8 @@
-pragma Singleton
-pragma ComponentBehavior: Bound
 import QtQuick
 import Quickshell
-import "root:/modules/common/functions/color_utils.js" as ColorUtils
+import qs.modules.common.functions
+pragma Singleton
+pragma ComponentBehavior: Bound
 
 Singleton {
     id: root
@@ -15,205 +15,152 @@ Singleton {
     property QtObject sizes
     property string syntaxHighlightingTheme
 
-    // Extremely conservative transparency values for consistency and readability
-    property real transparency: Config.options?.appearance.transparency ? (m3colors.darkmode ? 0.1 : 0.07) : 0
-    property real contentTransparency: Config.options?.appearance.transparency ? (m3colors.darkmode ? 0.55 : 0.55) : 0
+    // Transparency. The quadratic functions were derived from analysis of hand-picked transparency values.
+    ColorQuantizer {
+        id: wallColorQuant
+        source: Qt.resolvedUrl(Config.options.background.wallpaperPath)
+        depth: 0 // 2^0 = 1 color
+        rescaleSize: 10
+    }
+    property real wallpaperVibrancy: (wallColorQuant.colors[0]?.hslSaturation + wallColorQuant.colors[0]?.hslLightness) / 2
+    property real autoBackgroundTransparency: { // y = 0.5768x^2 - 0.759x + 0.2896
+        let x = wallpaperVibrancy
+        let y = 0.5768 * (x * x) - 0.759 * (x) + 0.2896
+        return Math.max(0, Math.min(0.22, y))
+    }
+    property real autoContentTransparency: { // y = -10.1734x^2 + 3.4457x + 0.1872
+        let x = autoBackgroundTransparency
+        let y = -10.1734 * (x * x) + 3.4457 * (x) + 0.1872
+        return Math.max(0, Math.min(0.6, y))
+    }
+    property real backgroundTransparency: Config?.options.appearance.transparency.enable ? Config?.options.appearance.transparency.automatic ? autoBackgroundTransparency : Config?.options.appearance.transparency.backgroundTransparency : 0
+    property real contentTransparency: Config?.options.appearance.transparency.enable ? Config?.options.appearance.transparency.automatic ? autoContentTransparency : Config?.options.appearance.transparency.contentTransparency : 0
 
     m3colors: QtObject {
         property bool darkmode: false
         property bool transparent: false
-        property color m3primary_paletteKeyColor: "#6C9DAE"
-        property color m3secondary_paletteKeyColor: "#7A8B95"
-        property color m3tertiary_paletteKeyColor: "#8B9D7A"
-        property color m3neutral_paletteKeyColor: "#777B7C"
-        property color m3neutral_variant_paletteKeyColor: "#747B7D"
-        property color m3background: "#0F1419"
-        property color m3onBackground: "#E0E8EA"
-        property color m3surface: "#0F1419"
-        property color m3surfaceDim: "#0F1419"
-        property color m3surfaceBright: "#353B3D"
-        property color m3surfaceContainerLowest: "#0A0F12"
-        property color m3surfaceContainerLow: "#171D1F"
-        property color m3surfaceContainer: "#1B2123"
-        property color m3surfaceContainerHigh: "#252B2D"
-        property color m3surfaceContainerHighest: "#303638"
-        property color m3onSurface: "#E0E8EA"
-        property color m3surfaceVariant: "#404A4D"
-        property color m3onSurfaceVariant: "#C0CACF"
-        property color m3inverseSurface: "#E0E8EA"
-        property color m3inverseOnSurface: "#2E3436"
-        property color m3outline: "#8A959A"
-        property color m3outlineVariant: "#404A4D"
+        property color m3primary_paletteKeyColor: "#91689E"
+        property color m3secondary_paletteKeyColor: "#837186"
+        property color m3tertiary_paletteKeyColor: "#9D6A67"
+        property color m3neutral_paletteKeyColor: "#7C757B"
+        property color m3neutral_variant_paletteKeyColor: "#7D747D"
+        property color m3background: "#161217"
+        property color m3onBackground: "#EAE0E7"
+        property color m3surface: "#161217"
+        property color m3surfaceDim: "#161217"
+        property color m3surfaceBright: "#3D373D"
+        property color m3surfaceContainerLowest: "#110D12"
+        property color m3surfaceContainerLow: "#1F1A1F"
+        property color m3surfaceContainer: "#231E23"
+        property color m3surfaceContainerHigh: "#2D282E"
+        property color m3surfaceContainerHighest: "#383339"
+        property color m3onSurface: "#EAE0E7"
+        property color m3surfaceVariant: "#4C444D"
+        property color m3onSurfaceVariant: "#CFC3CD"
+        property color m3inverseSurface: "#EAE0E7"
+        property color m3inverseOnSurface: "#342F34"
+        property color m3outline: "#988E97"
+        property color m3outlineVariant: "#4C444D"
         property color m3shadow: "#000000"
         property color m3scrim: "#000000"
-        property color m3surfaceTint: "#A3CDE0"
-        property color m3primary: "#A3CDE0"
-        property color m3onPrimary: "#1A3A47"
-        property color m3primaryContainer: "#2F5464"
-        property color m3onPrimaryContainer: "#D4E9F5"
-        property color m3inversePrimary: "#4A7A8F"
-        property color m3secondary: "#BDC8CE"
-        property color m3onSecondary: "#283238"
-        property color m3secondaryContainer: "#3F4A50"
-        property color m3onSecondaryContainer: "#D9E4EA"
-        property color m3tertiary: "#C8D9BD"
-        property color m3onTertiary: "#2D3A28"
-        property color m3tertiaryContainer: "#44523E"
-        property color m3onTertiaryContainer: "#E4F5D9"
-        property color m3error: "#D7B8B5"
-        property color m3onError: "#43302E"
-        property color m3errorContainer: "#6A4B49"
-        property color m3onErrorContainer: "#F1E4E3"
-        property color m3primaryFixed: "#D4E9F5"
-        property color m3primaryFixedDim: "#A3CDE0"
-        property color m3onPrimaryFixed: "#032A37"
-        property color m3onPrimaryFixedVariant: "#2F5464"
-        property color m3secondaryFixed: "#D9E4EA"
-        property color m3secondaryFixedDim: "#BDC8CE"
-        property color m3onSecondaryFixed: "#131D23"
-        property color m3onSecondaryFixedVariant: "#3F4A50"
-        property color m3tertiaryFixed: "#E4F5D9"
-        property color m3tertiaryFixedDim: "#C8D9BD"
-        property color m3onTertiaryFixed: "#182513"
-        property color m3onTertiaryFixedVariant: "#44523E"
-        property color m3success: "#A8D4B8"
-        property color m3onSuccess: "#1A3523"
-        property color m3successContainer: "#2F4B39"
-        property color m3onSuccessContainer: "#C4F0D4"
-        property color term0: "#E0F0F5"
-        property color term1: "#2A6B82"
-        property color term2: "#5A8AA0"
-        property color term3: "#4A7690"
-        property color term4: "#7BA4B8"
-        property color term5: "#3A7B95"
-        property color term6: "#6EA3B7"
-        property color term7: "#1E2528"
-        property color term8: "#0A0D0F"
-        property color term9: "#2A6B82"
-        property color term10: "#5A8AA0"
-        property color term11: "#4A7690"
-        property color term12: "#7BA4B8"
-        property color term13: "#3A7B95"
-        property color term14: "#6EA3B7"
-        property color term15: "#1A2025"
+        property color m3surfaceTint: "#E5B6F2"
+        property color m3primary: "#E5B6F2"
+        property color m3onPrimary: "#452152"
+        property color m3primaryContainer: "#5D386A"
+        property color m3onPrimaryContainer: "#F9D8FF"
+        property color m3inversePrimary: "#775084"
+        property color m3secondary: "#D5C0D7"
+        property color m3onSecondary: "#392C3D"
+        property color m3secondaryContainer: "#534457"
+        property color m3onSecondaryContainer: "#F2DCF3"
+        property color m3tertiary: "#F5B7B3"
+        property color m3onTertiary: "#4C2523"
+        property color m3tertiaryContainer: "#BA837F"
+        property color m3onTertiaryContainer: "#000000"
+        property color m3error: "#FFB4AB"
+        property color m3onError: "#690005"
+        property color m3errorContainer: "#93000A"
+        property color m3onErrorContainer: "#FFDAD6"
+        property color m3primaryFixed: "#F9D8FF"
+        property color m3primaryFixedDim: "#E5B6F2"
+        property color m3onPrimaryFixed: "#2E0A3C"
+        property color m3onPrimaryFixedVariant: "#5D386A"
+        property color m3secondaryFixed: "#F2DCF3"
+        property color m3secondaryFixedDim: "#D5C0D7"
+        property color m3onSecondaryFixed: "#241727"
+        property color m3onSecondaryFixedVariant: "#514254"
+        property color m3tertiaryFixed: "#FFDAD7"
+        property color m3tertiaryFixedDim: "#F5B7B3"
+        property color m3onTertiaryFixed: "#331110"
+        property color m3onTertiaryFixedVariant: "#663B39"
+        property color m3success: "#B5CCBA"
+        property color m3onSuccess: "#213528"
+        property color m3successContainer: "#374B3E"
+        property color m3onSuccessContainer: "#D1E9D6"
+        property color term0: "#EDE4E4"
+        property color term1: "#B52755"
+        property color term2: "#A97363"
+        property color term3: "#AF535D"
+        property color term4: "#A67F7C"
+        property color term5: "#B2416B"
+        property color term6: "#8D76AD"
+        property color term7: "#272022"
+        property color term8: "#0E0D0D"
+        property color term9: "#B52755"
+        property color term10: "#A97363"
+        property color term11: "#AF535D"
+        property color term12: "#A67F7C"
+        property color term13: "#B2416B"
+        property color term14: "#8D76AD"
+        property color term15: "#221A1A"
     }
-
-    // TODO: create theme switcher ?
-    //
-    // m3colors: QtObject {
-    //     property bool darkmode: false
-    //     property bool transparent: false
-    //     property color m3primary_paletteKeyColor: "#91689E"
-    //     property color m3secondary_paletteKeyColor: "#837186"
-    //     property color m3tertiary_paletteKeyColor: "#9D6A67"
-    //     property color m3neutral_paletteKeyColor: "#7C757B"
-    //     property color m3neutral_variant_paletteKeyColor: "#7D747D"
-    //     property color m3background: "#161217"
-    //     property color m3onBackground: "#EAE0E7"
-    //     property color m3surface: "#161217"
-    //     property color m3surfaceDim: "#161217"
-    //     property color m3surfaceBright: "#3D373D"
-    //     property color m3surfaceContainerLowest: "#110D12"
-    //     property color m3surfaceContainerLow: "#1F1A1F"
-    //     property color m3surfaceContainer: "#231E23"
-    //     property color m3surfaceContainerHigh: "#2D282E"
-    //     property color m3surfaceContainerHighest: "#383339"
-    //     property color m3onSurface: "#EAE0E7"
-    //     property color m3surfaceVariant: "#4C444D"
-    //     property color m3onSurfaceVariant: "#CFC3CD"
-    //     property color m3inverseSurface: "#EAE0E7"
-    //     property color m3inverseOnSurface: "#342F34"
-    //     property color m3outline: "#988E97"
-    //     property color m3outlineVariant: "#4C444D"
-    //     property color m3shadow: "#000000"
-    //     property color m3scrim: "#000000"
-    //     property color m3surfaceTint: "#E5B6F2"
-    //     property color m3primary: "#E5B6F2"
-    //     property color m3onPrimary: "#452152"
-    //     property color m3primaryContainer: "#5D386A"
-    //     property color m3onPrimaryContainer: "#F9D8FF"
-    //     property color m3inversePrimary: "#775084"
-    //     property color m3secondary: "#D5C0D7"
-    //     property color m3onSecondary: "#392C3D"
-    //     property color m3secondaryContainer: "#534457"
-    //     property color m3onSecondaryContainer: "#F2DCF3"
-    //     property color m3tertiary: "#F5B7B3"
-    //     property color m3onTertiary: "#4C2523"
-    //     property color m3tertiaryContainer: "#BA837F"
-    //     property color m3onTertiaryContainer: "#000000"
-    //     property color m3error: "#FFB4AB"
-    //     property color m3onError: "#690005"
-    //     property color m3errorContainer: "#93000A"
-    //     property color m3onErrorContainer: "#FFDAD6"
-    //     property color m3primaryFixed: "#F9D8FF"
-    //     property color m3primaryFixedDim: "#E5B6F2"
-    //     property color m3onPrimaryFixed: "#2E0A3C"
-    //     property color m3onPrimaryFixedVariant: "#5D386A"
-    //     property color m3secondaryFixed: "#F2DCF3"
-    //     property color m3secondaryFixedDim: "#D5C0D7"
-    //     property color m3onSecondaryFixed: "#241727"
-    //     property color m3onSecondaryFixedVariant: "#514254"
-    //     property color m3tertiaryFixed: "#FFDAD7"
-    //     property color m3tertiaryFixedDim: "#F5B7B3"
-    //     property color m3onTertiaryFixed: "#331110"
-    //     property color m3onTertiaryFixedVariant: "#663B39"
-    //     property color m3success: "#B5CCBA"
-    //     property color m3onSuccess: "#213528"
-    //     property color m3successContainer: "#374B3E"
-    //     property color m3onSuccessContainer: "#D1E9D6"
-    //     property color term0: "#EDE4E4"
-    //     property color term1: "#B52755"
-    //     property color term2: "#A97363"
-    //     property color term3: "#AF535D"
-    //     property color term4: "#A67F7C"
-    //     property color term5: "#B2416B"
-    //     property color term6: "#8D76AD"
-    //     property color term7: "#272022"
-    //     property color term8: "#0E0D0D"
-    //     property color term9: "#B52755"
-    //     property color term10: "#A97363"
-    //     property color term11: "#AF535D"
-    //     property color term12: "#A67F7C"
-    //     property color term13: "#B2416B"
-    //     property color term14: "#8D76AD"
-    //     property color term15: "#221A1A"
-    // }
 
     colors: QtObject {
         property color colSubtext: m3colors.m3outline
-        property color colLayer0: ColorUtils.mix(ColorUtils.transparentize(m3colors.m3background, root.transparency), m3colors.m3primary, Config.options.appearance.extraBackgroundTint ? 0.97 : 1)
+        property color colLayer0: ColorUtils.mix(ColorUtils.transparentize(m3colors.m3background, root.backgroundTransparency), m3colors.m3primary, Config.options.appearance.extraBackgroundTint ? 0.99 : 1)
         property color colOnLayer0: m3colors.m3onBackground
         property color colLayer0Hover: ColorUtils.transparentize(ColorUtils.mix(colLayer0, colOnLayer0, 0.9, root.contentTransparency))
         property color colLayer0Active: ColorUtils.transparentize(ColorUtils.mix(colLayer0, colOnLayer0, 0.8, root.contentTransparency))
-        property color colLayer1: ColorUtils.transparentize(ColorUtils.mix(m3colors.m3surfaceContainerLow, m3colors.m3background, 0.8), root.contentTransparency)
-        property color colOnLayer1: m3colors.m3onSurfaceVariant
-        property color colOnLayer1Inactive: ColorUtils.mix(colOnLayer1, colLayer1, 0.45)
-        property color colLayer2: ColorUtils.transparentize(ColorUtils.mix(m3colors.m3surfaceContainer, m3colors.m3surfaceContainerHigh, 0.1), root.contentTransparency)
-        property color colOnLayer2: m3colors.m3onSurface
-        property color colOnLayer2Disabled: ColorUtils.mix(colOnLayer2, m3colors.m3background, 0.4)
-        property color colLayer3: ColorUtils.transparentize(ColorUtils.mix(m3colors.m3surfaceContainerHigh, m3colors.m3onSurface, 0.96), root.contentTransparency)
-        property color colOnLayer3: m3colors.m3onSurface
+        property color colLayer0Border: ColorUtils.mix(root.m3colors.m3outlineVariant, colLayer0, 0.4)
+        property color colLayer1: ColorUtils.transparentize(m3colors.m3surfaceContainerLow, root.contentTransparency);
+        property color colOnLayer1: m3colors.m3onSurfaceVariant;
+        property color colOnLayer1Inactive: ColorUtils.mix(colOnLayer1, colLayer1, 0.45);
+        property color colLayer2: ColorUtils.transparentize(m3colors.m3surfaceContainer, root.contentTransparency)
+        property color colOnLayer2: m3colors.m3onSurface;
+        property color colOnLayer2Disabled: ColorUtils.mix(colOnLayer2, m3colors.m3background, 0.4);
         property color colLayer1Hover: ColorUtils.transparentize(ColorUtils.mix(colLayer1, colOnLayer1, 0.92), root.contentTransparency)
-        property color colLayer1Active: ColorUtils.transparentize(ColorUtils.mix(colLayer1, colOnLayer1, 0.85), root.contentTransparency)
+        property color colLayer1Active: ColorUtils.transparentize(ColorUtils.mix(colLayer1, colOnLayer1, 0.85), root.contentTransparency);
         property color colLayer2Hover: ColorUtils.transparentize(ColorUtils.mix(colLayer2, colOnLayer2, 0.90), root.contentTransparency)
-        property color colLayer2Active: ColorUtils.transparentize(ColorUtils.mix(colLayer2, colOnLayer2, 0.80), root.contentTransparency)
-        property color colLayer2Disabled: ColorUtils.transparentize(ColorUtils.mix(colLayer2, m3colors.m3background, 0.8), root.contentTransparency)
+        property color colLayer2Active: ColorUtils.transparentize(ColorUtils.mix(colLayer2, colOnLayer2, 0.80), root.contentTransparency);
+        property color colLayer2Disabled: ColorUtils.transparentize(ColorUtils.mix(colLayer2, m3colors.m3background, 0.8), root.contentTransparency);
+        property color colLayer3: ColorUtils.transparentize(m3colors.m3surfaceContainerHigh, root.contentTransparency)
+        property color colOnLayer3: m3colors.m3onSurface;
         property color colLayer3Hover: ColorUtils.transparentize(ColorUtils.mix(colLayer3, colOnLayer3, 0.90), root.contentTransparency)
-        property color colLayer3Active: ColorUtils.transparentize(ColorUtils.mix(colLayer3, colOnLayer3, 0.80), root.contentTransparency)
+        property color colLayer3Active: ColorUtils.transparentize(ColorUtils.mix(colLayer3, colOnLayer3, 0.80), root.contentTransparency);
+        property color colLayer4: ColorUtils.transparentize(m3colors.m3surfaceContainerHighest, root.contentTransparency)
+        property color colOnLayer4: m3colors.m3onSurface;
+        property color colLayer4Hover: ColorUtils.transparentize(ColorUtils.mix(colLayer4, colOnLayer4, 0.90), root.contentTransparency)
+        property color colLayer4Active: ColorUtils.transparentize(ColorUtils.mix(colLayer4, colOnLayer4, 0.80), root.contentTransparency);
         property color colPrimary: m3colors.m3primary
         property color colOnPrimary: m3colors.m3onPrimary
         property color colPrimaryHover: ColorUtils.mix(colors.colPrimary, colLayer1Hover, 0.87)
         property color colPrimaryActive: ColorUtils.mix(colors.colPrimary, colLayer1Active, 0.7)
         property color colPrimaryContainer: m3colors.m3primaryContainer
-        property color colPrimaryContainerHover: ColorUtils.mix(colors.colPrimaryContainer, colLayer1Hover, 0.7)
-        property color colPrimaryContainerActive: ColorUtils.mix(colors.colPrimaryContainer, colLayer1Active, 0.6)
+        property color colPrimaryContainerHover: ColorUtils.mix(colors.colPrimaryContainer, colors.colOnPrimaryContainer, 0.9)
+        property color colPrimaryContainerActive: ColorUtils.mix(colors.colPrimaryContainer, colors.colOnPrimaryContainer, 0.8)
         property color colOnPrimaryContainer: m3colors.m3onPrimaryContainer
         property color colSecondary: m3colors.m3secondary
         property color colSecondaryHover: ColorUtils.mix(m3colors.m3secondary, colLayer1Hover, 0.85)
         property color colSecondaryActive: ColorUtils.mix(m3colors.m3secondary, colLayer1Active, 0.4)
         property color colSecondaryContainer: m3colors.m3secondaryContainer
         property color colSecondaryContainerHover: ColorUtils.mix(m3colors.m3secondaryContainer, m3colors.m3onSecondaryContainer, 0.90)
-        property color colSecondaryContainerActive: ColorUtils.mix(m3colors.m3secondaryContainer, colLayer1Active, 0.54)
+        property color colSecondaryContainerActive: ColorUtils.mix(m3colors.m3secondaryContainer, m3colors.m3onSecondaryContainer, 0.54)
+        property color colTertiary: m3colors.m3tertiary
+        property color colTertiaryHover: ColorUtils.mix(m3colors.m3tertiary, colLayer1Hover, 0.85)
+        property color colTertiaryActive: ColorUtils.mix(m3colors.m3tertiary, colLayer1Active, 0.4)
+        property color colTertiaryContainer: m3colors.m3tertiaryContainer
+        property color colTertiaryContainerHover: ColorUtils.mix(m3colors.m3tertiaryContainer, m3colors.m3onTertiaryContainer, 0.90)
+        property color colTertiaryContainerActive: ColorUtils.mix(m3colors.m3tertiaryContainer, colLayer1Active, 0.54)
         property color colOnSecondaryContainer: m3colors.m3onSecondaryContainer
         property color colSurfaceContainerLow: ColorUtils.transparentize(m3colors.m3surfaceContainerLow, root.contentTransparency)
         property color colSurfaceContainer: ColorUtils.transparentize(m3colors.m3surfaceContainer, root.contentTransparency)
@@ -221,11 +168,22 @@ Singleton {
         property color colSurfaceContainerHighest: ColorUtils.transparentize(m3colors.m3surfaceContainerHighest, root.contentTransparency)
         property color colSurfaceContainerHighestHover: ColorUtils.mix(m3colors.m3surfaceContainerHighest, m3colors.m3onSurface, 0.95)
         property color colSurfaceContainerHighestActive: ColorUtils.mix(m3colors.m3surfaceContainerHighest, m3colors.m3onSurface, 0.85)
-        property color colTooltip: m3colors.darkmode ? ColorUtils.mix(m3colors.m3background, "#3C4043", 0.5) : "#3C4043" // m3colors.m3inverseSurface in the specs, but the m3 website actually uses #3C4043
-        property color colOnTooltip: "#F8F9FA" // m3colors.m3inverseOnSurface in the specs, but the m3 website actually uses this color
+        property color colOnSurface: m3colors.m3onSurface
+        property color colOnSurfaceVariant: m3colors.m3onSurfaceVariant
+        property color colTooltip: m3colors.m3inverseSurface
+        property color colOnTooltip: m3colors.m3inverseOnSurface
         property color colScrim: ColorUtils.transparentize(m3colors.m3scrim, 0.5)
         property color colShadow: ColorUtils.transparentize(m3colors.m3shadow, 0.7)
+        property color colOutline: m3colors.m3outline
         property color colOutlineVariant: m3colors.m3outlineVariant
+        property color colError: m3colors.m3error
+        property color colErrorHover: ColorUtils.mix(m3colors.m3error, colLayer1Hover, 0.85)
+        property color colErrorActive: ColorUtils.mix(m3colors.m3error, colLayer1Active, 0.7)
+        property color colOnError: m3colors.m3onError
+        property color colErrorContainer: m3colors.m3errorContainer
+        property color colErrorContainerHover: ColorUtils.mix(m3colors.m3errorContainer, m3colors.m3onErrorContainer, 0.90)
+        property color colErrorContainerActive: ColorUtils.mix(m3colors.m3errorContainer, m3colors.m3onErrorContainer, 0.70)
+        property color colOnErrorContainer: m3colors.m3onErrorContainer
     }
 
     rounding: QtObject {
@@ -243,12 +201,12 @@ Singleton {
 
     font: QtObject {
         property QtObject family: QtObject {
-            property string main: "Victor Mono Nerd Font"
+           property string main: "Victor Mono Nerd Font"
             property string title: "Victor Mono Nerd Font"
             property string iconMaterial: "Material Icons Round"
             property string iconNerd: "Victor Mono Nerd Font"
             property string monospace: "Victor Mono Nerd Font"
-            property string reading: "Victor Mono Nerd Font"
+            property string reading: "Victor Mono Nerd Font" 
         }
         property QtObject pixelSize: QtObject {
             property int smallest: 10
@@ -334,37 +292,30 @@ Singleton {
             property int type: Easing.BezierSpline
             property list<real> bezierCurve: animationCurves.expressiveEffects
             property int velocity: 850
-            property Component colorAnimation: Component {
-                ColorAnimation {
+            property Component colorAnimation: Component { ColorAnimation {
+                duration: root.animation.elementMoveFast.duration
+                easing.type: root.animation.elementMoveFast.type
+                easing.bezierCurve: root.animation.elementMoveFast.bezierCurve
+            }}
+            property Component numberAnimation: Component { NumberAnimation {
                     duration: root.animation.elementMoveFast.duration
                     easing.type: root.animation.elementMoveFast.type
                     easing.bezierCurve: root.animation.elementMoveFast.bezierCurve
-                }
-            }
-            property Component numberAnimation: Component {
-                NumberAnimation {
-                    duration: root.animation.elementMoveFast.duration
-                    easing.type: root.animation.elementMoveFast.type
-                    easing.bezierCurve: root.animation.elementMoveFast.bezierCurve
-                }
-            }
+            }}
         }
-
         property QtObject clickBounce: QtObject {
             property int duration: 200
             property int type: Easing.BezierSpline
             property list<real> bezierCurve: animationCurves.expressiveFastSpatial
             property int velocity: 850
-            property Component numberAnimation: Component {
-                NumberAnimation {
+            property Component numberAnimation: Component { NumberAnimation {
                     duration: root.animation.clickBounce.duration
                     easing.type: root.animation.clickBounce.type
                     easing.bezierCurve: root.animation.clickBounce.bezierCurve
-                }
-            }
+            }}
         }
         property QtObject scroll: QtObject {
-            property int duration: 400
+            property int duration: 200
             property int type: Easing.BezierSpline
             property list<real> bezierCurve: animationCurves.standardDecel
         }
@@ -376,25 +327,33 @@ Singleton {
 
     sizes: QtObject {
         property real baseBarHeight: 40
-        property real barHeight: Config.options.bar.cornerStyle === 1 ? (baseBarHeight + Appearance.sizes.hyprlandGapsOut * 2) : baseBarHeight
+        property real barHeight: Config.options.bar.cornerStyle === 1 ? 
+            (baseBarHeight + root.sizes.hyprlandGapsOut * 2) : baseBarHeight
         property real barCenterSideModuleWidth: Config.options?.bar.verbose ? 360 : 140
         property real barCenterSideModuleWidthShortened: 280
         property real barCenterSideModuleWidthHellaShortened: 190
         property real barShortenScreenWidthThreshold: 1200 // Shorten if screen width is at most this value
         property real barHellaShortenScreenWidthThreshold: 1000 // Shorten even more...
-        property real sidebarWidth: 460
-        property real sidebarWidthExtended: 750
-        property real osdWidth: 200
-        property real mediaControlsWidth: 440
-        property real mediaControlsHeight: 160
-        property real notificationPopupWidth: 410
-        property real searchWidthCollapsed: 260
-        property real searchWidth: 450
-        property real hyprlandGapsOut: 5
         property real elevationMargin: 10
         property real fabShadowRadius: 5
         property real fabHoveredShadowRadius: 7
+        property real hyprlandGapsOut: 5
+        property real mediaControlsWidth: 440
+        property real mediaControlsHeight: 160
+        property real notificationPopupWidth: 410
+        property real osdWidth: 200
+        property real searchWidthCollapsed: 260
+        property real searchWidth: 450
+        property real sidebarWidth: 460
+        property real sidebarWidthExtended: 750
+        property real baseVerticalBarWidth: 46
+        property real verticalBarWidth: Config.options.bar.cornerStyle === 1 ? 
+            (baseVerticalBarWidth + root.sizes.hyprlandGapsOut * 2) : baseVerticalBarWidth
+        property real wallpaperSelectorWidth: 1200
+        property real wallpaperSelectorHeight: 690
+        property real wallpaperSelectorItemMargins: 8
+        property real wallpaperSelectorItemPadding: 6
     }
 
-    syntaxHighlightingTheme: Appearance.m3colors.darkmode ? "Monokai" : "ayu Light"
+    syntaxHighlightingTheme: root.m3colors.darkmode ? "Monokai" : "ayu Light"
 }

@@ -1,17 +1,14 @@
-import "root:/"
-import "root:/services/"
-import "root:/modules/common"
-import "root:/modules/common/widgets"
-import "root:/modules/common/functions/string_utils.js" as StringUtils
+import qs
+import qs.services
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.common.functions
 import Qt5Compat.GraphicalEffects
-import Qt.labs.platform
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Effects
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
-import Quickshell.Hyprland
 
 Item { // Wrapper
     id: root
@@ -29,9 +26,9 @@ Item { // Wrapper
     }
 
     function cancelSearch() {
-        searchInput.selectAll()
-        root.searchingText = ""
-        searchWidthBehavior.enabled = true; 
+        searchInput.selectAll();
+        root.searchingText = "";
+        searchWidthBehavior.enabled = true;
     }
 
     function setSearchingText(text) {
@@ -41,48 +38,74 @@ Item { // Wrapper
 
     property var searchActions: [
         {
-            action: "img", 
-            execute: () => {
-                executor.executeCommand(Directories.wallpaperSwitchScriptPath)
+            action: "accentcolor",
+            execute: args => {
+                Quickshell.execDetached([Directories.wallpaperSwitchScriptPath, "--noswitch", "--color", ...(args != '' ? [`${args}`] : [])]);
             }
         },
         {
             action: "dark",
             execute: () => {
-                executor.executeCommand(`${Directories.wallpaperSwitchScriptPath} --mode dark --noswitch`)
+                Quickshell.execDetached([Directories.wallpaperSwitchScriptPath, "--mode", "dark", "--noswitch"]);
+            }
+        },
+        {
+            action: "konachanwallpaper",
+            execute: () => {
+                Quickshell.execDetached([Quickshell.shellPath("scripts/colors/random_konachan_wall.sh")]);
             }
         },
         {
             action: "light",
             execute: () => {
-                executor.executeCommand(`${Directories.wallpaperSwitchScriptPath} --mode light --noswitch`)
+                Quickshell.execDetached([Directories.wallpaperSwitchScriptPath, "--mode", "light", "--noswitch"]);
             }
         },
         {
-            action: "accentcolor",
-            execute: (args) => {
-                executor.executeCommand(
-                    `${Directories.wallpaperSwitchScriptPath} --noswitch --color ${args != '' ? ("'"+args+"'") : ""}`
-                )
+            action: "superpaste",
+            execute: args => {
+                if (!/^(\d+)/.test(args.trim())) { // Invalid if doesn't start with numbers
+                    Quickshell.execDetached([
+                        "notify-send", 
+                        Translation.tr("Superpaste"), 
+                        Translation.tr("Usage: <tt>%1superpaste NUM_OF_ENTRIES[i]</tt>\nSupply <tt>i</tt> when you want images\nExamples:\n<tt>%1superpaste 4i</tt> for the last 4 images\n<tt>%1superpaste 7</tt> for the last 7 entries").arg(Config.options.search.prefix.action),
+                        "-a", "Shell"
+                    ]);
+                    return;
+                }
+                const syntaxMatch = /^(?:(\d+)(i)?)/.exec(args.trim());
+                const count = syntaxMatch[1] ? parseInt(syntaxMatch[1]) : 1;
+                const isImage = !!syntaxMatch[2];
+                Cliphist.superpaste(count, isImage);
             }
         },
         {
             action: "todo",
-            execute: (args) => {
-                Todo.addTask(args)
+            execute: args => {
+                Todo.addTask(args);
+            }
+        },
+        {
+            action: "wallpaper",
+            execute: () => {
+                GlobalStates.wallpaperSelectorOpen = true;
             }
         },
     ]
 
-    function focusFirstItemIfNeeded() {
-        if (searchInput.focus) appResults.currentIndex = 0; // Focus the first item
+    function focusFirstItem() {
+        appResults.currentIndex = 0;
     }
 
     Timer {
         id: nonAppResultsTimer
         interval: Config.options.search.nonAppResultDelay
         onTriggered: {
-            mathProcess.calculateExpression(root.searchingText);
+            let expr = root.searchingText;
+            if (expr.startsWith(Config.options.search.prefix.math)) {
+                expr = expr.slice(Config.options.search.prefix.math.length);
+            }
+            mathProcess.calculateExpression(expr);
         }
     }
 
@@ -90,32 +113,22 @@ Item { // Wrapper
         id: mathProcess
         property list<string> baseCommand: ["qalc", "-t"]
         function calculateExpression(expression) {
-            mathProcess.running = false
-            mathProcess.command = baseCommand.concat(expression)
-            mathProcess.running = true
+            mathProcess.running = false;
+            mathProcess.command = baseCommand.concat(expression);
+            mathProcess.running = true;
         }
         stdout: SplitParser {
             onRead: data => {
-                root.mathResult = data
-                root.focusFirstItemIfNeeded()
+                root.mathResult = data;
+                root.focusFirstItem();
             }
         }
     }
 
-    Process {
-        id: executor
-        property list<string> baseCommand: ["bash", "-c"]
-        function executeCommand(command) {
-            executor.command = baseCommand.concat(
-                `${command}`
-            )
-            executor.startDetached()
-        }
-    }
-
-    Keys.onPressed: (event) => {
+    Keys.onPressed: event => {
         // Prevent Esc and Backspace from registering
-        if (event.key === Qt.Key_Escape) return;
+        if (event.key === Qt.Key_Escape)
+            return;
 
         // Handle Backspace: focus and delete character if not focused
         if (event.key === Qt.Key_Backspace) {
@@ -136,8 +149,7 @@ Item { // Wrapper
                 } else {
                     // Delete character before cursor if any
                     if (searchInput.cursorPosition > 0) {
-                        searchInput.text = searchInput.text.slice(0, searchInput.cursorPosition - 1) +
-                            searchInput.text.slice(searchInput.cursorPosition);
+                        searchInput.text = searchInput.text.slice(0, searchInput.cursorPosition - 1) + searchInput.text.slice(searchInput.cursorPosition);
                         searchInput.cursorPosition -= 1;
                     }
                 }
@@ -150,19 +162,12 @@ Item { // Wrapper
         }
 
         // Only handle visible printable characters (ignore control chars, arrows, etc.)
-        if (
-            event.text &&
-            event.text.length === 1 &&
-            event.key !== Qt.Key_Enter &&
-            event.key !== Qt.Key_Return &&
-            event.text.charCodeAt(0) >= 0x20 // ignore control chars like Backspace, Tab, etc.
-        ) {
+        if (event.text && event.text.length === 1 && event.key !== Qt.Key_Enter && event.key !== Qt.Key_Return && event.text.charCodeAt(0) >= 0x20) // ignore control chars like Backspace, Tab, etc.
+        {
             if (!searchInput.activeFocus) {
                 searchInput.forceActiveFocus();
                 // Insert the character at the cursor position
-                searchInput.text = searchInput.text.slice(0, searchInput.cursorPosition) +
-                                event.text +
-                                searchInput.text.slice(searchInput.cursorPosition);
+                searchInput.text = searchInput.text.slice(0, searchInput.cursorPosition) + event.text + searchInput.text.slice(searchInput.cursorPosition);
                 searchInput.cursorPosition += 1;
                 event.accepted = true;
             }
@@ -180,7 +185,7 @@ Item { // Wrapper
         radius: Appearance.rounding.large
         color: Appearance.colors.colLayer0
         border.width: 1
-        border.color: Appearance.m3colors.m3outlineVariant
+        border.color: Appearance.colors.colLayer0Border
 
         ColumnLayout {
             id: columnLayout
@@ -222,7 +227,7 @@ Item { // Wrapper
                     color: activeFocus ? Appearance.m3colors.m3onSurface : Appearance.m3colors.m3onSurfaceVariant
                     selectedTextColor: Appearance.m3colors.m3onSecondaryContainer
                     selectionColor: Appearance.colors.colSecondaryContainer
-                    placeholderText: qsTr("Search, calculate or run")
+                    placeholderText: Translation.tr("Search, calculate or run")
                     placeholderTextColor: Appearance.m3colors.m3outline
                     implicitWidth: root.searchingText == "" ? Appearance.sizes.searchWidthCollapsed : Appearance.sizes.searchWidth
 
@@ -258,7 +263,8 @@ Item { // Wrapper
                 }
             }
 
-            Rectangle { // Separator
+            Rectangle {
+                // Separator
                 visible: root.showResults
                 Layout.fillWidth: true
                 height: 1
@@ -275,10 +281,11 @@ Item { // Wrapper
                 bottomMargin: 10
                 spacing: 2
                 KeyNavigation.up: searchBar
-                highlightMoveDuration : 100
+                highlightMoveDuration: 100
 
                 onFocusChanged: {
-                    if(focus) appResults.currentIndex = 1;
+                    if (focus)
+                        appResults.currentIndex = 1;
                 }
 
                 Connections {
@@ -291,28 +298,49 @@ Item { // Wrapper
 
                 model: ScriptModel {
                     id: model
-                    values: { // Search results are handled here
+                    onValuesChanged: {
+                        root.focusFirstItem();
+                    }
+                    values: {
+                        // Search results are handled here
                         ////////////////// Skip? //////////////////
-                        if(root.searchingText == "") return [];
+                        if (root.searchingText == "")
+                            return [];
 
                         ///////////// Special cases ///////////////
-                        if (root.searchingText.startsWith(Config.options.search.prefix.clipboard)) { // Clipboard
+                        if (root.searchingText.startsWith(Config.options.search.prefix.clipboard)) {
+                            // Clipboard
                             const searchString = root.searchingText.slice(Config.options.search.prefix.clipboard.length);
                             return Cliphist.fuzzyQuery(searchString).map(entry => {
                                 return {
                                     cliphistRawString: entry,
-                                    name: entry.replace(/^\s*\S+\s+/, ""),
+                                    name: StringUtils.cleanCliphistEntry(entry),
                                     clickActionName: "",
                                     type: `#${entry.match(/^\s*(\S+)/)?.[1] || ""}`,
                                     execute: () => {
-                                        Quickshell.execDetached(
-                                            ["bash", "-c", `echo '${StringUtils.shellSingleQuoteEscape(entry)}' | cliphist decode | wl-copy`]
-                                        );
-                                    }
+                                        Cliphist.copy(entry)
+                                    },
+                                    actions: [
+                                        {
+                                            name: "Copy",
+                                            materialIcon: "content_copy",
+                                            execute: () => {
+                                                Cliphist.copy(entry);
+                                            }
+                                        },
+                                        {
+                                            name: "Delete",
+                                            materialIcon: "delete",
+                                            execute: () => {
+                                                Cliphist.deleteEntry(entry);
+                                            }
+                                        }
+                                    ]
                                 };
                             }).filter(Boolean);
-                        } 
-                        if (root.searchingText.startsWith(Config.options.search.prefix.emojis)) { // Clipboard
+                        }
+                        else if (root.searchingText.startsWith(Config.options.search.prefix.emojis)) {
+                            // Clipboard
                             const searchString = root.searchingText.slice(Config.options.search.prefix.emojis.length);
                             return Emojis.fuzzyQuery(searchString).map(entry => {
                                 return {
@@ -322,108 +350,115 @@ Item { // Wrapper
                                     clickActionName: "",
                                     type: "Emoji",
                                     execute: () => {
-                                        Quickshell.clipboardText = entry.match(/^\s*(\S+)/)?.[1]
+                                        Quickshell.clipboardText = entry.match(/^\s*(\S+)/)?.[1];
                                     }
                                 };
                             }).filter(Boolean);
-                        } 
-                    
+                        }
 
                         ////////////////// Init ///////////////////
                         nonAppResultsTimer.restart();
                         const mathResultObject = {
                             name: root.mathResult,
-                            clickActionName: qsTr("Copy"),
-                            type: qsTr("Math result"),
+                            clickActionName: Translation.tr("Copy"),
+                            type: Translation.tr("Math result"),
                             fontType: "monospace",
                             materialSymbol: 'calculate',
                             execute: () => {
                                 Quickshell.clipboardText = root.mathResult;
                             }
-                        }
+                        };
                         const commandResultObject = {
                             name: searchingText.replace("file://", ""),
-                            clickActionName: qsTr("Run"),
-                            type: qsTr("Run command"),
+                            clickActionName: Translation.tr("Run"),
+                            type: Translation.tr("Run command"),
                             fontType: "monospace",
                             materialSymbol: 'terminal',
                             execute: () => {
-                                executor.executeCommand(searchingText.startsWith('sudo') ? `${Config.options.apps.terminal} fish -C '${root.searchingText.replace("file://", "")}'` : root.searchingText.replace("file://", ""));
-                            }
-                        }
-                        const launcherActionObjects = root.searchActions
-                            .map(action => {
-                                const actionString = `${Config.options.search.prefix.action}${action.action}`;
-                                if (actionString.startsWith(root.searchingText) || root.searchingText.startsWith(actionString)) {
-                                    return {
-                                        name: root.searchingText.startsWith(actionString) ? root.searchingText : actionString,
-                                        clickActionName: qsTr("Run"),
-                                        type: qsTr("Action"),
-                                        materialSymbol: 'settings_suggest',
-                                        execute: () => {
-                                            action.execute(root.searchingText.split(" ").slice(1).join(" "))
-                                        },
-                                    };
+                                let cleanedCommand = root.searchingText.replace("file://", "");
+                                if (cleanedCommand.startsWith(Config.options.search.prefix.shellCommand)) {
+                                    cleanedCommand = cleanedCommand.slice(Config.options.search.prefix.shellCommand.length);
                                 }
-                                return null;
-                            })
-                            .filter(Boolean);
-
-                        let result = [];
-
-                        //////////////// Apps //////////////////
-                        result = result.concat(
-                            AppSearch.fuzzyQuery(root.searchingText)
-                                .map((entry) => {
-                                    entry.clickActionName = qsTr("Launch");
-                                    entry.type = qsTr("App");
-                                    return entry;
-                                })
-                        );
-
-                        ////////// Launcher actions ////////////
-                        result = result.concat(launcherActionObjects);
-
-                        /////////// Math result & command //////////
-                        const startsWithNumber = /^\d/.test(root.searchingText);
-                        if (startsWithNumber) {
-                            result.push(mathResultObject);
-                            result.push(commandResultObject);
-                        } else {
-                            result.push(commandResultObject);
-                            result.push(mathResultObject);
-                        }
-
-                        ///////////////// Web search ////////////////
-                        result.push({
+                                Quickshell.execDetached(["bash", "-c", searchingText.startsWith('sudo') ? `${Config.options.apps.terminal} fish -C '${cleanedCommand}'` : cleanedCommand]);
+                            }
+                        };
+                        const webSearchResultObject = {
                             name: root.searchingText,
-                            clickActionName: qsTr("Search"),
-                            type: qsTr("Search the web"),
+                            clickActionName: Translation.tr("Search"),
+                            type: Translation.tr("Search the web"),
                             materialSymbol: 'travel_explore',
                             execute: () => {
-                                let url = Config.options.search.engineBaseUrl + root.searchingText
+                                let query = root.searchingText;
+                                if (query.startsWith(Config.options.search.prefix.webSearch)) {
+                                    query = query.slice(Config.options.search.prefix.webSearch.length);
+                                }
+                                let url = Config.options.search.engineBaseUrl + query;
                                 for (let site of Config.options.search.excludedSites) {
                                     url += ` -site:${site}`;
                                 }
                                 Qt.openUrlExternally(url);
                             }
-                        });
+                        }
+                        const launcherActionObjects = root.searchActions.map(action => {
+                            const actionString = `${Config.options.search.prefix.action}${action.action}`;
+                            if (actionString.startsWith(root.searchingText) || root.searchingText.startsWith(actionString)) {
+                                return {
+                                    name: root.searchingText.startsWith(actionString) ? root.searchingText : actionString,
+                                    clickActionName: Translation.tr("Run"),
+                                    type: Translation.tr("Action"),
+                                    materialSymbol: 'settings_suggest',
+                                    execute: () => {
+                                        action.execute(root.searchingText.split(" ").slice(1).join(" "));
+                                    }
+                                };
+                            }
+                            return null;
+                        }).filter(Boolean);
+
+                        //////// Prioritized by prefix /////////
+                        let result = [];
+                        const startsWithNumber = /^\d/.test(root.searchingText);
+                        const startsWithMathPrefix = root.searchingText.startsWith(Config.options.search.prefix.math);
+                        const startsWithShellCommandPrefix = root.searchingText.startsWith(Config.options.search.prefix.shellCommand);
+                        const startsWithWebSearchPrefix = root.searchingText.startsWith(Config.options.search.prefix.webSearch);
+                        if (startsWithNumber || startsWithMathPrefix) {
+                            result.push(mathResultObject);
+                        } else if (startsWithShellCommandPrefix) {
+                            result.push(commandResultObject);
+                        } else if (startsWithWebSearchPrefix) {
+                            result.push(webSearchResultObject);
+                        }
+
+                        //////////////// Apps //////////////////
+                        result = result.concat(AppSearch.fuzzyQuery(root.searchingText).map(entry => {
+                            entry.clickActionName = Translation.tr("Launch");
+                            entry.type = Translation.tr("App");
+                            return entry;
+                        }));
+
+                        ////////// Launcher actions ////////////
+                        result = result.concat(launcherActionObjects);
+
+                        /// Math result, command, web search ///
+                        if (Config.options.search.prefix.showDefaultActionsWithoutPrefix) {
+                            if (!startsWithShellCommandPrefix) result.push(commandResultObject);
+                            if (!startsWithNumber && !startsWithMathPrefix) result.push(mathResultObject);
+                            if (!startsWithWebSearchPrefix) result.push(webSearchResultObject);
+                        }
 
                         return result;
                     }
                 }
 
-                delegate: SearchItem { // The selectable item for each search result
+                delegate: SearchItem {
+                    // The selectable item for each search result
                     required property var modelData
                     anchors.left: parent?.left
                     anchors.right: parent?.right
                     entry: modelData
-                    query: root.searchingText.startsWith(Config.options.search.prefix.clipboard) ? 
-                        root.searchingText.slice(Config.options.search.prefix.clipboard.length) : 
-                        root.searchingText;
+                    query: root.searchingText.startsWith(Config.options.search.prefix.clipboard) ? root.searchingText.slice(Config.options.search.prefix.clipboard.length) : root.searchingText
                 }
             }
-            
         }
     }
 }

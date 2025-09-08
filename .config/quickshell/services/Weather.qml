@@ -6,7 +6,7 @@ import Quickshell.Io
 import QtQuick
 import QtPositioning
 
-import "root:/modules/common"
+import qs.modules.common
 
 Singleton {
     id: root
@@ -17,25 +17,26 @@ Singleton {
     property bool gpsActive: Config.options.bar.weather.enableGPS
 
     property var location: ({
-            valid: false,
-            lat: 0,
-            lon: 0
-        })
+        valid: false,
+        lat: 0,
+        lon: 0
+    })
 
     property var data: ({
-            uv: 0,
-            humidity: 0,
-            sunrise: 0,
-            sunset: 0,
-            windDir: 0,
-            wCode: 0,
-            city: 0,
-            wind: 0,
-            precip: 0,
-            visib: 0,
-            press: 0,
-            temp: 0
-        })
+        uv: 0,
+        humidity: 0,
+        sunrise: 0,
+        sunset: 0,
+        windDir: 0,
+        wCode: 0,
+        city: 0,
+        wind: 0,
+        precip: 0,
+        visib: 0,
+        press: 0,
+        temp: 0,
+        tempFeelsLike: 0
+    })
 
     function refineData(data) {
         let temp = {};
@@ -47,22 +48,25 @@ Singleton {
         temp.wCode = data?.current?.weatherCode || "113";
         temp.city = data?.location?.areaName[0]?.value || "City";
         temp.temp = "";
+        temp.tempFeelsLike = "";
         if (root.useUSCS) {
             temp.wind = (data?.current?.windspeedMiles || 0) + " mph";
             temp.precip = (data?.current?.precipInches || 0) + " in";
             temp.visib = (data?.current?.visibilityMiles || 0) + " m";
             temp.press = (data?.current?.pressureInches || 0) + " psi";
             temp.temp += (data?.current?.temp_F || 0);
-            temp.temp += " (" + (data?.current?.FeelsLikeF || 0) + ") ";
-            temp.temp += "\u{02109}";
+            temp.tempFeelsLike += (data?.current?.FeelsLikeF || 0);
+            temp.temp += "°F";
+            temp.tempFeelsLike += "°F";
         } else {
             temp.wind = (data?.current?.windspeedKmph || 0) + " km/h";
             temp.precip = (data?.current?.precipMM || 0) + " mm";
             temp.visib = (data?.current?.visibility || 0) + " km";
             temp.press = (data?.current?.pressure || 0) + " hPa";
             temp.temp += (data?.current?.temp_C || 0);
-            temp.temp += " (" + (data?.current?.FeelsLikeC || 0) + ") ";
-            temp.temp += "\u{02103}";
+            temp.tempFeelsLike += (data?.current?.FeelsLikeC || 0);
+            temp.temp += "°C";
+            temp.tempFeelsLike += "°C";
         }
         root.data = temp;
     }
@@ -90,8 +94,7 @@ Singleton {
     }
 
     Component.onCompleted: {
-        if (!root.gpsActive)
-            return;
+        if (!root.gpsActive) return;
         console.info("[WeatherService] Starting the GPS service.");
         positionSource.start();
     }
@@ -139,7 +142,7 @@ Singleton {
                 positionSource.stop();
                 root.location.valid = false;
                 root.gpsActive = false;
-                Quickshell.execDetached(["bash", "-c", `notify-send WeatherService 'Can not find a GPS service. Using the fallback method instead.'`]);
+                Quickshell.execDetached(["notify-send", Translation.tr("Weather Service"), Translation.tr("Cannot find a GPS service. Using the fallback method instead."), "-a", "Shell"]);
                 console.error("[WeatherService] Could not aquire a valid backend plugin.");
             }
         }

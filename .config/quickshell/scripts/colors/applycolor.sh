@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
+QUICKSHELL_CONFIG_NAME="ii"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
-CONFIG_DIR="$XDG_CONFIG_HOME/quickshell"
+CONFIG_DIR="$XDG_CONFIG_HOME/quickshell/$QUICKSHELL_CONFIG_NAME"
 CACHE_DIR="$XDG_CACHE_HOME/quickshell"
 STATE_DIR="$XDG_STATE_HOME/quickshell"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -28,13 +29,13 @@ colorvalues=($colorstrings) # Array of color values
 
 apply_term() {
   # Check if terminal escape sequence template exists
-  if [ ! -f "$CONFIG_DIR"/scripts/terminal/sequences.txt ]; then
+  if [ ! -f "$SCRIPT_DIR/terminal/sequences.txt" ]; then
     echo "Template file not found for Terminal. Skipping that."
     return
   fi
   # Copy template
   mkdir -p "$STATE_DIR"/user/generated/terminal
-  cp "$CONFIG_DIR"/scripts/terminal/sequences.txt "$STATE_DIR"/user/generated/terminal/sequences.txt
+  cp "$SCRIPT_DIR/terminal/sequences.txt" "$STATE_DIR"/user/generated/terminal/sequences.txt
   # Apply colors
   for i in "${!colorlist[@]}"; do
     sed -i "s/${colorlist[$i]} #/${colorvalues[$i]#\#}/g" "$STATE_DIR"/user/generated/terminal/sequences.txt
@@ -56,5 +57,16 @@ apply_qt() {
   python "$CONFIG_DIR/scripts/kvantum/changeAdwColors.py" # apply config colors
 }
 
-apply_qt &
-apply_term &
+# Check if terminal theming is enabled in config
+CONFIG_FILE="$XDG_CONFIG_HOME/illogical-impulse/config.json"
+if [ -f "$CONFIG_FILE" ]; then
+  enable_terminal=$(jq -r '.appearance.wallpaperTheming.enableTerminal' "$CONFIG_FILE")
+  if [ "$enable_terminal" = "true" ]; then
+    apply_term &
+  fi
+else
+  echo "Config file not found at $CONFIG_FILE. Applying terminal theming by default."
+  apply_term &
+fi
+
+# apply_qt & # Qt theming is already handled by kde-material-colors

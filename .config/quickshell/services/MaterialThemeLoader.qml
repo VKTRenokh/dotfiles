@@ -1,7 +1,7 @@
 pragma Singleton
 pragma ComponentBehavior: Bound
 
-import "root:/modules/common"
+import qs.modules.common
 import QtQuick
 import Quickshell
 import Quickshell.Io
@@ -39,6 +39,20 @@ Singleton {
         running: false
         onTriggered: {
             root.applyColors(themeFileView.text())
+        }
+    }
+
+	FileView { 
+        id: themeFileView
+        path: Qt.resolvedUrl(root.filePath)
+        watchChanges: true
+        onFileChanged: {
+            this.reload()
+            delayedFileRead.start()
+        }
+        onLoadedChanged: {
+            const fileContent = themeFileView.text()
+            root.applyColors(fileContent)
         }
     }
 }
