@@ -1,13 +1,10 @@
 # Use custom format:
 format="$directory$time$git_branch$nodejs$lua$character"
 
-right_format="$memory_usage"
-
-# Prompt symbols
 [character]
-success_symbol = "[🞈](#a6e3a1 bold)"
-error_symbol = "[🞈](#f38ba8)"
-vicmd_symbol = "[🞈](#f9e2af)"
+success_symbol = "[󰘧](#a6e3a1)"
+error_symbol = "[󰘧](#f38ba8)"
+vicmd_symbol = "[󰘧](#f9e2af)"
 
 [directory]
 format = "[]($style)[(fg:#49628a) $path](bg:#89b4fa fg:#49628a)[ ]($style)"
