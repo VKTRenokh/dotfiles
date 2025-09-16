@@ -53,7 +53,7 @@
  */
 @media (prefers-color-scheme: dark) {
   :root {
-    --uc-darken-toolbar: 0.2;
+    --uc-darken-toolbar: 1;
   }
 }
 @media (prefers-color-scheme: light) {

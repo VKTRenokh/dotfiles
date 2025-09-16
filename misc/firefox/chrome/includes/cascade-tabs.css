@@ -32,10 +32,14 @@
 }
 
 /* adaptive tab width */
-.tabbrowser-tab[selected][fadein]:not([pinned]):not(tab-group[collapsed] .tabbrowser-tab) {
+.tabbrowser-tab[selected][fadein]:not([pinned]):not(
+    tab-group[collapsed] .tabbrowser-tab
+  ) {
   max-width: var(--uc-active-tab-width) !important;
 }
-.tabbrowser-tab[fadein]:not([selected]):not([pinned]):not(tab-group[collapsed] .tabbrowser-tab) {
+.tabbrowser-tab[fadein]:not([selected]):not([pinned]):not(
+    tab-group[collapsed] .tabbrowser-tab
+  ) {
   max-width: var(--uc-inactive-tab-width) !important;
 }
 
@@ -131,6 +135,7 @@
   color: currentColor !important;
   stroke: var(--toolbar-color) !important;
   background-color: var(--toolbar-color) !important;
+  background-color: green;
   fill-opacity: 0.95 !important;
 }
 
@@ -161,7 +166,13 @@
 /* disable tab group label changing colour when collapsed */
 .tab-group-label-container > .tab-group-label {
   outline: none !important;
-  color: light-dark(var(--tab-group-color-pale), var(--tab-group-label-text-dark)) !important;
-  background-color: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+  color: light-dark(
+    var(--tab-group-color-pale),
+    var(--tab-group-label-text-dark)
+  ) !important;
+  background-color: light-dark(
+    var(--tab-group-color),
+    var(--tab-group-color-invert)
+  ) !important;
   border-radius: var(--uc-border-radius) !important;
 }
