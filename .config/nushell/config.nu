@@ -86,7 +86,9 @@ $env.config = {
         vi_normal: block # block, underscore, line, blink_block, blink_underscore, blink_line, inherit to skip setting cursor shape (underscore is the default)
     }
 
-    color_config: {} # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
+    color_config: {
+
+    } # if you want a more interesting theme, you can replace the empty record with `$dark_theme`, `$light_theme` or another custom record
     footer_mode: 25 # always, never, number_of_rows, auto
     float_precision: 2 # the precision for displaying floats in tables
     buffer_editor: "" # command that will be used to edit the current line buffer with ctrl+o, if unset fallback to $env.EDITOR and $env.VISUAL
@@ -753,13 +755,13 @@ alias parsyu = paru -Syu --noconfirm
 alias pacsyu = sudo pacman -Syu --noconfirm
 alias ng = npx @angular/cli
 alias tks = tmux kill-session
-alias docker = sudo docker
 alias :q = exit
 alias g = git
 alias gp = g push
 alias gs = g status
 alias ll = ls -la
 alias podman-compose = podman compose
+alias weather = curl wttr.in
 
 def gco [] {
   git checkout (git branch | fzy --prompt='  ' | str trim)
@@ -790,15 +792,3 @@ $env.PROMPT_INDICATOR_VI_NORMAL = {
 }
 
 use ~/.cache/starship/init.nu
-
-let banner = [
-  $"(ansi green)     __  ,(ansi reset)"
-  $"(ansi green) .--\(\)°'.' (ansi reset)Welcome to (ansi green)gnushell(ansi reset),"
-  $"(ansi green)'|, . ,'   (ansi reset)based on the (ansi green)nu(ansi reset) language,"
-  $"(ansi green) !_-\(_\\    (ansi reset)where all data is structured!"
-]
-
-# $banner | str join "\n" | print
-
-source ~/.config/nushell/theme.nu
-# }}
