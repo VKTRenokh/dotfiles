@@ -1,21 +1,23 @@
 Constants = require("config.constants")
 
 -- {{{ blink.cmp
-return
-{
+return {
   "saghen/blink.cmp",
   -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets", {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+  dependencies = {
+    "rafamadriz/friendly-snippets",
+    {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {
+        library = {
+          -- See the configuration section for more details
+          -- Load luvit types when the `vim.uv` word is found
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
       },
     },
-  }, },
+  },
   event = "LazyFile",
 
   version = "*",
