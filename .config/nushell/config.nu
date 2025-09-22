@@ -750,7 +750,7 @@ $env.config = {
 
 # {{{ Aliases
 alias ytla = yt-dlp --no-playlist -x --audio-format  "mp3"
-alias v = nvim
+alias v = helix
 alias parsyu = paru -Syu --noconfirm
 alias pacsyu = sudo pacman -Syu --noconfirm
 alias ng = npx @angular/cli
