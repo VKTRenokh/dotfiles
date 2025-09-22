@@ -1,7 +1,8 @@
-theme = "tokyonight-day"
+theme = "tokyonight_day"
 
 [editor]
 line-number = 'relative'
+end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape] 
 insert = "bar"
@@ -11,3 +12,5 @@ hidden = false
 
 [keys.insert]
 j = { k = "normal_mode" }
+[editor.inline-diagnostics]
+cursor-line = "warning"
