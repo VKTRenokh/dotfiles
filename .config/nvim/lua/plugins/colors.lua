@@ -13,7 +13,11 @@ return {
     "nvim-treesitter/nvim-treesitter",
     event = "LazyFile",
     branch = 'main',
-    build = ":TSUpdate",
+    build = function()
+      local treesitter = require("nvim-treesitter")
+
+      treesitter.update(nil, { summary = true })
+    end,
     lazy = vim.fn.argc(-1) == 0,
     version = false,
     -- version = "v0.9.1",
@@ -22,86 +26,15 @@ return {
       { "<bs>",      desc = "Decrement selection", mode = "x" },
     },
     opts = {
-      -- autopairs = { enable = true },
-      autoinstall = true,
-      context_commenting = { enable = true, enable_autocmd = false },
-      highlight = {
-        enable = true,
-        disable = Constants.disabled.treesitter,
-        additional_vim_regex_highlighting = true,
-      },
-      textobjects = {
-        move = {
-          enable = true,
-          goto_next_start = {
-            ["]f"] = "@function.outer",
-            ["]c"] = "@class.outer",
-            ["]a"] = "@parameter.inner",
-          },
-          goto_next_end = {
-            ["]F"] = "@function.outer",
-            ["]C"] = "@class.outer",
-            ["]A"] = "@parameter.inner",
-          },
-          goto_previous_start = {
-            ["[f"] = "@function.outer",
-            ["[c"] = "@class.outer",
-            ["[a"] = "@parameter.inner",
-          },
-          goto_previous_end = {
-            ["[F"] = "@function.outer",
-            ["[C"] = "@class.outer",
-            ["[A"] = "@parameter.inner",
-          },
-        },
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-          },
-          selection_modes = {},
-          include_surrounding_whitespace = true,
-        },
-      },
-      indent = { enable = false, disable = { "yml", "yaml" } },
-      disable = { "latex" },
-      ensure_installed = Constants.ensure_installed.treesitter,
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = "<nop>",
-          node_decremental = "<bs>",
-        },
-      },
+      indent = { enable = true },
+      highlight = { enable = true },
+      folds = { enable = true },
+      ensure_installed = Constants.ensure_installed.treesitter
     },
 
+    opts_extends = { "ensure_installed" },
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-
-      local parsers = require("nvim-treesitter.parsers").get_parser_configs()
-
-      parsers.zql = {
-        install_info = {
-          url = "https://github.com/cmus-enjoyers/tree-sitter-zql",
-          files = { "src/parser.c" },
-          branch = "dev",
-          generate_requires_npm = false,
-          requires_generate_from_grammar = false,
-        },
-        filetype = "zql",
-      }
-
-      vim.filetype.add({
-        extension = {
-          zql = "zql",
-        },
-      })
+      require("nvim-treesitter").setup(opts)
     end,
 
     dependencies = {
