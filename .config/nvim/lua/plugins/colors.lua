@@ -35,6 +35,19 @@ return {
     opts_extends = { "ensure_installed" },
     config = function(_, opts)
       require("nvim-treesitter").setup(opts)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
+        callback = function(ev)
+          if vim.tbl_get(opts, "highlight", "enable") ~= false then
+            pcall(vim.treesitter.start)
+          end
+
+          if vim.tbl_get(opts, "indent", "enable") ~= false then
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
     end,
 
     dependencies = {
