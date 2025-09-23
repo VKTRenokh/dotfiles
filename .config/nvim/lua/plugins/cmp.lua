@@ -46,7 +46,19 @@ return {
       ['<A-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
       -- stylua: ignore end
     },
-
+    cmdline = {
+      enabled = true,
+      keymap = { preset = "cmdline" },
+      completion = {
+        list = { selection = { preselect = false } },
+        menu = {
+          auto_show = function(ctx)
+            return vim.fn.getcmdtype() == ":"
+          end,
+        },
+        ghost_text = { enabled = true },
+      },
+    },
     completion = {
       list = { selection = { preselect = true, auto_insert = false } },
       ghost_text = { enabled = true },
