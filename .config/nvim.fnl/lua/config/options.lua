@@ -1,7 +1,0 @@
--- [nfnl] Compiled from fnl/config/options.fnl by https://github.com/Olical/nfnl, do not edit.
-local util = require("config.util")
-local options = {autoindent = true, background = "light", backspace = {"start", "eol", "indent"}, breakindent = true, cmdheight = 1, clipboard = "unnamedplus", colorcolumn = nil, complete = {".", "w", "u", "b", "t", "i", "kspell"}, completeopt = {"menuone", "noinsert", "noselect"}, conceallevel = 0, cursorline = true, expandtab = true, exrc = true, fileencoding = "utf-8", fillchars = {fold = " ", eob = " "}, foldlevel = 0, foldmethod = "marker", hidden = true, ignorecase = true, listchars = {eol = "\226\134\178", tab = "\226\150\184 ", trail = "\194\183"}, mouse = "a", nrformats = {"alpha", "octal", "hex"}, number = true, numberwidth = 3, relativenumber = true, scrolloff = 10, shell = "zsh", shiftround = true, shiftwidth = 2, showbreak = "\226\134\170", showtabline = 0, signcolumn = "yes", smartcase = true, smartindent = true, sidescrolloff = 10, softtabstop = 2, splitbelow = true, splitright = true, tabstop = 2, termguicolors = true, timeoutlen = 200, title = true, textwidth = 80, updatetime = 150, undofile = true, virtualedit = {"block"}, wildmode = {"list", "longest"}, wildoptions = "pum", winblend = 0, pumheight = 10, pumblend = 5, laststatus = 3, writebackup = false, list = false, swapfile = false, backup = false, hlsearch = false, showmode = false, wrap = false}
-for key, value in pairs(options) do
-  util.opt(key, value)
-end
-return nil
