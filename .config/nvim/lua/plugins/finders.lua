@@ -30,21 +30,4 @@ return {
     },
     dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   }, -- }}}
-  -- {{{ fff.nvim
-  {
-    "dmtrKovalenko/fff.nvim",
-    build = "cargo build --release",
-    opts = {},
-    -- TODO: remove snacks.nvim and change keybinds here
-    keys = {
-      {
-        "<leader>f",
-        function()
-          require("fff").find_files()
-        end,
-        desc = "Open fff.nvim find_files()",
-      },
-    },
-  },
-  -- }}}
 }
