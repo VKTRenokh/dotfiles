@@ -81,7 +81,6 @@ Constants = {
       "printf",
       "solidity",
       "tsx",
-      "zls",
     },
   },
 

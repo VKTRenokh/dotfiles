@@ -12,11 +12,14 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     event = "LazyFile",
+    branch = 'main',
     build = ":TSUpdate",
+    lazy = vim.fn.argc(-1) == 0,
+    version = false,
     -- version = "v0.9.1",
     keys = {
       { "<c-space>", desc = "Increment selection" },
-      { "<bs>", desc = "Decrement selection", mode = "x" },
+      { "<bs>",      desc = "Decrement selection", mode = "x" },
     },
     opts = {
       -- autopairs = { enable = true },
@@ -162,7 +165,7 @@ return {
         local util = require("config.functions")
 
         local border_highlights =
-          { "NoiceCmdlinePopupBorder", "TelescopePromptBorder", "TelescopePromptTitle" }
+        { "NoiceCmdlinePopupBorder", "TelescopePromptBorder", "TelescopePromptTitle" }
 
         util.each(border_highlights, util.set(highlights, fg(colors.border_highlight)))
 
