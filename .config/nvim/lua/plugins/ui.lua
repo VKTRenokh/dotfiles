@@ -150,7 +150,7 @@ return {
       { "<leader>t",  "<Cmd>Trouble diagnostics<cr>", desc = "Open trouble diagnostics", },
       { "<leader>T",  "<cmd>Trouble<cr>",             desc = "Open trouble selection menu", },
       -- stylua: ignore end
-      { "<leader>cl", "<cmd>Trouble lsp<cr>", desc = "Open trouble with lsp" },
+      { "<leader>cl", "<cmd>Trouble lsp<cr>",         desc = "Open trouble with lsp" },
     },
     opts = {
       use_diagnostic_signs = true,
@@ -217,8 +217,8 @@ return {
       { ";e",         function() require('fzf-lua.providers.diagnostic').diagnostics() end },
       { "gd",         function() Snacks.picker.lsp_definitions() end,                      desc = "Goto Definition" },
       { "gD",         function() Snacks.picker.lsp_declarations() end,                     desc = "Goto Declaration" },
-      { "grr",         function() Snacks.picker.lsp_references() end,                       nowait = true,                  desc = "References" },
-      { "gri",         function() Snacks.picker.lsp_implementations() end,                  desc = "Goto Implementation" },
+      { "grr",        function() Snacks.picker.lsp_references() end,                       nowait = true,                  desc = "References" },
+      { "gri",        function() Snacks.picker.lsp_implementations() end,                  desc = "Goto Implementation" },
       { "gy",         function() Snacks.picker.lsp_type_definitions() end,                 desc = "Goto T[y]pe Definition" },
       { ";s",         function() Snacks.picker.lsp_symbols() end,                          desc = "LSP Symbols" },
       { ";S",         function() Snacks.picker.lsp_workspace_symbols() end,                desc = "LSP Workspace Symbols" },
@@ -245,18 +245,18 @@ return {
         preset = {
           -- stylua: ignore start
           -- https://patorjk.com/software/taag/#p=testall&f=Alpha&t=zxc
-               header = [[
-       ,----,                      
-     .'   .`|,--,  ,--,            
-  .'   .'  .'|'. \/ .`|    ,---.   
-,---, '   ./ '  \/  / ;   /     \  
-;   | .'  /   \  \.' /   /    / '  
-`---' /  ;--,  \  ;  ;  .    ' /   
-  /  /  / .`| / \  \  \ '   ; :__  
-./__;     .'./__;   ;  \'   | '.'| 
-;   |  .'   |   :/\  \ ;|   :    : 
-`---'       `---'  `--`  \   \  /  
-                          `----'   
+          header = [[
+       ,----,
+     .'   .`|,--,  ,--,
+  .'   .'  .'|'. \/ .`|    ,---.
+,---, '   ./ '  \/  / ;   /     \
+;   | .'  /   \  \.' /   /    / '
+`---' /  ;--,  \  ;  ;  .    ' /
+  /  /  / .`| / \  \  \ '   ; :__
+./__;     .'./__;   ;  \'   | '.'|
+;   |  .'   |   :/\  \ ;|   :    :
+`---'       `---'  `--`  \   \  /
+                          `----'
 ]],
           -- stylua: ignore end
           keys = {
@@ -307,21 +307,12 @@ return {
     "akinsho/bufferline.nvim",
     enabled = true,
     keys = {
-      { "te", "<cmd>:tabedit<cr>", desc = "Create new tab" },
-      { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Cycle tabs forwards" },
-      { "gt", "<cmd>BufferLinePick<cr>", desc = "Pick tab" },
-      { "gT", "<cmd>BufferLinePickClose<cr>", desc = "Pick tab to close" },
-      { "gtd", "<cmd>BufferLineClose<cr>", desc = "Close all tabs" },
+      { "te",      "<cmd>:tabedit<cr>",            desc = "Create new tab" },
+      { "<Tab>",   "<Cmd>BufferLineCycleNext<CR>", desc = "Cycle tabs forwards" },
       { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Cycle tabs backwards" },
-      { "<C-Tab>", "<cmd>tablast<cr>", desc = "Jump to the last tab" },
-      { "<C-S-Tab>", "<cmd>tabfirst<cr>", desc = "Jump to the first tab" },
-      { "<leader>tp", "<cmd>BufferLineTogglePin<cr>", desc = "Pin tab" },
-      { "[B", "<cmd>BufferLineMovePrev<cr>", desc = "Move buffer prev" },
-      { "]B", "<cmd>BufferLineMoveNext<cr>", desc = "Move buffer next" },
     },
     opts = {
       options = {
-        mode = "tabs",
         separator_style = "thin",
         show_buffer_close_icons = false,
         show_close_icon = false,
@@ -331,7 +322,7 @@ return {
         diagnostics_indicator = function(_, _, diag)
           local icons = Constants.icons.diagnostics
           local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-            .. (diag.warning and icons.Warning .. diag.warning or "")
+              .. (diag.warning and icons.Warning .. diag.warning or "")
           return vim.trim(ret)
         end,
       },
