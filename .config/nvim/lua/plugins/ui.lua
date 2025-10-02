@@ -185,7 +185,7 @@ return {
     options = {
       indicator_for_2wins = {
         -- only work when the total of windows is two
-        position = "end", -- false to disable or choose between "center", "start", "end" and "both"
+        position = "end",                         -- false to disable or choose between "center", "start", "end" and "both"
         symbols = {
           -- the meaning of left, down ,up, right is the position of separator
           start_left = "",
@@ -284,7 +284,8 @@ return {
               icon = " ",
               key = "c",
               desc = "Config",
-              action = ":cd ~/.config/nvim | :lua Snacks.dashboard.pick('files')",
+              action =
+              ":cd ~/.config/nvim | :lua Snacks.dashboard.pick('files')",
             },
             { icon = " ", key = "s", desc = "Restore Session", section = "session" },
             {
@@ -304,7 +305,7 @@ return {
     },
   },
   -- }}}
-  { -- {{{ bufferline.nvim
+  {       -- {{{ bufferline.nvim
     "akinsho/bufferline.nvim",
     enabled = true,
     keys = {
@@ -335,7 +336,7 @@ return {
         },
       },
     },
-  }, -- }}}
+  },       -- }}}
   -- {{{ indent-blankline.nvim
   {
     "lukas-reineke/indent-blankline.nvim",
