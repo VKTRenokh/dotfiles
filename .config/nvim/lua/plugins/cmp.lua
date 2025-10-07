@@ -17,6 +17,9 @@ return {
         },
       },
     },
+    {
+      "joelazar/blink-calc"
+    }
   },
   event = "LazyFile",
 
@@ -100,16 +103,21 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      default = { "lazydev", "lsp", "path", "snippets", "buffer", "calc" },
       providers = {
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           score_offset = 100,
         },
+        calc = {
+          name = "Calc",
+          module = "blink-calc"
+        }
       },
     },
   },
   opts_extend = { "sources.default" },
 }
+
 -- }}}
