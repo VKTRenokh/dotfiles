@@ -107,4 +107,7 @@ return {
     opts = {}
   },
   -- }}}
+  -- {{{ mini.diff
+  { 'nvim-mini/mini.diff', version = false },
+  -- }}}
 }
