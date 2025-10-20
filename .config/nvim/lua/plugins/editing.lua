@@ -1,30 +1,4 @@
 return {
-  -- {{{ mini.pairs
-  {
-    "nvim-mini/mini.pairs",
-    event = "LazyFile",
-    enabled = false,
-    opts = {
-      modes = { insert = true, command = true, terminal = false },
-      skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-      skip_ts = { "string" },
-      skip_unbalanced = true,
-      markdown = true,
-    },
-    keys = {
-      {
-        "<leader>up",
-        function()
-          vim.g.minipairs_disable = not vim.g.minipairs_disable
-
-          require("config.functions").notify(
-            (vim.g.minipairs_disable and "Disabled" or "Enabled") .. " " .. "mini.pairs"
-          )
-        end,
-      },
-    },
-  },
-  -- ----------------------------------------------------------------------- }}}
   -- {{{ mini.surround
 
   {

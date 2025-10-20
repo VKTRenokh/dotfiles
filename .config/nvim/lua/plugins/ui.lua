@@ -63,62 +63,6 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ noice.nvim
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    enabled = false,
-    opts = {
-      lsp = {
-        progress = {
-          view = false,
-        },
-        hover = {
-          silent = true,
-        },
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = false,
-        },
-      },
-      routes = {
-        {
-          filter = {
-            event = "msg_show",
-            kind = "",
-          },
-          opts = { skip = true },
-        },
-        {
-          filter = {
-            event = "msg_show",
-            kind = "wmsg",
-          },
-          opts = { skip = true },
-        },
-      },
-      presets = {
-        bottom_search = false,
-        long_message_to_split = true,
-        lsp_doc_border = true,
-      },
-      cmdline_popup = {
-        views = {
-          row = "50%",
-          col = "50%",
-        },
-        win_options = {
-          winhighlight = "NormalFloat:NormalFloat, FloatBoarder:FloatBorder",
-        },
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-  },
-  -- --------------------------------------------------- }}}
   -- {{{ mini.icons
   {
     "nvim-mini/mini.icons",
@@ -177,33 +121,6 @@ return {
   },
 
   -- ----------------------------------------------------------------------- }}}
-  -- {{{ colorful-winsep
-  {
-    "nvim-zh/colorful-winsep.nvim",
-    event = { "LazyFile" },
-    enabled = false,
-    options = {
-      indicator_for_2wins = {
-        -- only work when the total of windows is two
-        position = "end",                         -- false to disable or choose between "center", "start", "end" and "both"
-        symbols = {
-          -- the meaning of left, down ,up, right is the position of separator
-          start_left = "",
-          end_left = "",
-          start_down = "",
-          end_down = "",
-          start_up = "",
-          end_up = "",
-          start_right = "",
-          end_right = "",
-        },
-      },
-    },
-    config = function(_, opts)
-      require("colorful-winsep").setup(opts)
-    end,
-  },
-  -- }}}
   -- {{{ snacks.nvim
   {
     "folke/snacks.nvim",
@@ -305,7 +222,8 @@ return {
     },
   },
   -- }}}
-  {       -- {{{ bufferline.nvim
+  -- {{{ bufferline.nvim
+  {
     "akinsho/bufferline.nvim",
     enabled = true,
     keys = {
@@ -336,7 +254,8 @@ return {
         },
       },
     },
-  },       -- }}}
+  },
+  -- }}}
   -- {{{ indent-blankline.nvim
   {
     "lukas-reineke/indent-blankline.nvim",
