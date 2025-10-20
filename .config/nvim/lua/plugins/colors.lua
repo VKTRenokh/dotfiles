@@ -96,7 +96,7 @@ return {
     enabled = true,
     opts = {
       transparent = true,
-      style = "storm",
+      style = "moon",
       dim_inactive = true,
       styles = {
         sidebars = "transparent",
