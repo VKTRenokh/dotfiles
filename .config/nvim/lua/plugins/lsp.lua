@@ -14,10 +14,10 @@ return {
       "neovim/nvim-lspconfig",
       config = function()
         local vue_language_server_path = vim.fn.stdpath("data")
-          .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+            .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
         local tsserver_filetypes =
-          { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+        { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 
         local vue_plugin = {
           name = "@vue/typescript-plugin",
@@ -45,9 +45,10 @@ return {
 
         vim.diagnostic.config({
           update_in_insert = false,
-          virtual_lines = {
-            current_line = true,
-          },
+          -- virtual_lines = {
+          --   current_line = true,
+          -- },
+          virtual_text = false,
           signs = {
             text = {
               [vim.diagnostic.severity.ERROR] = "",
