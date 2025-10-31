@@ -51,9 +51,9 @@ ShellRoot {
     property bool enableScreenCorners: true
     property bool enableSessionScreen: true
     property bool enableSidebarLeft: false
-    property bool enableSidebarRight: false
+    property bool enableSidebarRight: true
     property bool enableVerticalBar: false
-    property bool enableWallpaperSelector: false
+    property bool enableWallpaperSelector: true
 
     // Force initialization of some singletons
     Component.onCompleted: {
