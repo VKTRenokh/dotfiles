@@ -13,6 +13,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     event = "LazyFile",
     branch = 'main',
+    enabled = true,
     build = function()
       local treesitter = require("nvim-treesitter")
 
@@ -116,7 +117,7 @@ return {
         util.each(border_highlights, util.set(highlights, fg(colors.border_highlight)))
 
         highlights["@tag.delimiter.vue"] = fg(colors.red)
-        highlights.BlinkCmpMenu = { bg = "#1e2030" }
+        -- highlights.BlinkCmpMenu = { bg = "#1e2030" }
         highlights.Folded.bg = "none"
         highlights.WinSeparator = fg(colors.terminal_black)
       end,

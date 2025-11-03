@@ -28,7 +28,7 @@ local options = {
   numberwidth = 3,
   relativenumber = true,
   scrolloff = 10,
-  shell = "zsh",
+  shell = "nu",
   shiftround = true,
   shiftwidth = 2,
   showbreak = "↪",
@@ -73,3 +73,5 @@ end
 vim.cmd([[filetype plugin indent on]])
 vim.cmd([[language en_US.UTF-8]])
 vim.cmd([[set iskeyword+=-]])
+
+vim.o.winborder = "rounded"

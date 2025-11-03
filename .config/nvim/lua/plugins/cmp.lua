@@ -28,6 +28,7 @@ return {
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
+    signature = { window = { border = 'single' } },
     keymap = {
       preset = "default",
       ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
@@ -118,6 +119,10 @@ return {
     },
   },
   opts_extend = { "sources.default" },
+
+  config = function(_, opts)
+    require("blink.cmp").setup(opts)
+  end
 }
 
 -- }}}
