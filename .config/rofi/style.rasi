@@ -1,19 +1,20 @@
- * {
-    background-main: #191724;
-    background-alt: #32302f;
-    background-highlight: #1F1D2E;
-    foreground-main: #C5C2E0;
+* {
+   background-main: #161515;
+   background-alt: #32302f;
+   background-highlight: #393839;
+   foreground-main: #CBC4CB;
 
-    background-color: @background-main;
+   background-color: @background-main;
 }
 
 window {
     height: 400px;
     width: 600px;
+    border-radius: 22px;
+    padding: 0 8px;
 }
 
 mainbox {
-    spacing: 0px;
     children: [inputbar, message, listview];
 }
 
