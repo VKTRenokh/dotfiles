@@ -34,7 +34,7 @@ paru -S gitmux bibata-cursor-theme swww playerctl hyprshade grimblast \
 
 Qt packages
 ```bash
-sudo pacman -S qt6-5compat qt6-positioning qt6-svg qt6-imageformats qt6-multimedia
+sudo pacman -S qt6-base qt6-5compat qt6-positioning qt6-svg qt6-imageformats qt6-multimedia
 ```
 
 Starship
