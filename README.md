@@ -29,7 +29,7 @@ Aur Packages
 
 ```bash
 paru -S gitmux bibata-cursor-theme swww playerctl hyprshade grimblast \
-   quickshell-git
+   quickshell-git ttf-material-icons
 ```
 
 Qt packages
