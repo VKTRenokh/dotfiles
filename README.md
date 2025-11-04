@@ -29,7 +29,7 @@ Aur Packages
 
 ```bash
 paru -S gitmux bibata-cursor-theme swww playerctl hyprshade grimblast \
-   quickshell-git 
+   quickshell-git qt5-svg qt5-image-formats qt5-multimedia qt5-compat
 ```
 
 Starship
