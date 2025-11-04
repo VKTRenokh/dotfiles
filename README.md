@@ -22,14 +22,14 @@ Install all needed packages
 ```bash
 sudo pacman -S --needed hyprland neovim helix lua lxappearance artix-dark-theme tmux kitty \
                         pipewire pipewire-pulse wireplumber xdg-desktop-portal-hyprland brightnessctl wpa_supplicant \
-                        noto-fonts-cjk noto-fonts-emoji noto-fonts ripgrep fzy fzf zsh hyprpicker
+                        noto-fonts-cjk noto-fonts-emoji noto-fonts ripgrep fzf zsh hyprpicker rofi
 ```
 
 Aur Packages
 
 ```bash
-paru -S wofi gitmux bibata-cursor-theme swww playerctl brave exa hyprshade grimblast \
-   quickshell-git material-symbols-git
+paru -S gitmux bibata-cursor-theme swww playerctl hyprshade grimblast \
+   quickshell-git 
 ```
 
 Starship
