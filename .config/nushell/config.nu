@@ -749,6 +749,8 @@ $env.config = {
 # }}}
 
 # {{{ Aliases
+alias please = sudo
+alias Hyprland = dbus-launch Hyprland
 alias ytla = yt-dlp --no-playlist -x --audio-format  "mp3"
 alias v = nvim
 alias parsyu = paru -Syu --noconfirm
