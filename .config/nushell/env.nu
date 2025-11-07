@@ -105,4 +105,4 @@ starship init nu | save -f ~/.cache/starship/init.nu
 $env.PATH = ($env.PATH | split row (char esep) | append
 "~/.local/bin:~/.cargo/bin:~/.bun/bin:~/.local/share/pnpm:/usr/lib/llvm18/bin")
 $env.EDITOR = "nvim"
-$env.ANDROID_HOME=/opt/android-sdk
+$env.ANDROID_HOME = "/opt/android-sdk"
