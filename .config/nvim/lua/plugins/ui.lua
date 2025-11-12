@@ -287,6 +287,73 @@ return {
       require("tiny-inline-diagnostic").setup()
       vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostics
     end,
+  },
+  -- }}}
+  -- {{{ tiny-glimmer.nvim
+  {
+    "rachartier/tiny-glimmer.nvim",
+    event = 'VeryLazy',
+    priority = 10,
+    opts = {
+      enabled = true,
+
+      disable_warnings = false,
+
+      refresh_interval_ms = 8,
+
+      overwrite = {
+        auto_map = true,
+
+        yank = {
+          enabled = true,
+          default_animation = "fade",
+        },
+
+        search = {
+          enabled = true,
+          default_animation = "pulse",
+          next_mapping = "n",
+          prev_mapping = "N",
+        },
+
+        paste = {
+          enabled = true,
+          default_animation = "reverse_fade",
+          paste_mapping = "p",
+          Paste_mapping = "P",
+        },
+
+        undo = {
+          enabled = true,
+          default_animation = {
+            name = "fade",
+            settings = {
+              from_color = "DiffDelete",
+              max_duration = 500,
+              min_duration = 500,
+            },
+          },
+          undo_mapping = "u",
+        },
+
+        -- Redo operation animation
+        redo = {
+          enabled = true,
+          default_animation = {
+            name = "fade",
+            settings = {
+              from_color = "DiffAdd",
+              max_duration = 500,
+              min_duration = 500,
+            },
+          },
+          redo_mapping = "<c-r>",
+        },
+      },
+    },
+    config = function(_, opts)
+      require('tiny-glimmer').setup(opts)
+    end
   }
   -- }}}
 }

@@ -24,16 +24,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 -- }}}
--- {{{ Yank on highlight
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = "*",
-})
--- }}}
 -- {{{ Automaticly resize splits
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = augroup("resize_splits"),
