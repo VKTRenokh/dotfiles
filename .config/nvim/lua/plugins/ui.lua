@@ -297,7 +297,7 @@ return {
     opts = {
       enabled = true,
 
-      disable_warnings = false,
+      disable_warnings = true,
 
       refresh_interval_ms = 8,
 
