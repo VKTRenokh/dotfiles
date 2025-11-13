@@ -789,3 +789,5 @@ $env.PROMPT_INDICATOR_VI_NORMAL = {
 }
 
 use ~/.cache/starship/init.nu
+
+uwufetch
