@@ -225,7 +225,7 @@ return {
   -- {{{ bufferline.nvim
   {
     "akinsho/bufferline.nvim",
-    enabled = true,
+    enabled = false,
     keys = {
       { "te",      "<cmd>:tabedit<cr>",            desc = "Create new tab" },
       { "<Tab>",   "<Cmd>BufferLineCycleNext<CR>", desc = "Cycle tabs forwards" },

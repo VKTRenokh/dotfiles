@@ -130,3 +130,11 @@ vim.keymap.set("i", "<C-L>", function()
 end, { desc = "treesitter insjump" }) -- }}}
 
 vim.keymap.set({ "i", "c", "s" }, "jk", "<esc>")
+
+-- { "te",      "<cmd>:tabedit<cr>",            desc = "Create new tab" },
+-- { "<Tab>",   "<Cmd>BufferLineCycleNext<CR>", desc = "Cycle tabs forwards" },
+-- { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Cycle tabs backwards" },
+
+vim.keymap.set('n', 'te', '<cmd>:tabedit<cr>')
+vim.keymap.set('n', '<Tab>', 'gt')
+vim.keymap.set('n', '<S-Tab>', 'gT')
