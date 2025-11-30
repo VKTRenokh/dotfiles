@@ -21,7 +21,7 @@ return {
       "joelazar/blink-calc"
     }
   },
-  event = "LazyFile",
+  event = "VeryLazy",
 
   version = "*",
 

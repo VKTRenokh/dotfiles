@@ -4,7 +4,7 @@ return {
   -- {{{ gitsigns.nvim
   {
     "lewis6991/gitsigns.nvim",
-    event = "LazyFile",
+    event = "VeryLazy",
     keys = {
       { "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>' },
       { "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>' },
@@ -226,7 +226,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = "LazyFile",
+    event = "VeryLazy",
     ---@module "ibl"
     ---@type ibl.config
     opts = {},
@@ -235,7 +235,7 @@ return {
   -- {{{ fidget.nvim
   {
     "j-hui/fidget.nvim",
-    event = "LazyFile",
+    event = "VeryLazy",
     opts = {
       -- options
       notification = {
@@ -247,7 +247,7 @@ return {
   -- {{{ tiny inline diagnostic
   {
     "rachartier/tiny-inline-diagnostic.nvim",
-    event = "LazyFile",
+    event = "VeryLazy",
     priority = 1000,
     config = function()
       require("tiny-inline-diagnostic").setup()
