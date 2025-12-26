@@ -28,7 +28,7 @@ sudo pacman -S --needed hyprland neovim helix lua lxappearance artix-dark-theme 
 Aur Packages
 
 ```bash
-paru -S gitmux bibata-cursor-theme swww playerctl hyprshade grimblast \
+paru -S gitmux bibata-cursor-theme awww playerctl hyprshade grimblast \
    quickshell-git ttf-material-icons
 ```
 

@@ -12,6 +12,6 @@ done
 
 selected=$(wofi --dmenu <<< "$choices")
 
-swww img "$wallpapers_path$selected" --transition-duration 2 --transition-type center --transition-fps 60
+awww img "$wallpapers_path$selected" --transition-duration 2 --transition-type center --transition-fps 60
 
 exit 0
