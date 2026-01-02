@@ -132,7 +132,7 @@ return {
       { ";f",         function() Snacks.picker.files({ hidden = true }) end },
       { ";F",         function() Snacks.picker.files({ hidden = true, ignored = true }) end },
       { ";r",         function() Snacks.picker.grep() end },
-      { ";e",         function() require('fzf-lua.providers.diagnostic').diagnostics() end },
+      { ";e",         function() Snacks.picker.diagnostics() end },
       { "gd",         function() Snacks.picker.lsp_definitions() end,                       desc = "Goto Definition" },
       { "gD",         function() Snacks.picker.lsp_declarations() end,                      desc = "Goto Declaration" },
       { "grr",        function() Snacks.picker.lsp_references() end,                        nowait = true,                  desc = "References" },
