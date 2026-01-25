@@ -153,10 +153,8 @@ return {
     main = "rainbow-delimiters.setup",
     opts = {
       query = {
-        vue = "rainbow-parens",
-        html = "rainbow-parens",
-        tsx = "rainbow-parens",
-        jsx = "rainbow-parens"
+        [''] = "rainbow-parens",
+        vue = "rainbow-script-only"
       }
     }
   }

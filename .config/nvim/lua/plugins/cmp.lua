@@ -66,6 +66,9 @@ return {
     completion = {
       list = { selection = { preselect = true, auto_insert = false } },
       ghost_text = { enabled = true },
+      trigger = {
+        show_on_insert_on_trigger_character = false,
+      },
       accept = {
         auto_brackets = {
           enabled = false,
