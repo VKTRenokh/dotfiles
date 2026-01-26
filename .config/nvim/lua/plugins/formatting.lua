@@ -17,6 +17,8 @@ return {
       ["lua"] = { "stylua" },
       ["javascript"] = { "prettierd" },
       ["typescript"] = { "prettierd" },
+      ["javascriptreact"] = { "prettierd" },
+      ["typescriptreact"] = { "prettierd" },
       ["vue"] = { "prettierd" },
       ["markdown"] = { "prettierd" },
       ["markdown.mdx"] = { "prettierd" },
