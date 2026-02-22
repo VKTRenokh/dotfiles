@@ -6,12 +6,6 @@ return {
     automatic_enable = {
       exclude = { "vtsls", "vue_ls" },
     },
-
-    config = function()
-      for k, v in ipairs(require('mason-lspconfig').get_available_servers()) do
-        print(k, v)
-      end
-    end
   },
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },

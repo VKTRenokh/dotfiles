@@ -72,10 +72,6 @@ return {
 
         -- Run linters.
         if #names > 0 then
-          for index, value in ipairs(names) do
-            print(value)
-          end
-
           lint.try_lint(names)
         end
       end
