@@ -23,10 +23,18 @@ return {
         "sf",
         function()
           require("oil").open_float()
-          -- disable blink.cmp completions in oil
+
           vim.b.completion = false
         end,
       },
+      {
+        "sF",
+        function()
+          require("oil").open()
+
+          vim.b.completion = false
+        end,
+      }
     },
     dependencies = { { "nvim-mini/mini.icons", opts = {} } },
   }, -- }}}
