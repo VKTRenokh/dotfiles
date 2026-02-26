@@ -21,7 +21,7 @@ return {
   -- {{{ mini.ai - better vim a/i motions
   {
     "nvim-mini/mini.ai",
-    event = "VeryLazy",
+    event = "LazyFile",
     opts = function()
       local ai = require("mini.ai")
       return {
@@ -54,7 +54,7 @@ return {
   -- {{{ flash.nvim
   {
     "folke/flash.nvim",
-    event = "VeryLazy",
+    event = "LazyFile",
     enabled = true,
     opts = {},
     -- stylua: ignore
@@ -70,7 +70,7 @@ return {
   -- {{{ nvim-ts-autotag
   {
     "windwp/nvim-ts-autotag",
-    event = "VeryLazy",
+    event = "LazyFile",
     opts = {},
   },
   -- }}}

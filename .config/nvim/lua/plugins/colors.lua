@@ -11,7 +11,7 @@ return {
   -- {{{ nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
+    event = "LazyFile",
     branch = 'main',
     enabled = true,
     build = function()
@@ -132,7 +132,7 @@ return {
   -- {{{ mini.hipatterns
   {
     "echasnovski/mini.hipatterns",
-    event = "VeryLazy",
+    event = "LazyFile",
     opts = function()
       local hl = require("mini.hipatterns")
       return {
@@ -149,7 +149,7 @@ return {
   -- {{{ rainbow-delimiters.nvim
   {
     "hiphish/rainbow-delimiters.nvim",
-    event = "VeryLazy",
+    event = "LazyFile",
     main = "rainbow-delimiters.setup",
     opts = {
       query = {

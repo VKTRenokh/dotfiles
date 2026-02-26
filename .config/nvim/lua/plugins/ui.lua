@@ -4,7 +4,7 @@ return {
   -- {{{ gitsigns.nvim
   {
     "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
+    event = "LazyFile",
     keys = {
       { "<leader>SR", '<cmd>lua require "gitsigns".reset_hunk()<cr>' },
       { "<leader>SS", '<cmd>lua require "gitsigns".stage_hunk()<cr>' },
@@ -226,7 +226,7 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    event = "VeryLazy",
+    event = "LazyFile",
     ---@module "ibl"
     ---@type ibl.config
     opts = {},
@@ -235,7 +235,7 @@ return {
   -- {{{ fidget.nvim
   {
     "j-hui/fidget.nvim",
-    event = "VeryLazy",
+    event = "LazyFile",
     opts = {
       -- options
       notification = {
@@ -247,7 +247,7 @@ return {
   -- {{{ tiny inline diagnostic
   {
     "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy",
+    event = "LazyFile",
     priority = 1000,
     config = function()
       require("tiny-inline-diagnostic").setup()
@@ -258,7 +258,7 @@ return {
   -- {{{ tiny-glimmer.nvim
   {
     "rachartier/tiny-glimmer.nvim",
-    event = 'VeryLazy',
+    event = 'LazyFile',
     priority = 10,
     opts = {
       enabled = true,
@@ -272,7 +272,7 @@ return {
 
         yank = {
           enabled = true,
-          default_animation = "fade",
+          default_animation = "LazyFile",
         },
 
         search = {
