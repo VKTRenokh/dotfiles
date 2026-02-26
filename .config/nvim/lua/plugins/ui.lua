@@ -272,7 +272,7 @@ return {
 
         yank = {
           enabled = true,
-          default_animation = "LazyFile",
+          default_animation = "pulse",
         },
 
         search = {
