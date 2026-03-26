@@ -3,9 +3,7 @@ Constants = require("config.constants")
 -- {{{ blink.cmp
 return {
   "saghen/blink.cmp",
-  -- optional: provides snippets for the snippet source
   dependencies = {
-    "rafamadriz/friendly-snippets",
     {
       "folke/lazydev.nvim",
       ft = "lua", -- only load on lua files
@@ -71,7 +69,7 @@ return {
       },
       accept = {
         auto_brackets = {
-          enabled = false,
+          enabled = true,
         },
       },
       documentation = { auto_show = true, auto_show_delay_ms = 150 },
@@ -107,7 +105,7 @@ return {
     -- Default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, due to `opts_extend`
     sources = {
-      default = { "lazydev", "lsp", "path", "snippets", "buffer", "calc" },
+      default = { "lazydev", "lsp", "path", "buffer", "calc" },
       providers = {
         lazydev = {
           name = "LazyDev",

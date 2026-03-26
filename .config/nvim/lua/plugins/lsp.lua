@@ -41,13 +41,10 @@ return {
 
         vim.lsp.config("vtsls", vtsls_config)
 
-        vim.lsp.enable({ "vue_ls", "vtsls" })
+        vim.lsp.enable({ "vtsls" })
 
         vim.diagnostic.config({
           update_in_insert = false,
-          -- virtual_lines = {
-          --   current_line = true,
-          -- },
           virtual_text = false,
           signs = {
             text = {
