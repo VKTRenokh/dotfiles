@@ -11,7 +11,6 @@ return {
   -- {{{ nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
     branch = 'main',
     enabled = true,
     build = function()
@@ -19,7 +18,7 @@ return {
 
       treesitter.update(nil, { summary = true })
     end,
-    lazy = vim.fn.argc(-1) == 0,
+    lazy = false,
     version = false,
     -- version = "v0.9.1",
     keys = {
@@ -28,7 +27,7 @@ return {
     },
     opts = {
       indent = { enable = true },
-      highlight = { enable = true },
+      highlight = { enable = false },
       folds = { enable = true },
       ensure_installed = Constants.ensure_installed.treesitter
     },
@@ -41,7 +40,7 @@ return {
         group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
         callback = function(ev)
           if vim.tbl_get(opts, "highlight", "enable") ~= false then
-            pcall(vim.treesitter.start)
+            pcall(vim.treesitter.start, ev.buf)
           end
 
           if vim.tbl_get(opts, "indent", "enable") ~= false then

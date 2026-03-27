@@ -129,7 +129,7 @@ return {
     lazy = false,
     keys = {
       -- stylua: ignore start
-      { ";f",         function() Snacks.picker.files({ hidden = true }) end },
+      { ";f",         function() Snacks.picker.files({ hidden = true, }) end },
       { ";F",         function() Snacks.picker.files({ hidden = true, ignored = true }) end },
       { ";r",         function() Snacks.picker.grep() end },
       { ";e",         function() Snacks.picker.diagnostics() end },
@@ -154,7 +154,7 @@ return {
       -- stylua: ignore end
     },
     opts = {
-      bigfile = { enabled = true },
+      bigfile = { enabled = false },
       notifier = { enabled = true },
       quickfile = { enabled = true },
       statuscolumn = { enabled = false },
@@ -219,6 +219,7 @@ return {
       words = { enabled = false },
       input = { enabled = true },
       scoped = { enabled = true },
+      picker = {}
     },
   },
   -- }}}
