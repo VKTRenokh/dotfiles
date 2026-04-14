@@ -1,11 +1,11 @@
 configuration {
     display-ssh: "SSH";
     display-run: "Run";
-    display-drun: " ";
+    display-drun: "› ";
     display-window: "Window";
     display-combi: "Combi";
-    show-icons: false;
-    font: "Victor Mono NF Italic 12";
+    show-icons: true;
+    font: "Victor Mono NF 16";
 }
 
 @theme "~/.config/rofi/style.rasi"
